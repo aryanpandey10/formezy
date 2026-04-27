@@ -1,0 +1,165 @@
+{
+  "$schema": "https://design-tokens.dev/schema.json",
+  "name": "Formezy Design System",
+  "version": "1.0.0",
+  "description": "Design tokens for the Formezy enterprise application platform marketing website. Keep these values in sync with tailwind.config.ts and app/globals.css.",
+  "color": {
+    "brand": {
+      "primary":   { "value": "#6C63FF", "description": "Main CTAs, accents, primary purple" },
+      "dark":      { "value": "#4F46E5", "description": "Hover / deep purple" },
+      "light":     { "value": "#A5B4FC", "description": "Tints, icons, soft accents" },
+      "softer":    { "value": "#A78BFA", "description": "Gradient endpoint for purple gradient text" }
+    },
+    "text": {
+      "primary":   { "value": "#0F0F1A" },
+      "secondary": { "value": "#4B5563" },
+      "muted":     { "value": "#9CA3AF" },
+      "onDark":    { "value": "#FFFFFF" }
+    },
+    "surface": {
+      "white":      { "value": "#FFFFFF" },
+      "card":       { "value": "#F9FAFB" },
+      "border":     { "value": "#E5E7EB" },
+      "dark":       { "value": "#0F0F1A" }
+    },
+    "accent": {
+      "teal":  { "value": "#06B6D4" },
+      "gold":  { "value": "#F59E0B" },
+      "rose":  { "value": "#F43F5E" },
+      "emerald": { "value": "#10B981" }
+    }
+  },
+  "gradient": {
+    "background":    { "value": "linear-gradient(135deg, #F8F7FF 0%, #EEF2FF 50%, #F3F4FF 100%)" },
+    "purpleText":    { "value": "linear-gradient(90deg, #6C63FF, #A78BFA)" },
+    "purpleCta":     { "value": "linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #A78BFA 100%)" },
+    "radialPurple":  { "value": "radial-gradient(ellipse at center, rgba(167, 139, 250, 0.25) 0%, rgba(108, 99, 255, 0.08) 40%, transparent 70%)" }
+  },
+  "typography": {
+    "family": {
+      "sans":    { "value": "Inter, system-ui, sans-serif" },
+      "display": { "value": "Inter, system-ui, sans-serif" }
+    },
+    "weight": {
+      "regular":  { "value": 400 },
+      "medium":   { "value": 500 },
+      "semibold": { "value": 600 },
+      "bold":     { "value": 700 },
+      "extrabold":{ "value": 800 }
+    },
+    "size": {
+      "h1":     { "desktop": "56px", "mobile": "36px", "lineHeight": 1.1 },
+      "h2":     { "desktop": "40px", "mobile": "28px", "lineHeight": 1.2 },
+      "h3":     { "desktop": "28px", "mobile": "20px", "lineHeight": 1.3 },
+      "body-l": { "desktop": "18px", "mobile": "16px" },
+      "body":   { "desktop": "16px", "mobile": "15px" },
+      "small":  { "desktop": "14px", "mobile": "13px" }
+    }
+  },
+  "radius": {
+    "card":   { "value": "16px" },
+    "button": { "value": "12px" },
+    "pill":   { "value": "999px" },
+    "icon":   { "value": "12px" }
+  },
+  "shadow": {
+    "card":       { "value": "0 4px 24px rgba(108, 99, 255, 0.08)" },
+    "cardHover":  { "value": "0 8px 40px rgba(108, 99, 255, 0.15)" },
+    "cta":        { "value": "0 4px 16px rgba(108, 99, 255, 0.4)" },
+    "ctaHover":   { "value": "0 8px 24px rgba(108, 99, 255, 0.5)" }
+  },
+  "spacing": {
+    "sectionY": {
+      "desktop": "80px",
+      "tablet":  "64px",
+      "mobile":  "48px"
+    },
+    "containerX": {
+      "desktop": "24px",
+      "mobile":  "24px"
+    },
+    "containerMax": { "value": "1280px" },
+    "cardGap":     { "value": "24px" }
+  },
+  "breakpoints": {
+    "sm":  { "value": "375px" },
+    "md":  { "value": "768px" },
+    "lg":  { "value": "1024px" },
+    "xl":  { "value": "1280px" },
+    "2xl": { "value": "1536px" },
+    "3xl": { "value": "1920px", "description": "Primary Figma reference width" }
+  },
+  "motion": {
+    "duration": {
+      "fast":   { "value": "0.2s" },
+      "normal": { "value": "0.3s" },
+      "slow":   { "value": "0.6s" },
+      "pathDraw": { "value": "1.2s" },
+      "float":  { "value": "3s" }
+    },
+    "easing": {
+      "standard":   { "value": "cubic-bezier(0.4, 0, 0.2, 1)" },
+      "in":         { "value": "cubic-bezier(0.4, 0, 1, 1)" },
+      "out":        { "value": "cubic-bezier(0, 0, 0.2, 1)" },
+      "inOut":      { "value": "cubic-bezier(0.4, 0, 0.2, 1)" }
+    },
+    "pattern": {
+      "fadeUp":       { "y": 30, "opacity": 0, "duration": 0.6 },
+      "stagger":      { "delayChildren": 0.1, "staggerChildren": 0.1 },
+      "float":        { "y": [0, -10, 0], "duration": 3, "repeat": "Infinity" },
+      "pathLength":   { "pathLength": [0, 1], "duration": 1.2, "ease": "easeInOut" },
+      "scrollThreshold": 0.1
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "bg": "#6C63FF",
+        "hoverBg": "#4F46E5",
+        "color": "#FFFFFF",
+        "padding": "12px 24px",
+        "radius": "12px",
+        "shadow": "0 4px 16px rgba(108, 99, 255, 0.4)",
+        "fontWeight": 600
+      },
+      "secondary": {
+        "bg": "transparent",
+        "border": "1px solid #6C63FF",
+        "color": "#6C63FF",
+        "hoverBg": "#F5F3FF",
+        "padding": "12px 24px",
+        "radius": "12px",
+        "fontWeight": 600
+      },
+      "ghost": {
+        "bg": "transparent",
+        "color": "#6C63FF",
+        "textDecoration": "underline"
+      }
+    },
+    "card": {
+      "base": {
+        "bg": "#FFFFFF",
+        "border": "1px solid #E5E7EB",
+        "radius": "16px",
+        "padding": "24px",
+        "shadow": "0 4px 24px rgba(108, 99, 255, 0.08)"
+      }
+    },
+    "navbar": {
+      "height": {
+        "desktop": "72px",
+        "mobile":  "60px"
+      },
+      "scrolled": {
+        "bg": "rgba(255, 255, 255, 0.85)",
+        "backdropBlur": "12px",
+        "shadow": "0 1px 0 rgba(15, 15, 26, 0.06)"
+      }
+    },
+    "footer": {
+      "bg": "#0F0F1A",
+      "color": "#FFFFFF"
+    }
+  }
+}

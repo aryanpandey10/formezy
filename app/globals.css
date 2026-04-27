@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #6c63ff;
+  --brand-dark: #4f46e5;
+  --brand-light: #a5b4fc;
+  --brand-softer: #a78bfa;
+
+  --ink-primary: #0f0f1a;
+  --ink-secondary: #4b5563;
+  --ink-muted: #9ca3af;
+
+  --surface-white: #ffffff;
+  --surface-card: #f9fafb;
+  --surface-border: #e5e7eb;
+  --surface-dark: #0f0f1a;
+
+  --accent-teal: #06b6d4;
+  --accent-gold: #f59e0b;
+
+  --bg-hero: linear-gradient(
+    135deg,
+    #f8f7ff 0%,
+    #eef2ff 50%,
+    #f3f4ff 100%
+  );
+  --bg-purple-text: linear-gradient(90deg, #6c63ff, #a78bfa);
+  --bg-purple-cta: linear-gradient(
+    135deg,
+    #6c63ff 0%,
+    #8b5cf6 50%,
+    #a78bfa 100%
+  );
+
+  --shadow-card: 0 4px 24px rgba(108, 99, 255, 0.08);
+  --shadow-card-hover: 0 8px 40px rgba(108, 99, 255, 0.15);
+  --shadow-cta: 0 4px 16px rgba(108, 99, 255, 0.4);
+
+  /* Figma design tokens */
+  --Title-Button: #2c0e3a;
+  --Button: #2c0e3a;
+  --Body: #6366a8;
+  --gradien-1: linear-gradient(180deg, #708ff4 0%, #6c60e8 100%);
+  --Gradient-purple: #b8b1fd;
+  --font-sora: "Sora", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-ink font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-ink;
+  }
+
+  ::selection {
+    background: rgba(108, 99, 255, 0.2);
+    color: #0f0f1a;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #6c63ff;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(90deg, #6c63ff, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-app {
+    @apply mx-auto w-full max-w-[1280px] px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .h1 {
+    @apply text-[36px] leading-[1.1] font-extrabold tracking-tight md:text-[48px] lg:text-[56px];
+  }
+
+  .h2 {
+    @apply text-[28px] leading-[1.2] font-bold tracking-tight md:text-[34px] lg:text-[40px];
+  }
+
+  .h3 {
+    @apply text-[20px] leading-[1.3] font-bold tracking-tight md:text-[24px] lg:text-[28px];
+  }
+
+  .body-l {
+    @apply text-[16px] leading-[1.65] text-ink-secondary md:text-[18px];
+  }
+
+  .body {
+    @apply text-[15px] leading-[1.6] text-ink-secondary md:text-[16px];
+  }
+
+  .card-soft {
+    @apply rounded-card border border-surface-border bg-white shadow-card transition-all duration-200;
+  }
+
+  .card-soft:hover {
+    @apply shadow-card-hover;
+    transform: translateY(-2px);
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-pill px-3 py-1 text-[13px] font-medium;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .grid-pattern {
+    background-image: linear-gradient(
+        to right,
+        rgba(108, 99, 255, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(108, 99, 255, 0.06) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(
+      rgba(108, 99, 255, 0.18) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+}
+
+@keyframes flowDash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes moveDot {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
