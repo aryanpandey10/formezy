@@ -18,37 +18,44 @@ const capabilities: Capability[] = [
   {
     id: 1,
     bigTitle: "01",
-    heading: "Low-Code / No-Code Builder",
+    heading: "Low-Code / No-Code",
     description:
-      "Design forms, dashboards and workflows visually. Go live in hours — not months — with zero engineering overhead.",
+      "Design and build business applications visually using drag-and-drop components, without relying on complex coding.",
   },
   {
     id: 2,
     bigTitle: "02",
     heading: "Workflow Automation",
     description:
-      "Route approvals, trigger notifications, and run conditional logic automatically across every department.",
+      "Automate approvals, tasks, notifications, and recurring processes to keep operations moving efficiently.",
   },
   {
     id: 3,
     bigTitle: "03",
-    heading: "Real-time Analytics",
+    heading: "Role-Based Access",
     description:
-      "Live dashboards, custom KPIs and drill-down reports give every team instant insight into their operations.",
+      "Control user permissions, visibility, and responsibilities with secure access tailored to every role.",
   },
   {
     id: 4,
     bigTitle: "04",
-    heading: "Role-Based Access",
+    heading: "Reporting & Dashboards",
     description:
-      "Granular permissions at field, form and module level — fully aligned to your organisation structure.",
+      "Track business performance, workflows, and operations through real-time dashboards and structured reports.",
   },
   {
     id: 5,
     bigTitle: "05",
-    heading: "Integration Hub",
+    heading: "AskEzy Intelligence",
     description:
-      "50+ native connectors plus open APIs and webhooks let Formezy plug into any existing system seamlessly.",
+      "Get instant answers, summaries, reminders, and insights through AI built into your workflows.",
+  },
+  {
+    id: 6,
+    bigTitle: "06",
+    heading: "Integrations & Connectors",
+    description:
+      "Connect Formezy with ERP systems, business tools, and third-party platforms for seamless operations.",
   },
 ];
 
@@ -179,7 +186,7 @@ export default function CoreCapabilities() {
             </motion.div>
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6">
             {capabilities.map((c, i) => (
               <button
                 key={c.id}

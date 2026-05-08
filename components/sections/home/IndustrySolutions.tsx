@@ -7,43 +7,19 @@ import Link from "next/link";
 import Carousel from "@/components/ui/Carousel";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 
+// Only 4 industries shown (zig-zag layout)
 const industries = [
-  {
-    title: "Heavy Manufacturing",
-    image:
-      "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=70",
-  },
-  {
-    title: "Process Industries",
-    image:
-      "https://images.unsplash.com/photo-1581091870622-1e7f41bdfbfa?auto=format&fit=crop&w=1200&q=70",
-  },
-  {
-    title: "Discrete Manufacturing",
-    image:
-      "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1200&q=70",
-  },
-  {
-    title: "Retail & Wholesale",
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=70",
-  },
-  {
-    title: "Healthcare & Life Sciences",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=70",
-  },
-  {
-    title: "Finance & Banking",
-    image:
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=70",
-  },
+  { title: "Heavy Manufacturing",    image: "/images/SolutionAccross1.png" },
+  { title: "Process Industries",     image: "/images/SolutionAccross2.png" },
+  { title: "Discrete Manufacturing", image: "/images/SolutionAccross3.png" },
+  { title: "Retail & Wholesale",     image: "/images/SolutionAccross4.png" },
 ];
 
 export default function IndustrySolutions() {
   return (
     <section className="section bg-white/70 backdrop-blur-sm">
       <div className="container-app">
+        {/* ── Heading ── */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -81,22 +57,27 @@ export default function IndustrySolutions() {
           </motion.p>
         </motion.div>
 
-        <div className="mt-14 hidden lg:block">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={staggerContainer}
-            className="grid grid-cols-2 gap-6 lg:grid-cols-4"
-          >
-            {industries.map((item) => (
-              <motion.div key={item.title} variants={fadeUp}>
-                <IndustryCard {...item} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        {/* ── Desktop: 4-card zig-zag ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mt-14 hidden lg:flex lg:items-start lg:gap-6"
+        >
+          {industries.map((item, i) => (
+            <motion.div
+              key={item.title}
+              variants={fadeUp}
+              /* even indices sit high, odd indices sit low — creates zig-zag */
+              className={`flex-1 ${i % 2 === 1 ? "mt-16" : ""}`}
+            >
+              <IndustryCard {...item} />
+            </motion.div>
+          ))}
+        </motion.div>
 
+        {/* ── Mobile: carousel ── */}
         <div className="mt-14 lg:hidden">
           <Carousel
             options={{ align: "start" }}
@@ -118,7 +99,7 @@ function IndustryCard({ title, image }: { title: string; image: string }) {
   return (
     <Link
       href="/platform/use-cases"
-      className="group relative block h-[260px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover"
+      className="group relative block h-[300px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover"
     >
       <Image
         src={image}
@@ -129,7 +110,7 @@ function IndustryCard({ title, image }: { title: string; image: string }) {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white">
-        <span className="text-[16px] font-bold">{title}</span>
+        <span className="font-sora text-[16px] font-bold">{title}</span>
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition-transform group-hover:rotate-45">
           <ArrowUpRight size={16} />
         </span>

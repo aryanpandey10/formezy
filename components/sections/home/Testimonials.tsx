@@ -4,8 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { fadeUp, viewportOnce } from "@/lib/animations";
+import { fadeUp, viewportOnce, staggerContainer } from "@/lib/animations";
 
 type Client = {
   id: number;
@@ -13,7 +12,6 @@ type Client = {
   shortName: string;
   industry: string;
   color: string;
-  logo: number;
   quote: string;
   author: string;
   role: string;
@@ -23,80 +21,86 @@ type Client = {
 const clients: Client[] = [
   {
     id: 1,
-    name: "Stark Industries",
-    shortName: "SI",
+    name: "Heavy Metal and Tubes Pvt Ltd.",
+    shortName: "HM",
     industry: "Manufacturing",
     color: "#6C63FF",
-    logo: 1,
     quote:
-      "Formezy gave our operations team a common language. Workflows that used to take days now finish before lunch — and we finally have a single source of truth across all plants.",
-    author: "Tanya Shah",
-    role: "VP Operations · Stark Industries",
+      "Formezy transformed how our plants operate. Real-time visibility, faster approvals, zero dependency on spreadsheets - it's the one system our entire operations team actually trusts and uses daily.",
+    author: "Management",
+    role: "Heavy Metal and Tubes Pvt Ltd.",
     stars: 5,
   },
   {
     id: 2,
-    name: "Nexora Group",
-    shortName: "NG",
-    industry: "Supply Chain",
+    name: "Twin Cool Engineers",
+    shortName: "TC",
+    industry: "Engineering",
     color: "#06B6D4",
-    logo: 2,
     quote:
-      "We replaced four separate tools with Formezy. Procurement, vendor management, and approvals all live in one place now. Our error rate dropped by over 60% in the first quarter.",
-    author: "Rajan Mehta",
-    role: "COO · Nexora Group",
+      "We moved from another ERP to Formezy. The transition was smooth, adoption was quick, and our workflows finally feel structured, connected, and fully in our control.",
+    author: "Management",
+    role: "Twin Cool Engineers",
     stars: 5,
   },
   {
     id: 3,
-    name: "Vortex Capital",
-    shortName: "VC",
-    industry: "Finance",
+    name: "Yash Filter",
+    shortName: "YF",
+    industry: "Filtration",
     color: "#F59E0B",
-    logo: 3,
     quote:
-      "Compliance used to be a quarterly fire drill. With Formezy's audit logs and approval workflows, it's just another report we run. The board loves it.",
-    author: "Priya Anand",
-    role: "CFO · Vortex Capital",
+      "Formezy cut down the time our team spends on follow-ups significantly. It was simple enough for our team to use from day one - without anyone having to ask.",
+    author: "Management",
+    role: "Yash Filter",
     stars: 5,
   },
   {
     id: 4,
-    name: "Meridian Health",
-    shortName: "MH",
-    industry: "Healthcare",
-    color: "#10B981",
-    logo: 4,
+    name: "Pep Foods",
+    shortName: "PF",
+    industry: "Food & Beverage",
+    color: "#A78BFA",
     quote:
-      "Patient record updates, vendor contracts, PPE reorders — all automated. Our staff spends time on care, not spreadsheets. Formezy transformed how our admin operates.",
-    author: "Dr. Amina Osei",
-    role: "Director of Operations · Meridian Health",
+      "Compliance and procurement used to demand constant follow-ups. With Formezy, the system follows up for us - deadlines are met, nothing slips, and our team works worry-free.",
+    author: "Management",
+    role: "Pep Foods",
     stars: 5,
   },
   {
     id: 5,
-    name: "PeakScale Retail",
-    shortName: "PS",
-    industry: "Retail",
-    color: "#A78BFA",
-    logo: 5,
+    name: "Parishi Construction Equipment",
+    shortName: "PC",
+    industry: "Construction",
+    color: "#EF4444",
     quote:
-      "Cross-department collaboration used to mean endless email threads. Now every team sees the same data, same tasks, same status. Communication latency is down by 80%.",
-    author: "Liam Torres",
-    role: "Head of Operations · PeakScale Retail",
+      "We tried many ERPs - none felt right. Formezy just fits. Our construction workflows, approvals, and equipment tracking finally run the way our business actually works.",
+    author: "Management",
+    role: "Parishi Construction Equipment",
     stars: 5,
   },
   {
     id: 6,
-    name: "Alterra Systems",
-    shortName: "AS",
-    industry: "Technology",
-    color: "#EF4444",
-    logo: 6,
+    name: "Armstrong Machinery LLP",
+    shortName: "AM",
+    industry: "Machinery",
+    color: "#6366F1",
     quote:
-      "We built our entire internal ERP on Formezy in six weeks. No developer required. What would have been a multi-year SAP implementation became a flexible platform our team controls.",
-    author: "Sahil Kapoor",
-    role: "CTO · Alterra Systems",
+      "Before Formezy, our processes were scattered across emails and sheets. Now everything is tracked, approved, and reported in one place - our operations run smoother than ever before.",
+    author: "Management",
+    role: "Armstrong Machinery LLP",
+    stars: 5,
+  },
+  {
+    id: 7,
+    name: "Navjivan Roller Flour & Pulse Mills",
+    shortName: "NV",
+    industry: "Food & Milling",
+    color: "#10B981",
+    quote:
+      "Eight decades of manual operations - Formezy digitized all of it. Reporting improved, decisions became data-driven, and we're now more competitive than we've ever been in our history.",
+    author: "Management",
+    role: "Navjivan Roller Flour & Pulse Mills",
     stars: 5,
   },
 ];
@@ -111,16 +115,45 @@ export default function Testimonials() {
   return (
     <section className="section overflow-hidden bg-white" id="testimonials">
       <div className="container-app">
-        <SectionHeading
-          eyebrow="Client Stories"
-          title={
-            <>
-              What our{" "}
-              <span className="gradient-text">clients say</span>
-            </>
-          }
-          description="Businesses across industries use Formezy to turn operational complexity into clarity."
-        />
+
+        {/* ── Heading — matches "What is Formezy?" pattern exactly ── */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={staggerContainer}
+          className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
+        >
+          <motion.div variants={fadeUp}>
+            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+              Client Testimonials
+            </span>
+          </motion.div>
+
+          <motion.h2
+            variants={fadeUp}
+            className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
+          >
+            Client Testimonials{" "}
+            <span
+              style={{
+                background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Formezy
+            </span>
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="max-w-[840px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
+          >
+            Businesses across industries use Formezy to turn operational complexity into clarity.
+          </motion.p>
+        </motion.div>
 
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
           <motion.div
@@ -138,30 +171,6 @@ export default function Testimonials() {
                 height={713}
                 className="h-auto w-full opacity-90"
               />
-
-              {/* <div className="absolute inset-x-0 bottom-0 flex flex-wrap justify-center gap-2 pb-4 px-4">
-                {clients.map((c, i) => (
-                  <button
-                    key={c.id}
-                    onClick={() => setActive(i)}
-                    aria-label={`Show ${c.name} testimonial`}
-                    className="relative rounded-pill border px-3 py-1.5 text-[12px] font-semibold transition-all duration-300"
-                    style={{
-                      borderColor: i === active ? c.color : "#e5e7eb",
-                      backgroundColor:
-                        i === active ? `${c.color}18` : "white",
-                      color: i === active ? c.color : "#6B7280",
-                      transform: i === active ? "scale(1.06)" : "scale(1)",
-                    }}
-                  >
-                    <span
-                      className="mr-1.5 inline-block h-2 w-2 rounded-full"
-                      style={{ backgroundColor: c.color }}
-                    />
-                    {c.name}
-                  </button>
-                ))}
-              </div> */}
             </div>
           </motion.div>
 
@@ -183,19 +192,19 @@ export default function Testimonials() {
 
                 <div className="flex items-start justify-between gap-4">
                   <div
-                    className="flex h-14 w-14 items-center justify-center rounded-2xl text-[15px] font-extrabold text-white shadow-lg"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-[15px] font-extrabold text-white shadow-lg"
                     style={{ backgroundColor: client.color }}
                   >
                     {client.shortName}
                   </div>
-                  <div className="flex flex-col items-end gap-1">
+                  <div className="flex min-w-0 flex-col items-end gap-1">
                     <div className="flex items-center gap-0.5 text-amber-400">
                       {Array.from({ length: client.stars }).map((_, i) => (
                         <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
                       ))}
                     </div>
                     <span
-                      className="rounded-pill px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider"
+                      className="max-w-[min(100%,220px)] rounded-pill px-2.5 py-0.5 text-right text-[10px] font-bold uppercase tracking-wider"
                       style={{
                         backgroundColor: `${client.color}18`,
                         color: client.color,
@@ -206,9 +215,13 @@ export default function Testimonials() {
                   </div>
                 </div>
 
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
+                  {client.name}
+                </p>
+
                 <Quote
                   size={36}
-                  className="mt-6 opacity-10"
+                  className="mt-4 opacity-10"
                   style={{ color: client.color }}
                 />
                 <blockquote className="mt-3 text-[19px] font-medium leading-[1.6] text-ink md:text-[21px]">
@@ -217,16 +230,12 @@ export default function Testimonials() {
 
                 <div className="mt-8 flex items-center gap-3">
                   <span
-                    className="flex h-11 w-11 items-center justify-center rounded-full text-[13px] font-bold text-white shadow"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white shadow"
                     style={{ backgroundColor: client.color }}
                   >
-                    {client.author
-                      .split(" ")
-                      .map((w) => w[0])
-                      .slice(0, 2)
-                      .join("")}
+                    {client.shortName}
                   </span>
-                  <div className="flex flex-col leading-tight">
+                  <div className="flex min-w-0 flex-col leading-tight">
                     <span className="text-[14px] font-semibold text-ink">
                       {client.author}
                     </span>
@@ -249,8 +258,7 @@ export default function Testimonials() {
                     style={{
                       width: i === active ? 28 : 8,
                       height: 8,
-                      backgroundColor:
-                        i === active ? client.color : "#e5e7eb",
+                      backgroundColor: i === active ? client.color : "#e5e7eb",
                     }}
                   />
                 ))}

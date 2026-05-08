@@ -20,7 +20,7 @@ const stats = [
 
 export default function HomeHero() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-28 md:pt-32 lg:pt-36">
+    <section className="relative overflow-hidden pb-0 pt-4 md:pt-4 lg:pt-4">
 
       <div className="container-app relative">
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
@@ -41,7 +41,7 @@ export default function HomeHero() {
               variants={fadeUp}
               className="font-sora text-[36px] font-bold leading-[1.15] tracking-tight text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
             >
-              Build Enterprise Systems{" "}
+              Build Your EAP{" "}
               <span
                 className="bg-clip-text"
                 style={{

@@ -3,50 +3,9 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-
-/* ─────────────────────────────────────────────
-   Shared helpers
-───────────────────────────────────────────── */
-function ImgPlaceholder({
-  w,
-  h,
-  label,
-  className = "",
-}: {
-  w: number;
-  h: number;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-purple-200 bg-gradient-to-br from-purple-50/80 to-blue-50/80 ${className}`}
-      style={{ aspectRatio: `${w}/${h}`, width: "100%" }}
-    >
-      <div className="flex flex-col items-center gap-2 p-6 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/70 shadow-sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6366A8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="m21 15-5-5L5 21" />
-          </svg>
-        </div>
-        <p className="font-sora text-[12px] font-medium text-[#6366A8]/80">{label}</p>
-        <p className="font-sora text-[11px] text-[#6366A8]/50">{w} × {h}</p>
-      </div>
-    </div>
-  );
-}
+import { capabilitiesPageImages } from "@/lib/page-section-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -126,10 +85,13 @@ function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           >
-            <ImgPlaceholder
-              w={800}
-              h={560}
-              label="Hero — Capabilities platform dashboard & workflow illustration"
+            <SectionWebpImage
+              src={capabilitiesPageImages.hero}
+              alt="Formezy capabilities for modern business operations"
+              aspectWidth={800}
+              aspectHeight={560}
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
         </div>
@@ -210,10 +172,12 @@ function LowCodeAutomationSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-14"
         >
-          <ImgPlaceholder
-            w={1300}
-            h={520}
-            label="Isometric 3D — person with dashboards, low-code & automation screens"
+          <SectionWebpImage
+            src={capabilitiesPageImages.lowCodeAutomation}
+            alt="Low-code building and workflow automation in Formezy"
+            aspectWidth={1300}
+            aspectHeight={520}
+            sizes="(max-width: 1024px) 100vw, 1200px"
           />
         </motion.div>
       </div>
@@ -284,11 +248,13 @@ function RoleBasedAccessSection() {
           <div className="grid lg:grid-cols-2">
             {/* Left — illustration (lavender/blue bg) */}
             <div className="flex items-center justify-center bg-gradient-to-br from-[#EEF0FF] via-[#E8F4FF] to-[#EEF0FF] p-8 md:p-12">
-              <ImgPlaceholder
-                w={500}
-                h={380}
-                label="Role-Based Access — hub/orbit diagram with user avatar connections"
-                className="border-0 bg-transparent"
+              <SectionWebpImage
+                src={capabilitiesPageImages.roleBased}
+                alt="Role-based access control in Formezy"
+                aspectWidth={500}
+                aspectHeight={380}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-2xl border-0 bg-transparent shadow-none"
               />
             </div>
 
@@ -395,10 +361,13 @@ function AiSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 overflow-hidden rounded-[24px] border border-purple-100 bg-gradient-to-br from-purple-50/60 to-blue-50/40 p-4 shadow-card-hover md:p-6"
         >
-          <ImgPlaceholder
-            w={1200}
-            h={500}
-            label="AskEasy — AI chat interface / document search UI screenshot"
+          <SectionWebpImage
+            src={capabilitiesPageImages.askEasy}
+            alt="AskEasy AI-powered intelligence in Formezy"
+            aspectWidth={1200}
+            aspectHeight={500}
+            sizes="(max-width: 1024px) 100vw, 1200px"
+            className="rounded-[20px] border-0 shadow-none"
           />
         </motion.div>
       </div>
@@ -462,11 +431,13 @@ function ApprovalsSection() {
 
             {/* Right — approval flow (pink/salmon bg) */}
             <div className="flex items-center justify-center bg-gradient-to-br from-[#FFF0F0] via-[#FFF5F5] to-[#F0F0FF] p-8 md:p-12">
-              <ImgPlaceholder
-                w={500}
-                h={380}
-                label="Multi-Level Approvals — approval chain flow diagram"
-                className="border-0 bg-transparent"
+              <SectionWebpImage
+                src={capabilitiesPageImages.approvals}
+                alt="Multi-level approvals in Formezy"
+                aspectWidth={500}
+                aspectHeight={380}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-2xl border-0 bg-transparent shadow-none"
               />
             </div>
           </div>
@@ -523,11 +494,13 @@ function AuditDataSection() {
               <BulletList items={auditBullets} />
             </div>
             <div className="p-6 pt-4">
-              <ImgPlaceholder
-                w={560}
-                h={240}
-                label="Audit Logs — activity timeline / log UI screenshot"
-                className="border-0"
+              <SectionWebpImage
+                src={capabilitiesPageImages.audit}
+                alt="Immutable audit logs in Formezy"
+                aspectWidth={560}
+                aspectHeight={240}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-xl border-0 shadow-none"
               />
             </div>
           </motion.div>
@@ -554,11 +527,13 @@ function AuditDataSection() {
               <BulletList items={centralizationBullets} />
             </div>
             <div className="p-6 pt-4">
-              <ImgPlaceholder
-                w={560}
-                h={240}
-                label="Data Centralization — unified data dashboard screenshot"
-                className="border-0"
+              <SectionWebpImage
+                src={capabilitiesPageImages.dataCentral}
+                alt="Centralized operational data in Formezy"
+                aspectWidth={560}
+                aspectHeight={240}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-xl border-0 shadow-none"
               />
             </div>
           </motion.div>
@@ -629,11 +604,13 @@ function CtaSection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
               />
-              <ImgPlaceholder
-                w={480}
-                h={360}
-                label="CTA — capabilities ecosystem / network illustration"
-                className="relative z-10 max-w-[380px]"
+              <SectionWebpImage
+                src={capabilitiesPageImages.cta}
+                alt="Unlock smarter business capabilities with Formezy"
+                aspectWidth={480}
+                aspectHeight={360}
+                sizes="(max-width: 1024px) 90vw, 380px"
+                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
               />
             </motion.div>
           </div>

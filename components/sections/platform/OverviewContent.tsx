@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { overviewWebp } from "@/lib/webp-assets";
 
 /* ─────────────────────────────────────────────
    Reusable image placeholder (user will swap
@@ -149,11 +151,16 @@ function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           >
-            <ImgPlaceholder
-              w={800}
-              h={560}
-              label="Hero Illustration — platform workflow diagram"
-            />
+            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "800/560" }}>
+              <Image
+                src={overviewWebp.hero}
+                alt="Formezy platform overview"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
@@ -209,12 +216,15 @@ function WhatIsEapSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mt-14"
         >
-          <ImgPlaceholder
-            w={1200}
-            h={560}
-            label="Platform Hub — Formezy connected ecosystem diagram"
-            className="max-w-4xl mx-auto"
-          />
+          <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/560" }}>
+            <Image
+              src={overviewWebp.enterpriseApplication}
+              alt="Enterprise Application Platform — connected ecosystem"
+              fill
+              sizes="(max-width: 1024px) 100vw, 900px"
+              className="object-contain"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
@@ -280,11 +290,15 @@ function WhyEapSection() {
             viewport={viewportOnce}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ImgPlaceholder
-              w={680}
-              h={480}
-              label="Why EAP — before/after comparison diagram"
-            />
+            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "680/480" }}>
+              <Image
+                src={overviewWebp.needEapToday}
+                alt="Why businesses need an Enterprise Application Platform today"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain"
+              />
+            </div>
           </motion.div>
 
           {/* Right — checklist */}
@@ -324,132 +338,38 @@ function WhyEapSection() {
 /* ─────────────────────────────────────────────
    Section 4 — Internal Systems VS External Apps
 ───────────────────────────────────────────── */
-const internalSystems = [
-  { label: "Finance & Accounting", icon: "💰" },
-  { label: "Inventory Management", icon: "📦" },
-  { label: "Human Resources", icon: "👥" },
-  { label: "Operations & Workflow", icon: "⚙️" },
-];
-
-const externalApps = [
-  { label: "CRM & Sales Platform", icon: "🤝" },
-  { label: "Support & Helpdesk", icon: "🎧" },
-  { label: "Analytics & Reporting", icon: "📊" },
-  { label: "E-commerce Platform", icon: "🛒" },
-];
-
 function SystemsVsAppsSection() {
   return (
-    <section className="section bg-white/90 backdrop-blur-sm">
+    <section
+      className="section bg-white/90 backdrop-blur-sm"
+      aria-labelledby="internal-vs-external-heading"
+    >
       <div className="container-app">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+        <h2
+          id="internal-vs-external-heading"
+          className="sr-only"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Silos vs Systems
-            </span>
-          </motion.div>
+          Internal systems versus external apps
+        </h2>
 
-          <motion.h2
-            variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[52px]"
-            style={{ lineHeight: "1.15" }}
-          >
-            Internal Systems{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              VS
-            </span>{" "}
-            External Apps
-          </motion.h2>
-
-          <motion.p
-            variants={fadeUp}
-            className="mx-auto max-w-[600px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-          >
-            Most businesses stitch together a dozen apps and call it a system.
-            Formezy unifies them all into one governed, intelligent platform.
-          </motion.p>
-        </motion.div>
-
-        {/* 3-col layout */}
-        <div className="mt-14 grid items-center gap-8 lg:grid-cols-[1fr_340px_1fr] lg:gap-10">
-          {/* Left — internal systems */}
-          <motion.ul
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={staggerContainer}
-            className="flex flex-col gap-3"
-          >
-            {internalSystems.map((s) => (
-              <motion.li
-                key={s.label}
-                variants={fadeUp}
-                className="flex items-center justify-between rounded-xl border border-purple-100/60 bg-white/80 px-5 py-3.5 shadow-card backdrop-blur-sm"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">{s.icon}</span>
-                  <span className="font-sora text-[14px] font-semibold text-[#2C0E3A]">
-                    {s.label}
-                  </span>
-                </div>
-                <ChevronRight size={16} className="text-[#6366A8]" />
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          {/* Center — hub image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <ImgPlaceholder
-              w={340}
-              h={340}
-              label="Formezy Hub diagram"
-              className="rounded-full"
+        {/* Hub illustration only */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto max-w-4xl"
+        >
+          <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/700" }}>
+            <Image
+              src={overviewWebp.internalVsExternal}
+              alt="Internal systems vs external apps — Formezy unifies them"
+              fill
+              sizes="(max-width: 1024px) 100vw, 900px"
+              className="object-contain"
             />
-          </motion.div>
-
-          {/* Right — external apps */}
-          <motion.ul
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={staggerContainer}
-            className="flex flex-col gap-3"
-          >
-            {externalApps.map((s) => (
-              <motion.li
-                key={s.label}
-                variants={fadeUp}
-                className="flex items-center justify-between rounded-xl border border-purple-100/60 bg-white/80 px-5 py-3.5 shadow-card backdrop-blur-sm"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">{s.icon}</span>
-                  <span className="font-sora text-[14px] font-semibold text-[#2C0E3A]">
-                    {s.label}
-                  </span>
-                </div>
-                <ChevronRight size={16} className="text-[#6366A8]" />
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -484,75 +404,26 @@ function SpreadsheetToSystemsSection() {
             <G>Structured Systems</G>
           </motion.h2>
 
-          <motion.p
-            variants={fadeUp}
-            className="mx-auto max-w-[580px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-          >
-            Spreadsheets are where your business starts. Formezy is where it
-            scales — replacing manual glue with automated, intelligent systems.
-          </motion.p>
         </motion.div>
 
-        {/* Side-by-side comparison */}
-        <div className="mt-14 grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
-          {/* Before */}
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-3"
-          >
-            <div className="inline-flex items-center gap-2 self-start rounded-pill border border-red-100 bg-red-50 px-3 py-1">
-              <span className="h-2 w-2 rounded-full bg-red-400" />
-              <span className="font-sora text-[12px] font-semibold text-red-500">
-                Before — Spreadsheet Chaos
-              </span>
-            </div>
-            <ImgPlaceholder
-              w={600}
-              h={400}
-              label="Spreadsheet / scattered tools screenshot"
+        {/* Single full-width image */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-14"
+        >
+          <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/700" }}>
+            <Image
+              src={overviewWebp.fromSpreadsheet}
+              alt="From spreadsheets to structured Formezy systems"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1000px"
+              className="object-contain"
             />
-          </motion.div>
-
-          {/* Arrow connector */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col items-center justify-center gap-2 self-center"
-          >
-            <div className="hidden rounded-full border border-purple-200 bg-white p-3 shadow-card lg:flex">
-              <ArrowRight size={20} className="text-[#6C60E8]" />
-            </div>
-            <span className="hidden font-sora text-[11px] font-medium text-[#6366A8] lg:block">
-              Formezy
-            </span>
-          </motion.div>
-
-          {/* After */}
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-3"
-          >
-            <div className="inline-flex items-center gap-2 self-start rounded-pill border border-green-100 bg-green-50 px-3 py-1">
-              <span className="h-2 w-2 rounded-full bg-green-400" />
-              <span className="font-sora text-[12px] font-semibold text-green-600">
-                After — Formezy Structured System
-              </span>
-            </div>
-            <ImgPlaceholder
-              w={600}
-              h={400}
-              label="Formezy dashboard / structured system screenshot"
-            />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -618,12 +489,15 @@ function ReadySection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
               />
-              <ImgPlaceholder
-                w={480}
-                h={360}
-                label="Device mockup — Formezy on tablet & mobile"
-                className="relative z-10 max-w-[380px]"
-              />
+              <div className="relative z-10 w-full max-w-[380px] overflow-hidden rounded-2xl" style={{ aspectRatio: "480/360" }}>
+                <Image
+                  src={overviewWebp.readyToSimplify}
+                  alt="Formezy — ready to simplify and scale operations"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, (max-width: 1280px) 40vw, 380px"
+                  className="object-contain"
+                />
+              </div>
             </motion.div>
           </div>
         </motion.div>

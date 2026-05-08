@@ -18,6 +18,7 @@ import {
 import Button from "@/components/ui/Button";
 import Carousel from "@/components/ui/Carousel";
 import { cn } from "@/lib/cn";
+import { useCasesIndustryWebp } from "@/lib/webp-assets";
 
 type TailoredCard = {
   title: string;
@@ -129,8 +130,7 @@ const industries: IndustryCard[] = [
       "Machine & operator tracking",
       "Quality and defect logs",
     ],
-    image:
-      "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&w=1600&q=70",
+    image: useCasesIndustryWebp.discreteManufacturing,
   },
   {
     title: "Retail & Wholesale",
@@ -141,8 +141,7 @@ const industries: IndustryCard[] = [
       "Dynamic pricing rules",
       "Loyalty and promotions",
     ],
-    image:
-      "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=70",
+    image: useCasesIndustryWebp.retailWholesale,
   },
   {
     title: "Construction & EPC",
@@ -153,8 +152,7 @@ const industries: IndustryCard[] = [
       "Vendor and subcontractor mgmt",
       "Compliance checklists",
     ],
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=70",
+    image: useCasesIndustryWebp.constructionEpc,
   },
 ];
 
@@ -276,7 +274,7 @@ function IndustryCarousel({ items }: { items: IndustryCard[] }) {
             src={it.image}
             alt={it.title}
             fill
-            sizes="(max-width: 1024px) 85vw, 48vw"
+            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 70vw, 48vw"
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/10" />

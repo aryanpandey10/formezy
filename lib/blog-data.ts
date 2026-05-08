@@ -1,3 +1,5 @@
+import { publicAssetUrl } from "./webp-assets";
+
 export type BlogSection = {
   heading: string;
   body: string[];
@@ -226,6 +228,21 @@ const genericFaqs: BlogFaq[] = [
   },
 ];
 
+/** Local WebP hero art for blog cards and article headers (`public/images`). */
+const blogHeroImages = [
+  "/images/Capabilities/Webp/capabilities_banner.webp",
+  "/images/Features/Webp/features_banner.webp",
+  "/images/Features/Webp/features_integrations.webp",
+  "/images/Features/Webp/features_automation.webp",
+  "/images/Features/Webp/features_security.webp",
+  "/images/Features/Webp/features_dashboard.webp",
+  "/images/Capabilities/Webp/capabilities_multilevel.webp",
+  "/images/Features/Webp/features_logic_builder.webp",
+  "/images/Capabilities/Webp/capabilities_askeasy.webp",
+  "/images/Capabilities/Webp/workflow_automation_operations.webp",
+  publicAssetUrl("images", "Use Cases", "Webp", "use_cases_system.webp"),
+] as const;
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "healthcare-operations-reducing-errors",
@@ -233,7 +250,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Reducing Errors with Updated Records",
     excerpt:
       "Small gaps in records create big problems in healthcare operations. Here's how digital procurement and vendor management on an EAP keeps every record audit-ready, all the time.",
-    image: "https://picsum.photos/seed/healthcare-ops/800/500",
+    image: blogHeroImages[0],
     tag: "Healthcare",
     readTime: "9 min read",
     date: "March 18, 2024",
@@ -248,7 +265,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Wastage in Multi-Team Operations",
     excerpt:
       "When five teams each track the same work in five different places, waste is inevitable. EAPs give every team one surface — and unlock the savings hiding inside your coordination overhead.",
-    image: "https://picsum.photos/seed/eap-resource/800/500",
+    image: blogHeroImages[1],
     tag: "Operations",
     readTime: "7 min read",
     date: "March 12, 2024",
@@ -263,7 +280,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "with Smart Communication Channels",
     excerpt:
       "If your workflows live in email, your decisions are held hostage by inboxes. See how moving communication inside workflows turns email chaos into structured, auditable conversation.",
-    image: "https://picsum.photos/seed/email-comm/800/500",
+    image: blogHeroImages[2],
     tag: "Communication",
     readTime: "6 min read",
     date: "March 7, 2024",
@@ -278,7 +295,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "EAP vs Traditional Software Stacks",
     excerpt:
       "Traditional stacks bolt tools together. EAPs compose them. A practical comparison of what changes — architecturally and operationally — when you switch to an EAP.",
-    image: "https://picsum.photos/seed/future-eap/800/500",
+    image: blogHeroImages[3],
     tag: "Strategy",
     readTime: "10 min read",
     date: "March 1, 2024",
@@ -293,7 +310,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Audit Readiness Through Digital Systems",
     excerpt:
       "Audits don't have to be quarter-long fire drills. With the right digital systems, compliance becomes a by-product of how your teams already work.",
-    image: "https://picsum.photos/seed/compliance-audit/800/500",
+    image: blogHeroImages[4],
     tag: "Compliance",
     readTime: "8 min read",
     date: "February 22, 2024",
@@ -308,7 +325,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Poor Communication In Operations",
     excerpt:
       "Bad communication quietly eats margin — slow approvals, rework, missed SLAs. We quantify the drag, and show what fixing it on a connected platform looks like.",
-    image: "https://picsum.photos/seed/hidden-cost/800/500",
+    image: blogHeroImages[5],
     tag: "Productivity",
     readTime: "7 min read",
     date: "February 14, 2024",
@@ -323,7 +340,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Collaboration Using Formezy",
     excerpt:
       "Most cross-department friction comes from information asymmetry. Here's how Formezy makes every department see the same work, at the same time — without meetings.",
-    image: "https://picsum.photos/seed/cross-dept/800/500",
+    image: blogHeroImages[6],
     tag: "Collaboration",
     readTime: "6 min read",
     date: "February 8, 2024",
@@ -338,7 +355,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Communication: What It Solves",
     excerpt:
       "Shared inboxes, Slack threads and phone calls are where operational decisions go to die. What changes when all of them live inside a workflow?",
-    image: "https://picsum.photos/seed/central-biz/800/500",
+    image: blogHeroImages[7],
     tag: "Communication",
     readTime: "7 min read",
     date: "February 1, 2024",
@@ -353,7 +370,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Prevents Costly Errors at Work",
     excerpt:
       "From signed PDFs to embedded workflows — the evolution of documentation is also the evolution of how teams avoid costly, preventable errors.",
-    image: "https://picsum.photos/seed/digital-docs/800/500",
+    image: blogHeroImages[8],
     tag: "Documentation",
     readTime: "8 min read",
     date: "January 24, 2024",
@@ -368,7 +385,7 @@ export const blogPosts: BlogPost[] = [
     titleHighlight: "Enterprise Automation Platform (EAP)",
     excerpt:
       "Beyond automating tasks, a true EAP changes how decisions get made. A clear-eyed look at what you actually get when you commit to a platform, not a tool.",
-    image: "https://picsum.photos/seed/eap-value/800/500",
+    image: blogHeroImages[9],
     tag: "Strategy",
     readTime: "9 min read",
     date: "January 18, 2024",

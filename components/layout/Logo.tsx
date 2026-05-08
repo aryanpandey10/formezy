@@ -16,7 +16,7 @@ export default function Logo({ className, tone = "light" }: Props) {
     >
       {tone === "dark" ? (
         <Image
-          src="/images/FooterLogo.png"
+          src="/images/FooterLogo.svg"
           alt="Formezy"
           width={140}
           height={40}
@@ -25,7 +25,7 @@ export default function Logo({ className, tone = "light" }: Props) {
         />
       ) : (
         <Image
-          src="/images/HeaderLogo.png"
+          src="/images/HeaderLogo.svg"
           alt="Formezy"
           width={140}
           height={40}

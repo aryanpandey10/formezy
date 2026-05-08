@@ -1,7 +1,12 @@
 import Link from "next/link";
-import { Instagram } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 import Logo from "./Logo";
-import { footerColumns, footerMeta } from "@/lib/constants";
+import {
+  footerColumns,
+  footerMeta,
+  footerAppLinks,
+  footerSocialLinks,
+} from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -18,9 +23,9 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <StoreBadge store="google" />
-            <StoreBadge store="apple" />
+          <div className="flex flex-wrap items-center gap-3">
+            <StoreBadge store="google" href={footerAppLinks.playStore} />
+            <StoreBadge store="apple" href={footerAppLinks.appStore} />
           </div>
         </div>
 
@@ -70,13 +75,26 @@ export default function Footer() {
             >
               {footerMeta.email}
             </Link>
-            <Link
-              href="#"
-              aria-label="Instagram"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C7C4F5] bg-white/60 text-[#6366A8] transition-colors hover:border-purple-primary hover:text-purple-primary"
-            >
-              <Instagram size={16} />
-            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <Link
+                href={footerSocialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Formezy on Instagram"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C7C4F5] bg-white/60 text-[#6366A8] transition-colors hover:border-purple-primary hover:text-purple-primary"
+              >
+                <Instagram size={16} />
+              </Link>
+              <Link
+                href={footerSocialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Safal Infosoft on LinkedIn"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#C7C4F5] bg-white/60 text-[#6366A8] transition-colors hover:border-purple-primary hover:text-purple-primary"
+              >
+                <Linkedin size={16} />
+              </Link>
+            </div>
           </div>
 
           {/* Legal + copyright */}
@@ -111,10 +129,18 @@ export default function Footer() {
   );
 }
 
-function StoreBadge({ store }: { store: "google" | "apple" }) {
+function StoreBadge({
+  store,
+  href,
+}: {
+  store: "google" | "apple";
+  href: string;
+}) {
   return (
     <Link
-      href="#"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex items-center gap-2.5 rounded-xl border border-[#C7C4F5] bg-white/70 px-4 py-2.5 transition-colors hover:border-purple-primary hover:bg-white"
     >
       <span className="text-[#2C0E3A]">

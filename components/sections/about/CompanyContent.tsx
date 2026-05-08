@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
+import { companyPageImages } from "@/lib/page-section-images";
 
 /* ── helpers ── */
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -33,27 +35,6 @@ function Bullet({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
-  );
-}
-
-function ImgPlaceholder({
-  width = "100%",
-  height = 340,
-  label,
-}: {
-  width?: string | number;
-  height?: number;
-  label?: string;
-}) {
-  return (
-    <div
-      className="flex items-center justify-center overflow-hidden rounded-[20px] border border-purple-100 bg-gradient-to-br from-purple-50 via-white to-blue-50/40"
-      style={{ width, height }}
-    >
-      <span className="font-sora text-[13px] text-[#6366A8]/60">
-        {label ?? "Illustration"}
-      </span>
-    </div>
   );
 }
 
@@ -149,7 +130,14 @@ export default function CompanyContent() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <ImgPlaceholder height={400} label="3D Isometric Platform Illustration" />
+              <SectionWebpImage
+                src={companyPageImages.hero}
+                alt="Enterprise systems reimagined with Formezy"
+                fixedHeightPx={400}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+                className="rounded-[20px]"
+              />
             </motion.div>
           </div>
         </div>
@@ -214,7 +202,13 @@ export default function CompanyContent() {
           >
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <motion.div variants={fadeUp}>
-                <ImgPlaceholder height={320} label="EAP Roadmap / Network Illustration" />
+                <SectionWebpImage
+                  src={companyPageImages.whyEap}
+                  alt="Why an enterprise application platform matters today"
+                  fixedHeightPx={320}
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="rounded-[20px]"
+                />
               </motion.div>
               <motion.div variants={fadeUp} className="flex flex-col gap-5">
                 <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-4 py-1.5 font-sora text-[13px] font-semibold text-[#6C60E8]">
@@ -273,7 +267,13 @@ export default function CompanyContent() {
                 </p>
               </motion.div>
               <motion.div variants={fadeUp}>
-                <ImgPlaceholder height={320} label="Block Flow / Process Diagram" />
+                <SectionWebpImage
+                  src={companyPageImages.approach}
+                  alt="Formezy approach to enterprise workflows"
+                  fixedHeightPx={320}
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="rounded-[20px]"
+                />
               </motion.div>
             </div>
           </motion.div>
@@ -312,7 +312,13 @@ export default function CompanyContent() {
               </p>
               <Bullet items={vision} />
               <div className="mt-2 overflow-hidden rounded-[16px] border border-purple-100 bg-purple-50/60">
-                <ImgPlaceholder height={200} label="Data Flow Illustration" />
+                <SectionWebpImage
+                  src={companyPageImages.vision}
+                  alt="Our vision for connected enterprise systems"
+                  fixedHeightPx={200}
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="rounded-none border-0 bg-transparent"
+                />
               </div>
             </motion.div>
 
@@ -339,7 +345,13 @@ export default function CompanyContent() {
               </p>
               <Bullet items={mission} />
               <div className="mt-2 overflow-hidden rounded-[16px] border border-purple-100 bg-white">
-                <ImgPlaceholder height={200} label="Dashboard Mock Illustration" />
+                <SectionWebpImage
+                  src={companyPageImages.mission}
+                  alt="Our mission to simplify business operations"
+                  fixedHeightPx={200}
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="rounded-none border-0 bg-transparent"
+                />
               </div>
             </motion.div>
           </motion.div>
@@ -377,7 +389,13 @@ export default function CompanyContent() {
               optimizing them.&rdquo;
             </motion.p>
             <motion.div variants={fadeUp} className="w-full">
-              <ImgPlaceholder height={360} label="Data Flow / Platform Overview Illustration" />
+              <SectionWebpImage
+                src={companyPageImages.beyond}
+                alt="Moving beyond traditional disconnected software"
+                fixedHeightPx={360}
+                sizes="(max-width: 1024px) 100vw, 960px"
+                className="rounded-[20px]"
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -395,7 +413,13 @@ export default function CompanyContent() {
           >
             <div className="grid items-center gap-10 lg:grid-cols-2">
               <motion.div variants={fadeUp}>
-                <ImgPlaceholder height={340} label="Isometric Platform / Dashboard Illustration" />
+                <SectionWebpImage
+                  src={companyPageImages.scalable}
+                  alt="Built for scalable operations with Formezy"
+                  fixedHeightPx={340}
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="rounded-[20px]"
+                />
               </motion.div>
               <motion.div variants={fadeUp} className="flex flex-col gap-5">
                 <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-4 py-1.5 font-sora text-[13px] font-semibold text-[#6C60E8]">
@@ -492,8 +516,14 @@ export default function CompanyContent() {
               </div>
 
               {/* Illustration inside CTA */}
-              <div className="mx-auto mt-10 max-w-md opacity-80">
-                <ImgPlaceholder height={200} label="System Illustration" />
+              <div className="mx-auto mt-10 max-w-md opacity-90">
+                <SectionWebpImage
+                  src={companyPageImages.cta}
+                  alt="Enterprise platform with Formezy"
+                  fixedHeightPx={200}
+                  sizes="(max-width: 768px) 90vw, 448px"
+                  className="rounded-[16px] border-white/10 bg-white/5"
+                />
               </div>
             </div>
           </motion.div>

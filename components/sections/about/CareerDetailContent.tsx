@@ -16,6 +16,11 @@ import {
 } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import type { Job } from "@/lib/job-data";
+import {
+  validateJobApplication,
+  validateResumeFile,
+  type JobApplicationErrors,
+} from "@/lib/job-application-validation";
 
 /* ─── gradient text ─── */
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -64,19 +69,30 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
     message: "",
     file: null,
   });
+  const [errors, setErrors] = useState<JobApplicationErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [dragging, setDragging] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const set = (k: keyof FormState) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setForm((p) => ({ ...p, [k]: e.target.value }));
+      if (errors[k]) setErrors((p) => ({ ...p, [k]: undefined }));
+    };
 
   const handleFile = useCallback((file: File | null) => {
-    if (!file) return;
-    const ok = ["application/pdf", "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"].includes(file.type);
-    if (ok && file.size <= 5 * 1024 * 1024) setForm((p) => ({ ...p, file }));
+    if (!file) {
+      setForm((p) => ({ ...p, file: null }));
+      setErrors((p) => ({ ...p, file: undefined }));
+      return;
+    }
+    const fileErr = validateResumeFile(file);
+    if (fileErr) {
+      setErrors((p) => ({ ...p, file: fileErr }));
+      return;
+    }
+    setForm((p) => ({ ...p, file }));
+    setErrors((p) => ({ ...p, file: undefined }));
   }, []);
 
   const handleDrop = (e: React.DragEvent) => {
@@ -87,8 +103,17 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const errs = validateJobApplication(form);
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
     setSubmitted(true);
   };
+
+  const inputCls =
+    "w-full rounded-[10px] border border-purple-100 bg-white px-4 py-3 font-sora text-[14px] text-[#2C0E3A] placeholder:text-[#6366A8]/50 focus:border-[#6C60E8] focus:outline-none focus:ring-2 focus:ring-[#6C60E8]/10 transition-colors";
+  const inputError = "border-red-300 focus:border-red-400 focus:ring-red-100";
 
   if (submitted) {
     return (
@@ -119,9 +144,6 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
     );
   }
 
-  const inputCls =
-    "w-full rounded-[10px] border border-purple-100 bg-white px-4 py-3 font-sora text-[14px] text-[#2C0E3A] placeholder:text-[#6366A8]/50 focus:border-[#6C60E8] focus:outline-none focus:ring-2 focus:ring-[#6C60E8]/10 transition-colors";
-
   return (
     <div className="sticky top-24 overflow-hidden rounded-[20px] border border-purple-100 bg-white/95 shadow-[0_8px_32px_rgba(108,96,232,0.12)] backdrop-blur-sm">
       {/* Form header */}
@@ -129,7 +151,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
         <h2 className="font-sora text-[20px] font-bold text-white">Apply Now</h2>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5 p-6">
+      <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5 p-6">
         {/* Row 1 */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1.5">
@@ -137,26 +159,30 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
               Full Name<span className="text-red-400">*</span>
             </label>
             <input
-              required
               type="text"
               placeholder="Enter your Full Name"
               value={form.name}
               onChange={set("name")}
-              className={inputCls}
+              className={`${inputCls} ${errors.name ? inputError : ""}`}
             />
+            {errors.name && (
+              <span className="font-sora text-[12px] text-red-500">{errors.name}</span>
+            )}
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="font-sora text-[12px] font-semibold text-[#2C0E3A]">
               Company Email ID<span className="text-red-400">*</span>
             </label>
             <input
-              required
               type="email"
               placeholder="Enter your Email Id"
               value={form.email}
               onChange={set("email")}
-              className={inputCls}
+              className={`${inputCls} ${errors.email ? inputError : ""}`}
             />
+            {errors.email && (
+              <span className="font-sora text-[12px] text-red-500">{errors.email}</span>
+            )}
           </div>
         </div>
 
@@ -167,26 +193,30 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
               Phone Number<span className="text-red-400">*</span>
             </label>
             <input
-              required
               type="tel"
               placeholder="Enter your Number"
               value={form.phone}
               onChange={set("phone")}
-              className={inputCls}
+              className={`${inputCls} ${errors.phone ? inputError : ""}`}
             />
+            {errors.phone && (
+              <span className="font-sora text-[12px] text-red-500">{errors.phone}</span>
+            )}
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="font-sora text-[12px] font-semibold text-[#2C0E3A]">
               Current Location<span className="text-red-400">*</span>
             </label>
             <input
-              required
               type="text"
               placeholder="e.g. Ahmedabad"
               value={form.location}
               onChange={set("location")}
-              className={inputCls}
+              className={`${inputCls} ${errors.location ? inputError : ""}`}
             />
+            {errors.location && (
+              <span className="font-sora text-[12px] text-red-500">{errors.location}</span>
+            )}
           </div>
         </div>
 
@@ -201,9 +231,11 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
             onDrop={handleDrop}
             onClick={() => fileRef.current?.click()}
             className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-[12px] border-2 border-dashed px-4 py-6 text-center transition-colors ${
-              dragging
-                ? "border-[#6C60E8] bg-purple-50"
-                : "border-purple-100 bg-purple-50/30 hover:border-purple-300 hover:bg-purple-50"
+              errors.file
+                ? "border-red-300 bg-red-50/40"
+                : dragging
+                  ? "border-[#6C60E8] bg-purple-50"
+                  : "border-purple-100 bg-purple-50/30 hover:border-purple-300 hover:bg-purple-50"
             }`}
           >
             <Upload size={22} className="text-[#6C60E8]" />
@@ -224,11 +256,14 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
             <input
               ref={fileRef}
               type="file"
-              accept=".pdf,.doc,.docx"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
               className="hidden"
               onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
             />
           </div>
+          {errors.file && (
+            <span className="font-sora text-[12px] text-red-500">{errors.file}</span>
+          )}
         </div>
 
         {/* Message */}
@@ -237,13 +272,15 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
             Write Message<span className="text-red-400">*</span>
           </label>
           <textarea
-            required
             rows={4}
             placeholder="Write Message"
             value={form.message}
             onChange={set("message")}
-            className={`${inputCls} resize-none`}
+            className={`${inputCls} resize-none ${errors.message ? inputError : ""}`}
           />
+          {errors.message && (
+            <span className="font-sora text-[12px] text-red-500">{errors.message}</span>
+          )}
         </div>
 
         {/* Submit */}

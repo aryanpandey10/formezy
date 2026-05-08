@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import BookDemoModal from "@/components/ui/BookDemoModal";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,7 +19,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://formezy.io"),
+  metadataBase: new URL("https://formezy.com"),
   title: {
     default: "Formezy — Build Enterprise Systems Without Complex Development",
     template: "%s · Formezy",
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
+    url: "https://formezy.com",
     title: "Formezy — Enterprise Application Platform",
     description:
       "Build enterprise systems without complex development. Unified workflows, automation and intelligence on one platform.",
@@ -47,6 +49,9 @@ export const metadata: Metadata = {
     title: "Formezy — Enterprise Application Platform",
     description:
       "Build enterprise systems without complex development. Unified workflows, automation and intelligence on one platform.",
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
@@ -63,7 +68,7 @@ export default function RootLayout({
           className="pointer-events-none fixed inset-0 -z-50"
           aria-hidden
           style={{
-            backgroundImage: "url('/images/HomeBG.jpg')",
+            backgroundImage: "url('/images/HomeBG.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center top",
             backgroundRepeat: "no-repeat",
@@ -72,6 +77,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <BookDemoModal />
       </body>
     </html>
   );

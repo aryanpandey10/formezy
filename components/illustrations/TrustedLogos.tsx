@@ -1,9 +1,15 @@
 "use client";
 
-import { trustedLogos } from "@/lib/constants";
+import Image from "next/image";
+import {
+  trustedEnterpriseLogoSrc,
+  trustedEnterpriseLogos,
+} from "@/lib/constants";
 import { cn } from "@/lib/cn";
 
 export default function TrustedLogos({ className }: { className?: string }) {
+  const row = [...trustedEnterpriseLogos, ...trustedEnterpriseLogos];
+
   return (
     <div
       className={cn(
@@ -11,26 +17,24 @@ export default function TrustedLogos({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="flex shrink-0 animate-[marquee_30s_linear_infinite] items-center gap-10 pr-10">
-        {[...trustedLogos, ...trustedLogos].map((name, i) => (
+      <div className="flex shrink-0 animate-[marquee_55s_linear_infinite] items-center gap-10 pr-10">
+        {row.map(({ name, file }, index) => (
           <div
-            key={i}
-            className="flex shrink-0 items-center gap-2 text-ink-muted"
+            key={`${file}-${index}`}
+            className="flex h-12 max-w-[180px] shrink-0 items-center justify-center px-2 md:h-14 md:max-w-[200px]"
+            title={name}
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-ink-muted/15 text-[11px] font-extrabold text-ink-muted">
-              {name.slice(0, 2).toUpperCase()}
-            </span>
-            <span className="text-[17px] font-bold tracking-tight">{name}</span>
+            <Image
+              src={trustedEnterpriseLogoSrc(file)}
+              alt={name}
+              width={200}
+              height={56}
+              className="h-10 w-auto max-h-10 max-w-[min(180px,44vw)] object-contain object-center md:h-12 md:max-h-12 md:max-w-[200px]"
+              sizes="(max-width: 768px) 44vw, 200px"
+            />
           </div>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   );
 }

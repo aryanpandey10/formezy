@@ -17,6 +17,7 @@ import {
 // Job type + data imported from lib/job-data
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { jobs, type Job } from "@/lib/job-data";
+import { careerCultureWebp } from "@/lib/webp-assets";
 
 /* ─── helpers ──────────────────────────────── */
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -60,11 +61,11 @@ function ImgPlaceholder({ height = 340, label }: { height?: number; label?: stri
 
 /* ─── Office photo carousel ─────────────────── */
 const OFFICE_PHOTOS = [
-  { src: "https://picsum.photos/seed/office1/800/500", alt: "Formezy office – team at work" },
-  { src: "https://picsum.photos/seed/office2/800/500", alt: "Formezy office – collaboration" },
-  { src: "https://picsum.photos/seed/office3/800/500", alt: "Formezy office – meeting room" },
-  { src: "https://picsum.photos/seed/office4/800/500", alt: "Formezy office – workspace" },
-  { src: "https://picsum.photos/seed/office5/800/500", alt: "Formezy office – team celebration" },
+  { src: careerCultureWebp[0], alt: "Formezy office – team at work" },
+  { src: careerCultureWebp[1], alt: "Formezy office – collaboration" },
+  { src: careerCultureWebp[2], alt: "Formezy office – meeting room" },
+  { src: careerCultureWebp[3], alt: "Formezy office – workspace" },
+  { src: careerCultureWebp[4], alt: "Formezy office – team celebration" },
 ];
 
 function CultureCarousel() {
@@ -134,7 +135,7 @@ function CultureCarousel() {
                   src={OFFICE_PHOTOS[idx].src}
                   alt={OFFICE_PHOTOS[idx].alt}
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

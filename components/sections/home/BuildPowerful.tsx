@@ -1,68 +1,104 @@
 "use client";
 
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import Button from "@/components/ui/Button";
-import Carousel from "@/components/ui/Carousel";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+
+// 5 card colours cycling through the 6 cards
+const CARD_COLORS = ["#FFF7E8", "#E8F8FF", "#E8EBFF", "#FFEBEB", "#F8E9FF"];
+
+const HOME_WEBP = "/images/Home/Webp";
+
+/** One WebP per solution — filenames under `public/images/Home/Webp/` */
+const SOLUTION_IMAGE_BY_ID: Record<number, string> = {
+  1: `${HOME_WEBP}/business_systems.webp`,
+  2: `${HOME_WEBP}/crm_systems.webp`,
+  3: `${HOME_WEBP}/supply_chain_systems.webp`,
+  4: `${HOME_WEBP}/operations_platforms.webp`,
+  5: `${HOME_WEBP}/role_based_access.webp`,
+  6: `${HOME_WEBP}/reporting_dashboards.webp`,
+};
 
 type Solution = {
   id: number;
   title: string;
   description: string;
-  imageSeed: string;
 };
 
 const solutions: Solution[] = [
   {
     id: 1,
-    title: "ERP-Grade Systems",
+    title: "EAP Business Systems",
     description:
       "Unify finance, inventory, procurement and HR into one configurable system that scales as your business grows.",
-    imageSeed: "erp-system",
   },
   {
     id: 2,
     title: "CRM Systems",
     description:
       "Manage the full customer lifecycle — from lead to renewal — on one unified timeline with complete visibility.",
-    imageSeed: "crm-system",
   },
   {
     id: 3,
     title: "Supply Chain Systems",
     description:
       "Track vendors, shipments and inventory in a single connected workflow with real-time alerts and SLA controls.",
-    imageSeed: "supply-chain",
   },
   {
     id: 4,
     title: "Operations Management",
     description:
       "Coordinate people, tasks, assets and projects across locations with full operational control and clarity.",
-    imageSeed: "operations",
   },
   {
     id: 5,
     title: "HR & People Systems",
     description:
       "Streamline onboarding, leave management, performance reviews and payroll processes in a single platform.",
-    imageSeed: "hr-system",
   },
   {
     id: 6,
     title: "Finance & Compliance",
     description:
       "Automate approvals, budget tracking and audit-ready reporting across all your financial workflows.",
-    imageSeed: "finance",
   },
 ];
 
 export default function BuildPowerful() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+  });
+
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanPrev(emblaApi.canScrollPrev());
+    setCanNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
   return (
     <section className="section bg-white/80 backdrop-blur-sm">
       <div className="container-app">
+        {/* ── Heading ── */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -106,52 +142,102 @@ export default function BuildPowerful() {
           </motion.div>
         </motion.div>
 
-        <div className="mt-14">
-          <Carousel
-            options={{ align: "start", loop: true }}
-            slideClassName="basis-[85%] sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
-            showArrows
-            showDots
+        {/* ── Carousel with side buttons ── */}
+        <div className="relative mt-14">
+          {/* LEFT NAV BUTTON — outside track on lg */}
+          <motion.button
+            whileTap={{ scale: 0.88 }}
+            onClick={() => emblaApi?.scrollPrev()}
+            aria-label="Previous solution"
+            className="absolute left-0 top-[45%] z-10 hidden h-[99px] w-[99px] -translate-x-[52%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] lg:flex"
           >
-            {solutions.map((s) => (
-              <SolutionCard key={s.id} solution={s} />
-            ))}
-          </Carousel>
+            <ChevronLeft size={32} className="text-[#2C0E3A]" />
+          </motion.button>
+
+          {/* Embla viewport — inset on lg to leave room for side buttons */}
+          <div className="overflow-hidden lg:mx-[60px]" ref={emblaRef}>
+            <div className="flex">
+              {solutions.map((s, i) => (
+                <div
+                  key={s.id}
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-4 first:pl-0 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                >
+                  <SolutionCard
+                    solution={s}
+                    color={CARD_COLORS[i % CARD_COLORS.length]}
+                    imageSrc={SOLUTION_IMAGE_BY_ID[s.id]}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT NAV BUTTON — outside track on lg */}
+          <motion.button
+            whileTap={{ scale: 0.88 }}
+            onClick={() => emblaApi?.scrollNext()}
+            aria-label="Next solution"
+            className="absolute right-0 top-[45%] z-10 hidden h-[99px] w-[99px] translate-x-[52%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] lg:flex"
+          >
+            <ChevronRight size={32} className="text-[#2C0E3A]" />
+          </motion.button>
+
+          {/* Mobile nav — below the track */}
+          <div className="mt-6 flex items-center justify-center gap-3 lg:hidden">
+            <button
+              onClick={() => emblaApi?.scrollPrev()}
+              aria-label="Previous"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-card transition-colors hover:border-[#6C60E8]"
+            >
+              <ChevronLeft size={20} className="text-[#2C0E3A]" />
+            </button>
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              aria-label="Next"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3d1650]"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function SolutionCard({ solution }: { solution: Solution }) {
+function SolutionCard({
+  solution,
+  color,
+  imageSrc,
+}: {
+  solution: Solution;
+  color: string;
+  imageSrc: string;
+}) {
   return (
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="flex h-auto min-h-[420px] w-full max-w-[430px] flex-col items-start gap-5 overflow-hidden rounded-[30px] border border-[#B8B1FD] bg-[#FFF7E8] p-[25px] md:min-h-[520px]"
+      className="flex h-auto min-h-[420px] w-full max-w-[430px] flex-col items-start gap-5 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-[25px] md:min-h-[500px]"
+      style={{ backgroundColor: color }}
     >
-      <div className="flex w-full flex-col items-start gap-5">
-        <h3
-          className="font-sora text-[24px] font-semibold leading-[24px] text-[#2C0E3A]"
-        >
+      <div className="flex w-full flex-col items-start gap-4">
+        <h3 className="font-sora text-[24px] font-semibold leading-[28px] text-[#2C0E3A]">
           {solution.title}
         </h3>
-        <p
-          className="font-sora text-[18px] font-normal leading-[26px] text-[#6366A8]"
-        >
+        <p className="font-sora text-[16px] font-normal leading-[26px] text-[#6366A8]">
           {solution.description}
         </p>
       </div>
 
-      <div className="relative mt-auto h-[220px] w-full flex-shrink-0 overflow-hidden rounded-[18px] md:h-[300px]">
+      <div className="relative mt-auto h-[200px] w-full flex-shrink-0 overflow-hidden rounded-[18px] md:h-[280px]">
         <Image
-          src={`https://picsum.photos/seed/${solution.imageSeed}/380/338`}
+          src={imageSrc}
           alt={solution.title}
           fill
           sizes="380px"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          className="object-contain transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2C0E3A]/20 to-transparent" />
       </div>
     </motion.article>
   );

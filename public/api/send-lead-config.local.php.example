@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copy this file to send-lead-config.local.php on the server (same folder as send-lead.php).
+ * Do not commit send-lead-config.local.php — it contains secrets.
+ *
+ * Zoho Mail (example): smtppro.zoho.in, port 587, STARTTLS, app password from Zoho.
+ */
+return [
+    'smtp_host' => 'smtppro.zoho.in',
+    'smtp_port' => 587,
+    'smtp_user' => 'hello@safalinfosoft.com',
+    'smtp_pass' => 'YOUR_ZOHO_APP_PASSWORD',
+    'smtp_from' => 'Formezy <hello@safalinfosoft.com>',
+    'notification_emails' => [
+        'cmo@safalinfosoft.com',
+        'dipak@safalinfosoft.com',
+        'mayur@intelliworkz.tech',
+        'arvind@intelliworkz.tech',
+    ],
+];

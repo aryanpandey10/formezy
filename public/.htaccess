@@ -1,0 +1,19 @@
+# Next.js static export on Apache (cPanel): map clean URLs like /contact → contact.html
+# Prevents blank/hanging navigations when the server looks for a folder instead of the HTML file.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # If you deploy in a subfolder, uncomment and set e.g. RewriteBase /formezy/
+  # RewriteBase /
+
+  # Let real files and folders through (_next, images, favicon, *.js, *.css, …)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Serve /path as /path.html when that file exists (nested routes included)
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# Optional: custom 404 from Next export (upload must include 404.html at site root)
+ErrorDocument 404 /404.html

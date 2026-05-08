@@ -1,8 +1,10 @@
 node_modules
+vendor
 .next
 out
 build
 .env*.local
+public/api/send-lead-config.local.php
 .DS_Store
 *.log
 coverage

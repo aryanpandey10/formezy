@@ -66,6 +66,24 @@ const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
 
   if (href) {
     const anchorProps = props as Omit<HTMLMotionProps<"a">, "href" | "ref">;
+    // Intercept #demo links to open the BookDemo modal instead of navigating
+    if (href === "#demo") {
+      return (
+        <motion.button
+          whileHover={hover}
+          whileTap={tap}
+          className={classes}
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("openBookDemo"));
+            }
+          }}
+          {...(props as HTMLMotionProps<"button">)}
+        >
+          {children}
+        </motion.button>
+      );
+    }
     return (
       <motion.span whileHover={hover} whileTap={tap} className="inline-flex">
         <Link

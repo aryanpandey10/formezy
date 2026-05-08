@@ -3,52 +3,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Quote } from "lucide-react";
 import Button from "@/components/ui/Button";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { howItWorksPageImages } from "@/lib/page-section-images";
 
-/* ─────────────────────────────────────────────
-   Shared image placeholder
-───────────────────────────────────────────── */
-function ImgPlaceholder({
-  w,
-  h,
-  label,
-  className = "",
-}: {
-  w: number;
-  h: number;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-purple-200 bg-gradient-to-br from-purple-50/80 to-blue-50/80 ${className}`}
-      style={{ aspectRatio: `${w}/${h}`, width: "100%" }}
-    >
-      <div className="flex flex-col items-center gap-2 p-6 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/70 shadow-sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6366A8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="m21 15-5-5L5 21" />
-          </svg>
-        </div>
-        <p className="font-sora text-[12px] font-medium text-[#6366A8]/80">{label}</p>
-        <p className="font-sora text-[11px] text-[#6366A8]/50">{w} × {h}</p>
-      </div>
-    </div>
-  );
-}
-
-/* ── Gradient span helper ── */
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
     style={{
@@ -113,10 +71,13 @@ function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           >
-            <ImgPlaceholder
-              w={800}
-              h={560}
-              label="Hero — workflow to execution diagram with dashboard"
+            <SectionWebpImage
+              src={howItWorksPageImages.hero}
+              alt="From business idea to execution with Formezy"
+              aspectWidth={800}
+              aspectHeight={560}
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
         </div>
@@ -134,36 +95,28 @@ const stepCards = [
     title: "Define Your Workflows",
     desc: "Map how work actually flows across your teams — who does what, when, and what data moves between them.",
     color: "#6C60E8",
-    imgW: 280,
-    imgH: 200,
-    imgLabel: "Workflow mapping illustration",
+    imageSrc: howItWorksPageImages.stepDefine,
   },
   {
     num: "02",
     title: "Build with Logic Builder",
     desc: "Translate workflows into modules, rules and approvals using a visual, no-code logic builder.",
     color: "#A78BFA",
-    imgW: 280,
-    imgH: 200,
-    imgLabel: "Logic builder UI illustration",
+    imageSrc: howItWorksPageImages.stepLogicBuilder,
   },
   {
     num: "03",
     title: "Automate Processes",
     desc: "Let Formezy handle approvals, handoffs and reminders so execution is consistent and fast.",
     color: "#708FF4",
-    imgW: 280,
-    imgH: 200,
-    imgLabel: "Automation flow illustration",
+    imageSrc: howItWorksPageImages.stepAutomate,
   },
   {
     num: "04",
     title: "Scale with Confidence",
     desc: "Add teams, modules and geographies without rebuilding from scratch — Formezy grows with you.",
     color: "#06B6D4",
-    imgW: 280,
-    imgH: 200,
-    imgLabel: "Scale & deploy illustration",
+    imageSrc: howItWorksPageImages.stepScale,
   },
 ];
 
@@ -208,11 +161,13 @@ function HowItWorksStepsSection() {
             >
               {/* Image area */}
               <div className="relative overflow-hidden bg-gradient-to-br from-purple-50/80 to-blue-50/60 px-6 pt-6">
-                <ImgPlaceholder
-                  w={s.imgW}
-                  h={s.imgH}
-                  label={s.imgLabel}
-                  className="rounded-xl border-0 bg-transparent"
+                <SectionWebpImage
+                  src={s.imageSrc}
+                  alt={s.title}
+                  aspectWidth={280}
+                  aspectHeight={200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="rounded-xl border-0 bg-transparent shadow-none"
                 />
               </div>
 
@@ -262,10 +217,12 @@ function DefineWorkflowsSection() {
             viewport={viewportOnce}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ImgPlaceholder
-              w={620}
-              h={500}
-              label="Step 01 — workflow mapping canvas screenshot"
+            <SectionWebpImage
+              src={howItWorksPageImages.defineDeep}
+              alt="Define and map workflows across teams in Formezy"
+              aspectWidth={620}
+              aspectHeight={500}
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
 
@@ -375,10 +332,12 @@ function LogicBuilderSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 overflow-hidden rounded-[24px] border border-purple-100 bg-gradient-to-br from-purple-50/60 to-blue-50/40 p-4 shadow-card-hover md:p-6"
         >
-          <ImgPlaceholder
-            w={1200}
-            h={520}
-            label="Step 02 — Logic Builder UI: node-based visual workflow editor"
+          <SectionWebpImage
+            src={howItWorksPageImages.logicLarge}
+            alt="Build business logic visually with Formezy Logic Builder"
+            aspectWidth={1200}
+            aspectHeight={520}
+            sizes="(max-width: 1024px) 100vw, 1200px"
           />
         </motion.div>
       </div>
@@ -451,10 +410,12 @@ function AutomateSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12"
         >
-          <ImgPlaceholder
-            w={1300}
-            h={540}
-            label="Step 03 — Isometric automation workflow illustration (road/journey metaphor)"
+          <SectionWebpImage
+            src={howItWorksPageImages.automateWide}
+            alt="Automate approvals and handoffs with Formezy"
+            aspectWidth={1300}
+            aspectHeight={540}
+            sizes="(max-width: 1024px) 100vw, 1200px"
           />
         </motion.div>
       </div>
@@ -496,11 +457,13 @@ function IntegrateAndScaleSection() {
                 A platform that plays with everything you already depend on.
               </p>
             </div>
-            <ImgPlaceholder
-              w={580}
-              h={300}
-              label="Step 04 — Integration ecosystem illustration"
-              className="m-6 mt-2 rounded-xl border-0"
+            <SectionWebpImage
+              src={howItWorksPageImages.integrateSystems}
+              alt="Integrate ERP, CRM, and messaging with Formezy"
+              aspectWidth={580}
+              aspectHeight={300}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="m-6 mt-2 rounded-xl border-0 bg-transparent shadow-none"
             />
           </motion.div>
 
@@ -530,11 +493,13 @@ function IntegrateAndScaleSection() {
                 Scale operations effortlessly as your business grows.
               </p>
             </div>
-            <ImgPlaceholder
-              w={580}
-              h={300}
-              label="Step 05 — Scale / growth trajectory illustration"
-              className="m-6 mt-2 rounded-xl border-0"
+            <SectionWebpImage
+              src={howItWorksPageImages.scaleCard}
+              alt="Scale operations and teams confidently with Formezy"
+              aspectWidth={580}
+              aspectHeight={300}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="m-6 mt-2 rounded-xl border-0 bg-transparent shadow-none"
             />
           </motion.div>
         </div>
@@ -606,11 +571,13 @@ function CtaSection() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
               />
-              <ImgPlaceholder
-                w={480}
-                h={360}
-                label="CTA — Formezy workflow network illustration"
-                className="relative z-10 max-w-[380px]"
+              <SectionWebpImage
+                src={howItWorksPageImages.cta}
+                alt="Build smarter workflows with Formezy"
+                aspectWidth={480}
+                aspectHeight={360}
+                sizes="(max-width: 1024px) 90vw, 380px"
+                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
               />
             </motion.div>
           </div>

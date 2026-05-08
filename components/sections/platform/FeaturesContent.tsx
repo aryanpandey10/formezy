@@ -3,50 +3,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Button from "@/components/ui/Button";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-
-/* ─────────────────────────────────────────────
-   Shared helpers
-───────────────────────────────────────────── */
-function ImgPlaceholder({
-  w,
-  h,
-  label,
-  className = "",
-}: {
-  w: number;
-  h: number;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-purple-200 bg-gradient-to-br from-purple-50/80 to-blue-50/80 ${className}`}
-      style={{ aspectRatio: `${w}/${h}`, width: "100%" }}
-    >
-      <div className="flex flex-col items-center gap-2 p-6 text-center">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/70 shadow-sm">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6366A8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="m21 15-5-5L5 21" />
-          </svg>
-        </div>
-        <p className="font-sora text-[12px] font-medium text-[#6366A8]/80">{label}</p>
-        <p className="font-sora text-[10px] text-[#6366A8]/50">{w} × {h}</p>
-      </div>
-    </div>
-  );
-}
+import { featuresPageImages } from "@/lib/page-section-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -68,10 +27,11 @@ type FeatureRowProps = {
   description: string;
   bullets?: string[];
   ctaHref?: string;
+  imageSrc: string;
+  imageAlt: string;
   imgW: number;
   imgH: number;
-  imgLabel: string;
-  reverse?: boolean;   // text left, image right
+  reverse?: boolean;
   bgWhite?: boolean;
 };
 
@@ -81,9 +41,10 @@ function FeatureRow({
   description,
   bullets,
   ctaHref = "/platform/capabilities",
+  imageSrc,
+  imageAlt,
   imgW,
   imgH,
-  imgLabel,
   reverse = false,
   bgWhite = false,
 }: FeatureRowProps) {
@@ -140,7 +101,13 @@ function FeatureRow({
       viewport={viewportOnce}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      <ImgPlaceholder w={imgW} h={imgH} label={imgLabel} />
+      <SectionWebpImage
+        src={imageSrc}
+        alt={imageAlt}
+        aspectWidth={imgW}
+        aspectHeight={imgH}
+        sizes="(max-width: 1024px) 100vw, 50vw"
+      />
     </motion.div>
   );
 
@@ -171,9 +138,10 @@ type FeatureCenteredProps = {
   title: React.ReactNode;
   description: string;
   ctaHref?: string;
+  imageSrc: string;
+  imageAlt: string;
   imgW: number;
   imgH: number;
-  imgLabel: string;
   bgWhite?: boolean;
 };
 
@@ -182,9 +150,10 @@ function FeatureCentered({
   title,
   description,
   ctaHref = "/platform/capabilities",
+  imageSrc,
+  imageAlt,
   imgW,
   imgH,
-  imgLabel,
   bgWhite = false,
 }: FeatureCenteredProps) {
   return (
@@ -230,7 +199,14 @@ function FeatureCentered({
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 overflow-hidden rounded-[20px] border border-purple-100 shadow-card-hover"
         >
-          <ImgPlaceholder w={imgW} h={imgH} label={imgLabel} className="rounded-none" />
+          <SectionWebpImage
+            src={imageSrc}
+            alt={imageAlt}
+            aspectWidth={imgW}
+            aspectHeight={imgH}
+            sizes="(max-width: 1024px) 100vw, 1200px"
+            className="rounded-none border-0"
+          />
         </motion.div>
       </div>
     </section>
@@ -284,10 +260,13 @@ function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           >
-            <ImgPlaceholder
-              w={800}
-              h={580}
-              label="Hero — 3D isometric platform illustration with floating feature icons"
+            <SectionWebpImage
+              src={featuresPageImages.hero}
+              alt="Formezy platform features overview"
+              aspectWidth={800}
+              aspectHeight={580}
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </motion.div>
         </div>
@@ -390,11 +369,13 @@ function CtaSectionBlock() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
               />
-              <ImgPlaceholder
-                w={480}
-                h={360}
-                label="CTA — isometric Formezy ecosystem illustration"
-                className="relative z-10 max-w-[380px]"
+              <SectionWebpImage
+                src={featuresPageImages.cta}
+                alt="Explore Formezy in depth"
+                aspectWidth={480}
+                aspectHeight={360}
+                sizes="(max-width: 1024px) 90vw, 380px"
+                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
               />
             </motion.div>
           </div>
@@ -427,9 +408,10 @@ export default function FeaturesContent() {
           "Contextual answers with source citations",
         ]}
         ctaHref="/platform/capabilities"
+        imageSrc={featuresPageImages.askEzy}
+        imageAlt="AskEzy AI assistant in Formezy"
         imgW={620}
         imgH={440}
-        imgLabel="AskEzy — AI chat interface / query results UI screenshot"
         bgWhite
       />
 
@@ -445,9 +427,10 @@ export default function FeaturesContent() {
           "Embedded dev tools and sandbox",
         ]}
         ctaHref="/platform/capabilities"
+        imageSrc={featuresPageImages.studio}
+        imageAlt="Developer Studio in Formezy"
         imgW={620}
         imgH={440}
-        imgLabel="Developer Studio — code editor / IDE screenshot"
       />
 
       {/* 5. Logic Builder — centered + wide screenshot */}
@@ -456,9 +439,10 @@ export default function FeaturesContent() {
         title={<>Logic <G>Builder</G></>}
         description="Drag-and-drop your business logic — branching rules, approvals and automations — without writing a single line of code."
         ctaHref="/platform/how-it-works"
+        imageSrc={featuresPageImages.logicBuilder}
+        imageAlt="Visual Logic Builder in Formezy"
         imgW={1300}
         imgH={560}
-        imgLabel="Logic Builder — node-based visual workflow editor, full browser screenshot"
         bgWhite
       />
 
@@ -473,9 +457,10 @@ export default function FeaturesContent() {
           "Human-in-the-loop escalation paths",
         ]}
         ctaHref="/platform/capabilities"
+        imageSrc={featuresPageImages.automation}
+        imageAlt="Workflow automation in Formezy"
         imgW={620}
         imgH={420}
-        imgLabel="Workflow Automation — automation chart / trigger graph screenshot"
       />
 
       {/* 7. Integrations & Connections — text left, image right */}
@@ -490,9 +475,10 @@ export default function FeaturesContent() {
           "SSO, SCIM and SAML support",
         ]}
         ctaHref="/#integrations"
+        imageSrc={featuresPageImages.integrations}
+        imageAlt="Integrations and connections in Formezy"
         imgW={620}
         imgH={420}
-        imgLabel="Integrations — connection flow / integration marketplace screenshot"
         bgWhite
       />
 
@@ -502,9 +488,10 @@ export default function FeaturesContent() {
         title={<>Reporting &amp; <G>Dashboards</G></>}
         description="Live dashboards built on live data — for ops leaders who need answers now, not a data-team ticket next week."
         ctaHref="/platform/capabilities"
+        imageSrc={featuresPageImages.dashboards}
+        imageAlt="Reporting and dashboards in Formezy"
         imgW={1300}
         imgH={560}
-        imgLabel="Reporting & Dashboards — full reporting dashboard screenshot"
       />
 
       {/* 9. Mobile Access — image left, text right */}
@@ -518,9 +505,10 @@ export default function FeaturesContent() {
           "Face ID / Touch ID sign-in",
         ]}
         ctaHref="#"
+        imageSrc={featuresPageImages.mobile}
+        imageAlt="Mobile access to Formezy"
         imgW={560}
         imgH={480}
-        imgLabel="Mobile Access — person holding phone showing Formezy app"
         bgWhite
       />
 
@@ -536,9 +524,10 @@ export default function FeaturesContent() {
           "Immutable audit logs and access controls",
         ]}
         ctaHref="/platform/capabilities"
+        imageSrc={featuresPageImages.security}
+        imageAlt="Security and compliance in Formezy"
         imgW={620}
         imgH={460}
-        imgLabel="Security & Compliance — security shield / compliance network diagram"
       />
 
       {/* 11. CTA */}

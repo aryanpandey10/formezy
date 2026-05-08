@@ -58,12 +58,12 @@ export default function WhatIsFormezy() {
           className="mt-14 w-full"
         >
           <ImageCompareSlider
-            beforeSrc="https://picsum.photos/seed/formezy-before/1232/640"
-            afterSrc="https://picsum.photos/seed/formezy-after/1232/640"
+            beforeSrc="/images/Home/Webp/legacy_systems.webp"
+            afterSrc="/images/Home/Webp/intelligent_systems.webp"
             beforeLabel="Without Formezy"
             afterLabel="With Formezy"
-            beforeAlt="Disconnected business tools — the old way"
-            afterAlt="Unified business platform — with Formezy"
+            beforeAlt="Disconnected legacy tools — without Formezy"
+            afterAlt="Unified intelligent systems — with Formezy"
           />
 
           <div className="mt-6 grid grid-cols-2 gap-4 text-center md:grid-cols-4">

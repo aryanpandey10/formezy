@@ -4,54 +4,13 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
 // ── Reused components from other pages ──────────────────────────
 import SeamlessIntegrations from "@/components/sections/home/Integrations";
 import CtaSection from "@/components/sections/CtaSection";
 // ────────────────────────────────────────────────────────────────
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-
-/* ─────────────────────────────────────────────
-   Shared helpers (same pattern as platform pages)
-───────────────────────────────────────────── */
-function ImgPlaceholder({
-  w,
-  h,
-  label,
-  className = "",
-}: {
-  w: number;
-  h: number;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-purple-200 bg-gradient-to-br from-purple-50/80 to-blue-50/80 ${className}`}
-      style={{ aspectRatio: `${w}/${h}`, width: "100%" }}
-    >
-      <div className="flex flex-col items-center gap-2 p-6 text-center">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/70 shadow-sm">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6366A8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="m21 15-5-5L5 21" />
-          </svg>
-        </div>
-        <p className="font-sora text-[12px] font-medium text-[#6366A8]/80">{label}</p>
-        <p className="font-sora text-[10px] text-[#6366A8]/50">{w} × {h}</p>
-      </div>
-    </div>
-  );
-}
+import { integrationPageImages } from "@/lib/page-section-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -182,10 +141,14 @@ function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           >
-            <ImgPlaceholder
-              w={720}
-              h={520}
-              label="Hero — integration hub diagram with connected systems illustration"
+            <SectionWebpImage
+              src={integrationPageImages.hero}
+              alt="Formezy integration layer connecting business systems"
+              aspectWidth={720}
+              aspectHeight={520}
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="rounded-2xl border-purple-100/80"
             />
           </motion.div>
         </div>
@@ -261,6 +224,16 @@ function ConnectedBusinessSection() {
               </span>
             ))}
           </motion.div>
+          <motion.div variants={fadeUp} className="mt-12 w-full max-w-4xl">
+            <SectionWebpImage
+              src="/images/integrations/Webp/3.webp"
+              alt="Connected business systems working together through Formezy"
+              aspectWidth={16}
+              aspectHeight={9}
+              sizes="(max-width: 1024px) 100vw, 896px"
+              className="rounded-[24px]"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -292,11 +265,13 @@ function ApiSection() {
           <div className="grid items-center lg:grid-cols-2">
             {/* Left — isometric API illustration */}
             <div className="flex items-center justify-center bg-gradient-to-br from-[#EEF0FF] to-[#E8F4FF] p-8 md:p-12">
-              <ImgPlaceholder
-                w={560}
-                h={420}
-                label="API Integrations — isometric network/API connection diagram"
-                className="border-0 bg-transparent"
+              <SectionWebpImage
+                src={integrationPageImages.api}
+                alt="API and webhook integrations with Formezy"
+                aspectWidth={560}
+                aspectHeight={420}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-2xl border-0 bg-transparent shadow-none"
               />
             </div>
 
@@ -420,11 +395,13 @@ function ThirdPartySection() {
 
             {/* Right — colorful connection illustration */}
             <div className="flex items-center justify-center bg-gradient-to-br from-[#FFF8E8] to-[#F0F0FF] p-8 md:p-12">
-              <ImgPlaceholder
-                w={560}
-                h={420}
-                label="Third-Party Integrations — colorful app connection/network illustration"
-                className="border-0 bg-transparent"
+              <SectionWebpImage
+                src={integrationPageImages.thirdParty}
+                alt="Third-party app integrations connected to Formezy"
+                aspectWidth={560}
+                aspectHeight={420}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-2xl border-0 bg-transparent shadow-none"
               />
             </div>
           </div>
@@ -502,11 +479,13 @@ function ErpSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 overflow-hidden rounded-[24px] border border-purple-100 shadow-card-hover"
         >
-          <ImgPlaceholder
-            w={1300}
-            h={500}
-            label="ERP Integrations — full-width ERP connection flow / stream diagram"
-            className="rounded-none"
+          <SectionWebpImage
+            src={integrationPageImages.erp}
+            alt="ERP integrations extending your system of record with Formezy"
+            aspectWidth={1300}
+            aspectHeight={500}
+            sizes="(max-width: 1024px) 100vw, 1200px"
+            className="rounded-none border-0"
           />
         </motion.div>
       </div>
@@ -575,12 +554,16 @@ function CtaSectionBlock() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
               />
-              <ImgPlaceholder
-                w={520}
-                h={380}
-                label="CTA — network flow connecting to central Formezy hub illustration"
-                className="relative z-10 max-w-[420px]"
-              />
+              <div className="relative z-10 w-full max-w-[420px]">
+                <SectionWebpImage
+                  src={integrationPageImages.cta}
+                  alt="Connect your entire business ecosystem with Formezy"
+                  aspectWidth={520}
+                  aspectHeight={380}
+                  sizes="(max-width: 1024px) 90vw, 420px"
+                  className="rounded-2xl border-0 bg-transparent shadow-none"
+                />
+              </div>
             </motion.div>
           </div>
         </motion.div>
