@@ -58,6 +58,7 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         display: ["var(--font-inter)", "system-ui", "sans-serif"],
         sora: ["var(--font-sora)", "system-ui", "sans-serif"],
+        rancho: ["var(--font-rancho)", "cursive", "system-ui", "sans-serif"],
       },
       fontSize: {
         // Desktop sizes

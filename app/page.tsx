@@ -3,6 +3,7 @@ import TrustedBy from "@/components/sections/home/TrustedBy";
 import WhatIsFormezy from "@/components/sections/home/WhatIsFormezy";
 import BuildPowerful from "@/components/sections/home/BuildPowerful";
 import WhyChoose from "@/components/sections/home/WhyChoose";
+import AskEzyHomeSection from "@/components/sections/home/AskEzyHomeSection";
 import CoreCapabilities from "@/components/sections/home/CoreCapabilities";
 import IndustrySolutions from "@/components/sections/home/IndustrySolutions";
 import Testimonials from "@/components/sections/home/Testimonials";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <WhatIsFormezy />
       <BuildPowerful />
       <WhyChoose />
+      <AskEzyHomeSection />
       <CoreCapabilities />
       <IndustrySolutions />
       <Testimonials />

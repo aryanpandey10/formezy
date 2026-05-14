@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora } from "next/font/google";
+import { Inter, Rancho, Sora } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BookDemoModal from "@/components/ui/BookDemoModal";
@@ -16,6 +16,13 @@ const sora = Sora({
   display: "swap",
   variable: "--font-sora",
   weight: ["400", "500", "600", "700"],
+});
+
+const rancho = Rancho({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-rancho",
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -61,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable} ${rancho.variable}`}>
       <body className="min-h-screen">
         {/* Global page background — HomeBG covers every page */}
         <div

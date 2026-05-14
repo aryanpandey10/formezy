@@ -16,11 +16,13 @@ const HOME_WEBP = "/images/Home/Webp";
 /** One WebP per solution — filenames under `public/images/Home/Webp/` */
 const SOLUTION_IMAGE_BY_ID: Record<number, string> = {
   1: `${HOME_WEBP}/business_systems.webp`,
-  2: `${HOME_WEBP}/crm_systems.webp`,
-  3: `${HOME_WEBP}/supply_chain_systems.webp`,
-  4: `${HOME_WEBP}/operations_platforms.webp`,
-  5: `${HOME_WEBP}/role_based_access.webp`,
-  6: `${HOME_WEBP}/reporting_dashboards.webp`,
+  2: `${HOME_WEBP}/quality.webp`,
+  3: `${HOME_WEBP}/mfg.webp`,
+  4: `${HOME_WEBP}/crm_systems.webp`,
+  5: `${HOME_WEBP}/supply_chain_systems.webp`,
+  6: `${HOME_WEBP}/operations_platforms.webp`,
+  7: `${HOME_WEBP}/role_based_access.webp`,
+  8: `${HOME_WEBP}/reporting_dashboards.webp`,
 };
 
 type Solution = {
@@ -32,36 +34,48 @@ type Solution = {
 const solutions: Solution[] = [
   {
     id: 1,
-    title: "EAP Business Systems",
+    title: "Business Workflows",
     description:
       "Unify finance, inventory, procurement and HR into one configurable system that scales as your business grows.",
   },
   {
     id: 2,
+    title: "Quality Control Systems",
+    description:
+      "Standardize inspections, approvals, and quality workflows with real-time tracking and complete process visibility.",
+  },
+  {
+    id: 3,
+    title: "MFG / Production Systems",
+    description:
+      "Manage production workflows, execution tracking, and operational coordination across your manufacturing processes.",
+  },
+  {
+    id: 4,
     title: "CRM Systems",
     description:
       "Manage the full customer lifecycle — from lead to renewal — on one unified timeline with complete visibility.",
   },
   {
-    id: 3,
+    id: 5,
     title: "Supply Chain Systems",
     description:
       "Track vendors, shipments and inventory in a single connected workflow with real-time alerts and SLA controls.",
   },
   {
-    id: 4,
+    id: 6,
     title: "Operations Management",
     description:
       "Coordinate people, tasks, assets and projects across locations with full operational control and clarity.",
   },
   {
-    id: 5,
+    id: 7,
     title: "HR & People Systems",
     description:
       "Streamline onboarding, leave management, performance reviews and payroll processes in a single platform.",
   },
   {
-    id: 6,
+    id: 8,
     title: "Finance & Compliance",
     description:
       "Automate approvals, budget tracking and audit-ready reporting across all your financial workflows.",
@@ -96,7 +110,7 @@ export default function BuildPowerful() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="section bg-white/80 backdrop-blur-sm">
+    <section className="bg-white/80 py-10 backdrop-blur-sm md:py-12 lg:py-14">
       <div className="container-app">
         {/* ── Heading ── */}
         <motion.div
@@ -104,7 +118,7 @@ export default function BuildPowerful() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col items-center gap-6 text-center"
+          className="flex flex-col items-center gap-4 text-center"
         >
           <motion.h2
             variants={fadeUp}
@@ -143,7 +157,7 @@ export default function BuildPowerful() {
         </motion.div>
 
         {/* ── Carousel with side buttons ── */}
-        <div className="relative mt-14">
+        <div className="relative mt-8 md:mt-10">
           {/* LEFT NAV BUTTON — outside track on lg */}
           <motion.button
             whileTap={{ scale: 0.88 }}
@@ -155,12 +169,12 @@ export default function BuildPowerful() {
           </motion.button>
 
           {/* Embla viewport — inset on lg to leave room for side buttons */}
-          <div className="overflow-hidden lg:mx-[60px]" ref={emblaRef}>
+          <div className="overflow-hidden lg:mx-10 xl:mx-12" ref={emblaRef}>
             <div className="flex">
               {solutions.map((s, i) => (
                 <div
                   key={s.id}
-                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-4 first:pl-0 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-3 first:pl-0 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
                 >
                   <SolutionCard
                     solution={s}
@@ -183,7 +197,7 @@ export default function BuildPowerful() {
           </motion.button>
 
           {/* Mobile nav — below the track */}
-          <div className="mt-6 flex items-center justify-center gap-3 lg:hidden">
+          <div className="mt-4 flex items-center justify-center gap-3 lg:hidden">
             <button
               onClick={() => emblaApi?.scrollPrev()}
               aria-label="Previous"
@@ -194,7 +208,7 @@ export default function BuildPowerful() {
             <button
               onClick={() => emblaApi?.scrollNext()}
               aria-label="Next"
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3d1650]"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3D1650]"
             >
               <ChevronRight size={20} />
             </button>
@@ -218,10 +232,10 @@ function SolutionCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="flex h-auto min-h-[420px] w-full max-w-[430px] flex-col items-start gap-5 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-[25px] md:min-h-[500px]"
+      className="flex h-auto min-h-[420px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[500px]"
       style={{ backgroundColor: color }}
     >
-      <div className="flex w-full flex-col items-start gap-4">
+      <div className="flex w-full flex-col items-start gap-3">
         <h3 className="font-sora text-[24px] font-semibold leading-[28px] text-[#2C0E3A]">
           {solution.title}
         </h3>

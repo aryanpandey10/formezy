@@ -98,6 +98,44 @@
     @apply mx-auto w-full max-w-[1280px] px-6 lg:px-8 ;
   }
 
+  /**
+   * First-screen hero height: one viewport minus the layout spacer under the fixed navbar.
+   * Keep 60px / 72px in sync with `components/layout/Navbar.tsx` (spacer h-[60px] lg:h-[72px]).
+   * vh → svh → dvh cascade improves mobile toolbars and modern browsers; all scale with zoom.
+   */
+  .home-hero-fold {
+    min-height: calc(100vh - 60px);
+  }
+  @supports (height: 100svh) {
+    .home-hero-fold {
+      min-height: calc(100svh - 60px);
+    }
+  }
+  @supports (height: 100dvh) {
+    .home-hero-fold {
+      min-height: calc(100dvh - 60px);
+    }
+  }
+  @media (min-width: 1024px) {
+    .home-hero-fold {
+      min-height: calc(100vh - 72px);
+    }
+  }
+  @supports (height: 100svh) {
+    @media (min-width: 1024px) {
+      .home-hero-fold {
+        min-height: calc(100svh - 72px);
+      }
+    }
+  }
+  @supports (height: 100dvh) {
+    @media (min-width: 1024px) {
+      .home-hero-fold {
+        min-height: calc(100dvh - 72px);
+      }
+    }
+  }
+
   .section {
     @apply py-12 md:py-16 lg:py-20;
   }
