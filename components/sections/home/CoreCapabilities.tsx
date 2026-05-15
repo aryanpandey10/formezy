@@ -186,7 +186,7 @@ export default function CoreCapabilities() {
             </motion.div>
           </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6">
+          {/* <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 d-none">
             {capabilities.map((c, i) => (
               <button
                 key={c.id}
@@ -206,7 +206,7 @@ export default function CoreCapabilities() {
                 </p>
               </button>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>
