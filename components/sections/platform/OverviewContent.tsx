@@ -183,16 +183,12 @@ function WhyEapSection() {
           <div className="relative z-0 w-full md:w-[65%] lg:w-[75%]">
             <div className="relative h-full overflow-hidden">
 
-              <img
-                alt="Why businesses need an Enterprise Application Platform today"
-                loading="lazy"
-                width="1080"
-                height="652"
-                decoding="async"
-                data-nimg="1"
-                className="h-full w-full object-cover"
+              <Image
                 src="/images/overview/Webp/businesses_eap.webp"
-                style={{ color: "transparent" }}
+                alt="Why businesses need an Enterprise Application Platform today"
+                width={1080}
+                height={652}
+                className="h-full w-full object-cover"
               />
 
             </div>

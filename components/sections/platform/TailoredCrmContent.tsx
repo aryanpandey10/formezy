@@ -108,7 +108,7 @@ export default function TailoredCrmContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                No more forcing your business into rigid CRM software that doesn't fit your unique
+                No more forcing your business into rigid CRM software that doesn&apos;t fit your unique
                 sales processes.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">

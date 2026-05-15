@@ -170,11 +170,11 @@ export default function BuildPowerful() {
 
           {/* Embla viewport — inset on lg to leave room for side buttons */}
           <div className="overflow-hidden lg:mx-10 xl:mx-12" ref={emblaRef}>
-            <div className="flex">
+            <div className="flex -ml-5">
               {solutions.map((s, i) => (
                 <div
                   key={s.id}
-                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-3 first:pl-0 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
                 >
                   <SolutionCard
                     solution={s}

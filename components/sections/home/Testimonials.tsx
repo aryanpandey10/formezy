@@ -9,7 +9,7 @@ import { fadeUp, viewportOnce, staggerContainer } from "@/lib/animations";
 type Client = {
   id: number;
   name: string;
-  shortName: string;
+  logo: string;
   industry: string;
   color: string;
   quote: string;
@@ -22,7 +22,7 @@ const clients: Client[] = [
   {
     id: 1,
     name: "Heavy Metal and Tubes Pvt Ltd.",
-    shortName: "HM",
+    logo: "/images/Home/heavy_metal.png",
     industry: "Manufacturing",
     color: "#6C63FF",
     quote:
@@ -34,7 +34,7 @@ const clients: Client[] = [
   {
     id: 2,
     name: "Twin Cool Engineers",
-    shortName: "TC",
+    logo: "/images/Home/twincool.png",
     industry: "Engineering",
     color: "#06B6D4",
     quote:
@@ -46,7 +46,7 @@ const clients: Client[] = [
   {
     id: 3,
     name: "Yash Filter",
-    shortName: "YF",
+    logo: "/images/Home/yash_filters.png",
     industry: "Filtration",
     color: "#F59E0B",
     quote:
@@ -58,7 +58,7 @@ const clients: Client[] = [
   {
     id: 4,
     name: "Pep Foods",
-    shortName: "PF",
+    logo: "/images/Home/pepfood.png",
     industry: "Food & Beverage",
     color: "#A78BFA",
     quote:
@@ -70,7 +70,7 @@ const clients: Client[] = [
   {
     id: 5,
     name: "Parishi Construction Equipment",
-    shortName: "PC",
+    logo: "/images/Home/parishi.png",
     industry: "Construction",
     color: "#EF4444",
     quote:
@@ -82,7 +82,7 @@ const clients: Client[] = [
   {
     id: 6,
     name: "Armstrong Machinery LLP",
-    shortName: "AM",
+    logo: "/images/Home/armstrong.png",
     industry: "Machinery",
     color: "#6366F1",
     quote:
@@ -94,7 +94,7 @@ const clients: Client[] = [
   {
     id: 7,
     name: "Navjivan Roller Flour & Pulse Mills",
-    shortName: "NV",
+    logo: "/images/Home/navjivan.png",
     industry: "Food & Milling",
     color: "#10B981",
     quote:
@@ -191,11 +191,13 @@ export default function Testimonials() {
                 />
 
                 <div className="flex items-start justify-between gap-4">
-                  <div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-[15px] font-extrabold text-white shadow-lg"
-                    style={{ backgroundColor: client.color }}
-                  >
-                    {client.shortName}
+                  <div className="relative h-14 w-32 shrink-0">
+                    <Image
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      fill
+                      className="object-contain object-left"
+                    />
                   </div>
                   <div className="flex min-w-0 flex-col items-end gap-1">
                     <div className="flex items-center gap-0.5 text-amber-400">
@@ -229,12 +231,14 @@ export default function Testimonials() {
                 </blockquote>
 
                 <div className="mt-8 flex items-center gap-3">
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white shadow"
-                    style={{ backgroundColor: client.color }}
-                  >
-                    {client.shortName}
-                  </span>
+                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={client.logo}
+                      alt={client.author}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   <div className="flex min-w-0 flex-col leading-tight">
                     <span className="text-[14px] font-semibold text-ink">
                       {client.author}
