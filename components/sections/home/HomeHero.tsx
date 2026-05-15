@@ -36,7 +36,7 @@ export default function HomeHero() {
       <div 
         className="absolute inset-0 pointer-events-none opacity-40"
         style={{ 
-          backgroundImage: "url('/images/Home/bg_grid.svg')", 
+          backgroundImage: "url('/images/Home/bg_grid.png')", 
           backgroundSize: "cover",
           backgroundPosition: "center top"
         }}

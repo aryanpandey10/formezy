@@ -27,7 +27,7 @@ const clients: Client[] = [
     color: "#6C63FF",
     quote:
       "Formezy transformed how our plants operate. Real-time visibility, faster approvals, zero dependency on spreadsheets - it's the one system our entire operations team actually trusts and uses daily.",
-    author: "Management",
+    author: "",
     role: "Heavy Metal and Tubes Pvt Ltd.",
     stars: 5,
   },
@@ -39,7 +39,7 @@ const clients: Client[] = [
     color: "#06B6D4",
     quote:
       "We moved from another ERP to Formezy. The transition was smooth, adoption was quick, and our workflows finally feel structured, connected, and fully in our control.",
-    author: "Management",
+    author: "",
     role: "Twin Cool Engineers",
     stars: 5,
   },
@@ -51,7 +51,7 @@ const clients: Client[] = [
     color: "#F59E0B",
     quote:
       "Formezy cut down the time our team spends on follow-ups significantly. It was simple enough for our team to use from day one - without anyone having to ask.",
-    author: "Management",
+    author: "",
     role: "Yash Filter",
     stars: 5,
   },
@@ -63,7 +63,7 @@ const clients: Client[] = [
     color: "#A78BFA",
     quote:
       "Compliance and procurement used to demand constant follow-ups. With Formezy, the system follows up for us - deadlines are met, nothing slips, and our team works worry-free.",
-    author: "Management",
+    author: "",
     role: "Pep Foods",
     stars: 5,
   },
@@ -75,7 +75,7 @@ const clients: Client[] = [
     color: "#EF4444",
     quote:
       "We tried many ERPs - none felt right. Formezy just fits. Our construction workflows, approvals, and equipment tracking finally run the way our business actually works.",
-    author: "Management",
+    author: "",
     role: "Parishi Construction Equipment",
     stars: 5,
   },
@@ -87,7 +87,7 @@ const clients: Client[] = [
     color: "#6366F1",
     quote:
       "Before Formezy, our processes were scattered across emails and sheets. Now everything is tracked, approved, and reported in one place - our operations run smoother than ever before.",
-    author: "Management",
+    author: "",
     role: "Armstrong Machinery LLP",
     stars: 5,
   },
@@ -99,7 +99,7 @@ const clients: Client[] = [
     color: "#10B981",
     quote:
       "Eight decades of manual operations - Formezy digitized all of it. Reporting improved, decisions became data-driven, and we're now more competitive than we've ever been in our history.",
-    author: "Management",
+    author: "",
     role: "Navjivan Roller Flour & Pulse Mills",
     stars: 5,
   },
