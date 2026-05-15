@@ -31,6 +31,21 @@ export const overviewWebp = {
   ),
 } as const;
 
+/** Use cases — all WebP under `public/images/Use Cases/Webp/`. */
+export const useCasesPageWebp = {
+  hero: publicAssetUrl("images", "Use Cases", "Webp", "use_cases_system.webp"),
+  turningHub: publicAssetUrl("images", "Use Cases", "Webp", "process_industries.webp"),
+  tailoredErp: publicAssetUrl("images", "Use Cases", "Webp", "tailored_erp_icon.webp"),
+  tailoredCrm: publicAssetUrl("images", "Use Cases", "Webp", "tailored_CRM_icon.webp"),
+  documentManagement: publicAssetUrl("images", "Use Cases", "Webp", "document_management_icon.webp"),
+  tenantManagement: publicAssetUrl("images", "Use Cases", "Webp", "tenant_management_icon.webp"),
+  contractManagement: publicAssetUrl("images", "Use Cases", "Webp", "document_management_icon.webp"),
+  fieldService: publicAssetUrl("images", "Use Cases", "Webp", "task_management_icon.webp"),
+  supplyChain: publicAssetUrl("images", "Use Cases", "Webp", "process_industries.webp"),
+  inventory: publicAssetUrl("images", "Use Cases", "Webp", "heavy_manufacturing.webp"),
+  cta: publicAssetUrl("images", "Use Cases", "Webp", "use_cases_CTA.webp"),
+} as const;
+
 /** Use cases — industry carousel (`public/images/Use Cases/Webp/`). */
 export const useCasesIndustryWebp = {
   discreteManufacturing: publicAssetUrl(
@@ -40,6 +55,7 @@ export const useCasesIndustryWebp = {
     "discrete_manufacturing.webp",
   ),
   retailWholesale: publicAssetUrl("images", "Use Cases", "Webp", "retail_wholesale.webp"),
+  consumerGoods: publicAssetUrl("images", "Use Cases", "Webp", "service_based_businesses.webp"),
   constructionEpc: publicAssetUrl("images", "Use Cases", "Webp", "construction_EPC.webp"),
 } as const;
 

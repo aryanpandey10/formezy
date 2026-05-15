@@ -1,7 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Check, Quote } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Check, ChevronRight, Quote } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
@@ -21,106 +24,161 @@ const G = ({ children }: { children: React.ReactNode }) => (
 );
 
 /* ─────────────────────────────────────────────
-   Section 1 — Hero
+   Section 1 — Hero (stacked: breadcrumb → copy → image, like Overview)
 ───────────────────────────────────────────── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
-      <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — text */}
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-            className="flex flex-col items-start gap-6"
+    <section className="relative overflow-hidden pt-8 pb-0 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <motion.nav
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          aria-label="Breadcrumb"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[min(100%,320px)]"
+        >
+          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Home
+          </Link>
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">How it Works</span>
+        </motion.nav>
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={staggerContainer}
+          className="flex w-full max-w-[1100px] flex-col items-start gap-6 md:gap-8"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[54px]"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                How It Works
-              </span>
-            </motion.div>
+            From Idea to <G>Execution, Seamlessly</G>
+          </motion.h1>
 
-            <motion.h1
-              variants={fadeUp}
-              className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
-            >
-              From Idea to{" "}
-              <G>Execution, Seamlessly</G>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[520px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Formezy turns process thinking into working systems — in weeks,
-              not quarters. Here&apos;s the five-step journey every customer
-              takes, from mapping workflows to scaling with confidence.
-            </motion.p>
-
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Book a Demo <ArrowRight size={16} />
-              </Button>
-            </motion.div>
+          <motion.div
+            variants={fadeUp}
+            className="max-w-[720px] space-y-2 font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px]"
+          >
+            <p className="font-normal">
+              Formezy turns process thinking into working systems — in weeks, not quarters.
+              Here&apos;s the five-step journey every customer takes, from mapping workflows to
+              scaling with confidence.
+            </p>
           </motion.div>
 
-          {/* Right — hero illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
-            <SectionWebpImage
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <Button href="#demo" size="lg" className="rounded-[10px]">
+              Book a Demo <ArrowRight size={16} />
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+          className="mt-10 w-full md:mt-12 lg:mt-14"
+        >
+          <div className="relative aspect-[1920/680] w-full">
+            <Image
               src={howItWorksPageImages.hero}
               alt="From business idea to execution with Formezy"
-              aspectWidth={800}
-              aspectHeight={560}
+              fill
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain object-left md:object-center"
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 2 — How Formezy Works (4 step cards)
-───────────────────────────────────────────── */
-const stepCards = [
+/* ── Build Powerful–style journey card (home `BuildPowerful` pattern) ── */
+const HIW_CARD_COLORS = ["#FFF7E8", "#E8F8FF", "#E8EBFF", "#F8E9FF"] as const;
+
+function HiwJourneyCard({
+  title,
+  description,
+  imageSrc,
+  color,
+}: {
+  title: string;
+  description: string;
+  imageSrc: string;
+  color: string;
+}) {
+  return (
+    <motion.article
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      className="flex h-auto min-h-[400px] w-[min(88vw,430px)] shrink-0 flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[480px]"
+      style={{ backgroundColor: color }}
+    >
+      <div className="flex w-full flex-col items-start gap-3">
+        <h3 className="font-sora text-[22px] font-semibold leading-[1.2] text-[#2C0E3A] md:text-[24px]">
+          {title}
+        </h3>
+        <p className="font-sora text-[15px] font-normal leading-[24px] text-[#6366A8] md:text-[16px] md:leading-[26px]">
+          {description}
+        </p>
+      </div>
+      <div className="relative mt-auto h-[180px] w-full flex-shrink-0 overflow-hidden rounded-[18px] md:h-[240px]">
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 90vw, 430px"
+          className="object-contain transition-transform duration-700"
+        />
+      </div>
+    </motion.article>
+  );
+}
+
+const hiwJourneySteps = [
   {
-    num: "01",
-    title: "Define Your Workflows",
-    desc: "Map how work actually flows across your teams — who does what, when, and what data moves between them.",
-    color: "#6C60E8",
-    imageSrc: howItWorksPageImages.stepDefine,
+    title: "Map Your Workflows",
+    description:
+      "See how work moves between people, tools, and handoffs so nothing is ambiguous before you automate.",
+    imageSrc: howItWorksPageImages.hiwCarouselMap,
   },
   {
-    num: "02",
-    title: "Build with Logic Builder",
-    desc: "Translate workflows into modules, rules and approvals using a visual, no-code logic builder.",
-    color: "#A78BFA",
-    imageSrc: howItWorksPageImages.stepLogicBuilder,
+    title: "Enable Automation",
+    description:
+      "Turn repeatable steps into rules-driven execution so tasks advance on their own with full visibility.",
+    imageSrc: howItWorksPageImages.hiwCarouselEnable,
   },
   {
-    num: "03",
-    title: "Automate Processes",
-    desc: "Let Formezy handle approvals, handoffs and reminders so execution is consistent and fast.",
-    color: "#708FF4",
-    imageSrc: howItWorksPageImages.stepAutomate,
+    title: "Connect Your Ecosystem",
+    description:
+      "Link ERP, CRM, messaging, and files so Formezy orchestrates data where it already lives.",
+    imageSrc: howItWorksPageImages.hiwCarouselConnect,
   },
   {
-    num: "04",
-    title: "Scale with Confidence",
-    desc: "Add teams, modules and geographies without rebuilding from scratch — Formezy grows with you.",
-    color: "#06B6D4",
-    imageSrc: howItWorksPageImages.stepScale,
+    title: "Unify Operations",
+    description:
+      "Run the full journey on one spine — fewer silos, clearer ownership, and faster decisions across teams.",
+    imageSrc: howItWorksPageImages.hiwCarouselConnect,
   },
 ];
 
+/* ─────────────────────────────────────────────
+   Section 2 — How Formezy Works (Build Powerful cards + scroll-linked L→R motion)
+───────────────────────────────────────────── */
 function HowItWorksStepsSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ["start 0.92", "end 0.08"],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["4vw", "-52vw"]);
+
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
@@ -129,120 +187,89 @@ function HowItWorksStepsSection() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+          className="flex flex-col items-center gap-4 text-center md:gap-5"
         >
           <motion.h2
             variants={fadeUp}
-            className="font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
-            style={{ lineHeight: "1.15" }}
+            className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
           >
             How <G>Formezy Works</G>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="max-w-[560px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            className="max-w-xl font-sora text-[16px] leading-[24px] text-[#6366A8]"
           >
             The same structured journey behind every successful Formezy rollout.
           </motion.p>
+          <motion.div variants={fadeUp}>
+            <Button href="/platform/overview" size="lg" className="rounded-[10px]">
+              Explore the Platform <ArrowRight size={16} />
+            </Button>
+          </motion.div>
         </motion.div>
+      </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {stepCards.map((s) => (
-            <motion.article
-              key={s.num}
-              variants={fadeUp}
-              className="group flex flex-col overflow-hidden rounded-[20px] border border-purple-100/60 bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover"
-            >
-              {/* Image area */}
-              <div className="relative overflow-hidden bg-gradient-to-br from-purple-50/80 to-blue-50/60 px-6 pt-6">
-                <SectionWebpImage
-                  src={s.imageSrc}
-                  alt={s.title}
-                  aspectWidth={280}
-                  aspectHeight={200}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="rounded-xl border-0 bg-transparent shadow-none"
-                />
-              </div>
-
-              {/* Text area */}
-              <div className="flex flex-col gap-3 p-6">
-                <div className="flex items-center gap-3">
-                  <span
-                    className="font-sora text-[11px] font-bold tracking-widest"
-                    style={{ color: s.color }}
-                  >
-                    STEP {s.num}
-                  </span>
-                </div>
-                <h3 className="font-sora text-[17px] font-bold text-[#2C0E3A]">
-                  {s.title}
-                </h3>
-                <p className="font-sora text-[13px] leading-[22px] text-[#6366A8]">
-                  {s.desc}
-                </p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+      <div
+        ref={trackRef}
+        className="relative mt-10 min-h-[min(220vh,2600px)] w-full md:mt-12"
+        aria-label="Formezy journey steps"
+      >
+        <div className="sticky top-0 z-0 flex h-[min(92dvh,920px)] w-full items-center overflow-hidden py-8 md:py-10">
+          <motion.div style={{ x }} className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12">
+            {hiwJourneySteps.map((s, i) => (
+              <HiwJourneyCard
+                key={s.title}
+                title={s.title}
+                description={s.description}
+                imageSrc={s.imageSrc}
+                color={HIW_CARD_COLORS[i % HIW_CARD_COLORS.length]}
+              />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
 /* ─────────────────────────────────────────────
-   Section 3 — Define Your Workflows (deep dive)
+   Section 3 — Define Your Workflows
 ───────────────────────────────────────────── */
-const workflowBullets = [
-  "Visual canvas to map any business process",
-  "Role-based ownership for every step",
-  "Clear data flows between teams and systems",
-];
-
 function DefineWorkflowsSection() {
   return (
-    <section className="section">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — image */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -32 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full"
           >
-            <SectionWebpImage
-              src={howItWorksPageImages.defineDeep}
-              alt="Define and map workflows across teams in Formezy"
-              aspectWidth={620}
-              aspectHeight={500}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            <div className="mx-auto w-full max-w-xl overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F0FF] shadow-sm lg:mx-0 lg:max-w-none">
+              <SectionWebpImage
+                src={howItWorksPageImages.defineDeep}
+                alt="Define workflows with Formezy"
+                aspectWidth={730}
+                aspectHeight={691}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-none border-0 !bg-[#F3F0FF] shadow-none"
+                imgClassName="object-contain p-3 sm:p-4 md:p-5"
+              />
+            </div>
           </motion.div>
 
-          {/* Right — content */}
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-5 text-left lg:gap-6"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Step 01
-              </span>
-            </motion.div>
-
             <motion.h2
               variants={fadeUp}
-              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[44px]"
+              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[44px] lg:text-[48px]"
               style={{ lineHeight: "1.15" }}
             >
               Define Your <G>Workflows</G>
@@ -250,36 +277,110 @@ function DefineWorkflowsSection() {
 
             <motion.p
               variants={fadeUp}
-              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
+              className="font-sora text-[17px] font-semibold leading-[26px] text-[#2C0E3A] md:text-[18px]"
             >
-              Start by mapping who does what, when, and what data moves between
-              them. Formezy gives you a visual canvas to design workflows before
-              a single form is built — so every team is aligned from day one.
+              Every system starts with clarity.
             </motion.p>
 
-            <motion.blockquote
+            <motion.p
               variants={fadeUp}
-              className="border-l-2 border-[#6C60E8] pl-4 font-sora text-[15px] italic leading-[1.7] text-[#6366A8]"
+              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Clear workflows eliminate confusion before it starts.
-            </motion.blockquote>
+              Formezy helps you break down operations into structured workflows, ensuring every step,
+              role, and decision point is clearly defined before automation begins.
+            </motion.p>
 
-            <motion.ul variants={staggerContainer} className="flex flex-col gap-3">
-              {workflowBullets.map((b) => (
-                <motion.li
-                  key={b}
-                  variants={fadeUp}
-                  className="flex items-start gap-3"
-                >
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
-                    <Check size={13} strokeWidth={2.5} />
-                  </span>
-                  <span className="font-sora text-[14px] font-medium text-[#2C0E3A]">
-                    {b}
-                  </span>
-                </motion.li>
-              ))}
-            </motion.ul>
+            <motion.p
+              variants={fadeUp}
+              className="font-rancho text-[24px] leading-snug text-purple-primary sm:text-[28px] md:text-[30px]"
+              style={{
+                WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.25)",
+                paintOrder: "stroke fill",
+              }}
+            >
+              &ldquo;Clear workflows eliminate confusion before it starts.&rdquo;
+            </motion.p>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const logicBullets = [
+  "Visual rules, approvals, and branches without writing code",
+  "Reuse modules across teams so logic stays consistent as you grow",
+  "Connect workflow steps to real data and ownership in one place",
+];
+
+/* ─────────────────────────────────────────────
+   Section 4 — Build with Logic Builder (Overview “Why EAP” overlap layout)
+───────────────────────────────────────────── */
+function LogicBuilderSection() {
+  return (
+    <section className="section bg-white/90 backdrop-blur-sm">
+      <div className="container-app">
+        <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-12 lg:mb-14">
+          <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+            Step 02
+          </span>
+          <h2 className="max-w-[920px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px] xl:text-[56px]">
+            Build with <G>Logic Builder</G>
+          </h2>
+          <p
+            className="max-w-[720px] font-rancho text-[26px] leading-snug text-purple-primary sm:text-[30px] md:text-[32px] lg:text-[34px]"
+            style={{
+              WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.3)",
+              paintOrder: "stroke fill",
+            }}
+          >
+            It&apos;s not about adding more tools; it&apos;s about bringing everything together.
+          </p>
+        </div>
+
+        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center md:flex-row md:items-center md:justify-center md:gap-0 lg:max-w-[1180px]">
+          <div className="relative z-0 w-full max-w-[620px] shrink-0 md:w-[min(56%,600px)] md:max-w-none md:-translate-x-[clamp(8px,2.5vw,36px)] lg:-translate-x-[clamp(12px,3vw,48px)]">
+            <div className="relative w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F0FF] shadow-sm">
+              <Image
+                src={howItWorksPageImages.logicLarge}
+                width={1080}
+                height={621}
+                sizes="(max-width: 768px) 100vw, 600px"
+                alt="Build business logic visually with Formezy Logic Builder"
+                className="h-auto w-full object-contain align-middle"
+              />
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 mt-6 w-full max-w-[480px] md:mt-0 md:w-[min(48%,460px)] md:max-w-none md:-ml-10 md:translate-x-[clamp(8px,2.5vw,36px)] lg:-ml-14 lg:translate-x-[clamp(12px,3vw,48px)] xl:-ml-16"
+          >
+            <div className="rounded-[20px] border border-purple-100/90 bg-white p-6 shadow-[0_16px_48px_rgba(44,14,58,0.14)] md:rounded-[22px] md:p-7">
+              <p className="font-sora text-[16px] leading-[24px] text-[#2C0E3A]">
+                Translate how work should run into modules, validations, and approvals — so the
+                system enforces the process instead of your inbox chasing it.
+              </p>
+              <p className="mt-4 font-sora text-[16px] font-semibold leading-[24px] text-[#2C0E3A]">
+                Logic Builder helps you:
+              </p>
+              <ul className="mt-4 flex flex-col gap-3">
+                {logicBullets.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 font-sora text-[15px] leading-relaxed text-[#6366A8] md:text-[16px]"
+                  >
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -288,69 +389,11 @@ function DefineWorkflowsSection() {
 }
 
 /* ─────────────────────────────────────────────
-   Section 4 — Build with Logic Builder (deep dive)
+   Section 5 — Automate Processes + Integrate / Scale (design reference)
 ───────────────────────────────────────────── */
-function LogicBuilderSection() {
+function AutomateProcessesSection() {
   return (
-    <section className="section bg-white/90 backdrop-blur-sm">
-      <div className="container-app">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-          className="flex flex-col gap-5"
-        >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Step 02
-            </span>
-          </motion.div>
-
-          <motion.h2
-            variants={fadeUp}
-            className="max-w-2xl font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[44px]"
-            style={{ lineHeight: "1.15" }}
-          >
-            Build with <G>Logic Builder</G>
-          </motion.h2>
-
-          <motion.p
-            variants={fadeUp}
-            className="max-w-[580px] font-sora text-[16px] italic leading-[28px] text-[#6366A8]"
-          >
-            Your processes don&apos;t just get defined — they become
-            system-driven and scalable.
-          </motion.p>
-        </motion.div>
-
-        {/* Large logic builder image */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 overflow-hidden rounded-[24px] border border-purple-100 bg-gradient-to-br from-purple-50/60 to-blue-50/40 p-4 shadow-card-hover md:p-6"
-        >
-          <SectionWebpImage
-            src={howItWorksPageImages.logicLarge}
-            alt="Build business logic visually with Formezy Logic Builder"
-            aspectWidth={1200}
-            aspectHeight={520}
-            sizes="(max-width: 1024px) 100vw, 1200px"
-          />
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   Section 5 — Automate Processes (deep dive)
-───────────────────────────────────────────── */
-function AutomateSection() {
-  return (
-    <section className="section">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
         <motion.div
           initial="hidden"
@@ -359,15 +402,9 @@ function AutomateSection() {
           variants={staggerContainer}
           className="flex flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Step 03
-            </span>
-          </motion.div>
-
           <motion.h2
             variants={fadeUp}
-            className="font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
+            className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[44px] lg:text-[48px]"
             style={{ lineHeight: "1.15" }}
           >
             Automate <G>Processes</G>
@@ -375,132 +412,113 @@ function AutomateSection() {
 
           <motion.p
             variants={fadeUp}
-            className="max-w-[600px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            className="max-w-[640px] font-sora text-[17px] font-semibold leading-[26px] text-[#2C0E3A] md:text-[18px]"
           >
-            Every approval, every handoff, every reminder — done for you. Let
-            Formezy run the repetitive steps so your team focuses on what matters.
+            With the structure in place, execution becomes automatic.
           </motion.p>
 
-          {/* Quote with large quotation marks */}
+          <motion.p
+            variants={fadeUp}
+            className="max-w-[640px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+          >
+            Tasks move forward without constant follow-ups. Approvals happen in sequence.
+            Notifications ensure nothing is missed — so your teams spend time on decisions, not
+            chasing status.
+          </motion.p>
+
           <motion.div
             variants={fadeUp}
             className="relative mt-2 max-w-[640px] rounded-2xl border border-purple-100/60 bg-white/80 px-10 py-8 shadow-card backdrop-blur-sm"
           >
             <Quote
               size={32}
-              className="absolute left-5 top-5 text-[#6C60E8]/20"
+              className="absolute left-5 top-5 text-[#6C60E8]/25"
               fill="currentColor"
             />
             <Quote
               size={32}
-              className="absolute bottom-5 right-5 rotate-180 text-[#6C60E8]/20"
+              className="absolute bottom-5 right-5 rotate-180 text-[#6C60E8]/25"
               fill="currentColor"
             />
-            <p className="font-sora text-[18px] font-medium italic leading-[1.7] text-[#2C0E3A] md:text-[20px]">
+            <p
+              className="font-rancho text-[22px] leading-snug text-purple-primary sm:text-[24px] md:text-[26px]"
+              style={{
+                WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.25)",
+                paintOrder: "stroke fill",
+              }}
+            >
               Execution becomes consistent, predictable, and faster.
             </p>
           </motion.div>
         </motion.div>
 
-        {/* Full-width isometric illustration */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12"
+          className="mt-12 w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F0FF] shadow-sm md:mt-14"
         >
-          <SectionWebpImage
-            src={howItWorksPageImages.automateWide}
-            alt="Automate approvals and handoffs with Formezy"
-            aspectWidth={1300}
-            aspectHeight={540}
-            sizes="(max-width: 1024px) 100vw, 1200px"
-          />
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   Section 6 — Integrate + Scale (2-col deep dive)
-───────────────────────────────────────────── */
-function IntegrateAndScaleSection() {
-  return (
-    <section className="section bg-white/90 backdrop-blur-sm">
-      <div className="container-app">
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* Integrate Systems */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-5 overflow-hidden rounded-[24px] border border-purple-100 bg-white shadow-card"
-          >
-            <div className="flex flex-col gap-4 p-8 pb-0">
-              <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Step 04
-              </span>
-              <h3
-                className="font-sora text-[28px] font-bold text-[#2C0E3A]"
-                style={{ lineHeight: "1.2" }}
-              >
-                Integrate <G>Systems</G>
-              </h3>
-              <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                Connect your ERP, CRM, messaging and data stack so Formezy
-                becomes the spine, not another silo.
-              </p>
-              <p className="font-sora text-[14px] italic leading-[24px] text-[#6366A8]/80">
-                A platform that plays with everything you already depend on.
-              </p>
-            </div>
-            <SectionWebpImage
-              src={howItWorksPageImages.integrateSystems}
-              alt="Integrate ERP, CRM, and messaging with Formezy"
-              aspectWidth={580}
-              aspectHeight={300}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="m-6 mt-2 rounded-xl border-0 bg-transparent shadow-none"
+          <div className="relative mx-auto w-full max-w-[1600px] aspect-[1600/779] min-h-[200px]">
+            <Image
+              src={howItWorksPageImages.automateWide}
+              alt="Automated process path from intake to result with Formezy"
+              fill
+              sizes="(max-width: 1600px) 100vw, 1600px"
+              className="object-contain object-center"
             />
+          </div>
+        </motion.div>
+
+        <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-12 lg:gap-14">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-4 text-center md:text-left"
+          >
+            <h3 className="font-sora text-[26px] font-bold text-[#2C0E3A] md:text-[30px]">
+              Integrate <G>Systems</G>
+            </h3>
+            <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
+              Formezy integrates with the tools your teams already use so data flows smoothly
+              without forcing everyone onto yet another interface.
+            </p>
+            <p
+              className="font-rancho text-[20px] leading-snug text-purple-primary sm:text-[22px] md:text-[24px]"
+              style={{
+                WebkitTextStroke: "0.25px rgba(15, 15, 26, 0.2)",
+                paintOrder: "stroke fill",
+              }}
+            >
+              &ldquo;Your systems stay aligned. Your data stays consistent.&rdquo;
+            </p>
           </motion.div>
 
-          {/* Scale with Confidence */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="flex flex-col gap-5 overflow-hidden rounded-[24px] border border-purple-100 bg-white shadow-card"
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+            className="flex flex-col gap-4 text-center md:text-left"
           >
-            <div className="flex flex-col gap-4 p-8 pb-0">
-              <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Step 05
-              </span>
-              <h3
-                className="font-sora text-[28px] font-bold text-[#2C0E3A]"
-                style={{ lineHeight: "1.2" }}
-              >
-                Scale with <G>Confidence</G>
-              </h3>
-              <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                Add new modules, teams and geographies without rebuilding from
-                scratch — Formezy flexes with you at every stage.
-              </p>
-              <p className="font-sora text-[14px] italic leading-[24px] text-[#6366A8]/80">
-                Scale operations effortlessly as your business grows.
-              </p>
-            </div>
-            <SectionWebpImage
-              src={howItWorksPageImages.scaleCard}
-              alt="Scale operations and teams confidently with Formezy"
-              aspectWidth={580}
-              aspectHeight={300}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="m-6 mt-2 rounded-xl border-0 bg-transparent shadow-none"
-            />
+            <h3 className="font-sora text-[26px] font-bold text-[#2C0E3A] md:text-[30px]">
+              Scale with <G>Confidence</G>
+            </h3>
+            <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
+              The platform is built to scale alongside your business — add teams, regions, and
+              workloads without rebuilding your core workflows from scratch.
+            </p>
+            <p
+              className="font-rancho text-[20px] leading-snug text-purple-primary sm:text-[22px] md:text-[24px]"
+              style={{
+                WebkitTextStroke: "0.25px rgba(15, 15, 26, 0.2)",
+                paintOrder: "stroke fill",
+              }}
+            >
+              &ldquo;Scale operations without starting over.&rdquo;
+            </p>
           </motion.div>
         </div>
       </div>
@@ -509,78 +527,70 @@ function IntegrateAndScaleSection() {
 }
 
 /* ─────────────────────────────────────────────
-   Section 7 — CTA: Ready to Build Smarter Workflows?
+   Section 6 — CTA (home `BuildErp` “Own Enterprise Platform” pattern)
 ───────────────────────────────────────────── */
 function CtaSection() {
   return (
-    <section className="section">
+    <section className="section overflow-hidden bg-white/80 backdrop-blur-sm">
       <div className="container-app">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[30px] border border-purple-100 bg-white/90 shadow-[0_8px_48px_rgba(108,96,232,0.12)] backdrop-blur-sm"
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="relative min-h-[520px] overflow-hidden rounded-[30px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:min-h-[600px] lg:min-h-[680px]"
         >
-          {/* Ambient glow */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-[15%] top-0 h-[200px] rounded-full bg-[#6C60E8]/8 blur-[60px]"
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/90 via-white/50 to-transparent"
+          />
+          <Image
+            src={howItWorksPageImages.cta}
+            alt="Build smarter workflows with Formezy"
+            fill
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="z-0 object-cover object-bottom"
           />
 
-          <div className="grid items-center lg:grid-cols-2">
-            {/* Text block */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={viewportOnce}
-              variants={staggerContainer}
-              className="flex flex-col items-start gap-6 p-10 md:p-14 lg:p-16"
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            variants={staggerContainer}
+            className="relative z-10 flex flex-col items-center gap-6 px-6 pb-12 pt-12 text-center md:px-16 md:pt-14 lg:pt-16"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
             >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sora text-[34px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
+              Ready to Build{" "}
+              <span
+                style={{
+                  background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
               >
-                Ready to Build <G>Smarter Workflows?</G>
-              </motion.h2>
+                Smarter Workflows?
+              </span>
+            </motion.h2>
 
-              <motion.p
-                variants={fadeUp}
-                className="max-w-[440px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-              >
-                Let&apos;s turn one of your trickiest processes into a working
-                Formezy system — live, in a 30-minute session.
-              </motion.p>
-
-              <motion.div variants={fadeUp}>
-                <Button href="#demo" size="lg" className="rounded-[10px]">
-                  Contact Us <ArrowRight size={16} />
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            {/* Right image */}
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 px-8 pt-10 lg:h-full lg:min-h-[360px]"
+            <motion.p
+              variants={fadeUp}
+              className="max-w-[640px] font-sora text-[16px] leading-[26px] text-[#6366A8]"
             >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
-              />
-              <SectionWebpImage
-                src={howItWorksPageImages.cta}
-                alt="Build smarter workflows with Formezy"
-                aspectWidth={480}
-                aspectHeight={360}
-                sizes="(max-width: 1024px) 90vw, 380px"
-                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
-              />
+              Design ERP-grade systems tailored to your business workflows, approvals, and
+              operational structure—without the limitations of traditional software. Start building
+              your custom platform today.
+            </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <Button href="#demo" size="lg" className="rounded-[10px]">
+                Get Started <ArrowRight size={16} />
+              </Button>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -597,8 +607,7 @@ export default function HowItWorksContent() {
       <HowItWorksStepsSection />
       <DefineWorkflowsSection />
       <LogicBuilderSection />
-      <AutomateSection />
-      <IntegrateAndScaleSection />
+      <AutomateProcessesSection />
       <CtaSection />
     </>
   );

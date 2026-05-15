@@ -16,8 +16,8 @@ const HOME_WEBP = "/images/Home/Webp";
 /** One WebP per solution — filenames under `public/images/Home/Webp/` */
 const SOLUTION_IMAGE_BY_ID: Record<number, string> = {
   1: `${HOME_WEBP}/business_systems.webp`,
-  2: `${HOME_WEBP}/quality.webp`,
-  3: `${HOME_WEBP}/mfg.webp`,
+  2: `${HOME_WEBP}/mfg.webp`,
+  3: `${HOME_WEBP}/quality.webp`,  
   4: `${HOME_WEBP}/crm_systems.webp`,
   5: `${HOME_WEBP}/supply_chain_systems.webp`,
   6: `${HOME_WEBP}/operations_platforms.webp`,
@@ -38,17 +38,18 @@ const solutions: Solution[] = [
     description:
       "Unify finance, inventory, procurement and HR into one configurable system that scales as your business grows.",
   },
+  
   {
     id: 2,
-    title: "Quality Control Systems",
-    description:
-      "Standardize inspections, approvals, and quality workflows with real-time tracking and complete process visibility.",
-  },
-  {
-    id: 3,
     title: "MFG / Production Systems",
     description:
       "Manage production workflows, execution tracking, and operational coordination across your manufacturing processes.",
+  },
+  {
+    id: 3,
+    title: "Quality Control Systems",
+    description:
+      "Standardize inspections, approvals, and quality workflows with real-time tracking and complete process visibility.",
   },
   {
     id: 4,

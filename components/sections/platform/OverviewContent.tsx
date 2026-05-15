@@ -1,61 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { overviewWebp } from "@/lib/webp-assets";
 
-/* ─────────────────────────────────────────────
-   Reusable image placeholder (user will swap
-   these out with real assets later).
-───────────────────────────────────────────── */
-function ImgPlaceholder({
-  w,
-  h,
-  label,
-  className = "",
-}: {
-  w: number;
-  h: number;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex items-center justify-center overflow-hidden rounded-2xl border border-dashed border-purple-200 bg-gradient-to-br from-purple-50/80 to-blue-50/80 ${className}`}
-      style={{ aspectRatio: `${w}/${h}`, width: "100%" }}
-    >
-      <div className="flex flex-col items-center gap-2 p-4 text-center">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/70 shadow-sm">
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#6366A8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="m21 15-5-5L5 21" />
-          </svg>
-        </div>
-        <p className="font-sora text-[12px] font-medium text-[#6366A8]/70">
-          {label}
-        </p>
-        <p className="font-sora text-[11px] text-[#6366A8]/50">
-          {w} × {h}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-/* ── Gradient span helper ── */
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
     style={{
@@ -69,108 +21,77 @@ const G = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-/* ─────────────────────────────────────────────
-   Section 1 — Hero
-───────────────────────────────────────────── */
-const heroStats = [
-  { value: "10×", label: "Faster deployment" },
-  { value: "80%", label: "Less manual work" },
-  { value: "1 platform", label: "For every team" },
-];
-
+/* ── Hero — same background as rest of site; image below copy ── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-8 pb-0 md:pt-12 lg:pt-16">
-      <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — text */}
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-            className="flex flex-col items-start gap-6"
+    <section className="relative overflow-hidden pt-8 pb-0 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <motion.nav
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          aria-label="Breadcrumb"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[263px]"
+        >
+          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Home
+          </Link>
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">Overview</span>
+        </motion.nav>
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={staggerContainer}
+          className="flex w-full max-w-[1100px] flex-col items-start gap-6 md:gap-8"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[84px]"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Platform Overview
-              </span>
-            </motion.div>
+            Run Your Business on <G>One Intelligent Platform</G>
+          </motion.h1>
 
-            <motion.h1
-              variants={fadeUp}
-              className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
-            >
-              Run Your Business on{" "}
-              <G>One Intelligent Platform</G>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[520px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Formezy is the Enterprise Application Platform that unifies every
-              input, every team and every workflow — so the right information
-              reaches the right people, automatically.
-            </motion.p>
-
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Book a Demo <ArrowRight size={16} />
-              </Button>
-              <Button
-                href="/platform/how-it-works"
-                size="lg"
-                variant="ghost"
-                className="rounded-[10px]"
-              >
-                See How It Works <ChevronRight size={16} />
-              </Button>
-            </motion.div>
-
-            {/* Stats row */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-2 flex flex-wrap gap-8"
-            >
-              {heroStats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-0.5">
-                  <span className="font-sora text-[28px] font-bold text-[#2C0E3A]">
-                    {s.value}
-                  </span>
-                  <span className="font-sora text-[13px] text-[#6366A8]">
-                    {s.label}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Right — image */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            variants={fadeUp}
+            className="max-w-[720px] space-y-2 font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px]"
           >
-            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "800/560" }}>
-              <Image
-                src={overviewWebp.hero}
-                alt="Formezy platform overview"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain"
-              />
-            </div>
+            <p className="font-bold text-[#2C0E3A]">
+              Disconnected tools slow businesses down.
+            </p>
+            <p className="font-normal">
+              Formezy brings your processes, teams, and data into one unified Enterprise
+              Application Platform… built for clarity, control, and scale.
+            </p>
           </motion.div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+          className="mt-10 w-full md:mt-12 lg:mt-14"
+        >
+          <div className="relative aspect-[16/9] w-full md:aspect-[1200/640]">
+            <Image
+              src={overviewWebp.hero}
+              alt="Formezy business platform overview"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain object-left md:object-center"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 2 — What is an EAP
-───────────────────────────────────────────── */
+/* ── What is an EAP — centered copy; full-width illustration (previous style) ── */
 function WhatIsEapSection() {
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
@@ -180,50 +101,45 @@ function WhatIsEapSection() {
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+          className="mx-auto flex max-w-[880px] flex-col items-center gap-5 text-center md:gap-6"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              EAP 101
-            </span>
-          </motion.div>
-
           <motion.h2
             variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[52px]"
-            style={{ lineHeight: "1.15" }}
+            className="font-sora text-[32px] font-bold leading-[1.12] tracking-tight text-[#2C0E3A] sm:text-[40px] md:text-[48px] md:leading-[1.1] lg:text-[56px] lg:leading-[1.08] xl:text-[60px] xl:leading-[70px]"
           >
-            What is an{" "}
-            <G>Enterprise Application Platform</G>
+            What is an <G>Enterprise Application Platform</G>
           </motion.h2>
 
           <motion.p
             variants={fadeUp}
-            className="mx-auto max-w-[680px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            className="font-sora text-[15px] font-normal leading-[24px] text-[#6366A8] sm:text-[16px]"
           >
-            An EAP is a unified foundation that lets you build, connect and
-            operate every internal system your business needs — on a single,
-            governed platform. Instead of managing scattered tools, every team
-            works within one intelligent ecosystem.
+            An Enterprise Application Platform (EAP) connects how your business actually
+            operates by bringing workflows, communication, and documentation into one
+            unified system. Instead of managing multiple tools, an EAP enables structured,
+            end-to-end workflows, centralized communication across teams, integrated
+            document management, and real-time visibility into operations. With Formezy,
+            your business runs on connected processes rather than scattered systems.
           </motion.p>
         </motion.div>
 
-        {/* Hub diagram */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14"
+          className="mt-12 w-full md:mt-14 lg:mt-16"
         >
-          <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/560" }}>
-            <Image
-              src={overviewWebp.enterpriseApplication}
-              alt="Enterprise Application Platform — connected ecosystem"
-              fill
-              sizes="(max-width: 1024px) 100vw, 900px"
-              className="object-contain"
-            />
+          <div className="relative mx-auto w-full max-w-5xl">
+            <div className="relative aspect-[1200/560] w-full">
+              <Image
+                src={overviewWebp.enterpriseApplication}
+                alt="Enterprise Application Platform — unified ecosystem"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1000px"
+                className="object-contain object-center"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
@@ -231,196 +147,124 @@ function WhatIsEapSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 3 — Why Businesses Need an EAP Today
-───────────────────────────────────────────── */
-const eapReasons = [
-  {
-    title: "Connect teams across departments",
-    desc: "Break down information silos and give every team a shared, real-time view of the business.",
-  },
-  {
-    title: "Structure workflows across operations",
-    desc: "Replace ad-hoc processes with governed, automated workflows that scale with your growth.",
-  },
-  {
-    title: "Replace brittle spreadsheet glue",
-    desc: "Move from fragile, error-prone spreadsheets to structured data systems that never go stale.",
-  },
-  {
-    title: "Enable automation and AI on clean data",
-    desc: "Unlock the power of AI and automation only when your data is unified, accurate and ready.",
-  },
+const whyBullets = [
+  "Connecting teams and processes in one system",
+  "Structuring workflows across departments",
+  "Eliminating manual follow-ups and silos",
+  "Providing real-time operational visibility",
 ];
 
+/* ── Why businesses — centered row: image nudged left, copy card nudged right ── */
 function WhyEapSection() {
   return (
-    <section className="section">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
-        >
-          <motion.h2
-            variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[52px]"
-            style={{ lineHeight: "1.15" }}
+        <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-12 lg:mb-14">
+          <h2 className="max-w-[920px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px] xl:text-[56px]">
+            Why Businesses <G>Need an EAP Today</G>
+          </h2>
+          <p
+            className="max-w-[720px] font-rancho text-[26px] leading-snug text-purple-primary sm:text-[30px] md:text-[32px] lg:text-[34px]"
+            style={{
+              WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.3)",
+              paintOrder: "stroke fill",
+            }}
           >
-            Why Businesses{" "}
-            <G>Need an EAP Today</G>
-          </motion.h2>
+            It&apos;s not about adding more tools; it&apos;s about bringing everything
+            together.
+          </p>
+        </div>
 
-          <motion.p
-            variants={fadeUp}
-            className="mx-auto max-w-[560px] font-sora text-[16px] italic leading-[28px] text-[#6366A8]"
-          >
-            It&apos;s not about adding more tools — it&apos;s about bringing
-            everything together.
-          </motion.p>
-        </motion.div>
-
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* Left — image */}
-          <motion.div
-            initial={{ opacity: 0, x: -32 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "680/480" }}>
+        {/* Centered pair: image slightly left, copy card slightly right (overlap on md+) */}
+        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center md:flex-row md:items-center md:justify-center md:gap-0 lg:max-w-[1180px]">
+          <div className="relative z-0 w-full max-w-[620px] shrink-0 md:w-[min(56%,600px)] md:max-w-none md:-translate-x-[clamp(8px,2.5vw,36px)] lg:-translate-x-[clamp(12px,3vw,48px)]">
+            <div className="relative w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F0FF] shadow-sm">
               <Image
                 src={overviewWebp.needEapToday}
+                width={1080}
+                height={652}
+                sizes="(max-width: 768px) 100vw, 600px"
                 alt="Why businesses need an Enterprise Application Platform today"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain"
+                className="h-auto w-full object-contain align-middle"
               />
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right — checklist */}
-          <motion.ul
-            initial="hidden"
-            whileInView="show"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            variants={staggerContainer}
-            className="flex flex-col gap-4"
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 mt-6 w-full max-w-[480px] md:mt-0 md:w-[min(48%,460px)] md:max-w-none md:-ml-10 md:translate-x-[clamp(8px,2.5vw,36px)] lg:-ml-14 lg:translate-x-[clamp(12px,3vw,48px)] xl:-ml-16"
           >
-            {eapReasons.map((r) => (
-              <motion.li
-                key={r.title}
-                variants={fadeUp}
-                className="flex items-start gap-4 rounded-2xl border border-purple-100/60 bg-white/80 p-5 shadow-card backdrop-blur-sm"
-              >
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
-                  <Check size={14} strokeWidth={2.5} />
-                </span>
-                <div className="flex flex-col gap-1">
-                  <span className="font-sora text-[15px] font-semibold text-[#2C0E3A]">
-                    {r.title}
-                  </span>
-                  <span className="font-sora text-[13px] leading-[22px] text-[#6366A8]">
-                    {r.desc}
-                  </span>
-                </div>
-              </motion.li>
-            ))}
-          </motion.ul>
+            <div className="rounded-[20px] border border-purple-100/90 bg-white p-6 shadow-[0_16px_48px_rgba(44,14,58,0.14)] md:rounded-[22px] md:p-7">
+              <p className="font-sora text-[16px] leading-[24px] text-[#2C0E3A]">
+                As businesses grow, so does complexity. Multiple tools, scattered
+                communication, and manual workflows create delays and limit visibility.
+              </p>
+              <p className="mt-4 font-sora text-[16px] font-semibold leading-[24px] text-[#2C0E3A]">
+                An Enterprise Application Platform solves this by:
+              </p>
+              <ul className="mt-4 flex flex-col gap-3">
+                {whyBullets.map((line) => (
+                  <li
+                    key={line}
+                    className="flex gap-3 font-sora text-[15px] leading-relaxed text-[#6366A8] md:text-[16px]"
+                  >
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    {line}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 4 — Internal Systems VS External Apps
-───────────────────────────────────────────── */
+/* ── Internal vs External — width × height tracks 1920×543 (543px at full artboard width) ── */
 function SystemsVsAppsSection() {
   return (
-    <section
-      className="section bg-white/90 backdrop-blur-sm"
-      aria-labelledby="internal-vs-external-heading"
-    >
-      <div className="container-app">
-        <h2
+    <section className="section bg-white/90 backdrop-blur-sm" aria-labelledby="internal-vs-external-heading">
+      <div className="container-app text-center">
+        <motion.h2
           id="internal-vs-external-heading"
-          className="sr-only"
-        >
-          Internal systems versus external apps
-        </h2>
-
-        {/* Hub illustration only */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-4xl"
-        >
-          <div className="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/700" }}>
-            <Image
-              src={overviewWebp.internalVsExternal}
-              alt="Internal systems vs external apps — Formezy unifies them"
-              fill
-              sizes="(max-width: 1024px) 100vw, 900px"
-              className="object-contain"
-            />
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ─────────────────────────────────────────────
-   Section 5 — From Spreadsheets to Structured Systems
-───────────────────────────────────────────── */
-function SpreadsheetToSystemsSection() {
-  return (
-    <section className="section">
-      <div className="container-app">
-        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
-          variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+          variants={fadeUp}
+          className="font-sora text-[30px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[38px] md:text-[44px] lg:text-[48px]"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              The Shift
-            </span>
-          </motion.div>
+          Internal Systems <G>VS</G> External Apps
+        </motion.h2>
+        <motion.p
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          className="mx-auto mt-3 max-w-2xl font-sora text-[15px] leading-[24px] text-[#6366A8] md:text-[16px]"
+        >
+          Internal systems versus external applications — unified with Formezy
+        </motion.p>
 
-          <motion.h2
-            variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[52px]"
-            style={{ lineHeight: "1.15" }}
-          >
-            From Spreadsheets to{" "}
-            <G>Structured Systems</G>
-          </motion.h2>
-
-        </motion.div>
-
-        {/* Single full-width image */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14"
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-10 w-full overflow-hidden rounded-[20px] md:mt-12 md:rounded-[24px]"
         >
-          <div className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl" style={{ aspectRatio: "1200/700" }}>
+          <div className="relative mx-auto w-full max-w-[1920px] aspect-[1920/543] min-h-[200px]">
             <Image
-              src={overviewWebp.fromSpreadsheet}
-              alt="From spreadsheets to structured Formezy systems"
+              src={overviewWebp.internalVsExternal}
+              alt="Internal systems versus external applications — unified with Formezy"
               fill
-              sizes="(max-width: 1024px) 100vw, 1000px"
-              className="object-contain"
+              sizes="(max-width: 1920px) 100vw, 1920px"
+              className="object-contain object-center"
             />
           </div>
         </motion.div>
@@ -429,76 +273,46 @@ function SpreadsheetToSystemsSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 6 — CTA: Ready to Simplify
-───────────────────────────────────────────── */
-function ReadySection() {
+/* ── Spreadsheets — larger cover image in container ── */
+function SpreadsheetToSystemsSection() {
   return (
-    <section className="section">
-      <div className="container-app">
+    <section className="section bg-[#FAFAFE]">
+      <div className="container-app text-center">
+        <motion.h2
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          className="mx-auto max-w-[900px] font-sora text-[30px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[38px] md:text-[44px] lg:text-[48px]"
+        >
+          From Spreadsheets to <G>Structured Systems</G>
+        </motion.h2>
+        <motion.p
+          initial="hidden"
+          whileInView="show"
+          viewport={viewportOnce}
+          variants={fadeUp}
+          className="mx-auto mt-3 max-w-2xl font-sora text-[15px] leading-[24px] text-[#6366A8] md:text-[16px]"
+        >
+          Move from fragile spreadsheets to governed, connected systems your teams can
+          trust.
+        </motion.p>
+
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="overflow-hidden rounded-[30px] border border-purple-100 bg-white/90 shadow-[0_8px_48px_rgba(108,96,232,0.12)] backdrop-blur-sm"
+          className="mt-10 w-full overflow-hidden rounded-[20px] md:mt-12 md:rounded-[24px]"
         >
-          <div className="grid items-center lg:grid-cols-2">
-            {/* Text */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={viewportOnce}
-              variants={staggerContainer}
-              className="flex flex-col items-start gap-6 p-10 md:p-14 lg:p-16"
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sora text-[34px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
-              >
-                Ready to Simplify and{" "}
-                <G>Scale Your Operations?</G>
-              </motion.h2>
-
-              <motion.p
-                variants={fadeUp}
-                className="max-w-[440px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-              >
-                Book a 30-minute walkthrough — we&apos;ll map your core
-                workflows and show you a working system before we even talk
-                pricing.
-              </motion.p>
-
-              <motion.div variants={fadeUp}>
-                <Button href="#demo" size="lg" className="rounded-[10px]">
-                  Book a Demo <ArrowRight size={16} />
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            {/* Device image */}
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 px-8 pt-10 lg:h-full lg:min-h-[380px]"
-            >
-              {/* Ambient glow */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
-              />
-              <div className="relative z-10 w-full max-w-[380px] overflow-hidden rounded-2xl" style={{ aspectRatio: "480/360" }}>
-                <Image
-                  src={overviewWebp.readyToSimplify}
-                  alt="Formezy — ready to simplify and scale operations"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, (max-width: 1280px) 40vw, 380px"
-                  className="object-contain"
-                />
-              </div>
-            </motion.div>
+          <div className="relative aspect-[16/9] min-h-[320px] w-full sm:min-h-[400px] md:aspect-[1200/680] md:min-h-[460px] lg:min-h-[520px] xl:min-h-[560px]">
+            <Image
+              src={overviewWebp.fromSpreadsheet}
+              alt="From spreadsheets to structured systems with Formezy"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover object-center"
+            />
           </div>
         </motion.div>
       </div>
@@ -506,9 +320,74 @@ function ReadySection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Root export
-───────────────────────────────────────────── */
+/* ── CTA — 7 / 5 ── */
+function ReadySection() {
+  return (
+    <section className="section bg-white">
+      <div className="container-app">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-12">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            variants={staggerContainer}
+            className="flex flex-col items-start gap-6 lg:col-span-7"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="text-left font-sora text-[28px] font-bold leading-[1.15] text-[#2C0E3A] sm:text-[34px] md:text-[38px] lg:text-[40px]"
+            >
+              Ready to Simplify and Scale Your Operations?
+            </motion.h2>
+
+            <motion.div
+              variants={fadeUp}
+              className="flex max-w-xl flex-col gap-4 font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px]"
+            >
+              <p className="font-normal text-[#2C0E3A]">
+                Bring your workflows, communication, and data into one connected system
+                with Formezy. Build your enterprise platform. Achieve more with clarity.
+              </p>
+              <p className="font-normal">
+                Lorem ipsum dolor sit amet consectetur. Maecenas molestie eget at fusce
+                dui adipiscing. Purus est sit etiam in. Quam nulla nulla duis elit est.
+                Pulvinar ornare eget ut velit. Suspendisse adipiscing in enim iaculis
+                ultrices netus feugiat. Consequat ut vehicula pellentesque suscipit
+                tincidunt maecenas magna in duis. Fermentum tellus volutpat ut non
+                accumsan egestas etiam.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp}>
+              <Button href="#demo" size="lg" className="rounded-[10px]">
+                Book Demo <ArrowRight size={16} />
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="flex justify-center lg:col-span-5 lg:justify-end"
+          >
+            <div className="relative h-[220px] w-full max-w-[340px] sm:h-[260px] sm:max-w-[380px] lg:h-[280px] lg:max-w-[400px]">
+              <Image
+                src={overviewWebp.readyToSimplify}
+                alt="Simplify and scale operations with Formezy on tablet and mobile"
+                fill
+                sizes="(max-width: 1024px) 90vw, 400px"
+                className="object-contain object-center"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function OverviewContent() {
   return (
     <>

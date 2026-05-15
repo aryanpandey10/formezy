@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
-import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { capabilitiesPageImages } from "@/lib/page-section-images";
 
@@ -28,196 +29,182 @@ function BulletList({ items }: { items: string[] }) {
           <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
             <Check size={12} strokeWidth={2.5} />
           </span>
-          <span className="font-sora text-[14px] leading-[22px] text-[#6366A8]">{b}</span>
+          <span className="font-sora text-[14px] leading-[22px] text-[#6366A8] md:text-[15px] md:leading-[24px]">
+            {b}
+          </span>
         </li>
       ))}
     </ul>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 1 — Hero
-───────────────────────────────────────────── */
+/* ── Hero — left-aligned copy (Overview-style); full-width image below ── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
-      <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — text */}
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-            className="flex flex-col items-start gap-6"
+    <section className="relative overflow-hidden pt-8 pb-0 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <motion.nav
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          aria-label="Breadcrumb"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[min(100%,340px)]"
+        >
+          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Home
+          </Link>
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">Capabilities</span>
+        </motion.nav>
+
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={staggerContainer}
+          className="flex w-full max-w-[1100px] flex-col items-start gap-6 md:gap-8"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[60px] lg:leading-[1.06] xl:text-[68px]"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Capabilities
-              </span>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeUp}
-              className="font-sora text-[30px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[46px] lg:text-[56px]"
-            >
-              Capabilities Built for{" "}
-              <G>Modern Business Operations</G>
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[520px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Everything operations teams need to build, govern and scale
-              internal systems — out of the box, on one platform.
-            </motion.p>
-
-            <motion.div variants={fadeUp}>
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Book a Demo <ArrowRight size={16} />
-              </Button>
-            </motion.div>
+            Capabilities Built for <G>Modern Business Operations</G>
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="max-w-[720px] font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px] sm:leading-[26px]"
+          >
+            A versatile platform for how your teams actually work — design workflows, automate
+            execution, govern access, and see everything in one connected layer.
+          </motion.p>
+          <motion.div variants={fadeUp}>
+            <Button href="#demo" size="lg" className="rounded-[10px]">
+              Get Started <ArrowRight size={16} />
+            </Button>
           </motion.div>
+        </motion.div>
 
-          {/* Right — hero illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
-            <SectionWebpImage
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          className="mt-10 w-full md:mt-12 lg:mt-14"
+        >
+          <div className="relative aspect-[1923/680] w-full max-w-[1280px]">
+            <Image
               src={capabilitiesPageImages.hero}
-              alt="Formezy capabilities for modern business operations"
-              aspectWidth={800}
-              aspectHeight={560}
+              alt="Formezy capabilities dashboard and operations overview"
+              fill
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain object-left md:object-center"
             />
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 2 — Low-Code / No-Code + Workflow Automation
-───────────────────────────────────────────── */
 const lowCodeBullets = [
-  "Build modules visually, no engineering required",
-  "Composable blocks for every team",
-  "Ship internal systems in days",
+  "Compose screens, validations, and data models visually",
+  "Ship internal tools quickly with reusable modules",
+  "Keep IT guardrails while business teams iterate safely",
 ];
 const automationBullets = [
-  "Conditional, event-driven workflows",
-  "SLA-based escalations and retries",
-  "Human-in-the-loop when it matters",
+  "Trigger steps from events, schedules, or data changes",
+  "Built-in escalations, reminders, and human-in-the-loop paths",
+  "Monitor SLAs and bottlenecks from one operations view",
 ];
 
+/* ── Low-Code + Workflow (two columns, wide visual below) ── */
 function LowCodeAutomationSection() {
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
-        {/* 2-col text blocks */}
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="grid gap-10 md:grid-cols-2 md:gap-14"
+          className="grid gap-10 text-left md:grid-cols-2 md:gap-14 lg:gap-16"
         >
-          {/* Low-Code / No-Code */}
           <motion.div variants={fadeUp} className="flex flex-col gap-5">
-            <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              01 · Build Faster
-            </span>
             <h2
-              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[40px]"
+              className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px] lg:text-[40px]"
               style={{ lineHeight: "1.15" }}
             >
               Low-Code <G>/ No-Code</G>
             </h2>
-            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-              Give your operations team the power to design and ship systems
-              themselves — with guardrails your IT team will actually approve.
+            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8] md:text-[16px]">
+              Empower teams to assemble workflows and apps without heavy engineering — so ideas move
+              from whiteboard to production without losing governance.
             </p>
             <BulletList items={lowCodeBullets} />
           </motion.div>
 
-          {/* Workflow Automation */}
           <motion.div variants={fadeUp} className="flex flex-col gap-5">
-            <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              02 · Automate Everything
-            </span>
             <h2
-              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[40px]"
+              className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px] lg:text-[40px]"
               style={{ lineHeight: "1.15" }}
             >
               Workflow <G>Automation</G>
             </h2>
-            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-              Replace email threads, Slack pings and manual follow-ups with
-              workflows that run themselves — and escalate only when they
-              should.
+            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8] md:text-[16px]">
+              Replace manual follow-ups with structured automation — approvals, handoffs, and
+              notifications run in sequence so work never stalls in inboxes.
             </p>
             <BulletList items={automationBullets} />
           </motion.div>
         </motion.div>
 
-        {/* Shared isometric illustration */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14"
+          className="mt-12 w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F8FF] shadow-sm md:mt-14 lg:mt-16"
         >
-          <SectionWebpImage
-            src={capabilitiesPageImages.lowCodeAutomation}
-            alt="Low-code building and workflow automation in Formezy"
-            aspectWidth={1300}
-            aspectHeight={520}
-            sizes="(max-width: 1024px) 100vw, 1200px"
-          />
+          <div className="relative mx-auto aspect-[1414/750] w-full max-w-[1280px] min-h-[200px]">
+            <Image
+              src={capabilitiesPageImages.coreOperationsVisual}
+              alt="Low-code building and workflow automation across operations"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain object-center"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 3 — Powering Every Layer (transition heading)
-───────────────────────────────────────────── */
+/* ── Powering every layer ── */
 function PoweringLayersSection() {
   return (
-    <section className="section">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+          className="mx-auto flex max-w-[880px] flex-col items-center gap-5 text-center md:gap-6"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Control & Governance
-            </span>
-          </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[50px]"
-            style={{ lineHeight: "1.15" }}
+            className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px]"
           >
-            Powering Every Layer{" "}
-            <G>of Your Operations</G>
+            Powering Every Layer <G>of Your Operations</G>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mx-auto max-w-[620px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
           >
-            From frontline task execution to board-level reporting — with the
-            controls you&apos;d expect from enterprise software.
+            From day-to-day execution to leadership visibility — Formezy connects how work gets
+            done with how it&apos;s measured, secured, and improved.
           </motion.p>
         </motion.div>
       </div>
@@ -225,66 +212,65 @@ function PoweringLayersSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 4 — Role-Based Access
-───────────────────────────────────────────── */
 const roleBasedBullets = [
-  "Fine-grained permissions per field and module",
-  "Team- and territory-based data scopes",
-  "SSO, SCIM and audit-grade access logs",
+  "Permissions scoped by role, team, and data sensitivity",
+  "Consistent policies across modules and workflows",
+  "Designed for enterprise SSO and audit expectations",
 ];
 
+/* ── Role-Based Access — light panel, image left / copy right ── */
 function RoleBasedAccessSection() {
   return (
-    <section className="pb-section">
+    <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="overflow-hidden rounded-[24px] border border-purple-100 bg-white shadow-card"
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="overflow-hidden rounded-[24px] border border-[#C7D9F5] bg-gradient-to-br from-[#E8F2FF] via-[#F2F7FF] to-[#EEF4FF] shadow-[0_12px_48px_rgba(60,80,140,0.08)]"
         >
-          <div className="grid lg:grid-cols-2">
-            {/* Left — illustration (lavender/blue bg) */}
-            <div className="flex items-center justify-center bg-gradient-to-br from-[#EEF0FF] via-[#E8F4FF] to-[#EEF0FF] p-8 md:p-12">
-              <SectionWebpImage
-                src={capabilitiesPageImages.roleBased}
-                alt="Role-based access control in Formezy"
-                aspectWidth={500}
-                aspectHeight={380}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-2xl border-0 bg-transparent shadow-none"
-              />
-            </div>
+          <div className="grid items-center gap-10 p-8 md:gap-12 md:p-12 lg:grid-cols-2 lg:gap-14">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewportOnce}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="flex justify-center lg:justify-start"
+            >
+              <div className="relative w-full max-w-[480px] overflow-hidden rounded-[20px] border border-white/80 bg-white/60 p-4 shadow-sm">
+                <div className="relative aspect-[925/690] w-full">
+                  <Image
+                    src={capabilitiesPageImages.roleBased}
+                    alt="Role-based access and secure permissions in Formezy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 480px"
+                    className="object-contain object-center"
+                  />
+                </div>
+              </div>
+            </motion.div>
 
-            {/* Right — text */}
             <motion.div
               initial="hidden"
               whileInView="show"
               viewport={viewportOnce}
               variants={staggerContainer}
-              className="flex flex-col gap-6 p-8 md:p-12"
+              className="flex flex-col gap-5 text-left lg:gap-6"
             >
-              <motion.div variants={fadeUp}>
-                <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                  03 · Access Control
-                </span>
-              </motion.div>
               <motion.h2
                 variants={fadeUp}
-                className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px]"
-                style={{ lineHeight: "1.2" }}
+                className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px] lg:text-[40px]"
+                style={{ lineHeight: "1.15" }}
               >
                 Role-Based <G>Access</G>
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                className="font-sora text-[15px] leading-[26px] text-[#6366A8]"
+                className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
               >
-                Every user sees exactly what they should — no more, no less.
-                Granular permissions work at every level, from workspace to
-                individual field.
+                Keep sensitive operations visible only to the right people. Fine-grained controls
+                align with how your organization already thinks about responsibility and risk.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <BulletList items={roleBasedBullets} />
@@ -297,149 +283,119 @@ function RoleBasedAccessSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 5 — AI-Powered Intelligence – AskEasy
-───────────────────────────────────────────── */
+/* ── AskEasy — centered copy + full-width UI image ── */
 function AiSection() {
   return (
-    <section className="section bg-white/90 backdrop-blur-sm">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="flex flex-col items-center gap-5 text-center"
+          className="mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center md:gap-6"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              04 · AI-Powered
-            </span>
-          </motion.div>
           <motion.h2
             variants={fadeUp}
-            className="mx-auto max-w-3xl font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
-            style={{ lineHeight: "1.15" }}
+            className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px]"
           >
-            AI-Powered Intelligence —{" "}
-            <G>AskEasy</G>
+            AI-Powered Intelligence — <G>AskEasy</G>
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="mx-auto max-w-[600px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
           >
-            AskEasy turns every workflow, form and document into a searchable,
-            summarisable knowledge base. Just ask — Formezy finds it.
+            Ask questions in natural language and move faster across forms, records, and workflows
+            — AskEasy surfaces answers where your teams already work.
           </motion.p>
-
-          {/* Feature pills */}
-          <motion.div
-            variants={fadeUp}
-            className="mt-2 flex flex-wrap items-center justify-center gap-3"
-          >
-            {[
-              "Summarize documents & files instantly",
-              "Find data across all workflows",
-              "Natural language queries",
-              "AI-assisted approvals",
-            ].map((pill) => (
-              <span
-                key={pill}
-                className="inline-flex items-center rounded-pill border border-purple-100 bg-white px-4 py-2 font-sora text-[13px] font-medium text-[#6366A8] shadow-card"
-              >
-                {pill}
-              </span>
-            ))}
-          </motion.div>
         </motion.div>
 
-        {/* Large AI UI image */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 overflow-hidden rounded-[24px] border border-purple-100 bg-gradient-to-br from-purple-50/60 to-blue-50/40 p-4 shadow-card-hover md:p-6"
+          className="mt-10 w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-white shadow-sm md:mt-12"
         >
-          <SectionWebpImage
-            src={capabilitiesPageImages.askEasy}
-            alt="AskEasy AI-powered intelligence in Formezy"
-            aspectWidth={1200}
-            aspectHeight={500}
-            sizes="(max-width: 1024px) 100vw, 1200px"
-            className="rounded-[20px] border-0 shadow-none"
-          />
+          <div className="relative mx-auto aspect-[1600/666] w-full max-w-[1280px] min-h-[200px]">
+            <Image
+              src={capabilitiesPageImages.askEasy}
+              alt="AskEasy AI assistant alongside Formezy data and workflows"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-contain object-center"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 6 — Multi-Level Approvals
-───────────────────────────────────────────── */
 const approvalBullets = [
-  "Unlimited sequential and parallel approval levels",
-  "Delegation when approvers are unavailable",
-  "SLA-based escalations with automatic nudges",
+  "Sequential and parallel paths that mirror real sign-off chains",
+  "Delegation and coverage when approvers are unavailable",
+  "Escalations and reminders tied to SLAs you define",
 ];
 
+/* ── Multi-Level Approvals — soft pink panel, text left / image right ── */
 function ApprovalsSection() {
   return (
-    <section className="section">
+    <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="overflow-hidden rounded-[24px] border border-pink-100 bg-white shadow-card"
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          className="overflow-hidden rounded-[24px] border border-[#F5D0E8] bg-gradient-to-br from-[#FFF5FA] via-[#FFF8FC] to-[#F5F0FF] shadow-[0_12px_48px_rgba(120,60,120,0.08)]"
         >
-          <div className="grid lg:grid-cols-2">
-            {/* Left — text */}
+          <div className="grid items-center gap-10 p-8 md:gap-12 md:p-12 lg:grid-cols-2 lg:gap-14">
             <motion.div
               initial="hidden"
               whileInView="show"
               viewport={viewportOnce}
               variants={staggerContainer}
-              className="flex flex-col gap-6 p-8 md:p-12"
+              className="order-2 flex flex-col gap-5 text-left lg:order-1 lg:gap-6"
             >
-              <motion.div variants={fadeUp}>
-                <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                  05 · Approvals
-                </span>
-              </motion.div>
               <motion.h2
                 variants={fadeUp}
-                className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px]"
-                style={{ lineHeight: "1.2" }}
+                className="font-sora text-[30px] font-bold text-[#2C0E3A] md:text-[38px] lg:text-[40px]"
+                style={{ lineHeight: "1.15" }}
               >
                 Multi-Level <G>Approvals</G>
               </motion.h2>
               <motion.p
                 variants={fadeUp}
-                className="font-sora text-[15px] leading-[26px] text-[#6366A8]"
+                className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
               >
-                Configure approval chains that reflect reality — parallel
-                reviewers, fallback approvers, delegations and SLA-based
-                escalations.
+                Model complex approval chains that match reality — so reviews stay fast, traceable,
+                and consistent across departments.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <BulletList items={approvalBullets} />
               </motion.div>
             </motion.div>
 
-            {/* Right — approval flow (pink/salmon bg) */}
-            <div className="flex items-center justify-center bg-gradient-to-br from-[#FFF0F0] via-[#FFF5F5] to-[#F0F0FF] p-8 md:p-12">
-              <SectionWebpImage
-                src={capabilitiesPageImages.approvals}
-                alt="Multi-level approvals in Formezy"
-                aspectWidth={500}
-                aspectHeight={380}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-2xl border-0 bg-transparent shadow-none"
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={viewportOnce}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="order-1 flex justify-center lg:order-2 lg:justify-end"
+            >
+              <div className="relative w-full max-w-[480px] overflow-hidden rounded-[20px] border border-white/80 bg-white/60 p-4 shadow-sm">
+                <div className="relative aspect-[925/690] w-full">
+                  <Image
+                    src={capabilitiesPageImages.approvals}
+                    alt="Multi-level approval sequence in Formezy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 480px"
+                    className="object-contain object-center"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -447,95 +403,61 @@ function ApprovalsSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 7 — Audit Logs + Data Centralization
-───────────────────────────────────────────── */
 const auditBullets = [
-  "Every action timestamped and attributed",
-  "Immutable audit trail for compliance",
-  "Instant export for auditors",
+  "Immutable history of who changed what and when",
+  "Exports and views aligned with compliance reviews",
+  "Less reconstruction work when issues need investigation",
 ];
 const centralizationBullets = [
-  "Single source of truth across departments",
-  "Cross-module reporting and dashboards",
-  "Live data accessible to every team",
+  "One operational spine instead of scattered spreadsheets",
+  "Shared definitions for customers, orders, and assets",
+  "Reporting that draws from the same live records everyone uses",
 ];
 
+/* ── Audit + Data centralization — two text columns (Figma) ── */
 function AuditDataSection() {
   return (
-    <section className="section bg-white/90 backdrop-blur-sm">
+    <section className="section bg-[#FAFAFE]">
       <div className="container-app">
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={staggerContainer}
-          className="grid gap-6 md:grid-cols-2"
+          className="grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12"
         >
-          {/* Audit Logs */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col gap-5 overflow-hidden rounded-[24px] border border-purple-100 bg-white shadow-card"
+            className="flex flex-col gap-5 rounded-[24px] border border-[#E8E4FF] bg-white/90 p-8 shadow-sm backdrop-blur-sm md:p-10"
           >
-            <div className="flex flex-col gap-4 p-8 pb-0">
-              <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                06 · Auditability
-              </span>
-              <h3
-                className="font-sora text-[26px] font-bold text-[#2C0E3A]"
-                style={{ lineHeight: "1.2" }}
-              >
-                Audit <G>Logs</G>
-              </h3>
-              <p className="font-sora text-[14px] leading-[24px] text-[#6366A8]">
-                Know exactly who did what, where and when — without chasing
-                screenshots or Slack threads.
-              </p>
-              <BulletList items={auditBullets} />
-            </div>
-            <div className="p-6 pt-4">
-              <SectionWebpImage
-                src={capabilitiesPageImages.audit}
-                alt="Immutable audit logs in Formezy"
-                aspectWidth={560}
-                aspectHeight={240}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-xl border-0 shadow-none"
-              />
-            </div>
+            <h3
+              className="font-sora text-[26px] font-bold text-[#2C0E3A] md:text-[30px]"
+              style={{ lineHeight: "1.2" }}
+            >
+              Audit <G>Logs</G>
+            </h3>
+            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8] md:text-[16px]">
+              Track changes and maintain a clear trail for compliance — without stitching together
+              screenshots from different tools.
+            </p>
+            <BulletList items={auditBullets} />
           </motion.div>
 
-          {/* Data Centralization */}
           <motion.div
             variants={fadeUp}
-            className="flex flex-col gap-5 overflow-hidden rounded-[24px] border border-purple-100 bg-white shadow-card"
+            className="flex flex-col gap-5 rounded-[24px] border border-[#E8E4FF] bg-white/90 p-8 shadow-sm backdrop-blur-sm md:p-10"
           >
-            <div className="flex flex-col gap-4 p-8 pb-0">
-              <span className="inline-flex w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                07 · Data
-              </span>
-              <h3
-                className="font-sora text-[26px] font-bold text-[#2C0E3A]"
-                style={{ lineHeight: "1.2" }}
-              >
-                Data <G>Centralization</G>
-              </h3>
-              <p className="font-sora text-[14px] leading-[24px] text-[#6366A8]">
-                One place for every record, every update, every decision — no
-                more hunting through folders or mailboxes.
-              </p>
-              <BulletList items={centralizationBullets} />
-            </div>
-            <div className="p-6 pt-4">
-              <SectionWebpImage
-                src={capabilitiesPageImages.dataCentral}
-                alt="Centralized operational data in Formezy"
-                aspectWidth={560}
-                aspectHeight={240}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="rounded-xl border-0 shadow-none"
-              />
-            </div>
+            <h3
+              className="font-sora text-[26px] font-bold text-[#2C0E3A] md:text-[30px]"
+              style={{ lineHeight: "1.2" }}
+            >
+              Data <G>Centralization</G>
+            </h3>
+            <p className="font-sora text-[15px] leading-[26px] text-[#6366A8] md:text-[16px]">
+              Bring operational data into one governed layer so teams stop reconciling conflicting
+              versions across folders and inboxes.
+            </p>
+            <BulletList items={centralizationBullets} />
           </motion.div>
         </motion.div>
       </div>
@@ -543,86 +465,73 @@ function AuditDataSection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   Section 8 — CTA
-───────────────────────────────────────────── */
+/* ── CTA — gradient card, centered copy, image below (Figma) ── */
 function CtaSection() {
   return (
-    <section className="section">
+    <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[30px] border border-purple-100 bg-white/90 shadow-[0_8px_48px_rgba(108,96,232,0.12)] backdrop-blur-sm"
+          className="relative overflow-hidden rounded-[30px] border border-[#D8D4F5] bg-gradient-to-b from-[#EEF4FF] via-[#F5F0FF] to-[#EDE9FF] px-6 py-12 shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:px-12 md:py-14 lg:px-16 lg:py-16"
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-[10%] top-0 h-[200px] rounded-full bg-[#6C60E8]/8 blur-[60px]"
+            className="pointer-events-none absolute inset-x-[12%] top-0 h-[180px] rounded-full bg-[#6C60E8]/10 blur-[56px]"
           />
 
-          <div className="grid items-center lg:grid-cols-2">
-            {/* Text */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={viewportOnce}
-              variants={staggerContainer}
-              className="flex flex-col items-start gap-6 p-10 md:p-14 lg:p-16"
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            variants={staggerContainer}
+            className="relative z-10 mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[44px] lg:text-[48px]"
             >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sora text-[34px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
-              >
-                Ready to Unlock{" "}
-                <G>Smarter Business Capabilities?</G>
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="max-w-[420px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-              >
-                Build automation, control and intelligence into one unified
-                platform with Formezy.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <Button href="#demo" size="lg" className="rounded-[10px]">
-                  Contact Us <ArrowRight size={16} />
-                </Button>
-              </motion.div>
+              Ready to Unlock <G>Smarter Business Capabilities?</G>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            >
+              Experience the power of Formezy&apos;s enterprise-grade features. Build your own
+              system with clarity.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <Button href="#demo" size="lg" className="rounded-[10px]">
+                Get Started <ArrowRight size={16} />
+              </Button>
             </motion.div>
+          </motion.div>
 
-            {/* Illustration */}
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 px-8 pt-10 lg:h-full lg:min-h-[360px]"
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.06 }}
+            className="relative z-10 mx-auto mt-10 w-full max-w-[900px] overflow-hidden rounded-[22px] border border-white/70 bg-white/50 shadow-sm md:mt-12"
+          >
+            <div className="relative aspect-[1414/750] w-full min-h-[180px]">
+              <Image
+                src={capabilitiesPageImages.ctaVisual}
+                alt="Connected secure operations with Formezy"
+                fill
+                sizes="(max-width: 1024px) 100vw, 900px"
+                className="object-contain object-center"
               />
-              <SectionWebpImage
-                src={capabilitiesPageImages.cta}
-                alt="Unlock smarter business capabilities with Formezy"
-                aspectWidth={480}
-                aspectHeight={360}
-                sizes="(max-width: 1024px) 90vw, 380px"
-                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
-              />
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────────────────────
-   Root export
-───────────────────────────────────────────── */
 export default function CapabilitiesContent() {
   return (
     <>

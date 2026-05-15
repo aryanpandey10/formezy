@@ -14,6 +14,8 @@ type Props = {
   slideClassName?: string;
   showArrows?: boolean;
   showDots?: boolean;
+  /** `overlay` = large side arrows centered vertically (e.g. industry carousel). */
+  arrowPlacement?: "bottom" | "overlay";
 };
 
 export default function Carousel({
@@ -23,6 +25,7 @@ export default function Carousel({
   slideClassName,
   showArrows = true,
   showDots = false,
+  arrowPlacement = "bottom",
 }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -72,9 +75,33 @@ export default function Carousel({
         </div>
       </div>
 
-      {showArrows && (
+      {showArrows && arrowPlacement === "overlay" && (
+        <>
+          <button
+            type="button"
+            onClick={prev}
+            disabled={!canPrev}
+            aria-label="Previous"
+            className="absolute left-0 top-1/2 z-10 hidden h-[72px] w-[72px] -translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] disabled:cursor-not-allowed disabled:opacity-40 md:flex lg:h-[88px] lg:w-[88px] lg:-translate-x-[12%]"
+          >
+            <ChevronLeft size={28} className="text-[#2C0E3A]" />
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            disabled={!canNext}
+            aria-label="Next"
+            className="absolute right-0 top-1/2 z-10 hidden h-[72px] w-[72px] translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-[0_8px_32px_rgba(44,14,58,0.2)] transition-all hover:bg-[#3D1650] disabled:cursor-not-allowed disabled:opacity-40 md:flex lg:h-[88px] lg:w-[88px] lg:translate-x-[12%]"
+          >
+            <ChevronRight size={28} />
+          </button>
+        </>
+      )}
+
+      {showArrows && arrowPlacement === "bottom" && (
         <div className="mt-6 flex items-center justify-center gap-3">
           <button
+            type="button"
             onClick={prev}
             disabled={!canPrev}
             aria-label="Previous"
@@ -83,6 +110,7 @@ export default function Carousel({
             <ChevronLeft size={18} />
           </button>
           <button
+            type="button"
             onClick={next}
             disabled={!canNext}
             aria-label="Next"
@@ -98,6 +126,7 @@ export default function Carousel({
           {scrollSnaps.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => emblaApi?.scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className={cn(

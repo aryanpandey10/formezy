@@ -17,28 +17,25 @@ export const integrationPageImages = {
 /** `/platform/how-it-works` — WebP under `public/images/How it Works/Webp/`. */
 export const howItWorksPageImages = {
   hero: hiw("idea_Execution.webp"),
-  stepDefine: hiw("define_workflows.webp"),
-  stepLogicBuilder: hiw("Build with Logic Builder.webp"),
-  stepAutomate: hiw("automate_processes.webp"),
-  stepScale: hiw("scale_structure.webp"),
-  defineDeep: hiw("map_workflows.webp"),
-  logicLarge: hiw("build_system_logic.webp"),
-  automateWide: hiw("enable_automation.webp"),
-  integrateSystems: hiw("connect_ ecosystem.webp"),
-  scaleCard: hiw("build_workflows.webp"),
+  hiwCarouselMap: hiw("map_workflows.webp"),
+  hiwCarouselEnable: hiw("enable_automation.webp"),
+  hiwCarouselConnect: hiw("connect_ ecosystem.webp"),
+  defineDeep: hiw("define_workflows.webp"),
+  logicLarge: hiw("Build with Logic Builder.webp"),
+  automateWide: hiw("automate_processes.webp"),
   cta: hiw("build_workflows.webp"),
 } as const;
 
 /** `/platform/capabilities` — WebP under `public/images/Capabilities/Webp/`. */
+const cap = (file: string) => publicAssetUrl("images", "Capabilities", "Webp", file);
+
 export const capabilitiesPageImages = {
-  hero: "/images/Capabilities/Webp/capabilities_banner.webp",
-  lowCodeAutomation: "/images/Capabilities/Webp/workflow_automation_operations.webp",
-  roleBased: "/images/Capabilities/Webp/capabilities_role_access.webp",
-  askEasy: "/images/Capabilities/Webp/capabilities_askeasy.webp",
-  approvals: "/images/Capabilities/Webp/capabilities_multilevel.webp",
-  audit: "/images/Capabilities/Webp/capabilities_multilevel.webp",
-  dataCentral: "/images/Capabilities/Webp/capabilities_banner.webp",
-  cta: "/images/Capabilities/Webp/workflow_automation_operations.webp",
+  hero: cap("capabilities_banner.webp"),
+  coreOperationsVisual: cap("workflow_automation_operations.webp"),
+  roleBased: cap("capabilities_role_access.webp"),
+  askEasy: cap("capabilities_askeasy.webp"),
+  approvals: cap("capabilities_multilevel.webp"),
+  ctaVisual: cap("workflow_automation_operations.webp"),
 } as const;
 
 /** `/platform/features` — WebP under `public/images/Features/Webp/`. */
