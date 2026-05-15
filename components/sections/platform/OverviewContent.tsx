@@ -176,26 +176,31 @@ function WhyEapSection() {
         </div>
 
         {/* Centered pair: image slightly left, copy card slightly right (overlap on md+) */}
-        <div className="mx-auto flex w-full max-w-[1120px] flex-col items-center md:flex-row md:items-center md:justify-center md:gap-0 lg:max-w-[1180px]">
-          <div className="relative z-0 w-full max-w-[620px] shrink-0 md:w-[min(56%,600px)] md:max-w-none md:-translate-x-[clamp(8px,2.5vw,36px)] lg:-translate-x-[clamp(12px,3vw,48px)]">
-            <div className="relative w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-[#F3F0FF] shadow-sm">
-              <Image
-                src={overviewWebp.needEapToday}
-                width={1080}
-                height={652}
-                sizes="(max-width: 768px) 100vw, 600px"
+        
+        <div className="mx-auto flex w-full max-w-[1320px] flex-col items-center md:flex-row md:items-stretch md:justify-center" style={{ alignItems: "center" }}>
+
+          {/* LEFT IMAGE */}
+          <div className="relative z-0 w-full md:w-[65%] lg:w-[75%]">
+            <div className="relative h-full overflow-hidden">
+
+              <img
                 alt="Why businesses need an Enterprise Application Platform today"
-                className="h-auto w-full object-contain align-middle"
+                loading="lazy"
+                width="1080"
+                height="652"
+                decoding="async"
+                data-nimg="1"
+                className="h-full w-full object-cover"
+                src="/images/overview/Webp/businesses_eap.webp"
+                style={{ color: "transparent" }}
               />
+
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 mt-6 w-full max-w-[480px] md:mt-0 md:w-[min(48%,460px)] md:max-w-none md:-ml-10 md:translate-x-[clamp(8px,2.5vw,36px)] lg:-ml-14 lg:translate-x-[clamp(12px,3vw,48px)] xl:-ml-16"
+          {/* RIGHT CONTENT */}
+          <div className="relative z-10 mt-6 w-full md:mt-0 md:w-[35%] lg:w-[30%] md:-ml-16"
+          style={{ height: "fit-content" }}
           >
             <div className="rounded-[20px] border border-purple-100/90 bg-white p-6 shadow-[0_16px_48px_rgba(44,14,58,0.14)] md:rounded-[22px] md:p-7">
               <p className="font-sora text-[16px] leading-[24px] text-[#2C0E3A]">
@@ -219,7 +224,8 @@ function WhyEapSection() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>
