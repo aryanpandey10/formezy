@@ -60,13 +60,13 @@ export default function TailoredCrmContent() {
               className="font-sora text-[40px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[48px] md:text-[56px] lg:text-[64px]"
             >
               Build a Tailored <br className="hidden sm:block" />
-              <G>CRM Your Business</G>
+              <G>ERP for Your Business</G>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-6 font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[18px]"
             >
-              Not a generic CRM, but one designed around your sales processes, customer journeys, and business workflows.
+              Not a rigid system, but one built around how your business actually operates.
             </motion.p>
             <motion.p
               variants={fadeUp}
@@ -113,15 +113,14 @@ export default function TailoredCrmContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Most businesses don&apos;t struggle with managing customers; they struggle with disconnected systems and unclear processes.
+                Most businesses don’t struggle because they lack systems; they struggle because their systems don’t fit how they operate.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Leads are scattered across tools and spreadsheets",
+                  "Spreadsheets and manual processes across teams",
                   "Lack of visibility into the sales pipeline",
-                  "Missed follow-ups and delayed responses",
-                  "Disconnected communication across teams",
-                  "Inconsistent tracking of customer interactions",
+                  "Rigid ERP systems that don’t adapt",
+                  "Lack of visibility across operations",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -161,35 +160,35 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              A tailored CRM is built around how your sales and customer processes actually work, not predefined pipelines or rigid structures.
+              A tailored ERP is not a fixed system; it’s built around your workflows, processes, and business logic.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              It adapts to your business, ensuring every interaction, follow-up, and opportunity is tracked seamlessly.
+              Instead of forcing your business to adapt, the system adapts to you.
             </motion.p>
-            <p className="text-[#2C0E3A] mt-5"><b>Core Capabilities</b></p>
+            <p className="text-[#2C0E3A] mt-5"><b>Core Business Functions</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead management across stages
+                Accounting and financial workflows
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Sales pipeline tracking and visibility
+                Inventory and material management
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Customer data and interaction tracking
+                HR and internal operations
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Follow-ups and activity management
+                Production and process tracking
               </li>
 
             </ul>
@@ -198,7 +197,11 @@ export default function TailoredCrmContent() {
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead → Opportunity → Deal
+                Order → Invoice → Payment
+              </li>              
+              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
+                Purchase → Inventory → Accounting
               </li>              
 
             </ul>
@@ -241,15 +244,15 @@ export default function TailoredCrmContent() {
                 <G>Enables It</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Formezy allows you to build a CRM that fits your sales processes, not the other way around.
+                Formezy doesn’t just give you an ERP; it gives you the ability to build one that fits your business.
 
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Low-code customization for sales workflows",
-                  "Automation across follow-ups and processes",
-                  "Role-based access for sales teams",
-                  "Integration with communication and business tools",
+                  "Low-code environment for fast customization",
+                  "Workflow automation across operations",
+                  "Role-based access and control",
+                  "Seamless integrations with existing systems",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -305,31 +308,30 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              See how a tailored CRM works in a real business scenario:
+              See how a tailored ERP works in a real business scenario:
             </motion.p>
-            <p className="text-[#2C0E3A]"><b>Sales Workflow</b></p>
+            <p className="text-[#2C0E3A]"><b>Order Processing Workflow</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead captured and assigned
+                Order created and validated
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Opportunity created and tracked
+                Inventory checked and allocated
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Follow-ups scheduled automatically
+                Invoice generated automatically
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Deal closed and recorded
+                Payment tracked and updated
               </li>
-
             </ul>
           </motion.div>
 
@@ -364,40 +366,40 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                With Formezy, your CRM becomes a fully connected customer management system.
+                With Formezy, your ERP becomes a fully connected operational system.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Lead capture and tracking workflows
+                    End-to-end workflows across departments
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Sales pipeline and opportunity management
+                    Automated approvals and task execution
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Customer communication and updates
+                    Centralized communication and data
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Follow-up and task automation
+                    Real-time visibility into operations
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Centralized customer data and interactions
+                    Custom modules aligned to your processes
                   </p>
                 </li>
               </ul>
@@ -411,34 +413,34 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables tailored CRM systems across industries, adapting to different sales processes and customer journeys.
+                Formezy enables tailored ERP systems across industries, adapting to different operational needs and workflows.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Manufacturing and distribution
+                    Manufacturing and production
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Retail and wholesale
+                    Retail and distribution
                   </p>
                 </li>
 
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
+                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
+                    Construction and EPC
+                  </p>
+                </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
                     Service-based businesses
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Real estate and project-based businesses
                   </p>
                 </li>
               </ul>
@@ -452,34 +454,34 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                A tailored CRM built on Formezy improves how your business manages customers and sales.
+                A tailored ERP built on Formezy transforms how your business operates.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Better visibility across the sales pipeline
+                    Improved efficiency across workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Reduced missed opportunities and follow-ups
+                    Reduced manual errors and delays
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster response and conversion cycles
+                    Faster execution and decision-making
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Structured and scalable customer management
+                    Scalable systems that grow with you
                   </p>
                 </li>
               </ul>
@@ -493,7 +495,7 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables CRM systems that are built for real business processes.
+                Formezy goes beyond traditional ERP systems by enabling truly tailored solutions.
               </p>
 
               <ul className="mt-8 space-y-4">
@@ -507,14 +509,14 @@ export default function TailoredCrmContent() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Fully customizable to your sales workflows
+                   Designed for flexibility and scalability
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster implementation and adaptability
+                    Faster implementation and customization
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
@@ -542,10 +544,10 @@ export default function TailoredCrmContent() {
           >
             <div className="relative z-10 px-6">
               <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Build a CRM That <G>Works Your Way</G>
+                Build an ERP That  <G>Fits Your Business</G>
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond rigid CRMs and create one designed around your sales process.
+                Move beyond rigid systems and create one designed around your operations.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">

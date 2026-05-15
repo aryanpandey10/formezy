@@ -59,14 +59,14 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="font-sora text-[40px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[48px] md:text-[56px] lg:text-[64px]"
             >
-              Build a Tailored <br className="hidden sm:block" />
-              <G>CRM Your Business</G>
+              Build a Tailored Document Management System <br className="hidden sm:block" />
+              <G> for Your Business</G>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-6 font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[18px]"
             >
-              Not a generic CRM, but one designed around your sales processes, customer journeys, and business workflows.
+              Not scattered files, but a structured system to manage, control, and track every document across your operations.
             </motion.p>
             <motion.p
               variants={fadeUp}
@@ -113,15 +113,15 @@ export default function TailoredCrmContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Most businesses don&apos;t struggle with managing customers; they struggle with disconnected systems and unclear processes.
+                Most businesses don’t struggle with documents, they struggle with managing them efficiently.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Leads are scattered across tools and spreadsheets",
-                  "Lack of visibility into the sales pipeline",
-                  "Missed follow-ups and delayed responses",
-                  "Disconnected communication across teams",
-                  "Inconsistent tracking of customer interactions",
+                  "Files scattered across systems, emails, and folders",
+                  "No control over versions and updates",
+                  "Lack of visibility into document status",
+                  "Manual approval and review processes",
+                  "Risk of missing or unauthorized access",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -154,42 +154,42 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
             >
-              What Is a Tailored <br className="hidden sm:block" />
+              What Is a Tailored Document Management System <br className="hidden sm:block" />
 
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              A tailored CRM is built around how your sales and customer processes actually work, not predefined pipelines or rigid structures.
+              A tailored Document Management System is built around how your business creates, reviews, and manages documents.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              It adapts to your business, ensuring every interaction, follow-up, and opportunity is tracked seamlessly.
+              It ensures every document is structured, controlled, and accessible, without confusion or duplication.
             </motion.p>
             <p className="text-[#2C0E3A] mt-5"><b>Core Capabilities</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead management across stages
+                Centralized document storage
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Sales pipeline tracking and visibility
+                Version control and tracking
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Customer data and interaction tracking
+                Role-based access permissions
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Follow-ups and activity management
+                Structured approval workflows
               </li>
 
             </ul>
@@ -198,9 +198,8 @@ export default function TailoredCrmContent() {
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead → Opportunity → Deal
-              </li>              
-
+                Upload → Review → Approve → Archive
+              </li>                           
             </ul>
           </motion.div>
 
@@ -241,15 +240,15 @@ export default function TailoredCrmContent() {
                 <G>Enables It</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Formezy allows you to build a CRM that fits your sales processes, not the other way around.
+                Formezy allows you to build a document system that fits your internal processes and compliance needs.
 
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Low-code customization for sales workflows",
-                  "Automation across follow-ups and processes",
-                  "Role-based access for sales teams",
-                  "Integration with communication and business tools",
+                  "Low-code customization for document workflows",
+                  "Automated approvals and review processes",
+                  "Role-based access and document control",
+                  "Integration with workflows and business systems",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -305,31 +304,30 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              See how a tailored CRM works in a real business scenario:
+              See how a tailored document system works in a real business scenario:
             </motion.p>
-            <p className="text-[#2C0E3A]"><b>Sales Workflow</b></p>
+            <p className="text-[#2C0E3A]"><b>Document Approval Workflow</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lead captured and assigned
+                Document uploaded and categorized
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Opportunity created and tracked
+                Assigned for review and validation
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Follow-ups scheduled automatically
+                Approved through defined workflow
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Deal closed and recorded
+                Archived with complete version history
               </li>
-
             </ul>
           </motion.div>
 
@@ -364,40 +362,40 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                With Formezy, your CRM becomes a fully connected customer management system.
+                With Formezy, your document system becomes structured and fully connected to your operations.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Lead capture and tracking workflows
+                    Centralized document storage and organization
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Sales pipeline and opportunity management
+                    Document lifecycle management
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Customer communication and updates
+                    Approval and review workflows
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Follow-up and task automation
+                    Access control and permission management
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Centralized customer data and interactions
+                    Tracking of document status and history
                   </p>
                 </li>
               </ul>
@@ -411,34 +409,34 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables tailored CRM systems across industries, adapting to different sales processes and customer journeys.
+                Formezy enables document systems across industries, adapting to different documentation and compliance needs.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Manufacturing and distribution
+                    Manufacturing and production
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Retail and wholesale
+                    Construction and EPC
                   </p>
                 </li>
 
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
+                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
+                    Healthcare and regulated industries
+                  </p>
+                </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
                     Service-based businesses
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Real estate and project-based businesses
                   </p>
                 </li>
               </ul>
@@ -452,34 +450,35 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                A tailored CRM built on Formezy improves how your business manages customers and sales.
+                A tailored Document Management System improves how your business handles information.
+
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Better visibility across the sales pipeline
+                    Better control over documents and access
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Reduced missed opportunities and follow-ups
+                    Reduced duplication and errors
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster response and conversion cycles
+                    Faster approvals and document processing
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Structured and scalable customer management
+                    Improved compliance and traceability
                   </p>
                 </li>
               </ul>
@@ -493,7 +492,7 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables CRM systems that are built for real business processes.
+                Formezy enables document systems that are structured, secure, and adaptable.
               </p>
 
               <ul className="mt-8 space-y-4">
@@ -507,14 +506,14 @@ export default function TailoredCrmContent() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Fully customizable to your sales workflows
+                   Fully customizable to your document workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster implementation and adaptability
+                    Faster implementation and scalability
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
@@ -542,10 +541,10 @@ export default function TailoredCrmContent() {
           >
             <div className="relative z-10 px-6">
               <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Build a CRM That <G>Works Your Way</G>
+                Take Control of <G>Your Documents</G>
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond rigid CRMs and create one designed around your sales process.
+                Move beyond scattered files and build a structured document system with Formezy.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">

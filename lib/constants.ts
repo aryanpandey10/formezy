@@ -104,9 +104,9 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Blogs", href: "/resources/blogs" },
       { label: "Case Studies", href: "#" },
-      { label: "Guides", href: "#" },
-      { label: "Whitepapers", href: "#" },
-      { label: "Webinars", href: "#" },
+      // { label: "Guides", href: "#" },
+      // { label: "Whitepapers", href: "#" },
+      // { label: "Webinars", href: "#" },
       { label: "Downloads", href: "#" },
       { label: "Videos", href: "/resources/videos" },
     ],
@@ -141,7 +141,7 @@ export const footerColumns: FooterColumn[] = [
 ];
 
 export const footerMeta = {
-  companyName: "Safal Infosoft Pvt. Ltd.",
+  companyName: "Safal Infosoft Ltd.",
   address:
     "Shivalik Corporate Park, B/204-205, 132 Feet Ring Rd, Shivranjani, Char Rasta, Jodhpur Village, Ahmedabad, Gujarat 380015",
   email: "hello@safalinfosoft.com",
