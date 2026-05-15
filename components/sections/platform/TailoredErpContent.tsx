@@ -364,40 +364,28 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                With Formezy, your CRM becomes a fully connected customer management system.
+                Formezy helps businesses streamline operations and manage workflows efficiently.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Lead capture and tracking workflows
+                    Lead management and tracking
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Sales pipeline and opportunity management
+                    Customer communication workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Customer communication and updates
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Follow-up and task automation
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Centralized customer data and interactions
+                    Automated reminders and follow-ups
                   </p>
                 </li>
               </ul>
@@ -411,34 +399,28 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables tailored CRM systems across industries, adapting to different sales processes and customer journeys.
+                Formezy supports multiple industries with customizable workflows.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Manufacturing and distribution
+                    Real estate and property management
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Retail and wholesale
+                    Healthcare and patient workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Service-based businesses
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Real estate and project-based businesses
+                    Education and training systems
                   </p>
                 </li>
               </ul>
@@ -476,12 +458,6 @@ export default function TailoredCrmContent() {
                     Faster response and conversion cycles
                   </p>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Structured and scalable customer management
-                  </p>
-                </li>
               </ul>
             </div>
 
@@ -493,34 +469,28 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables CRM systems that are built for real business processes.
+                Formezy combines CRM capabilities with workflow automation.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Built on an Enterprise Application Platform (EAP)
+                    Flexible modules for your business
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Fully customizable to your sales workflows
+                    Integrated communication and analytics
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster implementation and adaptability
-                  </p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                  <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Systems that evolve with your business
+                    Scalable architecture for growth
                   </p>
                 </li>
               </ul>
