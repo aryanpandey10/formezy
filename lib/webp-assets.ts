@@ -67,3 +67,22 @@ export const careerCultureWebp = [
   publicAssetUrl("images", "Career", "webp", "career_4.webp"),
   publicAssetUrl("images", "Career", "webp", "build_what_powers_modern_businesses.webp"),
 ] as const;
+
+/** Tailored CRM — `public/images/Tailored_crm/Webp/`. */
+export const tailoredCrmWebp = {
+  businessChallenges: publicAssetUrl("images", "Tailored_crm", "Webp", "business-challenges.webp"),
+  whatIsTailoredTenant: publicAssetUrl(
+    "images",
+    "Tailored_crm",
+    "Webp",
+    "what-is-a-tailored-tenant-management.webp",
+  ),
+  howFormezyEnables: publicAssetUrl("images", "Tailored_crm", "Webp", "how-formezy-enables-it.webp"),
+  realWorkflow: publicAssetUrl("images", "Tailored_crm", "Webp", "real-workflow-in-action.webp"),
+  buildCrmWorksYourWay: publicAssetUrl(
+    "images",
+    "Tailored_crm",
+    "Webp",
+    "build-a-crm-that-works-your-way.webp",
+  ),
+} as const;

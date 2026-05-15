@@ -37,8 +37,7 @@ const solutions: Solution[] = [
     title: "Business Workflows",
     description:
       "Unify finance, inventory, procurement and HR into one configurable system that scales as your business grows.",
-  },
-  
+  },  
   {
     id: 2,
     title: "MFG / Production Systems",
