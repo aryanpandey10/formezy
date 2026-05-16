@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import businessChallenges from "../../../public/images/Tailored_erp/Webp/business-challenges.webp";
-import howFormezy from "../../../public/images/Tailored_erp/Webp/how-formezy-enables-it.webp";
-import realWorkflow from "../../../public/images/Tailored_erp/Webp/real-workflow-in-action.webp";
-import tailored from "../../../public/images/Tailored_erp/Webp/what-is-a-tailored-tenant-management-system.webp";
-import cta from "../../../public/images/Tailored_erp/Webp/build-a-erp-that-fits-your-business.webp";
+import businessChallenges from "../../../public/images/Tenant_Management_System/Webp/business_challenges.webp";
+import howFormezy from "../../../public/images/Tenant_Management_System/Webp/how_formezy_enables _it.webp";
+import realWorkflow from "../../../public/images/Tenant_Management_System/Webp/real_workflow_in_action.webp";
+import tailored from "../../../public/images/Tenant_Management_System/Webp/tailored.webp";
+import cta from "../../../public/images/Tenant_Management_System/Webp/simplify_tenant_and_property_management.webp";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-
+import { tailoredCrmWebp } from "@/lib/webp-assets";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -26,7 +26,7 @@ const G = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-export default function TailoredErpContent() {
+export default function TailoredCrmContent() {
   return (
     <div className="flex flex-col gap-0 overflow-hidden">
       {/* ── Section 1: Hero & Breadcrumb ── */}
@@ -64,14 +64,14 @@ export default function TailoredErpContent() {
               variants={fadeUp}
               className="font-sora text-[40px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[48px] md:text-[56px] lg:text-[64px]"
             >
-              Build a Tailored <br className="hidden sm:block" />
-              <G>ERP for Your Business</G>
+              Build a Tailored Tenant Management System <br className="hidden sm:block" />
+              <G> for Your Business</G>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-6 font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[18px]"
             >
-              Not a rigid system, but one built around how your business actually operates.
+              Manage tenants, properties, leases, and operations with a structured system built around how your business actually runs.
             </motion.p>
             <motion.p
               variants={fadeUp}
@@ -118,14 +118,15 @@ export default function TailoredErpContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Most businesses don’t struggle because they lack systems; they struggle because their systems don’t fit how they operate.
+                Managing tenants and properties across systems or spreadsheets leads to gaps, delays, and lack of visibility.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Spreadsheets and manual processes across teams",
-                  "Lack of visibility into the sales pipeline",
-                  "Rigid ERP systems that don’t adapt",
-                  "Lack of visibility across operations",
+                  "Tenant data scattered across multiple tools",
+                  "Manual tracking of rent, leases, and renewals",
+                  "Lack of visibility into tenant activities and status",
+                  "Delays in maintenance tracking and resolution",
+                  "Inefficient coordination across teams and properties",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -158,42 +159,42 @@ export default function TailoredErpContent() {
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
             >
-              What Is a Tailored <br className="hidden sm:block" />
+              What Is a Tailored Document Management System <br className="hidden sm:block" />
 
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              A tailored ERP is not a fixed system; it’s built around your workflows, processes, and business logic.
+              A tailored Tenant Management System is built around your property operations, from onboarding tenants to managing leases and ongoing services
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Instead of forcing your business to adapt, the system adapts to you.
+              It ensures every tenant, payment, and activity is tracked in a structured and connected system.
             </motion.p>
-            <p className="text-[#2C0E3A] mt-5"><b>Core Business Functions</b></p>
+            <p className="text-[#2C0E3A] mt-5"><b>Core Capabilities</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Accounting and financial workflows
+                Tenant records and information management
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Inventory and material management
+                Rent tracking and payment cycles
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                HR and internal operations
+                Lease management and renewals
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Production and process tracking
+                Maintenance tracking and issue handling
               </li>
 
             </ul>
@@ -202,13 +203,8 @@ export default function TailoredErpContent() {
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Order → Invoice → Payment
-              </li>              
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Purchase → Inventory → Accounting
-              </li>              
-
+                Tenant onboarding → Rent cycle → Renewal
+              </li>                           
             </ul>
           </motion.div>
 
@@ -249,15 +245,15 @@ export default function TailoredErpContent() {
                 <G>Enables It</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Formezy doesn’t just give you an ERP; it gives you the ability to build one that fits your business.
+                Formezy allows you to build a tenant system that fits your property workflows and operational needs
 
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Low-code environment for fast customization",
-                  "Workflow automation across operations",
-                  "Role-based access and control",
-                  "Seamless integrations with existing systems",
+                  "Low-code customization for property workflows",
+                  "Automated rent cycles, reminders, and approvals",
+                  "Role-based access across teams and stakeholders",
+                  "Integration with communication and operational systems",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -313,29 +309,29 @@ export default function TailoredErpContent() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              See how a tailored ERP works in a real business scenario:
+              See how a tailored tenant system works in a real business scenario:
             </motion.p>
-            <p className="text-[#2C0E3A]"><b>Order Processing Workflow</b></p>
+            <p className="text-[#2C0E3A]"><b>Tenant Lifecycle Workflow</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Order created and validated
+                Tenant onboarded with complete details
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Inventory checked and allocated
+                Rent cycles tracked and managed
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Invoice generated automatically
+                Maintenance requests handled and updated
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Payment tracked and updated
+                Lease renewed or closed seamlessly
               </li>
             </ul>
           </motion.div>
@@ -371,40 +367,40 @@ export default function TailoredErpContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                With Formezy, your ERP becomes a fully connected operational system.
+                With Formezy, your tenant system becomes a fully connected operational platform.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    End-to-end workflows across departments
+                    Tenant onboarding and record management
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Automated approvals and task execution
+                    Rent collection and payment tracking
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Centralized communication and data
+                    Lease lifecycle management
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Real-time visibility into operations
+                    Maintenance requests and tracking
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Custom modules aligned to your processes
+                    Communication across tenants and teams
                   </p>
                 </li>
               </ul>
@@ -418,34 +414,34 @@ export default function TailoredErpContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables tailored ERP systems across industries, adapting to different operational needs and workflows.
+                Formezy enables tenant systems across different property and rental-based businesses.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Manufacturing and production
+                    Real estate and property management
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Retail and distribution
+                    Commercial and residential leasing
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Construction and EPC
+                    Rental and asset-based businesses
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Service-based businesses
+                    Co-working and managed spaces
                   </p>
                 </li>
               </ul>
@@ -459,34 +455,35 @@ export default function TailoredErpContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                A tailored ERP built on Formezy transforms how your business operates.
+                A tailored Tenant Management System improves how you manage properties and tenants.
+
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Improved efficiency across workflows
+                    Better visibility across tenants and properties
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Reduced manual errors and delays
+                    Reduced delays in rent and maintenance processes
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster execution and decision-making
+                    Improved coordination across teams
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Scalable systems that grow with you
+                    Structured and scalable property management
                   </p>
                 </li>
               </ul>
@@ -500,7 +497,7 @@ export default function TailoredErpContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy goes beyond traditional ERP systems by enabling truly tailored solutions.
+                Formezy enables tenant systems that are structured, scalable, and adaptable.
               </p>
 
               <ul className="mt-8 space-y-4">
@@ -514,14 +511,14 @@ export default function TailoredErpContent() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                   Designed for flexibility and scalability
+                  Fully customizable to your property workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster implementation and customization
+                    Faster implementation and flexibility
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
@@ -549,10 +546,10 @@ export default function TailoredErpContent() {
           >
             <div className="relative z-10 px-6">
               <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Build an ERP That  <G>Fits Your Business</G>
+                Simplify Tenant and <G>Property Management</G>
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond rigid systems and create one designed around your operations.
+                Build a system that keeps every tenant, lease, and process connected.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">

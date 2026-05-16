@@ -1,6 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import businessChallenges from "../../../public/images/Document_Management_System/Webp/business_challenges.webp";
+import howFormezy from "../../../public/images/Document_Management_System/Webp/how_formezy_enables _it.webp";
+import realWorkflow from "../../../public/images/Document_Management_System/Webp/real_workflow_in_action.webp";
+import tailored from "../../../public/images/Document_Management_System/Webp/what _is _a _tailored_document_management _system.webp";
+import cta from "../../../public/images/Document_Management_System/Webp/take_control_of_your_documents.webp";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
@@ -90,7 +95,7 @@ export default function TailoredCrmContent() {
             >
               <div className="overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-gradient-to-br from-[#EEF4FF] to-[#F5F0FF] p-2 shadow-sm">
                 <Image
-                  src={tailoredCrmWebp.businessChallenges}
+                  src={businessChallenges}
                   alt="Business Challenges Illustration"
                   width={600}
                   height={400}
@@ -211,7 +216,7 @@ export default function TailoredCrmContent() {
             className="relative mx-auto w-full overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-white shadow-xl"
           >
             <Image
-              src={tailoredCrmWebp.whatIsTailoredTenant}
+              src={tailored}
               alt="Tailored CRM Workflow"
               width={1200}
               height={600}
@@ -272,7 +277,7 @@ export default function TailoredCrmContent() {
             >
               <div className="overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-white p-2 shadow-sm">
                 <Image
-                  src={tailoredCrmWebp.howFormezyEnables}
+                  src={howFormezy}
                   alt="How Formezy Enables It Illustration"
                   width={600}
                   height={400}
@@ -339,7 +344,7 @@ export default function TailoredCrmContent() {
             className="relative mx-auto w-full overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-white shadow-lg"
           >
             <Image
-              src={tailoredCrmWebp.realWorkflow}
+              src={realWorkflow}
               alt="Real Workflow Illustration"
               width={1200}
               height={500}
@@ -555,7 +560,7 @@ export default function TailoredCrmContent() {
 
             <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
               <Image
-                src={tailoredCrmWebp.buildCrmWorksYourWay}
+                src={cta}
                 alt="Build a CRM That Works Your Way Illustration"
                 width={1200}
                 height={600}
