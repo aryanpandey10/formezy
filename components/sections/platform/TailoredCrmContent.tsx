@@ -113,7 +113,7 @@ export default function TailoredCrmContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Most businesses don’t struggle with managing customers; they struggle with disconnected systems and unclear processes.
+                Most businesses don&apos;t struggle with managing customers; they struggle with disconnected systems and unclear processes.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[

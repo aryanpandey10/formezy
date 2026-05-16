@@ -9,7 +9,7 @@ import { fadeUp, viewportOnce, staggerContainer } from "@/lib/animations";
 type Client = {
   id: number;
   name: string;
-  shortName: string;
+  logo: string;
   industry: string;
   color: string;
   quote: string;
@@ -22,84 +22,84 @@ const clients: Client[] = [
   {
     id: 1,
     name: "Heavy Metal and Tubes Pvt Ltd.",
-    shortName: "HM",
+    logo: "/images/Home/heavy_metal.png",
     industry: "Manufacturing",
     color: "#6C63FF",
     quote:
       "Formezy transformed how our plants operate. Real-time visibility, faster approvals, zero dependency on spreadsheets - it's the one system our entire operations team actually trusts and uses daily.",
-    author: "Management",
+    author: "",
     role: "Heavy Metal and Tubes Pvt Ltd.",
     stars: 5,
   },
   {
     id: 2,
     name: "Twin Cool Engineers",
-    shortName: "TC",
+    logo: "/images/Home/twincool.png",
     industry: "Engineering",
     color: "#06B6D4",
     quote:
       "We moved from another ERP to Formezy. The transition was smooth, adoption was quick, and our workflows finally feel structured, connected, and fully in our control.",
-    author: "Management",
+    author: "",
     role: "Twin Cool Engineers",
     stars: 5,
   },
   {
     id: 3,
     name: "Yash Filter",
-    shortName: "YF",
+    logo: "/images/Home/yash_filters.png",
     industry: "Filtration",
     color: "#F59E0B",
     quote:
       "Formezy cut down the time our team spends on follow-ups significantly. It was simple enough for our team to use from day one - without anyone having to ask.",
-    author: "Management",
+    author: "",
     role: "Yash Filter",
     stars: 5,
   },
   {
     id: 4,
     name: "Pep Foods",
-    shortName: "PF",
+    logo: "/images/Home/pepfood.png",
     industry: "Food & Beverage",
     color: "#A78BFA",
     quote:
       "Compliance and procurement used to demand constant follow-ups. With Formezy, the system follows up for us - deadlines are met, nothing slips, and our team works worry-free.",
-    author: "Management",
+    author: "",
     role: "Pep Foods",
     stars: 5,
   },
   {
     id: 5,
     name: "Parishi Construction Equipment",
-    shortName: "PC",
+    logo: "/images/Home/parishi.png",
     industry: "Construction",
     color: "#EF4444",
     quote:
       "We tried many ERPs - none felt right. Formezy just fits. Our construction workflows, approvals, and equipment tracking finally run the way our business actually works.",
-    author: "Management",
+    author: "",
     role: "Parishi Construction Equipment",
     stars: 5,
   },
   {
     id: 6,
     name: "Armstrong Machinery LLP",
-    shortName: "AM",
+    logo: "/images/Home/armstrong.png",
     industry: "Machinery",
     color: "#6366F1",
     quote:
       "Before Formezy, our processes were scattered across emails and sheets. Now everything is tracked, approved, and reported in one place - our operations run smoother than ever before.",
-    author: "Management",
+    author: "",
     role: "Armstrong Machinery LLP",
     stars: 5,
   },
   {
     id: 7,
     name: "Navjivan Roller Flour & Pulse Mills",
-    shortName: "NV",
+    logo: "/images/Home/navjivan.png",
     industry: "Food & Milling",
     color: "#10B981",
     quote:
       "Eight decades of manual operations - Formezy digitized all of it. Reporting improved, decisions became data-driven, and we're now more competitive than we've ever been in our history.",
-    author: "Management",
+    author: "",
     role: "Navjivan Roller Flour & Pulse Mills",
     stars: 5,
   },
@@ -191,11 +191,13 @@ export default function Testimonials() {
                 />
 
                 <div className="flex items-start justify-between gap-4">
-                  <div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-[15px] font-extrabold text-white shadow-lg"
-                    style={{ backgroundColor: client.color }}
-                  >
-                    {client.shortName}
+                  <div className="relative h-14 w-32 shrink-0">
+                    <Image
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      fill
+                      className="object-contain object-left"
+                    />
                   </div>
                   <div className="flex min-w-0 flex-col items-end gap-1">
                     <div className="flex items-center gap-0.5 text-amber-400">
@@ -229,12 +231,14 @@ export default function Testimonials() {
                 </blockquote>
 
                 <div className="mt-8 flex items-center gap-3">
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-white shadow"
-                    style={{ backgroundColor: client.color }}
-                  >
-                    {client.shortName}
-                  </span>
+                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+                    <Image
+                      src={client.logo}
+                      alt={client.author}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                   <div className="flex min-w-0 flex-col leading-tight">
                     <span className="text-[14px] font-semibold text-ink">
                       {client.author}
