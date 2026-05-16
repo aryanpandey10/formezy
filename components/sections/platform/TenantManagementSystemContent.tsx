@@ -58,7 +58,7 @@ export default function TailoredCrmContent() {
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="max-w-[800px]"
+            className="max-w-full"
           >
             <motion.h1
               variants={fadeUp}
@@ -174,7 +174,7 @@ export default function TailoredCrmContent() {
             >
               It ensures every tenant, payment, and activity is tracked in a structured and connected system.
             </motion.p>
-            <p className="text-[#2C0E3A] mt-5"><b>Core Capabilities</b></p>
+            <p className="text-[#2C0E3A] my-3"><b>Core Capabilities</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
@@ -197,15 +197,7 @@ export default function TailoredCrmContent() {
                 Maintenance tracking and issue handling
               </li>
 
-            </ul>
-            <p className="text-[#2C0E3A] mt-5"><b>How It Works in Practice</b></p>
-            <ul className="flex flex-wrap items-center gap-x-8 gap-y-3 justify-center">
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Tenant onboarding → Rent cycle → Renewal
-              </li>                           
-            </ul>
+            </ul>            
           </motion.div>
 
           <motion.div
@@ -310,30 +302,7 @@ export default function TailoredCrmContent() {
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
               See how a tailored tenant system works in a real business scenario:
-            </motion.p>
-            <p className="text-[#2C0E3A]"><b>Tenant Lifecycle Workflow</b></p>
-            <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Tenant onboarded with complete details
-              </li>
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Rent cycles tracked and managed
-              </li>
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Maintenance requests handled and updated
-              </li>
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Lease renewed or closed seamlessly
-              </li>
-            </ul>
+            </motion.p>            
           </motion.div>
 
           <motion.div
@@ -361,7 +330,7 @@ export default function TailoredCrmContent() {
 
             {/* Card 1 */}
             <div className="rounded-[30px] border border-[#9D94EF] p-[50px]">
-              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px] lg:text-[60px] lg:leading-[70px]">
+              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px]">
                 What You Can{" "}
                 <span className="text-[#6C63FF]">Build and Manage</span>
               </h2>
@@ -408,7 +377,7 @@ export default function TailoredCrmContent() {
 
             {/* Card 2 */}
             <div className="rounded-[30px] border border-[#9D94EF] p-[50px]">
-              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px] lg:text-[60px] lg:leading-[70px]">
+              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px]">
                 Industry{" "}
                 <span className="text-[#6C63FF]">Applications</span>
               </h2>
@@ -449,7 +418,7 @@ export default function TailoredCrmContent() {
 
             {/* Card 3 */}
             <div className="rounded-[30px] border border-[#9D94EF] p-[50px]">
-              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px] lg:text-[60px] lg:leading-[70px]">
+              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px]">
                 Business{" "}
                 <span className="text-[#6C63FF]">Impact</span>
               </h2>
@@ -491,7 +460,7 @@ export default function TailoredCrmContent() {
 
             {/* Card 4 */}
             <div className="rounded-[30px] border border-[#9D94EF] p-[50px]">
-              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px] lg:text-[60px] lg:leading-[70px]">
+              <h2 className="font-sora text-[40px] font-bold leading-[48px] text-[#1D0629] sm:text-[48px] sm:leading-[58px]">
                 Why{" "}
                 <span className="text-[#6C63FF]">Formezy</span>
               </h2>
