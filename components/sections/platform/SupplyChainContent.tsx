@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import businessChallenges from "../../../public/images/Document_Management_System/Webp/business_challenges.webp";
-import howFormezy from "../../../public/images/Document_Management_System/Webp/how_formezy_enables _it.webp";
-import realWorkflow from "../../../public/images/Document_Management_System/Webp/real_workflow_in_action.webp";
-import tailored from "../../../public/images/Document_Management_System/Webp/what _is _a _tailored_document_management _system.webp";
-import cta from "../../../public/images/Document_Management_System/Webp/take_control_of_your_documents.webp";
+import businessChallenges from "../../../public/images/Supply_Chain_Management/Webp/business_challenges.webp";
+import howFormezy from "../../../public/images/Supply_Chain_Management/Webp/how_formezy_enables _it.webp";
+import realWorkflow from "../../../public/images/Supply_Chain_Management/Webp/real_workflow_in_action.webp";
+import tailored from "../../../public/images/Supply_Chain_Management/Webp/tailored.webp";
+import cta from "../../../public/images/Supply_Chain_Management/Webp/bring_control_to_your_supply_chain.webp";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
@@ -26,7 +26,7 @@ const G = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-export default function TailoredCrmContent() {
+export default function SupplyChainContent() {
   return (
     <div className="flex flex-col gap-0 overflow-hidden">
       {/* ── Section 1: Hero & Breadcrumb ── */}
@@ -51,7 +51,7 @@ export default function TailoredCrmContent() {
             <span className="text-[#C4B5FD]" aria-hidden>
               <ChevronRight size={14} strokeWidth={2.5} />
             </span>
-            <span className="text-[#2C0E3A]">Document Management System</span>
+            <span className="text-[#2C0E3A]">Supply Chain Management</span>
           </motion.nav>
 
           <motion.div
@@ -64,14 +64,14 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="font-sora text-[40px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[48px] md:text-[56px] lg:text-[64px]"
             >
-              Build a Tailored Document Management System <br className="hidden sm:block" />
+              Build a Tailored Supply Chain Management System <br className="hidden sm:block" />
               <G> for Your Business</G>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-6 font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[18px]"
             >
-              Not scattered files, but a structured system to manage, control, and track every document across your operations.
+              Manage procurement, vendors, logistics, and demand with structured workflows, real-time visibility, and complete control.
             </motion.p>
             <motion.p
               variants={fadeUp}
@@ -118,15 +118,15 @@ export default function TailoredCrmContent() {
                 Business <G>Challenges</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Most businesses don’t struggle with documents, they struggle with managing them efficiently.
+                Managing supply chains across disconnected systems leads to delays, inefficiencies, and lack of coordination.
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Files scattered across systems, emails, and folders",
-                  "No control over versions and updates",
-                  "Lack of visibility into document status",
-                  "Manual approval and review processes",
-                  "Risk of missing or unauthorized access",
+                  "Limited visibility across procurement, inventory, and logistics",
+                  "Disconnected vendor and supplier management",
+                  "Delays in order processing and delivery tracking",
+                  "Manual coordination across multiple stakeholders",
+                  "Difficulty aligning demand with supply",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -159,42 +159,42 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
             >
-              What Is a Tailored Document Management System <br className="hidden sm:block" />
+              What Is a Tailored Supply Chain Management System <br className="hidden sm:block" />
 
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              A tailored Document Management System is built around how your business creates, reviews, and manages documents.
+              A tailored Supply Chain Management System is built around how your business manages sourcing, movement, and delivery of goods.
             </motion.p>
             <motion.p
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              It ensures every document is structured, controlled, and accessible, without confusion or duplication.
+              It connects procurement, vendors, logistics, and demand into one structured system, ensuring smooth and efficient operations.
             </motion.p>
             <p className="text-[#2C0E3A] mt-5"><b>Core Capabilities</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Centralized document storage
+                Procurement and sourcing workflows
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Version control and tracking
+                Vendor and supplier management
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Role-based access permissions
+                Logistics tracking and coordination
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Structured approval workflows
+               Demand planning and forecasting
               </li>
 
             </ul>
@@ -203,7 +203,7 @@ export default function TailoredCrmContent() {
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Upload → Review → Approve → Archive
+                Order → Dispatch → Delivery
               </li>                           
             </ul>
           </motion.div>
@@ -245,15 +245,15 @@ export default function TailoredCrmContent() {
                 <G>Enables It</G>
               </motion.h2>
               <motion.p variants={fadeUp} className="font-sora text-[16px] text-[#6366A8]">
-                Formezy allows you to build a document system that fits your internal processes and compliance needs.
+                Formezy allows you to build a supply chain system tailored to your operational complexity and scale.
 
               </motion.p>
               <motion.ul variants={staggerContainer} className="flex flex-col gap-4">
                 {[
-                  "Low-code customization for document workflows",
-                  "Automated approvals and review processes",
-                  "Role-based access and document control",
-                  "Integration with workflows and business systems",
+                  "Low-code customization for supply chain workflows",
+                  "Automation across procurement and logistics processes",
+                  "Role-based access for internal teams and stakeholders",
+                  "Integration with inventory, finance, and external systems",
                 ].map((item) => (
                   <motion.li
                     key={item}
@@ -309,30 +309,25 @@ export default function TailoredCrmContent() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-[900px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              See how a tailored document system works in a real business scenario:
+              See how a tailored supply chain system works in a real business scenario:
             </motion.p>
-            <p className="text-[#2C0E3A]"><b>Document Approval Workflow</b></p>
+            <p className="text-[#2C0E3A]"><b>Order Fulfillment Workflow</b></p>
             <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Document uploaded and categorized
+                Order created and processed
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Assigned for review and validation
+                Dispatch initiated and tracked
               </li>
 
               <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Approved through defined workflow
-              </li>
-
-              <li className="flex items-center gap-3 font-sora text-[16px] font-normal leading-[24px] text-[#6F6C90]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
-                Archived with complete version history
-              </li>
+                Delivery completed and confirmed
+              </li>              
             </ul>
           </motion.div>
 
@@ -367,40 +362,40 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                With Formezy, your document system becomes structured and fully connected to your operations.
+               With Formezy, your supply chain becomes a fully connected and controlled system.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Centralized document storage and organization
+                    Procurement and purchase workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Document lifecycle management
+                   Vendor onboarding and management
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Approval and review workflows
+                    Order tracking and logistics coordination
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Access control and permission management
+                    Demand planning and supply alignment
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Tracking of document status and history
+                    Communication across teams and partners
                   </p>
                 </li>
               </ul>
@@ -414,7 +409,7 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables document systems across industries, adapting to different documentation and compliance needs.
+                Formezy enables supply chain systems across industries that rely on efficient movement and coordination of goods.
               </p>
 
               <ul className="mt-8 space-y-4">
@@ -428,20 +423,20 @@ export default function TailoredCrmContent() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Construction and EPC
+                    Retail and wholesale
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Healthcare and regulated industries
+                    Logistics and distribution
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Service-based businesses
+                    Construction and project-based operations
                   </p>
                 </li>
               </ul>
@@ -455,35 +450,35 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                A tailored Document Management System improves how your business handles information.
-
+                A tailored Supply Chain Management System improves efficiency and coordination across your operations.
               </p>
 
               <ul className="mt-8 space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Better control over documents and access
+                    Better visibility across the entire supply chain
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Reduced duplication and errors
+                    Reduced delays in procurement and delivery
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster approvals and document processing
+                    Improved coordination across vendors and teams
+
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Improved compliance and traceability
+                    More accurate demand and supply planning
                   </p>
                 </li>
               </ul>
@@ -497,7 +492,7 @@ export default function TailoredCrmContent() {
               </h2>
 
               <p className="mt-6 font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                Formezy enables document systems that are structured, secure, and adaptable.
+                Formezy enables supply chain systems that are flexible, scalable, and fully connected.
               </p>
 
               <ul className="mt-8 space-y-4">
@@ -511,14 +506,14 @@ export default function TailoredCrmContent() {
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                   Fully customizable to your document workflows
+                  Fully customizable to your supply chain workflows
                   </p>
                 </li>
 
                 <li className="flex items-start gap-3">
                   <span className="mt-2 h-2.5 w-2.5 rounded-full bg-[#9D94EF]" />
                   <p className="font-sora text-[16px] leading-[28px] text-[#6F6C90]">
-                    Faster implementation and scalability
+                    Faster implementation and adaptability
                   </p>
                 </li>
                 <li className="flex items-start gap-3">
@@ -546,10 +541,10 @@ export default function TailoredCrmContent() {
           >
             <div className="relative z-10 px-6">
               <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Take Control of <G>Your Documents</G>
+                Bring Control to <G>Your Supply Chain</G>
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond scattered files and build a structured document system with Formezy.
+                Build a system that connects procurement, logistics, and delivery seamlessly.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">

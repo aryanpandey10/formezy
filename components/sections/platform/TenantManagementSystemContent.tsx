@@ -51,7 +51,7 @@ export default function TailoredCrmContent() {
             <span className="text-[#C4B5FD]" aria-hidden>
               <ChevronRight size={14} strokeWidth={2.5} />
             </span>
-            <span className="text-[#2C0E3A]">Tailored CRM</span>
+            <span className="text-[#2C0E3A]">Tenant Management</span>
           </motion.nav>
 
           <motion.div
