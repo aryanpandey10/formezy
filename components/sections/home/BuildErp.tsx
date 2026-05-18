@@ -49,7 +49,7 @@ export default function BuildErp() {
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
             >
-              Build Your{" "}
+              Ready to Move{" "}
               <span
                 style={{
                   background:
@@ -59,7 +59,7 @@ export default function BuildErp() {
                   backgroundClip: "text",
                 }}
               >
-                Own Enterprise Platform
+                Beyond Traditional Systems?
               </span>
             </motion.h2>
 

@@ -4,7 +4,7 @@ import InventoryManagementContent from "@/components/sections/platform/Inventory
 export const metadata: Metadata = {
   title: "Inventory Management System | Formezy",
   description:
-    "Build a tailored CRM system that matches how your sales, success and marketing teams actually work.",
+    "Track every SKU across every location in real time with automated reordering and multi-warehouse rules.",
 };
 
 export default function InventoryManagementPage() {

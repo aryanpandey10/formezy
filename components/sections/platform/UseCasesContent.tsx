@@ -3,14 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { 
+  ArrowRight, 
+  Check, 
+  ChevronRight,
+  Users2,
+  Boxes,
+  HeartPulse,
+  Megaphone,
+  Factory,
+  Stethoscope,
+  Landmark,
+  ShoppingCart,
+  Truck
+} from "lucide-react";
 import Button from "@/components/ui/Button";
 import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
-import {
-  BusinessSystemsSection,
-  IndustrySolutionsSection,
-  TailoredSystemsSection,
-} from "@/components/sections/use-cases/UseCaseTabs";
+import UseCaseTabs from "@/components/sections/use-cases/UseCaseTabs";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { useCasesPageWebp } from "@/lib/webp-assets";
 
@@ -26,6 +35,21 @@ const G = ({ children }: { children: React.ReactNode }) => (
     {children}
   </span>
 );
+
+/* ─────────────────────────────────────────────
+   Use-case icon grid data
+───────────────────────────────────────────── */
+const overviewItems = [
+  { label: "Customer Relationship Mgmt.", Icon: Users2,       color: "#6C63FF" },
+  { label: "Enterprise Resource Planning", Icon: Boxes,       color: "#A78BFA" },
+  { label: "Human Resource CRM",           Icon: HeartPulse,  color: "#06B6D4" },
+  { label: "Marketing Automation",          Icon: Megaphone,   color: "#F59E0B" },
+  { label: "Manufacturing",                 Icon: Factory,     color: "#10B981" },
+  { label: "Healthcare",                    Icon: Stethoscope, color: "#EF4444" },
+  { label: "Financial Services / Banking",  Icon: Landmark,    color: "#8B5CF6" },
+  { label: "Retail & E-commerce",           Icon: ShoppingCart,color: "#14B8A6" },
+  { label: "Logistics / Supply Chain",      Icon: Truck,       color: "#F43F5E" },
+];
 
 const faqs: AccordionItem[] = [
   {
@@ -66,40 +90,116 @@ const faqs: AccordionItem[] = [
   },
 ];
 
-/* ── Hero — breadcrumb + “Built for…” + Turning (image left, copy right) ── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-8 pb-0 md:pt-10 lg:pt-12">
+    <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
       <div className="container-app">
-        <motion.p
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-4 font-sora text-[15px] font-semibold text-[#2C0E3A] md:text-[16px]"
-        >
-          Built for Every Business Use Case
-        </motion.p>
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left — text */}
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={staggerContainer}
+            className="flex flex-col items-start gap-6 lg:pt-4"
+          >
+            <motion.div variants={fadeUp}>
+              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+                Use Cases
+              </span>
+            </motion.div>
 
-        <motion.nav
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          aria-label="Breadcrumb"
-          className="mb-10 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[min(100%,320px)]"
-        >
-          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
-            Home
-          </Link>
-          <span className="text-[#C4B5FD]" aria-hidden>
-            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
-          </span>
-          <span className="text-[#2C0E3A]">Use Cases</span>
-        </motion.nav>
+            <motion.h1
+              variants={fadeUp}
+              className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
+            >
+              Built for Every{" "}
+              <G>Business Use Case</G>
+            </motion.h1>
 
+            <motion.p
+              variants={fadeUp}
+              className="max-w-[500px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            >
+              Whatever your operation — from field service to claims to retail
+              — there&apos;s a Formezy Use Case that takes you most of the way,
+              fast.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+              <Button href="#demo" size="lg" className="rounded-[10px]">
+                Book a Demo <ArrowRight size={16} />
+              </Button>
+              <Button
+                href="#explore"
+                size="lg"
+                variant="secondary"
+                className="rounded-[10px]"
+              >
+                Explore Use Cases
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right — 3×3 icon grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="relative"
+          >
+            {/* Icon grid */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              {overviewItems.map((o, i) => {
+                const { Icon } = o;
+                const isCenter = i === 4; 
+                return (
+                  <motion.div
+                    key={o.label}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 + i * 0.06,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className={`flex flex-col items-center justify-center gap-2.5 rounded-[18px] border p-4 text-center shadow-sm transition-transform hover:-translate-y-1 ${
+                      isCenter
+                        ? "border-purple-200 bg-gradient-to-br from-purple-100 to-blue-50 shadow-md"
+                        : "border-purple-100/60 bg-white/90"
+                    }`}
+                  >
+                    <span
+                      className="flex h-11 w-11 items-center justify-center rounded-2xl"
+                      style={{
+                        backgroundColor: `${o.color}18`,
+                        color: o.color,
+                      }}
+                    >
+                      <Icon size={20} />
+                    </span>
+                    <span className="font-sora text-[11px] font-semibold leading-[16px] text-[#2C0E3A]">
+                      {o.label}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TurningNeedsSection() {
+  return (
+    <section className="section">
+      <div className="container-app">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -28 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewportOnce}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
             className="w-full"
           >
@@ -119,23 +219,28 @@ function HeroSection() {
 
           <motion.div
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={viewportOnce}
             variants={staggerContainer}
             className="flex flex-col gap-5 text-left lg:gap-6"
           >
-            <motion.h1
+            <motion.div variants={fadeUp}>
+              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+                Turning business needs into working systems
+              </span>
+            </motion.div>
+
+            <motion.h2
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[44px] lg:text-[48px] xl:text-[52px]"
             >
               Turning Business Needs into <G>Working Systems</G>
-            </motion.h1>
+            </motion.h2>
             <motion.p
               variants={fadeUp}
               className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Formezy gives you the flexibility to build custom systems that match how your teams
-              actually work — with templates, workflows, and integrations so you move from
-              requirements to production without starting from zero.
+              Every Use Case comes with proven templates, best-practice workflows and integration blueprints — so you go live on real value in weeks, not quarters.
             </motion.p>
             <motion.ul variants={staggerContainer} className="flex flex-col gap-3">
               {[
@@ -160,42 +265,9 @@ function HeroSection() {
               <Button href="#demo" size="lg" className="rounded-[10px]">
                 Get Started <ArrowRight size={16} />
               </Button>
-              <Button href="#explore" size="lg" variant="secondary" className="rounded-[10px]">
-                Explore below
-              </Button>
             </motion.div>
           </motion.div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function ExploreIntroSection() {
-  return (
-    <section id="explore" className="section bg-[#FAFAFE]">
-      <div className="container-app">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={viewportOnce}
-          variants={staggerContainer}
-          className="mx-auto flex max-w-[920px] flex-col items-center gap-5 text-center md:gap-6"
-        >
-          <motion.h2
-            variants={fadeUp}
-            className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px]"
-          >
-            Explore Use Cases <G>Across Systems and Industries</G>
-          </motion.h2>
-          <motion.p
-            variants={fadeUp}
-            className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
-          >
-            Build custom business systems for industry-specific solutions. Formezy supports a wide
-            range of use cases, all within one connected platform.
-          </motion.p>
-        </motion.div>
       </div>
     </section>
   );
@@ -304,10 +376,36 @@ export default function UseCasesContent() {
   return (
     <>
       <HeroSection />
-      <ExploreIntroSection />
-      <TailoredSystemsSection />
-      <BusinessSystemsSection />
-      <IndustrySolutionsSection />
+      <TurningNeedsSection />
+      
+      <section id="explore" className="section bg-[#FAFAFE]">
+        <div className="container-app">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            variants={staggerContainer}
+            className="mx-auto flex max-w-[920px] flex-col items-center gap-5 text-center md:gap-6 mb-16"
+          >
+            <motion.h2
+              variants={fadeUp}
+              className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[40px] md:text-[48px] lg:text-[52px]"
+            >
+              Explore Use Cases <G>Across Systems and Industries</G>
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            >
+              Build custom business systems for industry-specific solutions. Formezy supports a wide
+              range of use cases, all within one connected platform.
+            </motion.p>
+          </motion.div>
+
+          <UseCaseTabs />
+        </div>
+      </section>
+
       <CtaSection />
       <FaqSection />
     </>

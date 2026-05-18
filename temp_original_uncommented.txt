@@ -1,16 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, ChevronRight, ChevronLeft } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import SectionWebpImage from "@/components/ui/SectionWebpImage";
+// ── Reused components from other pages ──────────────────────────
 import SeamlessIntegrations from "@/components/sections/home/Integrations";
 import CtaSection from "@/components/sections/CtaSection";
+// ────────────────────────────────────────────────────────────────
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { integrationPageImages } from "@/lib/page-section-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -23,7 +22,7 @@ const G = ({ children }: { children: React.ReactNode }) => (
     }}
   >
     {children}
-  </span>
+  </span> 
 );
 
 function BulletList({ items }: { items: string[] }) {
@@ -616,19 +615,56 @@ function FaqSection() {
 export default function IntegrationsContent() {
   return (
     <>
+      {/* 1. Hero */}
       <HeroSection />
 
-      {/* Seamless Integrations Carousel (from home) - keeping it if you want, or you can remove if duplicate */}
+      {/* 2. SeamlessIntegrations carousel — REUSED from home page */}
       <div id="browse">
         <SeamlessIntegrations />
       </div>
 
+      {/* 3. Built for a Connected Business Environment */}
       <ConnectedBusinessSection />
+
+      {/* 4. API Integrations */}
       <ApiSection />
+
+      {/* 5. Third-Party Integrations */}
       <ThirdPartySection />
+
+      {/* 6. ERP Integrations */}
       <ErpSection />
+
+      {/* 7. CTA */}
       <CtaSectionBlock />
+
+      {/* 8. FAQ — reuses Accordion component */}
       <FaqSection />
     </>
   );
 }
+
+
+
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Check, ChevronRight, ChevronLeft } from "lucide-react";
+import Button from "@/components/ui/Button";
+import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
+import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import SectionWebpImage from "@/components/ui/SectionWebpImage";
+import SeamlessIntegrations from "@/components/sections/home/Integrations";
+import CtaSection from "@/components/sections/CtaSection";
+
+const G = ({ children }: { children: React.ReactNode }) => (
+  <span
+    style={{
+      background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      backgroundClip: "text",
+    }}

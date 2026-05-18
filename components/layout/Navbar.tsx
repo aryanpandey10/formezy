@@ -150,7 +150,8 @@ function NavLinkItem({
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
     >
-      <button
+      <Link
+        href={link.href}
         className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-[14px] font-medium text-ink-secondary transition-colors hover:text-ink"
       >
         {link.label}
@@ -158,7 +159,7 @@ function NavLinkItem({
           size={14}
           className={cn("transition-transform duration-200", open && "rotate-180")}
         />
-      </button>
+      </Link>
       <AnimatePresence>
         {open && (
           <motion.div
@@ -217,17 +218,25 @@ function MobileNavLink({
   }
 
   return (
-    <li>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-[16px] font-semibold text-ink transition-colors hover:bg-purple-50"
-      >
-        {link.label}
-        <ChevronDown
-          size={16}
-          className={cn("transition-transform", open && "rotate-180")}
-        />
-      </button>
+    <li className="flex flex-col">
+      <div className="flex w-full items-center justify-between">
+        <Link
+          href={link.href}
+          onClick={onNavigate}
+          className="flex-1 rounded-xl px-4 py-3 text-[16px] font-semibold text-ink transition-colors hover:bg-purple-50"
+        >
+          {link.label}
+        </Link>
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex h-12 w-12 items-center justify-center rounded-xl text-ink transition-colors hover:bg-purple-50"
+        >
+          <ChevronDown
+            size={16}
+            className={cn("transition-transform duration-200", open && "rotate-180")}
+          />
+        </button>
+      </div>
       <AnimatePresence>
         {open && (
           <motion.ul

@@ -55,15 +55,21 @@ export const navLinks: NavItem[] = [
         description: "Ideas, trends and practical know-how.",
       },
       {
+        label: "Case Studies",
+        href: "#",
+        description: "Real-world success stories.",
+      },
+      {
+        label: "Downloads",
+        href: "#",
+        description: "Product guides and resources.",
+      },
+      {
         label: "Videos",
         href: "/resources/videos",
         description: "Product walkthroughs and use cases.",
       },
     ],
-  },
-  {
-    label: "Pricing",
-    href: "#",
   },
   {
     label: "About",
@@ -74,11 +80,32 @@ export const navLinks: NavItem[] = [
         href: "/about/company",
         description: "Enterprise systems, reimagined.",
       },
+      {
+        label: "Safal Infosoft",
+        href: "/about/safal-infosoft",
+        description: "Our parent technology group.",
+      },
+      {
+        label: "Leadership",
+        href: "#",
+        description: "The minds behind the platform.",
+      },
+      {
+        label: "Careers",
+        href: "/about/careers",
+        description: "Join us in building the future.",
+      },
+      {
+        label: "Contact",
+        href: "/contact",
+        description: "Get in touch with our team.",
+      },
+      {
+        label: "Book Demo",
+        href: "#demo",
+        description: "Schedule a personalized walkthrough.",
+      },
     ],
-  },
-  {
-    label: "Contact",
-    href: "/contact",
   },
 ];
 
@@ -104,9 +131,6 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Blogs", href: "/resources/blogs" },
       { label: "Case Studies", href: "#" },
-      // { label: "Guides", href: "#" },
-      // { label: "Whitepapers", href: "#" },
-      // { label: "Webinars", href: "#" },
       { label: "Downloads", href: "#" },
       { label: "Videos", href: "/resources/videos" },
     ],
@@ -124,6 +148,12 @@ export const footerColumns: FooterColumn[] = [
     title: "Use Cases",
     links: [
       { label: "Tailored Systems", href: "/platform/use-cases" },
+      { label: "Document Management", href: "/platform/use-cases/document-management-system" },
+      { label: "Inventory Management", href: "/platform/use-cases/inventory-management-system" },
+      { label: "Supply Chain", href: "/platform/use-cases/supply-chain-management-system" },
+      { label: "Tenant Management", href: "/platform/use-cases/tenant-management-system" },
+      { label: "Task Management", href: "/platform/use-cases/task-management-system" },
+      { label: "Tailored ERP", href: "/platform/use-cases/tailored-erp" },
       { label: "Business Systems", href: "/platform/use-cases" },
     ],
   },

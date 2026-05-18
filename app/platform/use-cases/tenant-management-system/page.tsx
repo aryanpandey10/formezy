@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Build a tailored CRM system that matches how your sales, success and marketing teams actually work.",
 };
 
-export default function TailoredCrmPage() {
+export default function TenantManagementSystemPage() {
   return <TenantManagementSystemContent />;
 }

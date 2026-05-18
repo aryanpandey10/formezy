@@ -1,0 +1,228 @@
+﻿  </span>
+);
+
+/* ==================== INTEGRATIONS CAROUSEL DATA ==================== */
+const integrationsData = [
+  { id: "gs", name: "Google Sheets", label: "Google Sheets", src: "/images/Google_Sheets_Logo.png" },
+  { id: "ns", name: "NetSuite", label: "NetSuite ERP", src: "/images/NetSuite-Symbol.png" },
+  { id: "oracle", name: "Oracle", label: "Oracle Database", src: "/images/Oracle-logo.png" },
+  { id: "outlook", name: "Outlook", label: "Outlook Calendars", src: "/images/Microsoft_Office_Outlook.png" },
+  { id: "sap", name: "SAP", label: "SAP Integration", src: "/images/SAP-Logo.png" },
+  { id: "o365", name: "Office 365", label: "Microsoft 365", src: "/images/Microsoft_360.png" },
+  { id: "wp", name: "WordPress", label: "WordPress CMS", src: "/images/Wordpress.png" },
+  { id: "excel", name: "Excel", label: "Microsoft Excel", src: "/images/Microsoft_Excel-Logo.png" },
+];
+
+const DESKTOP_SIZES = [60, 84, 116, 168, 116, 84, 60];
+const MOBILE_SIZES = [0, 52, 80, 118, 80, 52, 0];
+const OPACITIES = [0.28, 0.48, 0.72, 1, 0.72, 0.48, 0.28];
+
+/* ==================== UPDATED HERO SECTION ==================== */
+function HeroSection() {
+  const [[activeIndex, direction], setActiveIndex] = useState<[number, number]>([0, 1]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const N = integrationsData.length;
+  const indexInScope = ((activeIndex % N) + N) % N;
+
+  const handleRotate = useCallback((newDir: number) => {
+    setActiveIndex(([prev]) => [prev + newDir, newDir]);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => handleRotate(1), 3000);
+    return () => clearInterval(t);
+  }, [handleRotate]);
+
+  const positions = Array.from({ length: 7 }, (_, posIdx) => {
+    const offset = posIdx - 3;
+    const itemIdx = ((indexInScope + offset) % N + N) % N;
+    const sizes = isMobile ? MOBILE_SIZES : DESKTOP_SIZES;
+    return {
+      item: integrationsData[itemIdx],
+      size: sizes[posIdx],
+      opacity: OPACITIES[posIdx],
+      isCenter: posIdx === 3,
+      hidden: isMobile && (posIdx === 0 || posIdx === 6),
+    };
+  });
+
+  const centerItem = positions[3].item;
+
+  return (
+    <section className="relative overflow-hidden pt-8 pb-12 md:pt-12 lg:pt-20">
+      <div className="container-app">
+        {/* Narrow Content */}
+        <div className="max-w-[780px] mx-auto text-center lg:text-left lg:mx-0">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-4 py-1.5 font-sora text-[13px] font-medium text-purple-primary"
+          >
+            Integrations
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-sora text-[38px] md:text-[52px] lg:text-[62px] leading-[1.08] font-bold text-[#2C0E3A]"
+          >
+            The Integration Layer <br className="hidden sm:block" />
+            <G>Your Business Was Missing</G>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mt-6 mx-auto lg:mx-0 max-w-[560px] text-[17px] md:text-[18px] leading-relaxed text-[#6366A8]"
+          >
+            Bring your systems, tools and data together into one unified platform with Formezy â€” through native connectors, open APIs, and dedicated ERP extensions.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4"
+          >
+            <Button href="#demo" size="lg" className="rounded-[10px]">
+              Book a Demo <ArrowRight size={16} />
+            </Button>
+            <Button href="#browse" size="lg" variant="ghost" className="rounded-[10px]">
+              Browse Integrations
+            </Button>
+          </motion.div>
+        </div>
+
+        {/* Slider Inside Hero */}
+        <div className="mt-16 md:mt-20">
+          <div className="text-center mb-8">
+            <h2 className="font-sora text-[32px] md:text-[40px] font-bold text-[#2C0E3A]">
+              Seamless <G>Integrations</G>
+            </h2>
+            <p className="text-[#6366A8] mt-2 text-[17px]">
+              Connect Formezy With Your Existing Systems
+            </p>
+          </div>
+
+          {/* Carousel */}
+          <div className="flex items-center justify-center gap-4 md:gap-8">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => handleRotate(-1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-purple-100 bg-white shadow hover:border-purple-primary"
+            >
+              <ChevronLeft size={22} className="text-[#2C0E3A]" />
+            </motion.button>
+
+            <div className="flex items-center gap-3 md:gap-6 lg:gap-8">
+              {positions.map(({ item, size, opacity, isCenter, hidden }, i) => {
+                if (hidden) return null;
+                return (
+                  <motion.div
+                    key={i}
+                    animate={{ opacity }}
+                    className="flex flex-col items-center cursor-pointer"
+                    onClick={() => {
+                      const offset = i - 3;
+                      if (offset !== 0) handleRotate(offset > 0 ? 1 : -1);
+                    }}
+                  >
+                    <motion.div
+                      animate={{ width: size, height: size }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      className={cn(
+                        "relative flex items-center justify-center rounded-full border",
+                        isCenter
+                          ? "border-[#6C60E8]/40 shadow-[0_10px_50px_rgba(108,96,232,0.2)]"
+                          : "border-purple-100/70"
+                      )}
+                    >
+                      {isCenter && (
+                        <svg viewBox="0 0 220 220" className="absolute -inset-[25px] w-[calc(100%+50px)] h-[calc(100%+50px)]" fill="none">
+                          <circle cx="110" cy="110" r="108" stroke="#6C60E8" strokeWidth="1.5" strokeOpacity="0.25" strokeDasharray="8 6" />
+                        </svg>
+                      )}
+
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={item.id}
+                          initial={{ scale: 0.7, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.7, opacity: 0 }}
+                          className="absolute inset-0 flex items-center justify-center p-6"
+                        >
+                          <Image src={item.src} alt={item.name} fill className="object-contain" />
+                        </motion.div>
+                      </AnimatePresence>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => handleRotate(1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-purple-100 bg-white shadow hover:border-purple-primary"
+            >
+              <ChevronRight size={22} className="text-[#2C0E3A]" />
+            </motion.button>
+          </div>
+
+          {/* Selected Label */}
+          <div className="mt-10 flex justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={centerItem.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="flex items-center gap-3 rounded-full border border-purple-100 bg-white px-6 py-3 shadow-card"
+              >
+                <Image src={centerItem.src} alt={centerItem.label} width={24} height={24} className="object-contain" />
+                <span className="font-sora font-semibold text-[#2C0E3A]">{centerItem.label}</span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Rest of your components (unchanged)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+const faqs: AccordionItem[] = [ /* ... your faqs ... */ ];
+
+// Keep all other functions as they are: ConnectedBusinessSection, ApiSection, ThirdPartySection, ErpSection, etc.
+
+export default function IntegrationsContent() {
+  return (
+    <>
+      <HeroSection />
+
+      {/* Seamless Integrations Carousel (from home) - keeping it if you want, or you can remove if duplicate */}
+      <div id="browse">
+        <SeamlessIntegrations />
+      </div>
+
+      <ConnectedBusinessSection />
+      <ApiSection />
+      <ThirdPartySection />
+      <ErpSection />
+      <CtaSectionBlock />
+      <FaqSection />
+    </>
+  );
+}

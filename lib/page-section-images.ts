@@ -59,7 +59,7 @@ export const companyPageImages = {
   approach: companyWebp("our_approach.webp"),
   vision: companyWebp("A_modern_SaaS_202604161419 1.webp"),
   mission: companyWebp("A_transformation_illustration_202604171613 (1) 1.webp"),
-  beyond: companyWebp("Ready to Move Beyond Traditional Systems_.webp"),
-  scalable: companyWebp("our_approach.webp"),
-  cta: companyWebp("enterprise_systems_reimagined.webp"),
+  beyond: companyWebp("A_modern_SaaS_202604161419 1.webp"),
+  scalable: companyWebp("A_transformation_illustration_202604171613 (1) 1.webp"),
+  cta: companyWebp("Ready to Move Beyond Traditional Systems_.webp"),
 } as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -61,6 +61,14 @@ const capabilities: Capability[] = [
 
 export default function CoreCapabilities() {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % capabilities.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(timer);
+  }, []);
 
   const cap = capabilities[active];
 
