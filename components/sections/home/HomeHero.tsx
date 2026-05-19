@@ -33,12 +33,12 @@ const FeaturePill = ({ text }: { text: string }) => (
 const VerticalArrow = () => (
   <div className="flex flex-col items-center py-6 lg:hidden">
     <svg
-      width="2"
-      height="90"
-      viewBox="0 0 2 60"
-      fill="none"
-      className="overflow-visible"
-    >
+  width="12"
+ height="100"
+viewBox="-5 0 12 65"
+  fill="none"
+  className="overflow-visible"
+>
       {/* Moving dashed line */}
       <motion.path
         d="M 1 0 L 1 60"
@@ -57,7 +57,7 @@ const VerticalArrow = () => (
 
       {/* Arrowhead */}
       <motion.path
-        d="M -3 55 L 1 60 L 5 55"
+         d="M -2 54 L 1 58 L 4 54"
         stroke="#6366f1"
         strokeWidth="2"
         strokeLinecap="round"
@@ -115,7 +115,7 @@ export default function HomeHero() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-[#6366f1] text-white  md:rounded-full px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] font-black mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
+              className="inline-block bg-[#6366f1] text-white rounded-full px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] font-black mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
             >
               We are here to Help
             </motion.div>

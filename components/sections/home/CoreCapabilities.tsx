@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { viewportOnce, fadeUp, staggerContainer } from "@/lib/animations";
@@ -12,7 +12,7 @@ type Capability = {
   bigTitle: string;
   heading: string;
   description: string;
-  img:string;
+  img: string;
 };
 
 const capabilities: Capability[] = [
@@ -22,7 +22,7 @@ const capabilities: Capability[] = [
     heading: "Low-Code / No-Code",
     description:
       "Design and build business applications visually using drag-and-drop components, without relying on complex coding.",
-    img:"/images/Core Capabilities of Formezy/Low-Code No-Code.webp",
+    img: "/images/Core Capabilities of Formezy/Low-Code No-Code.webp",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const capabilities: Capability[] = [
     heading: "Workflow Automation",
     description:
       "Automate approvals, tasks, notifications, and recurring processes to keep operations moving efficiently.",
-      img:"/images/Core Capabilities of Formezy/Workflow Automation.webp",
+    img: "/images/Core Capabilities of Formezy/Workflow Automation.webp",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const capabilities: Capability[] = [
     heading: "Role-Based Access",
     description:
       "Control user permissions, visibility, and responsibilities with secure access tailored to every role.",
-      img:"/images/Core Capabilities of Formezy/Role-Based Access.webp",
+    img: "/images/Core Capabilities of Formezy/Role-Based Access.webp",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const capabilities: Capability[] = [
     heading: "Reporting & Dashboards",
     description:
       "Track business performance, workflows, and operations through real-time dashboards and structured reports.",
-      img:"/images/Core Capabilities of Formezy/Reporting & Dashboards.webp",
+    img: "/images/Core Capabilities of Formezy/Reporting & Dashboards.webp",
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ const capabilities: Capability[] = [
     heading: "AskEzy Intelligence",
     description:
       "Get instant answers, summaries, reminders, and insights through AI built into your workflows.",
-      img:"/images/Core Capabilities of Formezy/AskEzy Intelligence.webp",
+    img: "/images/Core Capabilities of Formezy/AskEzy Intelligence.webp",
   },
   {
     id: 6,
@@ -62,20 +62,34 @@ const capabilities: Capability[] = [
     heading: "Integrations & Connectors",
     description:
       "Connect Formezy with ERP systems, business tools, and third-party platforms for seamless operations.",
-      img:"/images/Core Capabilities of Formezy/Integrations & Connectors.webp",
+    img: "/images/Core Capabilities of Formezy/Integrations & Connectors.webp",
   },
 ];
 
 export default function CoreCapabilities() {
   const [active, setActive] = useState(0);
 
+  // Ref attached to the carousel card — not the whole section,
+  // so the trigger fires when the interactive part is actually visible.
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // `once: false` → fires every time the element enters/leaves the viewport.
+  // `amount: 0.4` → at least 40 % of the card must be visible before we start.
+  const isInView = useInView(carouselRef, { once: false, amount: 0.4 });
+
   useEffect(() => {
+    if (!isInView) return; // Section not visible — do nothing.
+
+    // Reset to slide 0 every time the section scrolls into view.
+    setActive(0);
+
     const timer = setInterval(() => {
       setActive((prev) => (prev + 1) % capabilities.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
+    // Clean up when the section leaves the viewport OR the component unmounts.
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]); // Re-run only when visibility changes.
 
   const cap = capabilities[active];
 
@@ -89,7 +103,6 @@ export default function CoreCapabilities() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center"
         >
-
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
@@ -122,7 +135,11 @@ export default function CoreCapabilities() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mt-12 w-full"
         >
-          <div className="mx-auto flex h-auto w-full max-w-[1600px] flex-col overflow-hidden rounded-[30px] bg-[#F8E8FF] p-6 md:min-h-[560px] md:flex-row md:items-center md:p-10 lg:p-12">
+          {/* ↓ Attach the inView ref to this card */}
+          <div
+            ref={carouselRef}
+            className="mx-auto flex h-auto w-full max-w-[1600px] flex-col overflow-hidden rounded-[30px] bg-[#F8E8FF] p-6 md:min-h-[560px] md:flex-row md:items-center md:p-10 lg:p-12"
+          >
             <div className="flex w-full flex-col gap-8 md:w-[38%] md:flex-shrink-0">
               <div className="flex flex-col gap-3">
                 <AnimatePresence mode="wait">
@@ -196,28 +213,6 @@ export default function CoreCapabilities() {
               />
             </motion.div>
           </div>
-
-          {/* <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 d-none">
-            {capabilities.map((c, i) => (
-              <button
-                key={c.id}
-                onClick={() => setActive(i)}
-                className={`rounded-2xl border px-4 py-3 text-left transition-all duration-200 ${
-                  active === i
-                    ? "border-[#B8B1FD] bg-white shadow-card"
-                    : "border-transparent bg-[#F8E8FF]/60 hover:bg-white/80"
-                }`}
-              >
-                <p
-                  className={`font-sora text-[13px] font-semibold leading-tight ${
-                    active === i ? "text-[#2C0E3A]" : "text-[#6366A8]"
-                  }`}
-                >
-                  {c.heading}
-                </p>
-              </button>
-            ))}
-          </div> */}
         </motion.div>
       </div>
     </section>

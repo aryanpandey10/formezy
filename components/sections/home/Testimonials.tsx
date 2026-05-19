@@ -201,7 +201,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="relative overflow-hidden"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-5">
                   <div className="relative h-14 w-32 shrink-0">
                     <Image
                       src={client.logo}
