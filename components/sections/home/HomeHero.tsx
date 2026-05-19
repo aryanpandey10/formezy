@@ -10,7 +10,7 @@ const ChaosBadge = ({ text }: { text: string }) => (
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="bg-[#FFE9E9] text-[#CC1A1E] rounded-full px-3 py-1 md:px-[1.25vw] md:py-[0.5vw] text-[12px] md:text-[14px] lg:text-[0.85vw] font-bold flex items-center gap-1.5 md:gap-[0.5vw] shadow-sm border border-[#ad8e59]/20 whitespace-nowrap"
+    className="bg-[#AD8E59] text-white rounded-full px-3 py-1 md:px-[1.25vw] md:py-[0.5vw] text-[12px] md:text-[14px] lg:text-[0.85vw] font-bold flex items-center gap-1.5 md:gap-[0.5vw] shadow-sm border border-[#ad8e59]/20 whitespace-nowrap"
   >
     <X className="w-3.5 h-3.5 md:w-[0.85vw] md:h-[0.85vw]" strokeWidth={3} />
     {text}
@@ -115,7 +115,7 @@ export default function HomeHero() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-[#6366f1] text-white rounded-[10px] md:rounded-[1vw] px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] font-black mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
+              className="inline-block bg-[#6366f1] text-white  md:rounded-full px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] font-black mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
             >
               We are here to Help
             </motion.div>

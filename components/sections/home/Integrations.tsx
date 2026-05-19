@@ -85,11 +85,6 @@ export default function SeamlessIntegrations() {
           variants={staggerContainer}
           className="flex flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Integrations
-            </span>
-          </motion.div>
 
           <motion.h2
             variants={fadeUp}
@@ -137,7 +132,7 @@ export default function SeamlessIntegrations() {
             </motion.button>
 
             {/* 7 circles — stable positional keys so only content animates */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-6">
+            <div className="flex items-center justify-center gap-6 sm:gap-5 md:gap-5 lg:gap-6">
               {positions.map(({ item, size, opacity, isCenter, hidden }, posIdx) => {
                 if (hidden) return null;
                 return (
