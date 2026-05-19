@@ -17,7 +17,7 @@ export default function TrustedLogos({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="flex shrink-0 animate-[marquee_55s_linear_infinite] items-center gap-10 pr-10">
+      <div className="flex shrink-0 animate-[marquee_55s_linear_infinite] items-center md:gap-10 pr-10">
         {row.map(({ name, file }, index) => (
           <div
             key={`${file}-${index}`}
