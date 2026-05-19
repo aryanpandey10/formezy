@@ -38,7 +38,7 @@ const G = ({ children }: { children: React.ReactNode }) => (
 
 /* ─────────────────────────────────────────────
    Use-case icon grid data
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 const overviewItems = [
   { label: "Customer Relationship Mgmt.", Icon: Users2,       color: "#6C63FF" },
   { label: "Enterprise Resource Planning", Icon: Boxes,       color: "#A78BFA" },
@@ -54,39 +54,39 @@ const overviewItems = [
 const faqs: AccordionItem[] = [
   {
     id: "1",
-    question: "What is Formezy?",
+    question: "What are use cases in Formezy?",
     answer:
-      "Formezy is an Enterprise Application Platform (EAP) that lets you design workflows, automate execution, govern access, and centralize operational data — so teams run on connected systems instead of scattered tools.",
+      "Use cases represent how Formezy can be applied to different business functions and industries to solve operational challenges.",
   },
   {
     id: "2",
-    question: "How does the platform handle data security?",
+    question: "Can Formezy be customized for specific business needs?",
     answer:
-      "Formezy supports role-based access, audit trails, and enterprise authentication patterns. Your data stays attributed, traceable, and aligned with the controls your security and compliance teams expect.",
+      "Yes, Formezy allows businesses to build tailored systems based on their workflows and requirements.",
   },
   {
     id: "3",
-    question: "What Are Use Cases in Formezy?",
+    question: "Is Formezy suitable for multiple industries?",
     answer:
-      "Use Cases are ready-to-configure starting points — ERP, CRM, field service, and more — that you can tailor to your business instead of building from scratch. Every Use Case uses the same Formezy foundation.",
+      "Yes, it supports industries like manufacturing, retail, logistics, construction, and more.",
   },
   {
     id: "4",
-    question: "Can Formezy Be Customized For Specific Business Needs?",
+    question: "Can Formezy replace multiple business tools?",
     answer:
-      "Yes. Every Use Case is fully configurable: fields, approvals, modules, and integrations can be adapted. Most customers ship their first tailored system live within weeks.",
+      "Yes, it connects workflows, communication, and data into one unified platform.",
   },
   {
     id: "5",
-    question: "Is Formezy Suitable For Multiple Industries?",
+    question: "How do I choose the right use case?",
     answer:
-      "Formezy is used across manufacturing, retail, construction, logistics, and professional services. The platform is industry-agnostic — Use Cases give you a head start for your domain.",
+      "You can explore based on your business needs or connect with the Formezy team for guidance.",
   },
   {
     id: "6",
-    question: "How Do I Choose The Right Use Case?",
+    question: "Can Formezy scale as my business grows?",
     answer:
-      "Start with the workflow that hurts the most — approvals, field ops, vendor onboarding, or inventory. Our team can map it in a workshop and recommend the best starting template.",
+      "Yes, it is designed to scale with your operations without losing structure or control.",
   },
 ];
 
@@ -120,9 +120,7 @@ function HeroSection() {
               variants={fadeUp}
               className="max-w-[500px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Whatever your operation — from field service to claims to retail
-              — there&apos;s a Formezy Use Case that takes you most of the way,
-              fast.
+              From tailored systems to industry-specific solutions, Formezy adapts to your business — enabling structured, scalable, and intelligent operations.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
@@ -240,33 +238,49 @@ function TurningNeedsSection() {
               variants={fadeUp}
               className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Every Use Case comes with proven templates, best-practice workflows and integration blueprints — so you go live on real value in weeks, not quarters.
+              Every business operates differently, but most tools force standardization. Formezy works the other way around. It allows you to build systems that match your workflows, connect your operations, and scale with your growth.
             </motion.p>
-            <motion.ul variants={staggerContainer} className="flex flex-col gap-3">
-              {[
-                "Proven starting points for common operational systems",
-                "Fully configurable modules, fields, and approvals",
-                "Integration-friendly by design — connect what you already use",
-                "Ship value in weeks with a clear path to scale",
-              ].map((b) => (
-                <motion.li
-                  key={b}
-                  variants={fadeUp}
-                  className="flex items-start gap-3 font-sora text-[14px] leading-[22px] text-[#6366A8] md:text-[15px] md:leading-[24px]"
-                >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
-                    <Check size={12} strokeWidth={2.5} />
-                  </span>
-                  {b}
-                </motion.li>
-              ))}
-            </motion.ul>
+            <motion.p
+              variants={fadeUp}
+              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
+            >
+              Whether you&apos;re solving a specific operational challenge or building a complete system, Formezy provides the flexibility to design exactly what your business needs.
+            </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-1">
-              <Button href="#demo" size="lg" className="rounded-[10px]">
+              <Button href="#explore" size="lg" className="rounded-[10px]">
                 Get Started <ArrowRight size={16} />
               </Button>
             </motion.div>
           </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AdaptAndScaleSection() {
+  return (
+    <section className="section bg-white/50 backdrop-blur-sm">
+      <div className="container-app">
+        <div className="rounded-[32px] bg-gradient-to-br from-[#FAFAFE] to-[#F5F0FF] border border-purple-100 p-8 md:p-14 shadow-sm">
+          <div className="grid gap-8 lg:grid-cols-2 items-center">
+            <div className="flex flex-col gap-4">
+              <span className="inline-flex max-w-fit items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+                Scalable EAP Platform
+              </span>
+              <h2 className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[44px]">
+                Built to Adapt, <G>Designed to Scale</G>
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
+                Formezy isn&apos;t limited to predefined systems, it adapts to your business requirements and evolves as your operations grow.
+              </p>
+              <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
+                Whether you’re building a single system or connecting multiple functions, Formezy ensures everything works together seamlessly.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -321,10 +335,9 @@ function CtaSection() {
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="max-w-[640px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+              className="max-w-[720px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Design ERP-grade systems tailored to your business workflows, approvals, and
-              operational structure—without the limitations of traditional software.
+              Explore how Formezy adapts to your workflows, industry, and operational needs. Build your enterprise platform. Achieve more with clarity.
             </motion.p>
             <motion.div variants={fadeUp}>
               <Button href="#demo" size="lg" className="rounded-[10px]">
@@ -397,8 +410,7 @@ export default function UseCasesContent() {
               variants={fadeUp}
               className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Build custom business systems for industry-specific solutions. Formezy supports a wide
-              range of use cases, all within one connected platform.
+              From core business systems to industry-specific solutions, Formezy supports a wide range of use cases, all within one connected platform.
             </motion.p>
           </motion.div>
 
@@ -406,6 +418,7 @@ export default function UseCasesContent() {
         </div>
       </section>
 
+      <AdaptAndScaleSection />
       <CtaSection />
       <FaqSection />
     </>

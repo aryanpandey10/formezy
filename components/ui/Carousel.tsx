@@ -60,12 +60,12 @@ export default function Carousel({
   return (
     <div className={cn("relative", className)}>
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+        <div className="flex -ml-6">
           {childrenArray.map((child, i) => (
             <div
               key={i}
               className={cn(
-                "min-w-0 shrink-0 grow-0 pl-4 first:pl-0",
+                "min-w-0 shrink-0 grow-0 pl-6",
                 slideClassName,
               )}
             >
@@ -82,16 +82,16 @@ export default function Carousel({
             onClick={prev}
             disabled={!canPrev}
             aria-label="Previous"
-            className="absolute left-0 top-1/2 z-10 hidden h-[72px] w-[72px] -translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] disabled:cursor-not-allowed disabled:opacity-40 md:flex lg:h-[88px] lg:w-[88px] lg:-translate-x-[12%]"
+            className="absolute left-0 top-1/2 z-10 hidden h-[72px] w-[72px] -translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full bg-[#2C0E3A]/70 text-white shadow-[0_8px_32px_rgba(44,14,58,0.15)] transition-all hover:bg-[#2C0E3A] hover:scale-105 disabled:cursor-not-allowed disabled:opacity-30 md:flex lg:h-[88px] lg:w-[88px] lg:-translate-x-[12%]"
           >
-            <ChevronLeft size={28} className="text-[#2C0E3A]" />
+            <ChevronLeft size={28} />
           </button>
           <button
             type="button"
             onClick={next}
             disabled={!canNext}
             aria-label="Next"
-            className="absolute right-0 top-1/2 z-10 hidden h-[72px] w-[72px] translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-[0_8px_32px_rgba(44,14,58,0.2)] transition-all hover:bg-[#3D1650] disabled:cursor-not-allowed disabled:opacity-40 md:flex lg:h-[88px] lg:w-[88px] lg:translate-x-[12%]"
+            className="absolute right-0 top-1/2 z-10 hidden h-[72px] w-[72px] translate-x-[8%] -translate-y-1/2 items-center justify-center rounded-full bg-[#2C0E3A]/70 text-white shadow-[0_8px_32px_rgba(44,14,58,0.15)] transition-all hover:bg-[#2C0E3A] hover:scale-105 disabled:cursor-not-allowed disabled:opacity-30 md:flex lg:h-[88px] lg:w-[88px] lg:translate-x-[12%]"
           >
             <ChevronRight size={28} />
           </button>

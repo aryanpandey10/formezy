@@ -6,14 +6,14 @@ import TrustedLogos from "@/components/illustrations/TrustedLogos";
 
 export default function TrustedBy() {
   return (
-    <section className="border-y border-purple-100/60 bg-white/80 py-10 backdrop-blur-sm md:py-14">
+    <section className="border-y border-purple-100/60 bg-white/80 py-4 backdrop-blur-sm md:py-6">
       <div className="container-app">
         <motion.p
           initial="hidden"
           whileInView="show"
           viewport={viewportOnce}
           variants={fadeUp}
-          className="mb-10 text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-ink-muted"
+          className="mb-4 text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-ink-muted"
         >
           Trusted by Enterprises worldwide
         </motion.p>
@@ -29,7 +29,7 @@ export default function TrustedBy() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white/80 to-transparent"
         />
 
-        <TrustedLogos className="py-2" />
+        <TrustedLogos className="py-0" />
       </div>
     </section>
   );

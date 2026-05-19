@@ -69,7 +69,7 @@ export default function WhyChoose() {
           className="relative mt-14"
         >
           <Image
-            src="/images/WhyFormEzy.svg"
+            src="/images/Home/choose_formezy_2x.webp"
             alt="Why Formezy — connected business flows"
             width={1185}
             height={621}

@@ -28,32 +28,42 @@ const FeaturePill = ({ text }: { text: string }) => (
     {text}
   </motion.div>
 );
-
 const VerticalArrow = () => (
   <div className="flex flex-col items-center py-6 lg:hidden">
-    <svg width="2" height="60" viewBox="0 0 2 60" fill="none" className="overflow-visible">
-      <motion.path 
-        d="M 1 0 L 1 60" 
-        stroke="#6366f1" 
-        strokeWidth="2" 
+    <svg
+      width="2"
+      height="90"
+      viewBox="0 0 2 60"
+      fill="none"
+      className="overflow-visible"
+    >
+      {/* Moving dashed line */}
+      <motion.path
+        d="M 1 0 L 1 60"
+        stroke="#6366f1"
+        strokeWidth="2"
         strokeDasharray="6 6"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-      >
-        <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1s" repeatCount="indefinite" />
-      </motion.path>
+        animate={{
+          strokeDashoffset: [0, -12],
+        }}
+        transition={{
+          duration: 1.2,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
       {/* Arrowhead */}
-      <motion.path 
-        d="M -3 55 L 1 60 L 5 55" 
-        stroke="#6366f1" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
+      <motion.path
+        d="M -3 55 L 1 60 L 5 55"
+        stroke="#6366f1"
+        strokeWidth="2"
+        strokeLinecap="round"
         strokeLinejoin="round"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.3, duration: 0.4 }}
       />
     </svg>
   </div>
@@ -161,7 +171,7 @@ export default function HomeHero() {
                 className="relative z-10"
               >
                 <Image 
-                  src="/images/heroRound.svg" 
+                  src="/images/Home/m_banner_2x.webp" 
                   alt="Formezy EAP Platform Overview" 
                   width={850}
                   height={850}

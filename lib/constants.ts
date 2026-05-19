@@ -147,14 +147,13 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Use Cases",
     links: [
-      { label: "Tailored Systems", href: "/platform/use-cases" },
+      { label: "Business Systems", href: "/platform/use-cases" },
       { label: "Document Management", href: "/platform/use-cases/document-management-system" },
       { label: "Inventory Management", href: "/platform/use-cases/inventory-management-system" },
       { label: "Supply Chain", href: "/platform/use-cases/supply-chain-management-system" },
       { label: "Tenant Management", href: "/platform/use-cases/tenant-management-system" },
       { label: "Task Management", href: "/platform/use-cases/task-management-system" },
-      { label: "Tailored ERP", href: "/platform/use-cases/tailored-erp" },
-      { label: "Business Systems", href: "/platform/use-cases" },
+      { label: "Tailored Systems", href: "/platform/use-cases" },
     ],
   },
   {

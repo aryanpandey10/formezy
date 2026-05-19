@@ -12,6 +12,7 @@ type Capability = {
   bigTitle: string;
   heading: string;
   description: string;
+  img:string;
 };
 
 const capabilities: Capability[] = [
@@ -21,6 +22,7 @@ const capabilities: Capability[] = [
     heading: "Low-Code / No-Code",
     description:
       "Design and build business applications visually using drag-and-drop components, without relying on complex coding.",
+    img:"/images/Core Capabilities of Formezy/Low-Code No-Code.webp",
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ const capabilities: Capability[] = [
     heading: "Workflow Automation",
     description:
       "Automate approvals, tasks, notifications, and recurring processes to keep operations moving efficiently.",
+      img:"/images/Core Capabilities of Formezy/Workflow Automation.webp",
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ const capabilities: Capability[] = [
     heading: "Role-Based Access",
     description:
       "Control user permissions, visibility, and responsibilities with secure access tailored to every role.",
+      img:"/images/Core Capabilities of Formezy/Role-Based Access.webp",
   },
   {
     id: 4,
@@ -42,6 +46,7 @@ const capabilities: Capability[] = [
     heading: "Reporting & Dashboards",
     description:
       "Track business performance, workflows, and operations through real-time dashboards and structured reports.",
+      img:"/images/Core Capabilities of Formezy/Reporting & Dashboards.webp",
   },
   {
     id: 5,
@@ -49,6 +54,7 @@ const capabilities: Capability[] = [
     heading: "AskEzy Intelligence",
     description:
       "Get instant answers, summaries, reminders, and insights through AI built into your workflows.",
+      img:"/images/Core Capabilities of Formezy/AskEzy Intelligence.webp",
   },
   {
     id: 6,
@@ -56,6 +62,7 @@ const capabilities: Capability[] = [
     heading: "Integrations & Connectors",
     description:
       "Connect Formezy with ERP systems, business tools, and third-party platforms for seamless operations.",
+      img:"/images/Core Capabilities of Formezy/Integrations & Connectors.webp",
   },
 ];
 
@@ -185,7 +192,7 @@ export default function CoreCapabilities() {
               className="relative mt-8 h-[340px] flex-1 overflow-hidden rounded-[20px] md:mt-0 md:h-auto md:max-h-[574px] md:min-h-[450px]"
             >
               <Image
-                src="/images/CoreCap.svg"
+                src={cap.img}
                 alt="Core capabilities overview"
                 fill
                 className="object-contain"

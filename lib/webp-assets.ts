@@ -39,6 +39,7 @@ export const useCasesPageWebp = {
   tailoredCrm: publicAssetUrl("images", "Use Cases", "Webp", "tailored_CRM_icon.webp"),
   documentManagement: publicAssetUrl("images", "Use Cases", "Webp", "document_management_icon.webp"),
   tenantManagement: publicAssetUrl("images", "Use Cases", "Webp", "tenant_management_icon.webp"),
+  taskManagement: publicAssetUrl("images", "Use Cases", "Webp", "task_management_icon.webp"),
   cta: publicAssetUrl("images", "Use Cases", "Webp", "use_cases_CTA.webp"),
 } as const;
 
@@ -53,6 +54,9 @@ export const useCasesIndustryWebp = {
   retailWholesale: publicAssetUrl("images", "Use Cases", "Webp", "retail_wholesale.webp"),
   consumerGoods: publicAssetUrl("images", "Use Cases", "Webp", "service_based_businesses.webp"),
   constructionEpc: publicAssetUrl("images", "Use Cases", "Webp", "construction_EPC.webp"),
+  heavyManufacturing: publicAssetUrl("images", "Use Cases", "Webp", "heavy_manufacturing.webp"),
+  processIndustries: publicAssetUrl("images", "Use Cases", "Webp", "process_industries.webp"),
+  serviceBased: publicAssetUrl("images", "Use Cases", "Webp", "service_based_businesses.webp"),
 } as const;
 
 /** Careers culture carousel — `public/images/Career/webp/`. */

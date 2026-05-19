@@ -15,6 +15,11 @@ import {
   PackageSearch,
   ArrowRight,
   ClipboardList,
+  Factory,
+  ShoppingCart,
+  Landmark,
+  UserCheck,
+  PenTool,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Carousel from "@/components/ui/Carousel";
@@ -50,12 +55,13 @@ type IndustryCard = {
 const tailored: TailoredCard[] = [
   {
     title: "Tailored ERP",
-    description: "A custom system that molds to your operations, finance, and procurement.",
+    description:
+      "Move beyond traditional systems with a tailored approach that connects workflows, communication, and data into one unified platform. Designed to adapt to your business processes while maintaining structure and control.",
     icon: <Boxes size={20} />,
     bullets: [
-      "Entity-aware finance & inventory",
-      "Configurable approvals & audit trails",
-      "Real-time dashboards",
+      "Custom workflows aligned with operations",
+      "Unified data and communication flow",
+      "Scalable system built for growth",
     ],
     image: useCasesPageWebp.tailoredErp,
     cardClass: "border-purple-100 bg-[#F5F0FF]/30",
@@ -63,12 +69,13 @@ const tailored: TailoredCard[] = [
   },
   {
     title: "Tailored CRM",
-    description: "Build a CRM that mirrors how you actually sell, track, and engage.",
+    description:
+      "Build customer management systems that reflect how your sales and support teams actually operate, ensuring better engagement and complete visibility.",
     icon: <Users2 size={20} />,
     bullets: [
-      "Custom pipeline stages",
-      "Automated follow-ups & handoffs",
-      "Single customer timeline",
+      "Structured customer lifecycle tracking",
+      "Improved communication and follow-ups",
+      "Real-time visibility into customer interactions",
     ],
     image: useCasesPageWebp.tailoredCrm,
     cardClass: "border-blue-100 bg-[#EBF5FF]/30",
@@ -76,12 +83,13 @@ const tailored: TailoredCard[] = [
   },
   {
     title: "Document Management System",
-    description: "Secure, central, and searchable repository for all business documents.",
+    description:
+      "Manage documents in a structured and secure environment with complete visibility and control over access, versions, and workflows.",
     icon: <FileStack size={20} />,
     bullets: [
-      "Versioning & access rules",
-      "Structured review paths",
-      "AI-powered search",
+      "Centralized document storage",
+      "Easy access and retrieval",
+      "Version control and compliance support",
     ],
     image: useCasesPageWebp.documentManagement,
     cardClass: "border-amber-100 bg-[#FFF9EB]/30",
@@ -89,12 +97,13 @@ const tailored: TailoredCard[] = [
   },
   {
     title: "Tenant Management System",
-    description: "Manage properties, residents, and maintenance in one platform.",
+    description:
+      "Simplify property and tenant operations with structured workflows that manage everything from onboarding to communication and maintenance.",
     icon: <Building2 size={20} />,
     bullets: [
-      "Leases & billing automation",
-      "Maintenance ticket tracking",
-      "Resident self-service portal",
+      "Organized tenant and property data",
+      "Streamlined communication workflows",
+      "Improved tracking of operations",
     ],
     image: useCasesPageWebp.tenantManagement,
     cardClass: "border-rose-100 bg-[#FFF5F5]/30",
@@ -102,14 +111,15 @@ const tailored: TailoredCard[] = [
   },
   {
     title: "Task Management System",
-    description: "Streamline team tasks, workflows, and project execution.",
+    description:
+      "Track, assign, and manage tasks across teams with clarity and accountability, ensuring smoother execution and better coordination.",
     icon: <ClipboardList size={20} />,
     bullets: [
-      "Dynamic task assignment",
-      "Real-time status tracking",
-      "Automated notifications",
+      "Clear task ownership",
+      "Real-time progress tracking",
+      "Improved team collaboration",
     ],
-    image: useCasesPageWebp.hero, 
+    image: useCasesPageWebp.taskManagement,
     cardClass: "border-emerald-100 bg-[#F0FFF4]/30",
     href: "/platform/use-cases/task-management-system",
   },
@@ -117,24 +127,122 @@ const tailored: TailoredCard[] = [
 
 const business: BusinessCard[] = [
   {
+    title: "CRM System",
+    description:
+      "Manage leads, customer interactions, sales pipelines, and follow-ups through one connected CRM platform designed to improve visibility and customer engagement.",
+    icon: <Users2 size={20} />,
+    bullets: [
+      "Better sales pipeline visibility",
+      "Improved customer coordination",
+      "Faster follow-up management",
+    ],
+    href: "/platform/use-cases/crm-system",
+  },
+  {
+    title: "Planning & Production Management",
+    description:
+      "Streamline production planning, shopfloor execution, inventory coordination, and operational tracking through structured production workflows.",
+    icon: <Factory size={20} />,
+    bullets: [
+      "Improved production visibility",
+      "Better planning coordination",
+      "Reduced operational delays",
+    ],
+    href: "/platform/use-cases/planning-production-management",
+  },
+  {
+    title: "Procurement Management System",
+    description:
+      "Digitize procurement workflows, vendor coordination, approvals, and purchasing visibility through one centralized operational platform.",
+    icon: <ShoppingCart size={20} />,
+    bullets: [
+      "Faster procurement approvals",
+      "Better vendor management",
+      "Improved purchasing visibility",
+    ],
+    href: "/platform/use-cases/procurement-management-system",
+  },
+  {
+    title: "Quality Control Management",
+    description:
+      "Standardize inspections, compliance workflows, traceability, and quality operations with real-time visibility and structured process control.",
+    icon: <FileCheck2 size={20} />,
+    bullets: [
+      "Improved quality consistency",
+      "Better traceability and compliance",
+      "Faster issue resolution",
+    ],
+    href: "/platform/use-cases/quality-control-management",
+  },
+  {
+    title: "Finance Management System",
+    description:
+      "Manage financial workflows, approvals, reconciliation, and reporting through one connected finance management platform.",
+    icon: <Landmark size={20} />,
+    bullets: [
+      "Faster financial coordination",
+      "Improved reporting visibility",
+      "Better operational control",
+    ],
+    href: "/platform/use-cases/finance-management-system",
+  },
+  {
+    title: "Human Resources Management System",
+    description:
+      "Digitize employee workflows, attendance, approvals, and workforce coordination through one centralized HR management system.",
+    icon: <UserCheck size={20} />,
+    bullets: [
+      "Improved workforce visibility",
+      "Faster HR operations",
+      "Better employee coordination",
+    ],
+    href: "/platform/use-cases/human-resources-management-system",
+  },
+  {
+    title: "Asset Management System",
+    description:
+      "Track assets, maintenance workflows, inspections, and operational visibility through one connected asset management platform.",
+    icon: <Wrench size={20} />,
+    bullets: [
+      "Reduced operational downtime",
+      "Improved maintenance visibility",
+      "Better asset utilization tracking",
+    ],
+    href: "/platform/use-cases/asset-management-system",
+  },
+  {
+    title: "R&D & Design Management System",
+    description:
+      "Manage design workflows, approvals, revisions, and product development coordination through one centralized R&D and design platform.",
+    icon: <PenTool size={20} />,
+    bullets: [
+      "Improved design collaboration",
+      "Better revision control",
+      "Faster approval workflows",
+    ],
+    href: "/platform/use-cases/rd-design-management-system",
+  },
+  {
     title: "Supply Chain Management",
-    description: "End-to-end visibility across vendors, shipments and warehouses.",
+    description:
+      "Connect procurement, inventory, and logistics into one system, enabling better coordination and operational visibility.",
     icon: <Truck size={20} />,
     bullets: [
-      "Vendor scorecards",
-      "Shipment milestones",
-      "Exception alerts",
+      "Improved supply chain visibility",
+      "Better coordination across functions",
+      "Reduced operational delays",
     ],
     href: "/platform/use-cases/supply-chain-management-system",
   },
   {
     title: "Inventory Management",
-    description: "Track every SKU across every location in real time.",
+    description:
+      "Track stock levels, movement, and availability in real time, ensuring accuracy and reducing operational inefficiencies.",
     icon: <PackageSearch size={20} />,
     bullets: [
-      "Barcode & RFID ready",
-      "Multi-warehouse rules",
-      "Reorder automations",
+      "Real-time inventory tracking",
+      "Reduced stock discrepancies",
+      "Better control over stock movement",
     ],
     href: "/platform/use-cases/inventory-management-system",
   },
@@ -142,51 +250,100 @@ const business: BusinessCard[] = [
 
 const industries: IndustryCard[] = [
   {
+    title: "Heavy Manufacturing",
+    description:
+      "Supports complex operations across metal, engineering, foundry, mining, and oil & gas industries with structured workflows and operational control.",
+    bullets: [
+      "Structured production workflows",
+      "Improved operational visibility",
+      "Better coordination across teams",
+    ],
+    image: useCasesIndustryWebp.heavyManufacturing,
+    href: "/platform/use-cases/heavy-manufacturing",
+  },
+  {
+    title: "Process Industries",
+    description:
+      "Designed for industries like chemicals, pharmaceuticals, food, and more, ensuring compliance, traceability, and process efficiency.",
+    bullets: [
+      "Enhanced compliance tracking",
+      "Process standardization",
+      "Improved operational accuracy",
+    ],
+    image: useCasesIndustryWebp.processIndustries,
+    href: "/platform/use-cases/process-industries",
+  },
+  {
     title: "Discrete Manufacturing",
     description:
-      "Production tracking, quality control, BOM and work-order management built for discrete goods.",
+      "Streamlines production and operations for electronics, electrical, and appliance industries with better workflow control.",
     bullets: [
-      "Real-time shop floor visibility",
-      "Machine & operator tracking",
-      "Quality and defect logs",
+      "Improved production tracking",
+      "Better workflow coordination",
+      "Reduced operational gaps",
     ],
     image: useCasesIndustryWebp.discreteManufacturing,
-    href: "#",
+    href: "/platform/use-cases/discrete-manufacturing",
   },
   {
-    title: "Retail & Wholesale",
+    title: "Construction & EPC Projects",
     description:
-      "Manage inventory, pricing, offers and multi-location ops from one unified system.",
+      "Coordinate projects, approvals, and resources effectively with structured workflows and better visibility.",
     bullets: [
-      "Multi-store inventory",
-      "Dynamic pricing rules",
-      "Loyalty and promotions",
-    ],
-    image: useCasesIndustryWebp.retailWholesale,
-    href: "#",
-  },
-  {
-    title: "Construction & EPC",
-    description:
-      "Coordinate projects, vendors, materials and compliance across every site.",
-    bullets: [
-      "Project and task orchestration",
-      "Vendor and subcontractor mgmt",
-      "Compliance checklists",
+      "Improved project tracking",
+      "Better resource management",
+      "Reduced delays in execution",
     ],
     image: useCasesIndustryWebp.constructionEpc,
-    href: "#",
+    href: "/platform/use-cases/construction-epc-projects",
   },
   {
-    title: "Consumer Goods",
-    description: "Coordinate demand, distribution, and partner networks with clarity.",
+    title: "Service-based Businesses",
+    description:
+      "Designed for service-driven businesses that rely on coordination, communication, and process efficiency. Formezy helps structure operations, improve service delivery, and ensure seamless execution across workflows.",
     bullets: [
-      "Channel and distributor performance",
-      "Campaign-to-cash visibility",
-      "Operational controls",
+      "Centralized service operations",
+      "Improved team coordination",
+      "Better visibility into performance",
     ],
-    image: useCasesIndustryWebp.consumerGoods,
-    href: "#",
+    image: useCasesIndustryWebp.serviceBased,
+    href: "/platform/use-cases/service-based-businesses",
+  },
+  {
+    title: "Retail Industry",
+    description:
+      "Digitize store operations, inventory coordination, approvals, and multi-location retail workflows through one connected operational platform.",
+    bullets: [
+      "Improved inventory visibility",
+      "Faster store coordination",
+      "Better operational control",
+    ],
+    image: useCasesIndustryWebp.retailWholesale,
+    href: "/platform/use-cases/retail-industry",
+  },
+  {
+    title: "Wholesale Industry",
+    description:
+      "Manage procurement, warehouse operations, inventory movement, and fulfillment workflows with centralized operational visibility and coordination.",
+    bullets: [
+      "Improved warehouse visibility",
+      "Faster order processing",
+      "Better inventory synchronization",
+    ],
+    image: useCasesIndustryWebp.retailWholesale,
+    href: "/platform/use-cases/wholesale-industry",
+  },
+  {
+    title: "Rental Industry",
+    description:
+      "Streamline rental workflows, asset tracking, maintenance coordination, and operational visibility across equipment, commodities, vehicles, and infrastructure rentals.",
+    bullets: [
+      "Better asset utilization tracking",
+      "Improved operational coordination",
+      "Real-time rental visibility",
+    ],
+    image: useCasesPageWebp.hero,
+    href: "/platform/use-cases/rental-industry",
   },
 ];
 
@@ -194,12 +351,17 @@ export function TailoredSystemsSection() {
   return (
     <section className="py-12">
       <div className="container-app">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Carousel
+          options={{ align: "start", loop: true }}
+          slideClassName="basis-[90%] md:basis-[48%] lg:basis-[33%]"
+          showDots={false}
+          arrowPlacement="overlay"
+        >
           {tailored.map((c) => (
             <div
               key={c.title}
               className={cn(
-                "flex h-full flex-col overflow-hidden rounded-[24px] border shadow-sm transition-all hover:-translate-y-1 hover:shadow-md",
+                "flex h-full min-h-[480px] flex-col overflow-hidden rounded-[24px] border shadow-sm transition-all hover:-translate-y-1 hover:shadow-md",
                 c.cardClass
               )}
             >
@@ -239,7 +401,7 @@ export function TailoredSystemsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
   );
@@ -249,11 +411,16 @@ export function BusinessSystemsSection() {
   return (
     <section className="py-12">
       <div className="container-app">
-        <div className="grid gap-6 md:grid-cols-2">
+        <Carousel
+          options={{ align: "start", loop: true }}
+          slideClassName="basis-[90%] md:basis-[48%] lg:basis-[33%]"
+          showDots={false}
+          arrowPlacement="overlay"
+        >
           {business.map((c) => (
             <div
               key={c.title}
-              className="flex h-full flex-col gap-5 rounded-[24px] border border-purple-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="flex h-full min-h-[380px] flex-col gap-5 rounded-[24px] border border-purple-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               <div className="flex items-start gap-4">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#6C60E8] text-white shadow-lg">
@@ -268,7 +435,7 @@ export function BusinessSystemsSection() {
                   </p>
                 </div>
               </div>
-              <ul className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+              <ul className="flex flex-col gap-2">
                 {c.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2.5 font-sora text-[14px] text-[#6366A8]">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6C60E8]" />
@@ -283,7 +450,7 @@ export function BusinessSystemsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
       </div>
     </section>
   );
@@ -295,7 +462,7 @@ export function IndustrySolutionsSection() {
       <div className="container-app">
         <Carousel
           options={{ align: "start", loop: true }}
-          slideClassName="basis-[90%] md:basis-[48%] lg:basis-[33%] pl-6"
+          slideClassName="basis-[90%] md:basis-[48%] lg:basis-[33%]"
           showDots={false}
           arrowPlacement="overlay"
         >
@@ -366,7 +533,7 @@ export default function UseCaseTabs() {
                 "rounded-full px-6 py-2.5 text-[14px] font-bold transition-all md:px-8 md:py-3",
                 active === t.id
                   ? "bg-[#2C0E3A] text-white shadow-md"
-                  : "text-[#6366A8] hover:bg-purple-50 hover:text-[#2C0E3A]",
+                  : "text-[#6366A8] hover:bg-purple-50 hover:text-[#2C0E3A]"
               )}
             >
               {t.label}

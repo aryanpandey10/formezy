@@ -88,9 +88,7 @@ export default function ImageCompareSlider({
           sizes="(max-width:1280px) 100vw, 1232px"
           draggable={false}
         />
-        <span className="pointer-events-none absolute left-4 top-4 z-[1] rounded-pill bg-white/90 px-3 py-1 text-[12px] font-semibold text-[#2C0E3A] shadow-card backdrop-blur">
-          {beforeLabel}
-        </span>
+        
       </div>
 
       {/* After (right) — clipped so nothing shows left of the divider */}
@@ -106,9 +104,6 @@ export default function ImageCompareSlider({
           sizes="(max-width:1280px) 100vw, 1232px"
           draggable={false}
         />
-        <span className="pointer-events-none absolute right-4 top-4 z-[1] rounded-pill bg-white/90 px-3 py-1 text-[12px] font-semibold text-[#2C0E3A] shadow-card backdrop-blur">
-          {afterLabel}
-        </span>
       </div>
 
       {/* Divider line */}
