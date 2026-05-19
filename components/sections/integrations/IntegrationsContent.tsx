@@ -213,15 +213,21 @@ export default function IntegrationsContent() {
             >
               <motion.div variants={fadeUp}>
                 <span className="inline-flex items-center rounded-[50px] border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-[#6C60E8]">
-                  Third-Party & APIs
+                  API Integration
                 </span>
               </motion.div>
               <motion.h2
                 variants={fadeUp}
                 className="font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[40px]"
               >
-                Connect Your <G>Business Ecosystem</G>
+                Third-Party Integrations <br/> <G>with API</G>
               </motion.h2>
+              <motion.h6
+                variants={fadeUp}
+                className="font-sora text-[12px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[20px]"
+              >
+                Connect Your Business Ecosystem
+              </motion.h6>
               <motion.p variants={fadeUp} className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
                 Integrate Formezy with ERP systems, accounting platforms, communication tools, APIs, and operational applications to create a connected and synchronized enterprise environment.
               </motion.p>
@@ -292,15 +298,21 @@ export default function IntegrationsContent() {
             >
               <motion.div variants={fadeUp}>
                 <span className="inline-flex items-center rounded-[50px] border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-[#6C60E8]">
-                  Industry 4.0 Integration
+                  IoT Integration
                 </span>
               </motion.div>
               <motion.h2
                 variants={fadeUp}
                 className="font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[40px]"
               >
-                Connect Smart <G>Manufacturing Operations</G>
+                Industry <G>4.0 Integration</G>
               </motion.h2>
+              <motion.h6
+                variants={fadeUp}
+                className="font-sora text-[12px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[20px]"
+              >
+                Connect Smart Manufacturing Operations
+              </motion.h6>
               <motion.p variants={fadeUp} className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
                 Integrate machines, IoT devices, production systems, and shopfloor operations with Formezy to enable real-time monitoring, operational intelligence, and connected manufacturing workflows.
               </motion.p>

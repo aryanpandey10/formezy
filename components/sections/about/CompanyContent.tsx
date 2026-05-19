@@ -99,7 +99,7 @@ export default function CompanyContent() {
               variants={fadeUp}
               className="mt-8 max-w-[800px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[19px]"
             >
-              Formezy helps businesses move beyond disconnected tools and build a unified, intelligent way of operating — built around how you actually work.
+              Formezy EAP helps businesses move beyond disconnected tools and build a unified, intelligent way of operating — built around how you actually work.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-12 w-full">
@@ -177,7 +177,7 @@ export default function CompanyContent() {
                 Why EAP Matters Today
               </motion.h2>
               <motion.p variants={fadeUp} className="mt-6 font-sora text-[16px] leading-relaxed text-[#6366A8] md:text-[18px]">
-                Most businesses of 50+ operate across disconnected systems — an ERP here, a CRM there, spreadsheets everywhere. The cost isn&apos;t the tools. It&apos;s the coordination that never quite happens between them.
+                Most businesses with 50+ operations work across disconnected systems, tools and scattered spreadsheets. We offer a single business solution that co-ordinates them all in one platform.
               </motion.p>
               <motion.div variants={fadeUp} className="mt-8">
                 <Bullet items={whyEap} />

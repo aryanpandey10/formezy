@@ -118,12 +118,13 @@ function WhatIsEapSection() {
             variants={fadeUp}
             className="font-sora text-[15px] font-normal leading-[24px] text-[#6366A8] sm:text-[16px]"
           >
-            An Enterprise Application Platform (EAP) connects how your business actually
-            operates by bringing workflows, communication, and documentation into one
-            unified system. Instead of managing multiple tools, an EAP enables structured,
-            end-to-end workflows, centralized communication across teams, integrated
-            document management, and real-time visibility into operations. With Formezy,
-            your business runs on connected processes rather than scattered systems.
+            An Enterprise Application Platform (EAP) is a unified system that helps businesses build, connect, and manage workflows, applications, and operations through one intelligent environment. It enables real-time visibility, automation, scalability, and operational control.
+          </motion.p>
+          <motion.p
+            variants={fadeUp}
+            className="font-sora text-[15px] font-normal leading-[24px] text-[#6366A8] sm:text-[16px]"
+          >
+            Formezy is an AI-led EAP that helps businesses streamline operations, improve efficiency, and enable faster, data-driven decision-making.
           </motion.p>
         </motion.div>
 
@@ -353,14 +354,6 @@ function ReadySection() {
               <p className="font-normal text-[#2C0E3A]">
                 Bring your workflows, communication, and data into one connected system
                 with Formezy. Build your enterprise platform. Achieve more with clarity.
-              </p>
-              <p className="font-normal">
-                Lorem ipsum dolor sit amet consectetur. Maecenas molestie eget at fusce
-                dui adipiscing. Purus est sit etiam in. Quam nulla nulla duis elit est.
-                Pulvinar ornare eget ut velit. Suspendisse adipiscing in enim iaculis
-                ultrices netus feugiat. Consequat ut vehicula pellentesque suscipit
-                tincidunt maecenas magna in duis. Fermentum tellus volutpat ut non
-                accumsan egestas etiam.
               </p>
             </motion.div>
 
