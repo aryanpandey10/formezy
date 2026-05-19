@@ -411,7 +411,7 @@ export default function SafalContent() {
               <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
                 Safal Infosoft is a technology company powering enterprise
                 operations across industries — from ERP implementations to
-                custom application platforms — for over 19 years.
+                custom application platforms to EAP — for over 19 years.
               </p>
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link
@@ -457,13 +457,13 @@ export default function SafalContent() {
               Who <G>We Are</G>
             </motion.h2>
             <motion.p variants={fadeUp} className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
-              Safal Infosoft Pvt. Ltd. is an Ahmedabad-based enterprise technology company
+              Safal Infosoft Ltd. is an Ahmedabad-based enterprise technology company
               with deep expertise in building structured, intelligent business systems. Over
               nearly two decades, we&apos;ve helped organizations across India replace
               fragmented tools with unified, process-driven platforms.
             </motion.p>
             <motion.p variants={fadeUp} className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-              Formezy is our flagship — an Enterprise Application Platform purpose-built for
+              Formezy is our flagship — an Enterprise Application Platform (EAP) purpose-built for
               businesses that have outgrown spreadsheets and off-the-shelf software.
             </motion.p>
           </motion.div>

@@ -15,7 +15,8 @@ import {
   Stethoscope,
   Landmark,
   ShoppingCart,
-  Truck
+  Truck,
+  Blend
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
@@ -36,6 +37,21 @@ const G = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="flex flex-col gap-2.5">
+      {items.map((b) => (
+        <li key={b} className="flex items-start gap-3">
+          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white">
+            <Check size={11} strokeWidth={2.5} />
+          </span>
+          <span className="font-sora text-[14px] leading-[22px] text-[#6366A8]">{b}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /* ─────────────────────────────────────────────
    Use-case icon grid data
    ───────────────────────────────────────────── */
@@ -43,7 +59,7 @@ const overviewItems = [
   { label: "Customer Relationship Mgmt.", Icon: Users2,       color: "#6C63FF" },
   { label: "Enterprise Resource Planning", Icon: Boxes,       color: "#A78BFA" },
   { label: "Human Resource CRM",           Icon: HeartPulse,  color: "#06B6D4" },
-  { label: "Marketing Automation",          Icon: Megaphone,   color: "#F59E0B" },
+  { label: "Rental Industry",          Icon: Blend,   color: "#F59E0B" },
   { label: "Manufacturing",                 Icon: Factory,     color: "#10B981" },
   { label: "Healthcare",                    Icon: Stethoscope, color: "#EF4444" },
   { label: "Financial Services / Banking",  Icon: Landmark,    color: "#8B5CF6" },
@@ -238,14 +254,18 @@ function TurningNeedsSection() {
               variants={fadeUp}
               className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
-              Every business operates differently, but most tools force standardization. Formezy works the other way around. It allows you to build systems that match your workflows, connect your operations, and scale with your growth.
+              Every business has it&aposs own workflow we transform it into a solution.
             </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Whether you&apos;re solving a specific operational challenge or building a complete system, Formezy provides the flexibility to design exactly what your business needs.
-            </motion.p>
+            <motion.div variants={fadeUp}>
+                            <BulletList
+                              items={[
+                                "Custom workflows for your industry",
+                                "Fully configurable to match your ops",
+                                "Integration blueprints included",
+                                "Go live in weeks, not quarters",
+                              ]}
+                            />
+                          </motion.div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-1">
               <Button href="#explore" size="lg" className="rounded-[10px]">
                 Get Started <ArrowRight size={16} />

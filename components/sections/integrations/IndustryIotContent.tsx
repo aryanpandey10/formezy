@@ -190,20 +190,9 @@ export default function IndustryIotContent() {
               ))}
             </div>
 
-            <p className="text-[#2C0E3A] mt-8 mb-4 font-bold font-sora text-[18px]">
-              Example Workflow
+            <p className="text-[#2C0E3A] mt-8 mb-8 font-bold font-sora text-[18px]">
+              How It Works in Practice
             </p>
-            <div className="inline-flex flex-wrap justify-center items-center gap-3 bg-purple-50 border border-purple-100 px-6 py-3 rounded-full font-sora text-[15px] font-semibold text-[#6C60E8] shadow-sm mb-12">
-              <span>Machine Data</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Production Monitoring</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Alert Trigger</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Workflow Action</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Operational Dashboard</span>
-            </div>
           </motion.div>
 
           <motion.div

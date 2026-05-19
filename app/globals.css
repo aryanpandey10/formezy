@@ -60,6 +60,11 @@
     background: transparent;
   }
 
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
   h1,
   h2,
   h3,

@@ -193,20 +193,9 @@ export default function RdDesignManagementContent() {
               ))}
             </div>
 
-            <p className="text-[#2C0E3A] mt-8 mb-4 font-bold font-sora text-[18px]">
+            <p className="text-[#2C0E3A] mt-8 mb-8 font-bold font-sora text-[18px]">
               How It Works in Practice
             </p>
-            <div className="inline-flex flex-wrap justify-center items-center gap-3 bg-purple-50 border border-purple-100 px-6 py-3 rounded-full font-sora text-[15px] font-semibold text-[#6C60E8] shadow-sm mb-12">
-              <span>Design Request</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Development</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Review</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Approval</span>
-              <span className="text-[#9D94EF] font-bold">→</span>
-              <span>Release</span>
-            </div>
           </motion.div>
 
           <motion.div
