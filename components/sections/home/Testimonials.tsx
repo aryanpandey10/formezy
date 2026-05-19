@@ -144,11 +144,7 @@ export default function Testimonials() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Client Testimonials
-            </span>
-          </motion.div>
+
 
           <motion.h2
             variants={fadeUp}
