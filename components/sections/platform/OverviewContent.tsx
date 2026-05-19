@@ -31,11 +31,15 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           aria-label="Breadcrumb"
-          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[263px]"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[5px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
         >
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home
           </Link>
+
+           {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Platform
+          </Link> */}
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>
@@ -73,7 +77,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
-          className="mt-10 w-full md:mt-12 lg:mt-14"
+          className=""
         >
           <div className="relative aspect-[16/9] w-full md:aspect-[1200/640]">
             <Image
@@ -81,7 +85,7 @@ function HeroSection() {
               alt="Formezy business platform overview"
               fill
               priority
-              sizes="(max-width: 1280px) 100vw, 1280px"
+              // sizes="(max-width: 1280px) 100vw, 1280px"
               className="object-contain object-left md:object-center"
             />
           </div>
