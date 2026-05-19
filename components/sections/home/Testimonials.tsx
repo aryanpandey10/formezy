@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -34,7 +34,7 @@ const clients: Client[] = [
   {
     id: 2,
     name: "Twin Cool Engineers",
-    logo: "/images/Home/twincool.png",
+    logo: "/images/Home/twin_cool.png",
     industry: "Engineering",
     color: "#06B6D4",
     quote:
@@ -94,7 +94,7 @@ const clients: Client[] = [
   {
     id: 7,
     name: "Navjivan Roller Flour & Pulse Mills",
-    logo: "/images/Home/navjivan.png",
+    logo: "/images/Home/navjeevan.png",
     industry: "Food & Milling",
     color: "#10B981",
     quote:
@@ -107,10 +107,30 @@ const clients: Client[] = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const  client = clients[active]!;
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const prev = () => setActive((p) => (p === 0 ? clients.length - 1 : p - 1));
-  const next = () => setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
+  const client = clients[active];
+
+  const prev = () =>
+    setActive((p) => (p === 0 ? clients.length - 1 : p - 1));
+
+  const next = () =>
+    setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
+
+  // ✅ FIXED AUTO SLIDER (ONLY CHANGE)
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setActive((p) =>
+        p === clients.length - 1 ? 0 : p + 1
+      );
+    }, 4000);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="section overflow-hidden bg-white" id="testimonials">
@@ -124,22 +144,27 @@ export default function Testimonials() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
         >
-         
+          <motion.div variants={fadeUp}>
+            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
+              Client Testimonials
+            </span>
+          </motion.div>
 
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
           >
-          Client Testimonials {" "}
+            Client Testimonials{" "}
             <span
               style={{
-                background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
+                background:
+                  "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-            Formezy
+              Formezy
             </span>
           </motion.h2>
 
@@ -147,17 +172,18 @@ export default function Testimonials() {
             variants={fadeUp}
             className="max-w-[840px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
           >
-         Businesses across industries use Formezy to turn operational complexity into clarity.          </motion.p>
+            Businesses across industries use Formezy to turn operational complexity into clarity.
+          </motion.p>
         </motion.div>
 
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-[7fr_3fr]">
-        <motion.div
-  initial="hidden"
-  whileInView="show"
-  viewport={viewportOnce}
-  variants={fadeUp}
-  className="relative hidden lg:block"
->
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="relative hidden lg:block"
+          >
             <div className="relative overflow-hidden rounded-[24px]p-0">
               <Image
                 src="/images/ClientSays.svg"
@@ -179,12 +205,6 @@ export default function Testimonials() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="relative overflow-hidden"
               >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl transition-colors duration-500"
-                 
-                />
-
                 <div className="flex items-center justify-between gap-4">
                   <div className="relative h-14 w-32 shrink-0">
                     <Image
@@ -194,8 +214,9 @@ export default function Testimonials() {
                       className="object-contain object-left"
                     />
                   </div>
-                  <div className="flex min-w-0 flex-col h-full items-end gap-1">
-                    <div className="flex items-center gap-1 text-[#708FF4]">
+
+                  <div className="flex min-w-0 flex-col items-end gap-1">
+                    <div className="flex items-center gap-0.5 text-[#708FF4]">
                       {Array.from({ length: client.stars }).map((_, i) => (
                         <Star key={i} size={20} fill="currentColor" strokeWidth={0} />
                       ))}
@@ -203,15 +224,9 @@ export default function Testimonials() {
                   </div>
                 </div>
 
-         
-{/* 
-                <Quote
-                  size={36}
-                  className="mt-4 opacity-10"
-                  style={{ color: client.color }}
-                /> */}
                 <hr className="border-t border-slate-200 mt-2 mb-6" />
-                <blockquote className="mt-3 font-sora text-[16px] leading-[1.6] text-[#6366A8]">
+
+                <blockquote className="mt-3 font-sora text-[16px] leading-[1.6] text-ink">
                   &ldquo;{client.quote}&rdquo;
                 </blockquote>
               </motion.div>
@@ -223,7 +238,6 @@ export default function Testimonials() {
                   <button
                     key={i}
                     onClick={() => setActive(i)}
-                    aria-label={`Go to testimonial ${i + 1}`}
                     className="rounded-full transition-all duration-300"
                     style={{
                       width: i === active ? 28 : 8,
@@ -233,22 +247,6 @@ export default function Testimonials() {
                   />
                 ))}
               </div>
-              {/* <div className="flex items-center gap-2">
-                <button
-                  onClick={prev}
-                  aria-label="Previous testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-white text-ink-secondary shadow-card transition-all hover:border-purple-200 hover:text-purple-primary"
-                >
-                  <ChevronLeft size={16} />
-                </button>
-                <button
-                  onClick={next}
-                  aria-label="Next testimonial"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-surface-border bg-white text-ink-secondary shadow-card transition-all hover:border-purple-200 hover:text-purple-primary"
-                >
-                  <ChevronRight size={16} />
-                </button>
-              </div> */}
             </div>
           </div>
         </div>

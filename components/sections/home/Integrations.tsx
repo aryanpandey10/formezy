@@ -10,15 +10,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 const integrations = [
-  { id: "gs",      name: "Google Sheets", label: "Google Sheets",     src: "/images/Google_Sheets_Logo.png" },
-  { id: "ns",      name: "NetSuite",      label: "NetSuite ERP",      src: "/images/NetSuite-Symbol.png" },
-  { id: "gw",      name: "G Suite",       label: "Google Workspace",  src: "/images/Gsuite_logo.png" },
-  { id: "oracle",  name: "Oracle",        label: "Oracle Database",   src: "/images/Oracle-logo.png" },
-  { id: "outlook", name: "Outlook",       label: "Outlook Calendars", src: "/images/Microsoft_Office_Outlook.png" },
-  { id: "sap",     name: "SAP",           label: "SAP Integration",   src: "/images/SAP-Logo.png" },
-  { id: "o365",    name: "Office 365",    label: "Microsoft 365",     src: "/images/Microsoft_360.png" },
-  { id: "wp",      name: "WordPress",     label: "WordPress CMS",     src: "/images/Wordpress.png" },
-  { id: "excel",   name: "Excel",         label: "Microsoft Excel",   src: "/images/Microsoft_Excel-Logo.png" },
+  { id: "gs",      name: "Google Sheets", label: "Google Sheets",     src: "/images/Google_Sheets_Logo.webp" },
+  { id: "ns",      name: "NetSuite",      label: "NetSuite ERP",      src: "/images/NetSuite-Symbol.webp" },
+  { id: "gw",      name: "G Suite",       label: "Google Workspace",  src: "/images/Gsuite_logo.webp" },
+  { id: "oracle",  name: "Oracle",        label: "Oracle Database",   src: "/images/Oracle-logo.webp" },
+  { id: "outlook", name: "Outlook",       label: "Outlook Calendars", src: "/images/Microsoft_Office_Outlook.webp" },
+  { id: "sap",     name: "SAP",           label: "SAP Integration",   src: "/images/SAP-Logo.webp" },
+  { id: "o365",    name: "Office 365",    label: "Microsoft 365",     src: "/images/Microsoft_360.webp" },
+  { id: "wp",      name: "WordPress",     label: "WordPress CMS",     src: "/images/Wordpress.webp" },
+  { id: "excel",   name: "Excel",         label: "Microsoft Excel",   src: "/images/Microsoft_Excel-Logo.webp" },
 ];
 
 const N = integrations.length;
