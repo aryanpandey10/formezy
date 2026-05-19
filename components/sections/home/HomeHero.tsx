@@ -84,7 +84,7 @@ export default function HomeHero() {
         }}
       ></div>
       
-      <div className="container-app relative z-10 flex flex-col items-center">
+      <div className="container-app relative z-10 flex flex-col items-center mt-5 lg:mt-0">
         {/* 1. Top Section: Chaos to Clarity */}
         <div className="flex flex-col items-center text-center px-4">
           <motion.h2 
@@ -180,6 +180,7 @@ export default function HomeHero() {
                   priority
                   className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
                 />
+                
               </motion.div>
             </div>
           </div>
