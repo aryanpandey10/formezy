@@ -10,6 +10,8 @@ import {
   viewportOnce,
 } from "@/lib/animations";
 
+
+// build ERp
 export default function BuildErp() {
   return (
     <section className="section overflow-hidden bg-white/80 backdrop-blur-sm">
