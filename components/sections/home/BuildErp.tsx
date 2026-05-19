@@ -27,7 +27,7 @@ export default function BuildErp() {
   border border-purple-100
   shadow-[0_8px_48px_rgba(108,96,232,0.12)]
 
-  min-h-[520px]
+  min-h-[320px]
   sm:min-h-[580px]
   md:min-h-[660px]
   lg:min-h-[920px]
@@ -46,9 +46,28 @@ export default function BuildErp() {
               sm:opacity-50
               md:opacity-100
               md:object-bottom
+              hidden lg:block
             "
             priority={false}
           />
+
+           <Image
+            src="/images/m_cta_banner.webp"
+            alt="Build your ERP with Formezy modules"
+            fill
+            sizes="100vw"
+            className="
+               object-cover
+               object-center
+              opacity-40
+              sm:opacity-50
+              md:opacity-100
+              md:object-bottom
+              lg:hidden
+            "
+            priority={false}
+          />
+
 
           {/* Gradient overlay — strong at top for text legibility, fades out toward bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/20 to-transparent" />
@@ -61,7 +80,7 @@ export default function BuildErp() {
             variants={staggerContainer}
             className="
                     absolute inset-0 z-10
-                     flex flex-col items-center pt-8  md:justify-start justify-center
+                     flex flex-col items-center pt-8  md:justify-start
                     text-center
   gap-5 sm:gap-6
   px-5 sm:px-8 md:px-12 lg:px-16
