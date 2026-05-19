@@ -25,11 +25,7 @@ export default function WhyChoose() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Why Formezy
-            </span>
-          </motion.div>
+        
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"

@@ -15,12 +15,7 @@ export default function WhatIsFormezy() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              What is Formezy?
-            </span>
-          </motion.div>
-
+      
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
@@ -40,7 +35,7 @@ export default function WhatIsFormezy() {
 
           <motion.p
             variants={fadeUp}
-            className="max-w-[840px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
+            className="max-w-[1340px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
           >
             Formezy is an Enterprise Application Platform that transforms
             disconnected tools into a unified, intelligent system. Instead of

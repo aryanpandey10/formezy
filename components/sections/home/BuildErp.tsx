@@ -30,7 +30,7 @@ export default function BuildErp() {
   min-h-[520px]
   sm:min-h-[580px]
   md:min-h-[660px]
-  lg:min-h-[760px]
+  lg:min-h-[920px]
 "
         >
           {/* Background image — fills the card, anchored to bottom so UI is visible */}

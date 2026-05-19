@@ -107,7 +107,7 @@ const clients: Client[] = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const client = clients[active]!;
+  const  client = clients[active]!;
 
   const prev = () => setActive((p) => (p === 0 ? clients.length - 1 : p - 1));
   const next = () => setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
@@ -124,17 +124,13 @@ export default function Testimonials() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
         >
-          <motion.div variants={fadeUp}>
-            <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-              Client Testimonials
-            </span>
-          </motion.div>
+         
 
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
           >
-            Client Testimonials{" "}
+          Client Testimonials {" "}
             <span
               style={{
                 background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
@@ -143,7 +139,7 @@ export default function Testimonials() {
                 backgroundClip: "text",
               }}
             >
-              Formezy
+            Formezy
             </span>
           </motion.h2>
 
@@ -151,19 +147,18 @@ export default function Testimonials() {
             variants={fadeUp}
             className="max-w-[840px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
           >
-            Businesses across industries use Formezy to turn operational complexity into clarity.
-          </motion.p>
+         Businesses across industries use Formezy to turn operational complexity into clarity.          </motion.p>
         </motion.div>
 
-        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={fadeUp}
-            className="relative"
-          >
-            <div className="relative overflow-hidden rounded-[24px] bg-gradient-to-br from-purple-50 via-white to-purple-50/50 p-0">
+        <div className="mt-14 grid items-center gap-10 lg:grid-cols-[7fr_3fr]">
+        <motion.div
+  initial="hidden"
+  whileInView="show"
+  viewport={viewportOnce}
+  variants={fadeUp}
+  className="relative hidden lg:block"
+>
+            <div className="relative overflow-hidden rounded-[24px]p-0">
               <Image
                 src="/images/ClientSays.svg"
                 alt="Formezy client network"
@@ -174,7 +169,7 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col h-full justify-end gap-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={client.id}
@@ -182,15 +177,15 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="relative overflow-hidden rounded-[24px] border border-purple-100 bg-white p-8 shadow-card md:p-10"
+                className="relative overflow-hidden"
               >
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl transition-colors duration-500"
-                  style={{ backgroundColor: `${client.color}20` }}
+                 
                 />
 
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center justify-between gap-4">
                   <div className="relative h-14 w-32 shrink-0">
                     <Image
                       src={client.logo}
@@ -199,55 +194,26 @@ export default function Testimonials() {
                       className="object-contain object-left"
                     />
                   </div>
-                  <div className="flex min-w-0 flex-col items-end gap-1">
-                    <div className="flex items-center gap-0.5 text-amber-400">
+                  <div className="flex min-w-0 flex-col h-full items-end gap-1">
+                    <div className="flex items-center gap-1 text-[#708FF4]">
                       {Array.from({ length: client.stars }).map((_, i) => (
-                        <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
+                        <Star key={i} size={20} fill="currentColor" strokeWidth={0} />
                       ))}
                     </div>
-                    <span
-                      className="max-w-[min(100%,220px)] rounded-pill px-2.5 py-0.5 text-right text-[10px] font-bold uppercase tracking-wider"
-                      style={{
-                        backgroundColor: `${client.color}18`,
-                        color: client.color,
-                      }}
-                    >
-                      {client.industry}
-                    </span>
                   </div>
                 </div>
 
-                <p className="mt-4 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
-                  {client.name}
-                </p>
-
+         
+{/* 
                 <Quote
                   size={36}
                   className="mt-4 opacity-10"
                   style={{ color: client.color }}
-                />
-                <blockquote className="mt-3 text-[19px] font-medium leading-[1.6] text-ink md:text-[21px]">
+                /> */}
+                <hr className="border-t border-slate-200 mt-2 mb-6" />
+                <blockquote className="mt-3 font-sora text-[16px] leading-[1.6] text-[#6366A8]">
                   &ldquo;{client.quote}&rdquo;
                 </blockquote>
-
-                <div className="mt-8 flex items-center gap-3">
-                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
-                    <Image
-                      src={client.logo}
-                      alt={client.author}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="flex min-w-0 flex-col leading-tight">
-                    <span className="text-[14px] font-semibold text-ink">
-                      {client.author}
-                    </span>
-                    <span className="text-[12px] text-ink-muted">
-                      {client.role}
-                    </span>
-                  </div>
-                </div>
               </motion.div>
             </AnimatePresence>
 
@@ -267,7 +233,7 @@ export default function Testimonials() {
                   />
                 ))}
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <button
                   onClick={prev}
                   aria-label="Previous testimonial"
@@ -282,7 +248,7 @@ export default function Testimonials() {
                 >
                   <ChevronRight size={16} />
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

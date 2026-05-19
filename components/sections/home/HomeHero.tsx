@@ -10,12 +10,14 @@ const ChaosBadge = ({ text }: { text: string }) => (
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    className="bg-[#ad8e59] text-white rounded-full px-3 py-1 md:px-[1.25vw] md:py-[0.5vw] text-[12px] md:text-[14px] lg:text-[0.85vw] font-bold flex items-center gap-1.5 md:gap-[0.5vw] shadow-sm border border-[#ad8e59]/20 whitespace-nowrap"
+    className="bg-[#FFE9E9] text-[#CC1A1E] rounded-full px-3 py-1 md:px-[1.25vw] md:py-[0.5vw] text-[12px] md:text-[14px] lg:text-[0.85vw] font-bold flex items-center gap-1.5 md:gap-[0.5vw] shadow-sm border border-[#ad8e59]/20 whitespace-nowrap"
   >
     <X className="w-3.5 h-3.5 md:w-[0.85vw] md:h-[0.85vw]" strokeWidth={3} />
     {text}
   </motion.div>
 );
+
+
 
 const FeaturePill = ({ text }: { text: string }) => (
   <motion.div 
