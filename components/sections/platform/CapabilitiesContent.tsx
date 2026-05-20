@@ -49,7 +49,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           aria-label="Breadcrumb"
-          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[min(100%,340px)]"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
         >
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home

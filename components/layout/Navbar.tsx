@@ -36,10 +36,10 @@ export default function Navbar() {
             : "bg-transparent",
         )}
       >
-        <div className="container-app flex h-[60px] items-center justify-between lg:h-[72px]">
+        <div className="container_home flex h-[60px] items-center justify-between lg:h-[72px]">
           <Logo />
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 lg:gap-4 lg:flex">
             {navLinks.map((link) => (
               <NavLinkItem
                 key={link.label}
@@ -52,7 +52,7 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button href="#demo" size="sm" className="hidden rounded-pill md:inline-flex">
+            <Button href="#demo" size="sm" className="hidden rounded-sm md:inline-flex">
               Book a Demo
             </Button>
             <button
@@ -152,7 +152,7 @@ function NavLinkItem({
     >
       <Link
         href={link.href}
-        className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-[14px] font-medium text-ink-secondary transition-colors hover:text-ink"
+        className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-[14px] lg:text-[16px] font-medium text-ink-secondary transition-colors hover:text-ink"
       >
         {link.label}
         <ChevronDown

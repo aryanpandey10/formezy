@@ -95,7 +95,7 @@ export default function IndustrySolutions() {
             {industries.map((item, i) => (
               <div
                 key={item.title}
-                className={`h-full ${i % 2 === 1 ? "pt-12 md:pt-16 lg:pt-20" : ""}`}
+                className={`h-full ${i % 2 === 1 ? " md:pt-16 lg:pt-20" : ""}`}
               >
                 <IndustryCard {...item} priority={i === 0} />
               </div>
@@ -121,7 +121,7 @@ function IndustryCard({
   return (
     <Link
       href={href}
-      className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover sm:h-[300px]"
+      className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform  hover:shadow-card-hover sm:h-[300px]"
     >
       <Image
         src={image}

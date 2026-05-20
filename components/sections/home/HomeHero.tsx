@@ -38,7 +38,7 @@ const VerticalArrow = () => (
       height="90"
       viewBox="0 0 2 60"
       fill="none"
-      className="overflow-visible lg:hidden"
+      className="overflow-visible hidden"
     >
 
       {/* Moving dashed line */}
@@ -99,7 +99,7 @@ export default function HomeHero() {
         }}
       ></div>
       
-      <div className="container_home relative z-10 flex flex-col items-center mt-5 lg:mt-0">
+      <div className="container_home relative z-10 flex flex-col items-center mt-5 xl:mt-10">
         {/* 1. Top Section: Chaos to Clarity */}
         <div className="flex flex-col items-center text-center px-4">
           <motion.h2 
@@ -131,7 +131,7 @@ export default function HomeHero() {
 </svg>
 
         {/* 2. Main Content Area */}
-        <div className="w-full flex flex-col lg:grid lg:grid-cols-12 items-center lg:gap-8 lg:pb-[5vw] mt-10">
+        <div className="w-full flex flex-col lg:grid lg:grid-cols-12 items-center lg:gap-8 lg:pb-[5vw] xl:pb-[2vw] mt-4 lg:mt-10">
           
           {/* Left Column (Block 2) */}
           <div className="relative lg:col-span-5 z-20 flex flex-col items-center lg:items-start text-center lg:text-left px-4">
@@ -159,7 +159,7 @@ export default function HomeHero() {
               with <span className="text-[#6366f1]">Formezy EAP</span>
             </motion.h1>
 
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 md:gap-[1.25vw] mb-10">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2.5 md:gap-[1.25vw] mb-4 lg:mb-10">
               <FeaturePill text="Digitize execution" />
               <FeaturePill text="Get real-time visibility" />
               <FeaturePill text="Standardize processes" />
