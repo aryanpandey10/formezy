@@ -121,7 +121,7 @@ function IndustryCard({
   return (
     <Link
       href={href}
-      className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover sm:h-[300px]"
+      className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform  hover:shadow-card-hover sm:h-[300px]"
     >
       <Image
         src={image}
