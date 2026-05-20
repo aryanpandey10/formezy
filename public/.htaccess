@@ -1,19 +1,50 @@
-# Next.js static export on Apache (cPanel): map clean URLs like /contact → contact.html
-# Prevents blank/hanging navigations when the server looks for a folder instead of the HTML file.
+# Formezy — static Next.js export (Apache / cPanel)
+# Deploy: run `npm run build:out`, upload everything inside ./out/ to the site root.
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # If you deploy in a subfolder, uncomment and set e.g. RewriteBase /formezy/
-  # RewriteBase /
+  RewriteBase /
 
-  # Let real files and folders through (_next, images, favicon, *.js, *.css, …)
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
+  Options -Indexes +FollowSymLinks
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Skip rewrite for real files
+  RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]
 
-  # Serve /path as /path.html when that file exists (nested routes included)
-  RewriteCond %{REQUEST_FILENAME}.html -f
-  RewriteRule ^(.*)$ $1.html [L]
+  # /route → /route/ when that folder has index.html (Next trailingSlash export)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+  RewriteRule ^ %{REQUEST_URI}/ [L,R=301]
+
+  # /route/ → serve /route/index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}%1/index.html -f
+  RewriteRule ^(.+)/$ $1/index.html [L]
+
+  # Extensionless: /route → /route.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  ErrorDocument 404 /404.html
 </IfModule>
 
-# Optional: custom 404 from Next export (upload must include 404.html at site root)
-ErrorDocument 404 /404.html
+<IfModule mod_dir.c>
+  DirectoryIndex index.html
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(js|css|webp|png|jpg|jpeg|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
