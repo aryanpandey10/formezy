@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import IntegrationsContent from "@/components/sections/platform/IntegrationsContent";
+import IntegrationsConnectorsContent from "@/components/sections/platform/IntegrationsConnectorsContent";
 
 export const metadata: Metadata = {
-  title: "Integrations | Formezy",
+  title: "Integration & Connectors | Formezy",
   description:
-    "Design workflows that connect your core business systems with the tools your teams use every day. Seamlessly integrate with ERPs, CRMs, and productivity tools.",
+    "Connect everything and work without boundaries. Native connectors, ERP integrations, and third-party tools unified on Formezy.",
 };
 
 export default function IntegrationsPage() {
-  return <IntegrationsContent />;
+  return <IntegrationsConnectorsContent />;
 }

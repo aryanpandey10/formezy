@@ -79,7 +79,7 @@ export default function AskEzyHomeSection() {
 
             <motion.div variants={fadeUp}>
               <Button
-                href="/platform/features"
+                href="/platform/features/ask-ezy"
                 size="lg"
                 className="rounded-[10px]"
               >

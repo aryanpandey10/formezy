@@ -5,7 +5,9 @@ export const industrySolutionImages = {
   "Heavy Manufacturing": `${HOME_WEBP}/heavy_manufacturing.webp`,
   "Process Industries": `${HOME_WEBP}/process_manufacturing.webp`,
   "Discrete Manufacturing": `${HOME_WEBP}/discrete_manufacturing.webp`,
-  "Retail & Wholesale": `${HOME_WEBP}/retail_wholesale.webp`,
+  Retail: `${HOME_WEBP}/retail_wholesale.webp`,
+  Wholesale: `${HOME_WEBP}/service_based_businesses.webp`,
+  Rental: `${HOME_WEBP}/construction_epc.webp`,
 } as const;
 
 export const testimonialNetworkImage = `${HOME_WEBP}/ClientSays.svg`;
