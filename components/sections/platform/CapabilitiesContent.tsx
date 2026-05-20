@@ -54,6 +54,12 @@ function HeroSection() {
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home
           </Link>
+
+         
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">Platform</span>
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>

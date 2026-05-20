@@ -41,10 +41,7 @@ function HeroSection() {
             Home
           </Link>
 
-           {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
-            Platform
-          </Link> */
-          }
+         
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>
@@ -63,7 +60,7 @@ function HeroSection() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[84px]"
+            className="font-sora text-[34px] font-bold tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] 2xl:text-[80px] 2xl:leading-[84px]"
           >
             From Idea to <G>Execution, Seamlessly</G>
           </motion.h1>
@@ -181,21 +178,12 @@ const hiwJourneySteps = [
 ───────────────────────────────────────────── */
 function HowItWorksStepsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
-
   const { scrollYProgress } = useScroll({
     target: trackRef,
-
-    // animation starts when section center reaches viewport center
-    // and ends when bottom reaches center
-    offset: ["center center", "end center"],
+   offset: ["start center", "end center"]
   });
+  const x = useTransform(scrollYProgress, [0, 1], ["4vw", "-52vw"]);
 
-  // smoother horizontal movement
-const x = useTransform(
-  scrollYProgress,
-  [0, 1],
-  ["0%", "-68%"]
-);
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
@@ -212,37 +200,27 @@ const x = useTransform(
           >
             How <G>Formezy Works</G>
           </motion.h2>
-
           <motion.p
             variants={fadeUp}
             className="max-w-xl font-sora text-[16px] leading-[24px] text-[#6366A8]"
           >
             The same structured journey behind every successful Formezy rollout.
           </motion.p>
-
           <motion.div variants={fadeUp}>
-            <Button
-              href="/platform/overview"
-              size="lg"
-              className="rounded-[10px]"
-            >
+            <Button href="/platform/overview" size="lg" className="rounded-[10px]">
               Explore the Platform <ArrowRight size={16} />
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* TRACK */}
       <div
         ref={trackRef}
-        className="relative mt-10 h-[220vh] w-full md:mt-12"
+        className="relative mt-10 min-h-[min(220vh,2600px)] w-full md:mt-12"
+        aria-label="Formezy journey steps"
       >
-        {/* STICKY AREA */}
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div
-            style={{ x }}
-            className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12"
-          >
+        <div className="sticky top-0 z-0 flex h-[min(92dvh,920px)] w-full items-center overflow-hidden py-8 md:py-10">
+          <motion.div style={{ x }} className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12">
             {hiwJourneySteps.map((s, i) => (
               <HiwJourneyCard
                 key={s.title}
@@ -258,6 +236,7 @@ const x = useTransform(
     </section>
   );
 }
+
 /* ─────────────────────────────────────────────
    Section 3 — Define Your Workflows
 ───────────────────────────────────────────── */
