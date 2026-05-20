@@ -13,7 +13,7 @@ export default function TrustedBy() {
           whileInView="show"
           viewport={viewportOnce}
           variants={fadeUp}
-          className="mb-4 text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-ink-muted"
+          className="mb-4 text-center text-[12px] lg:text-[16px] font-semibold uppercase tracking-[0.22em] text-ink-muted"
         >
           Trusted by Enterprises worldwide
         </motion.p>
