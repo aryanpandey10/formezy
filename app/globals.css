@@ -282,12 +282,17 @@
   left: 7em;
 }
 
-@media (min-width: 1919px) {
+/* @media (min-width: 1919px) {
   .container_home {
     max-width: 90%;
     margin: 0 auto;
   }
-}
+} */
+
+ .container_home {
+    max-width: 90%;
+    margin: 0 auto;
+  }
 
 
 @media (max-width: 1537px) {
@@ -298,8 +303,8 @@
 
 @media (max-width: 1441px) {
   .hero_top_arrow {
-    height: 95px;
-    left: 0em;
+    height: 75px;
+    left: -4em;
   }
 }
 
