@@ -33,12 +33,14 @@ const FeaturePill = ({ text }: { text: string }) => (
 const VerticalArrow = () => (
   <div className="flex flex-col items-center py-6 lg:hidden">
     <svg
-  width="12"
- height="100"
-viewBox="-5 0 12 65"
-  fill="none"
-  className="overflow-visible"
->
+
+      width="2"
+      height="90"
+      viewBox="0 0 2 60"
+      fill="none"
+      className="overflow-visible hidden lg:block"
+    >
+
       {/* Moving dashed line */}
       <motion.path
         d="M 1 0 L 1 60"
@@ -68,6 +70,18 @@ viewBox="-5 0 12 65"
         transition={{ delay: 0.3, duration: 0.4 }}
       />
     </svg>
+
+      <svg width="15" height="66" viewBox="0 0 15 66" fill="none" xmlns="http://www.w3.org/2000/svg"
+      
+       className="overflow-visible lg:hidden">
+<path d="M6.65715 65.5387C7.04768 65.9292 7.68084 65.9292 8.07136 65.5387L14.4353 59.1748C14.8259 58.7842 14.8259 58.1511 14.4353 57.7605C14.0448 57.37 13.4116 57.37 13.0211 57.7605L7.36426 63.4174L1.7074 57.7605C1.31688 57.37 0.683714 57.37 0.29319 57.7605C-0.0973344 58.1511 -0.0973344 58.7842 0.29319 59.1748L6.65715 65.5387ZM7.36426 0H6.36426V3.24158H7.36426H8.36426V0H7.36426ZM7.36426 9.72474H6.36426V16.2079H7.36426H8.36426V9.72474H7.36426ZM7.36426 22.6911H6.36426V29.1742H7.36426H8.36426V22.6911H7.36426ZM7.36426 35.6574H6.36426V42.1405H7.36426H8.36426V35.6574H7.36426ZM7.36426 48.6237H6.36426V55.1069H7.36426H8.36426V48.6237H7.36426ZM7.36426 61.59H6.36426V64.8316H7.36426H8.36426V61.59H7.36426Z" fill="url(#paint0_linear_18_49)"/>
+<defs>
+<linearGradient id="paint0_linear_18_49" x1="7.86426" y1="0" x2="7.86426" y2="64.8316" gradientUnits="userSpaceOnUse">
+<stop stop-color="#708FF4"/>
+<stop offset="1" stop-color="#6C60E8"/>
+</linearGradient>
+</defs>
+</svg>
   </div>
 );
 
@@ -115,7 +129,11 @@ export default function HomeHero() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-block bg-[#6366f1] text-white rounded-full px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] font-black mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
+
+              className="inline-block text-white  rounded-full px-5 py-2 md:px-[1.75vw] md:py-[0.75vw] text-[14px] md:text-[16px] lg:text-[0.9vw] mb-6 shadow-2xl shadow-indigo-300/40 transform hover:scale-105 transition-transform cursor-default"
+             style={{
+  background: "var(--gradient-1, linear-gradient(180deg, #708FF4 0%, #6C60E8 100%))"
+}}
             >
               We are here to Help
             </motion.div>
@@ -144,7 +162,7 @@ export default function HomeHero() {
           </div>
 
           {/* Right Column (Diagram Area) */}
-          <div className="relative lg:col-span-7 w-full flex items-center justify-center lg:justify-end px-4 mb-12 lg:mb-0">
+          <div className="relative lg:col-span-7 w-full flex items-center justify-center lg:justify-end md:px-4 mb-12 lg:mb-0">
             {/* Desktop Arrows (Hidden on Mobile) */}
             <motion.img 
               initial={{ opacity: 0 }}
@@ -196,8 +214,9 @@ export default function HomeHero() {
             className="flex flex-row items-center justify-center lg:justify-start gap-3 md:gap-[2vw] w-full"
           >
             <Button
+            style={{ border: "1px solid #2c0e3a" }}
               href="#demo"
-              className="flex-1 lg:flex-none lg:min-w-[12vw] rounded-[10px] md:rounded-[0.75vw] text-[13px] sm:text-[15px] lg:text-[1vw] px-4 py-3.5 md:px-[2vw] md:py-[1vw] h-auto flex items-center justify-center gap-1.5 md:gap-[0.5vw]"
+              className=" flex-1 lg:flex-none lg:min-w-[12vw] rounded-[10px] md:rounded-[0.75vw] text-[13px] sm:text-[15px] lg:text-[1vw] px-4 py-3.5 md:px-[2vw] md:py-[1vw] h-auto flex items-center justify-center gap-1.5 md:gap-[0.5vw]"
             >
               Book Demo <ArrowRight className="w-4 h-4 md:w-[1vw] md:h-[1vw]" />
             </Button>

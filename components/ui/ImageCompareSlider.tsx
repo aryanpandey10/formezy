@@ -63,7 +63,7 @@ export default function ImageCompareSlider({
   return (
     <div
       ref={containerRef}
-      className="relative h-[178px] w-full cursor-col-resize select-none overflow-hidden rounded-[20px] border border-purple-100 shadow-card md:h-[500px] lg:h-[580px]"
+      className="relative h-[210px] w-full cursor-col-resize select-none overflow-hidden rounded-[5px] lg:rounded-[20px] border border-purple-100 shadow-card md:h-[500px] lg:h-[580px]"
       onMouseDown={(e) => {
         isDragging.current = true;
         updateFromClientX(e.clientX, { ignoreDragFlag: true });

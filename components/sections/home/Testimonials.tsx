@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { Star } from "lucide-react";
 import { fadeUp, viewportOnce, staggerContainer } from "@/lib/animations";
 
 type Client = {
@@ -107,36 +107,31 @@ const clients: Client[] = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Attach to the testimonial card area — fires when it's actually visible
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(carouselRef, { once: false, amount: 0.4 });
 
   const client = clients[active];
 
-  const prev = () =>
-    setActive((p) => (p === 0 ? clients.length - 1 : p - 1));
-
-  const next = () =>
-    setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
-
-  // ✅ FIXED AUTO SLIDER (ONLY CHANGE)
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setActive((p) =>
-        p === clients.length - 1 ? 0 : p + 1
-      );
+    if (!isInView) return; // Not visible — do nothing
+
+    // Reset to first testimonial every time section enters viewport
+    setActive(0);
+
+    const timer = setInterval(() => {
+      setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
     }, 4000);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
+    return () => clearInterval(timer); // Stop when leaving viewport
+  }, [isInView]);
 
   return (
     <section className="section overflow-hidden bg-white" id="testimonials">
       <div className="container-app">
 
-        {/* ── Heading — matches "What is Formezy?" pattern exactly ── */}
+        {/* ── Heading ── */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -144,8 +139,6 @@ export default function Testimonials() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 text-center"
         >
-
-
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
@@ -153,8 +146,7 @@ export default function Testimonials() {
             Client Testimonials{" "}
             <span
               style={{
-                background:
-                  "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
+                background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -180,7 +172,7 @@ export default function Testimonials() {
             variants={fadeUp}
             className="relative hidden lg:block"
           >
-            <div className="relative overflow-hidden rounded-[24px]p-0">
+            <div className="relative overflow-hidden rounded-[24px] p-0">
               <Image
                 src="/images/ClientSays.svg"
                 alt="Formezy client network"
@@ -191,7 +183,8 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          <div className="flex flex-col h-full justify-end gap-6">
+          {/* ↓ Ref attached here — this is what triggers the carousel */}
+          <div ref={carouselRef} className="flex flex-col h-full justify-end gap-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={client.id}

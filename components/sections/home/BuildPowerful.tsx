@@ -232,7 +232,7 @@ function SolutionCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="flex h-460 min-h-[420px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[500px]"
+      className="flex h-490 min-h-[420px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[500px]"
       style={{ backgroundColor: color }}
     >
       <div className="flex w-full flex-col items-start gap-3">
