@@ -16,7 +16,7 @@ export const overviewWebp = {
     "enterprise_application_platform.webp",
   ),
   needEapToday: publicAssetUrl("images", "overview", "Webp", "businesses_eap.webp"),
-  internalVsExternal: publicAssetUrl("images", "overview", "Webp", "internal_vs_external.webp"),
+  internalVsExternal: publicAssetUrl("images", "overview", "Webp", "InternalVsExternal.webp"),
   fromSpreadsheet: publicAssetUrl(
     "images",
     "overview",

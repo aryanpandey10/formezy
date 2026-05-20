@@ -91,7 +91,6 @@ export default function BuildPowerful() {
 
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
-
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setCanPrev(emblaApi.canScrollPrev());
@@ -180,6 +179,7 @@ export default function BuildPowerful() {
                     solution={s}
                     color={CARD_COLORS[i % CARD_COLORS.length]}
                     imageSrc={SOLUTION_IMAGE_BY_ID[s.id]}
+                    priority={i < 2}
                   />
                 </div>
               ))}
@@ -223,10 +223,12 @@ function SolutionCard({
   solution,
   color,
   imageSrc,
+  priority = false,
 }: {
   solution: Solution;
   color: string;
   imageSrc: string;
+  priority?: boolean;
 }) {
   return (
     <motion.article
@@ -244,13 +246,15 @@ function SolutionCard({
         </p>
       </div>
 
-      <div className="relative mt-auto h-[200px] w-full flex-shrink-0 overflow-hidden rounded-[18px] md:h-[280px]">
+      <div className="relative mt-auto h-[200px] w-full flex-shrink-0 overflow-hidden rounded-[18px] bg-white/40 md:h-[280px]">
         <Image
           src={imageSrc}
           alt={solution.title}
           fill
-          sizes="380px"
-          className="object-contain transition-transform duration-700 group-hover:scale-105"
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
+          sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 380px"
+          className="object-contain"
         />
       </div>
     </motion.article>

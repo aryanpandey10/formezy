@@ -39,7 +39,12 @@ function HeroSection() {
 
            {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Platform
-          </Link> */}
+          </Link> */
+          }
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">Platform</span>
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>
@@ -79,16 +84,16 @@ function HeroSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           className=""
         >
-          <div className="relative aspect-[16/9] w-full md:aspect-[1200/640]">
-            <Image
-              src={overviewWebp.hero}
-              alt="Formezy business platform overview"
-              fill
-              priority
-              // sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-contain object-left md:object-center"
-            />
-          </div>
+          <div className="w-full">
+  <Image
+    src={overviewWebp.hero}
+    alt="Formezy business platform overview"
+    width={1200}
+    height={640}
+    priority
+    className="h-auto w-full object-contain"
+  />
+</div>
         </motion.div>
       </div>
     </section>
@@ -344,7 +349,7 @@ function ReadySection() {
               variants={fadeUp}
               className="text-left font-sora text-[28px] font-bold leading-[1.15] text-[#2C0E3A] sm:text-[34px] md:text-[38px] lg:text-[40px]"
             >
-              Ready to Simplify and Scale Your Operations?
+                Ready to Simplify and <G>Scale Your Operations?</G>
             </motion.h2>
 
             <motion.div

@@ -61,7 +61,7 @@ export const navLinks: NavItem[] = [
       },
       {
         label: "Downloads",
-        href: "#",
+        href: "/resources/downloads",
         description: "Product guides and resources.",
       },
       {
@@ -131,7 +131,7 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Blogs", href: "/resources/blogs" },
       { label: "Case Studies", href: "#" },
-      { label: "Downloads", href: "#" },
+      { label: "Downloads", href: "/resources/downloads" },
       { label: "Videos", href: "/resources/videos" },
     ],
   },

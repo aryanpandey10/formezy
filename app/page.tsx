@@ -1,3 +1,4 @@
+import HomePreloads from "@/components/sections/home/HomePreloads";
 import HomeHero from "@/components/sections/home/HomeHero";
 import TrustedBy from "@/components/sections/home/TrustedBy";
 import WhatIsFormezy from "@/components/sections/home/WhatIsFormezy";
@@ -9,10 +10,12 @@ import IndustrySolutions from "@/components/sections/home/IndustrySolutions";
 import Testimonials from "@/components/sections/home/Testimonials";
 import BuildErp from "@/components/sections/home/BuildErp";
 import Integrations from "@/components/sections/home/Integrations";
+import Oprations from "@/components/sections/home/Operations";
 
 export default function HomePage() {
   return (
     <>
+      <HomePreloads />
       <HomeHero />
       <TrustedBy />
       <WhatIsFormezy />
@@ -24,6 +27,7 @@ export default function HomePage() {
       <Testimonials />
       <BuildErp />
       <Integrations />
+      <Oprations/>
     </>
   );
 }

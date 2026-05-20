@@ -82,7 +82,7 @@ const clients: Client[] = [
   {
     id: 6,
     name: "Armstrong Machinery LLP",
-    logo: "/images/Home/armstrong.png",
+    logo: "/images/Home/armstrong.webp",
     industry: "Machinery",
     color: "#6366F1",
     quote:

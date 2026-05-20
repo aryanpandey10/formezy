@@ -72,6 +72,7 @@ export default function SeamlessIntegrations() {
   const centerItem = positions[3].item;
 
   return (
+    <>
     <section
       className="section overflow-hidden bg-white/90 backdrop-blur-sm"
       id="integrations"
@@ -259,5 +260,6 @@ export default function SeamlessIntegrations() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

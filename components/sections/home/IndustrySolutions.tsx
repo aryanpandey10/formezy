@@ -6,20 +6,39 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Carousel from "@/components/ui/Carousel";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { industrySolutionImages } from "@/lib/home-images";
 
-// Only 4 industries shown (zig-zag layout)
 const industries = [
-  { title: "Heavy Manufacturing",    image: "/images/SolutionAccross1.png" },
-  { title: "Process Industries",     image: "/images/SolutionAccross2.png" },
-  { title: "Discrete Manufacturing", image: "/images/SolutionAccross3.png" },
-  { title: "Retail & Wholesale",     image: "/images/SolutionAccross4.png" },
+  {
+    title: "Heavy Manufacturing" as const,
+    image: industrySolutionImages["Heavy Manufacturing"],
+  },
+  {
+    title: "Process Industries" as const,
+    image: industrySolutionImages["Process Industries"],
+  },
+  {
+    title: "Discrete Manufacturing" as const,
+    image: industrySolutionImages["Discrete Manufacturing"],
+  },
+  {
+    title: "Retail & Wholesale" as const,
+    image: industrySolutionImages["Retail & Wholesale"],
+  },
+  {
+    title: "Retail & Wholesale" as const,
+    image: industrySolutionImages["Retail & Wholesale"],
+  },
+  {
+    title: "Retail & Wholesale" as const,
+    image: industrySolutionImages["Retail & Wholesale"],
+  },
 ];
 
 export default function IndustrySolutions() {
   return (
     <section className="section bg-white/70 backdrop-blur-sm">
-      <div className="container-app">
-        {/* ── Heading ── */}
+      <div className="mx-5">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -27,7 +46,6 @@ export default function IndustrySolutions() {
           variants={staggerContainer}
           className="mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center"
         >
-          
           <motion.h2
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
@@ -53,7 +71,6 @@ export default function IndustrySolutions() {
           </motion.p>
         </motion.div>
 
-        {/* ── Desktop: 4-card zig-zag ── */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -65,15 +82,13 @@ export default function IndustrySolutions() {
             <motion.div
               key={item.title}
               variants={fadeUp}
-              /* even indices sit high, odd indices sit low — creates zig-zag */
               className={`flex-1 ${i % 2 === 1 ? "mt-16" : ""}`}
             >
-              <IndustryCard {...item} />
+              <IndustryCard {...item} priority />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* ── Mobile: carousel ── */}
         <div className="mt-14 lg:hidden">
           <Carousel
             options={{ align: "start" }}
@@ -81,26 +96,37 @@ export default function IndustrySolutions() {
             showDots
             showArrows={false}
           >
-            {industries.map((item) => (
-              <IndustryCard key={item.title} {...item} />
+            {industries.map((item, i) => (
+              <IndustryCard key={item.title} {...item} priority={i === 0} />
             ))}
           </Carousel>
         </div>
+        
       </div>
     </section>
   );
 }
 
-function IndustryCard({ title, image }: { title: string; image: string }) {
+function IndustryCard({
+  title,
+  image,
+  priority = false,
+}: {
+  title: string;
+  image: string;
+  priority?: boolean;
+}) {
   return (
     <Link
       href="/platform/use-cases"
-      className="group relative block h-[300px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover"
+      className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover sm:h-[300px]"
     >
       <Image
         src={image}
         alt={title}
         fill
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
         sizes="(max-width: 768px) 80vw, 25vw"
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
