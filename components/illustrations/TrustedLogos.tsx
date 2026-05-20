@@ -12,19 +12,19 @@ function LogoStrip({ ariaHidden = false }: { ariaHidden?: boolean }) {
       {trustedEnterpriseLogos.map(({ name, file }) => (
         <div
           key={`${file}-${ariaHidden ? "dup" : "orig"}`}
-          className="flex h-14 w-[min(200px,42vw)] shrink-0 items-center justify-center px-3 md:h-16 md:w-[220px]"
+          className="flex h-11 w-[100px] shrink-0 items-center justify-center px-1 sm:h-12 sm:w-[130px] md:h-14 md:w-[170px] lg:w-[190px]"
           title={ariaHidden ? undefined : name}
           aria-hidden={ariaHidden || undefined}
         >
           <img
             src={trustedEnterpriseLogoSrc(file)}
             alt={ariaHidden ? "" : name}
-            width={200}
-            height={56}
-            loading="lazy"
+            width={160}
+            height={48}
+            loading="eager"
             decoding="async"
             draggable={false}
-            className="pointer-events-none h-10 w-auto max-w-full select-none object-contain object-center md:h-14"
+            className="pointer-events-none h-8 w-auto max-h-full max-w-full select-none object-contain object-center sm:h-9 md:h-11"
           />
         </div>
       ))}
@@ -38,7 +38,7 @@ export default function TrustedLogos({ className }: { className?: string }) {
       className={cn("trusted-marquee relative overflow-hidden", className)}
       aria-label="Trusted enterprise logos"
     >
-      <div className="trusted-marquee__track flex w-max items-center gap-8 md:gap-12">
+      <div className="trusted-marquee__track flex w-max items-center gap-3 sm:gap-5 md:gap-8">
         <LogoStrip />
         <LogoStrip ariaHidden />
       </div>

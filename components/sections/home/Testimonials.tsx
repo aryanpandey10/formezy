@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { fadeUp, viewportOnce, staggerContainer } from "@/lib/animations";
+import { HOME_WEBP, testimonialNetworkImage } from "@/lib/home-images";
 
 type Client = {
   id: number;
@@ -22,7 +23,7 @@ const clients: Client[] = [
   {
     id: 1,
     name: "Heavy Metal and Tubes Pvt Ltd.",
-    logo: "/images/Home/heavy_metal.png",
+    logo: `${HOME_WEBP}/heavy_metal.webp`,
     industry: "Manufacturing",
     color: "#6C63FF",
     quote:
@@ -34,7 +35,7 @@ const clients: Client[] = [
   {
     id: 2,
     name: "Twin Cool Engineers",
-    logo: "/images/Home/twin_cool.png",
+    logo: `${HOME_WEBP}/twincool.webp`,
     industry: "Engineering",
     color: "#06B6D4",
     quote:
@@ -46,7 +47,7 @@ const clients: Client[] = [
   {
     id: 3,
     name: "Yash Filter",
-    logo: "/images/Home/yash_filters.png",
+    logo: `${HOME_WEBP}/yash_filters.webp`,
     industry: "Filtration",
     color: "#F59E0B",
     quote:
@@ -58,7 +59,7 @@ const clients: Client[] = [
   {
     id: 4,
     name: "Pep Foods",
-    logo: "/images/Home/pepfood.png",
+    logo: `${HOME_WEBP}/pepfood.webp`,
     industry: "Food & Beverage",
     color: "#A78BFA",
     quote:
@@ -70,7 +71,7 @@ const clients: Client[] = [
   {
     id: 5,
     name: "Parishi Construction Equipment",
-    logo: "/images/Home/parishi.png",
+    logo: `${HOME_WEBP}/parishi.webp`,
     industry: "Construction",
     color: "#EF4444",
     quote:
@@ -82,7 +83,7 @@ const clients: Client[] = [
   {
     id: 6,
     name: "Armstrong Machinery LLP",
-    logo: "/images/Home/armstrong.png",
+    logo: `${HOME_WEBP}/armstrong.webp`,
     industry: "Machinery",
     color: "#6366F1",
     quote:
@@ -94,7 +95,7 @@ const clients: Client[] = [
   {
     id: 7,
     name: "Navjivan Roller Flour & Pulse Mills",
-    logo: "/images/Home/navjeevan.png",
+    logo: `${HOME_WEBP}/navjivan.webp`,
     industry: "Food & Milling",
     color: "#10B981",
     quote:
@@ -117,20 +118,22 @@ export default function Testimonials() {
   const next = () =>
     setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
 
-  // ✅ FIXED AUTO SLIDER (ONLY CHANGE)
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setActive((p) =>
-        p === clients.length - 1 ? 0 : p + 1
-      );
+      setActive((p) => (p === clients.length - 1 ? 0 : p + 1));
     }, 4000);
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
+
+  // Preload next testimonial logo so slide changes feel instant
+  useEffect(() => {
+    const next = clients[(active + 1) % clients.length];
+    const img = new window.Image();
+    img.src = next.logo;
+  }, [active]);
 
   return (
     <section className="section overflow-hidden bg-white" id="testimonials">
@@ -180,12 +183,14 @@ export default function Testimonials() {
             variants={fadeUp}
             className="relative hidden lg:block"
           >
-            <div className="relative overflow-hidden rounded-[24px]p-0">
+            <div className="relative overflow-hidden rounded-[24px]">
               <Image
-                src="/images/ClientSays.svg"
+                src={testimonialNetworkImage}
                 alt="Formezy client network"
                 width={1073}
                 height={713}
+                loading="lazy"
+                sizes="(max-width: 1280px) 70vw, 800px"
                 className="h-auto w-full opacity-90"
               />
             </div>
@@ -207,6 +212,7 @@ export default function Testimonials() {
                       src={client.logo}
                       alt={`${client.name} logo`}
                       fill
+                      sizes="128px"
                       className="object-contain object-left"
                     />
                   </div>

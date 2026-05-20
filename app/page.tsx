@@ -1,3 +1,4 @@
+import HomePreloads from "@/components/sections/home/HomePreloads";
 import HomeHero from "@/components/sections/home/HomeHero";
 import TrustedBy from "@/components/sections/home/TrustedBy";
 import WhatIsFormezy from "@/components/sections/home/WhatIsFormezy";
@@ -13,6 +14,7 @@ import Integrations from "@/components/sections/home/Integrations";
 export default function HomePage() {
   return (
     <>
+      <HomePreloads />
       <HomeHero />
       <TrustedBy />
       <WhatIsFormezy />
