@@ -38,7 +38,7 @@ const VerticalArrow = () => (
       height="90"
       viewBox="0 0 2 60"
       fill="none"
-      className="overflow-visible lg:hidden"
+      className="overflow-visible hidden"
     >
 
       {/* Moving dashed line */}
