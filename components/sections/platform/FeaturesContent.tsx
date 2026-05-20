@@ -407,7 +407,7 @@ export default function FeaturesContent() {
           "Document summarisation and extraction",
           "Contextual answers with source citations",
         ]}
-        ctaHref="/platform/capabilities"
+        ctaHref="/platform/features/ask-ezy"
         imageSrc={featuresPageImages.askEzy}
         imageAlt="AskEzy AI assistant in Formezy"
         imgW={620}
@@ -426,7 +426,7 @@ export default function FeaturesContent() {
           "Custom event handlers and webhooks",
           "Embedded dev tools and sandbox",
         ]}
-        ctaHref="/platform/capabilities"
+        ctaHref="/platform/features/developer-studio"
         imageSrc={featuresPageImages.studio}
         imageAlt="Developer Studio in Formezy"
         imgW={620}
@@ -438,7 +438,7 @@ export default function FeaturesContent() {
         eyebrow="Visual Workflow"
         title={<>Logic <G>Builder</G></>}
         description="Drag-and-drop your business logic — branching rules, approvals and automations — without writing a single line of code."
-        ctaHref="/platform/how-it-works"
+        ctaHref="/platform/features/logic-builder"
         imageSrc={featuresPageImages.logicBuilder}
         imageAlt="Visual Logic Builder in Formezy"
         imgW={1300}
@@ -456,7 +456,7 @@ export default function FeaturesContent() {
           "Retry and fallback on failure",
           "Human-in-the-loop escalation paths",
         ]}
-        ctaHref="/platform/capabilities"
+        ctaHref="/platform/features/workflow-automation"
         imageSrc={featuresPageImages.automation}
         imageAlt="Workflow automation in Formezy"
         imgW={620}
@@ -474,7 +474,7 @@ export default function FeaturesContent() {
           "Open API and webhooks for custom tools",
           "SSO, SCIM and SAML support",
         ]}
-        ctaHref="/#integrations"
+        ctaHref="/platform/integrations-connectors"
         imageSrc={featuresPageImages.integrations}
         imageAlt="Integrations and connections in Formezy"
         imgW={620}
@@ -487,7 +487,7 @@ export default function FeaturesContent() {
         eyebrow="Analytics"
         title={<>Reporting &amp; <G>Dashboards</G></>}
         description="Live dashboards built on live data — for ops leaders who need answers now, not a data-team ticket next week."
-        ctaHref="/platform/capabilities"
+        ctaHref="/platform/features/reporting-dashboards"
         imageSrc={featuresPageImages.dashboards}
         imageAlt="Reporting and dashboards in Formezy"
         imgW={1300}
@@ -504,7 +504,7 @@ export default function FeaturesContent() {
           "Push notifications with full context",
           "Face ID / Touch ID sign-in",
         ]}
-        ctaHref="#"
+        ctaHref="/platform/features/mobile-access"
         imageSrc={featuresPageImages.mobile}
         imageAlt="Mobile access to Formezy"
         imgW={560}
@@ -523,7 +523,7 @@ export default function FeaturesContent() {
           "Row-level security and field encryption",
           "Immutable audit logs and access controls",
         ]}
-        ctaHref="/platform/capabilities"
+        ctaHref="/platform/features/security-compliance"
         imageSrc={featuresPageImages.security}
         imageAlt="Security and compliance in Formezy"
         imgW={620}
