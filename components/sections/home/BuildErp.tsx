@@ -29,7 +29,7 @@ export default function BuildErp() {
   border border-purple-100
   shadow-[0_8px_48px_rgba(108,96,232,0.12)]
 
-  min-h-[320px]
+  min-h-[400px]
   sm:min-h-[580px]
   md:min-h-[660px]
   lg:min-h-[920px]
