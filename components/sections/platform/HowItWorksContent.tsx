@@ -36,7 +36,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
           aria-label="Breadcrumb"
-          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm md:w-[min(100%,320px)]"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8]"
         >
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home
@@ -55,7 +55,7 @@ function HeroSection() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[54px]"
+            className="font-sora leading-none text-[34px] font-bold tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] 2xl:text-[80px]"
           >
             From Idea to <G>Execution, Seamlessly</G>
           </motion.h1>
@@ -118,7 +118,6 @@ function HiwJourneyCard({
 }) {
   return (
     <motion.article
-      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       className="flex h-auto min-h-[400px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[480px]"
       style={{ backgroundColor: color }}

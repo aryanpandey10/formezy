@@ -153,7 +153,7 @@ export default function HomeHero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sora text-[32px] sm:text-[42px]  lg:text-[46px] xl:text-[60px] font-extrabold text-[#1e1b4b] leading-[1.1] mb-8"
+              className="font-sora text-[32px] sm:text-[42px]  lg:text-[46px] 2xl:text-[60px] font-extrabold text-[#1e1b4b] leading-[1.1] mb-8"
             >
               Go Beyond ERP <br />
               with <span className="text-[#6366f1]">Formezy EAP</span>
