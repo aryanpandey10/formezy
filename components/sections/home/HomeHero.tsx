@@ -88,7 +88,7 @@ const VerticalArrow = () => (
 
 export default function HomeHero() {
   return (
-    <section className="relative min-h-screen w-full flex flex-col font-sans overflow-hidden">
+    <section className="relative min-h-screen w-full flex flex-col font-sans overflow-hidden  mt-5 xl:mt-10">
       {/* Background Grid */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-40 -z-0"
@@ -99,7 +99,7 @@ export default function HomeHero() {
         }}
       ></div>
       
-      <div className="container_home relative z-10 flex flex-col items-center mt-5 xl:mt-10">
+      <div className="container_home relative z-10 flex flex-col items-center">
         {/* 1. Top Section: Chaos to Clarity */}
         <div className="flex flex-col items-center text-center px-4">
           <motion.h2 
@@ -153,7 +153,7 @@ export default function HomeHero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sora text-[32px] sm:text-[42px]  lg:text-[50px] xl:text-[60px] font-extrabold text-[#1e1b4b] leading-[1.1] mb-8"
+              className="font-sora text-[32px] sm:text-[42px]  lg:text-[46px] xl:text-[60px] font-extrabold text-[#1e1b4b] leading-[1.1] mb-8"
             >
               Go Beyond ERP <br />
               with <span className="text-[#6366f1]">Formezy EAP</span>
