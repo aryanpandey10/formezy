@@ -12,6 +12,9 @@ export const industrySolutionImages = {
 
 export const testimonialNetworkImage = `${HOME_WEBP}/ClientSays.svg`;
 
+/** Operations section — mobile devices illustration */
+export const homeTwoMobileImage = `${HOME_WEBP}/two_mobile.webp`;
+
 /** Preload on home page for faster first paint in key carousels */
 export const homePreloadImages = [
   `${HOME_WEBP}/business_systems.webp`,

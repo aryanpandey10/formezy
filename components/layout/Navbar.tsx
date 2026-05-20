@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
+import { type NavDropdownItem } from "@/lib/constants";
 import Logo from "./Logo";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
@@ -167,44 +168,80 @@ function NavLinkItem({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.15 }}
-            className="absolute left-1/2 top-full mt-2 w-[320px] -translate-x-1/2"
+            className={cn(
+              "absolute left-1/2 top-full mt-2 -translate-x-1/2",
+              link.children.some((c) => c.children?.length)
+                ? "w-[300px]"
+                : "w-[320px]",
+            )}
           >
-            <div className="overflow-hidden rounded-2xl border border-surface-border bg-white p-2 shadow-card-hover">
+            <div className="overflow-visible rounded-2xl border border-surface-border bg-white p-2 shadow-card-hover">
               {link.children.map((child) => (
-                <div key={child.label}>
-                  <Link
-                    href={child.href}
-                    className="flex flex-col gap-1 rounded-xl px-4 py-3 transition-colors hover:bg-purple-50"
-                  >
-                    <span className="text-sm font-semibold text-ink">
-                      {child.label}
-                    </span>
-                    {child.description ? (
-                      <span className="text-xs text-ink-secondary">
-                        {child.description}
-                      </span>
-                    ) : null}
-                  </Link>
-                  {child.children?.length ? (
-                    <ul className="mb-1 ml-3 border-l border-purple-100 pl-3">
-                      {child.children.map((sub) => (
-                        <li key={sub.label}>
-                          <Link
-                            href={sub.href}
-                            className="block rounded-lg px-3 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:bg-purple-50 hover:text-purple-primary"
-                          >
-                            {sub.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
+                <DesktopDropdownItem key={child.label} child={child} />
               ))}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+function DesktopDropdownItem({ child }: { child: NavDropdownItem }) {
+  if (!child.children?.length) {
+    return (
+      <Link
+        href={child.href}
+        className="flex flex-col gap-1 rounded-xl px-4 py-3 transition-colors hover:bg-purple-50"
+      >
+        <span className="text-sm font-semibold text-ink">{child.label}</span>
+        {child.description ? (
+          <span className="text-xs text-ink-secondary">{child.description}</span>
+        ) : null}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="group/nested relative">
+      <Link
+        href={child.href}
+        className="flex items-center justify-between gap-2 rounded-xl px-4 py-3 transition-colors hover:bg-purple-50"
+      >
+        <div className="flex min-w-0 flex-col gap-1">
+          <span className="text-sm font-semibold text-ink">{child.label}</span>
+          {child.description ? (
+            <span className="text-xs text-ink-secondary">{child.description}</span>
+          ) : null}
+        </div>
+        <ChevronRight
+          size={16}
+          className="shrink-0 text-ink-secondary transition-transform group-hover/nested:translate-x-0.5 group-hover/nested:text-purple-primary"
+        />
+      </Link>
+
+      <div className="invisible absolute right-full top-0 z-20 mr-1 w-[300px] opacity-0 transition-all duration-150 group-hover/nested:visible group-hover/nested:opacity-100">
+        <div className="max-h-[min(70vh,420px)] overflow-y-auto rounded-2xl border border-surface-border bg-white p-2 shadow-card-hover">
+          <Link
+            href={child.href}
+            className="mb-1 block rounded-lg px-3 py-2 text-[12px] font-bold uppercase tracking-wide text-purple-primary transition-colors hover:bg-purple-50"
+          >
+            All {child.label}
+          </Link>
+          <ul className="grid grid-cols-1 gap-0.5">
+            {child.children.map((sub) => (
+              <li key={sub.label}>
+                <Link
+                  href={sub.href}
+                  className="block rounded-lg px-3 py-2.5 text-[13px] font-medium text-ink-secondary transition-colors hover:bg-purple-50 hover:text-purple-primary"
+                >
+                  {sub.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
@@ -261,24 +298,85 @@ function MobileNavLink({
             className="overflow-hidden pl-2"
           >
             {link.children.map((child) => (
-              <li key={child.label}>
+              <MobileDropdownItem
+                key={child.label}
+                child={child}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </li>
+  );
+}
+
+function MobileDropdownItem({
+  child,
+  onNavigate,
+}: {
+  child: NavDropdownItem;
+  onNavigate: () => void;
+}) {
+  const [nestedOpen, setNestedOpen] = useState(false);
+
+  if (!child.children?.length) {
+    return (
+      <li>
+        <Link
+          href={child.href}
+          onClick={onNavigate}
+          className="block rounded-xl px-4 py-2.5 text-[14px] font-semibold text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
+        >
+          {child.label}
+        </Link>
+      </li>
+    );
+  }
+
+  return (
+    <li className="flex flex-col">
+      <div className="flex items-center">
+        <Link
+          href={child.href}
+          onClick={onNavigate}
+          className="flex-1 rounded-xl px-4 py-2.5 text-[14px] font-semibold text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
+        >
+          {child.label}
+        </Link>
+        <button
+          type="button"
+          onClick={() => setNestedOpen((v) => !v)}
+          aria-expanded={nestedOpen}
+          aria-label={`${nestedOpen ? "Collapse" : "Expand"} ${child.label} menu`}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-ink-secondary hover:bg-purple-50"
+        >
+          <ChevronDown
+            size={16}
+            className={cn(
+              "transition-transform duration-200",
+              nestedOpen && "rotate-180",
+            )}
+          />
+        </button>
+      </div>
+      <AnimatePresence>
+        {nestedOpen && (
+          <motion.ul
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden border-l-2 border-purple-100 ml-4 mb-1"
+          >
+            {child.children.map((sub) => (
+              <li key={sub.label}>
                 <Link
-                  href={child.href}
+                  href={sub.href}
                   onClick={onNavigate}
-                  className="block rounded-xl px-4 py-2.5 text-[14px] font-semibold text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
+                  className="block rounded-xl py-2 pl-4 pr-4 text-[13px] text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
                 >
-                  {child.label}
+                  {sub.label}
                 </Link>
-                {child.children?.map((sub) => (
-                  <Link
-                    key={sub.label}
-                    href={sub.href}
-                    onClick={onNavigate}
-                    className="block rounded-xl py-2 pl-8 pr-4 text-[13px] text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
-                  >
-                    {sub.label}
-                  </Link>
-                ))}
               </li>
             ))}
           </motion.ul>

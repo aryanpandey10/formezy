@@ -7,6 +7,7 @@ import { ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Button from "@/components/ui/Button";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { homeTwoMobileImage } from "@/lib/home-images";
 
 
 
@@ -69,10 +70,11 @@ export default function Operations() {
           <div className="relative overflow-hidden">
 
               <Image
-                src="/images/home/webp/two_mobile.webp"
-                alt="Why businesses need an Enterprise Application Platform today"
+                src={homeTwoMobileImage}
+                alt="Formezy mobile access on multiple devices"
                 width={875}
                 height={672}
+                sizes="(max-width: 768px) 100vw, 60vw"
                 className="h-full w-full object-contain"
               />
 
@@ -89,7 +91,7 @@ export default function Operations() {
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.15] text-[#2C0E3A] mb-2 lg:text-[32px]"
           >
-            Built for Operational Mobility {" "}
+            Built for {" "}
             <span
               style={{
                 background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
