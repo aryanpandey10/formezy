@@ -14,6 +14,8 @@ type Props = {
   slideClassName?: string;
   showArrows?: boolean;
   showDots?: boolean;
+  autoplay?: boolean;
+  autoplayInterval?: number;
   /** `overlay` = large side arrows centered vertically (e.g. industry carousel). */
   arrowPlacement?: "bottom" | "overlay";
 };
@@ -25,6 +27,8 @@ export default function Carousel({
   slideClassName,
   showArrows = true,
   showDots = false,
+  autoplay = false,
+  autoplayInterval = 5000,
   arrowPlacement = "bottom",
 }: Props) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
@@ -51,6 +55,23 @@ export default function Carousel({
       emblaApi.off("reInit", onSelect);
     };
   }, [emblaApi, onSelect]);
+
+  useEffect(() => {
+    if (!autoplay || !emblaApi) return;
+
+    const interval = window.setInterval(() => {
+      if (!emblaApi) return;
+      if (emblaApi.canScrollNext()) {
+        emblaApi.scrollNext();
+      } else if (options.loop) {
+        emblaApi.scrollNext();
+      }
+    }, autoplayInterval);
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [autoplay, autoplayInterval, emblaApi, options.loop]);
 
   const prev = () => emblaApi?.scrollPrev();
   const next = () => emblaApi?.scrollNext();

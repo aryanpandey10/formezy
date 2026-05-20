@@ -69,7 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${rancho.variable}`}>
-      <body className="min-h-screen">
+      <body className="min-h-screen overflow-x-hidden">
         {/* Global page background — HomeBG covers every page */}
         <div
           className="pointer-events-none fixed inset-0 -z-50"

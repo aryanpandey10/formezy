@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import Carousel from "@/components/ui/Carousel";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { capabilitiesPageImages } from "@/lib/page-section-images";
 
@@ -315,17 +316,32 @@ function AiSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 w-full overflow-hidden rounded-[24px] border border-[#EDE9FE] bg-white shadow-sm md:mt-12"
+          className="mt-10 w-full overflow-hidden  md:mt-12"
         >
-          <div className="relative mx-auto aspect-[1600/666] w-full max-w-[1280px] min-h-[200px]">
-            <Image
-              src={capabilitiesPageImages.askEasy}
-              alt="AskEasy AI assistant alongside Formezy data and workflows"
-              fill
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="object-contain object-center"
-            />
-          </div>
+          <Carousel
+            options={{ align: "center", loop: true }}
+            slideClassName="basis-full"
+            showArrows={false}
+            showDots={true}
+            autoplay={true}
+            arrowPlacement="overlay"
+            className="w-full"
+          >
+            {["/images/capabilities_askeasy.webp", "/images/capabilities_askeasy2.webp"].map((src, index) => (
+              <div
+                key={index}
+                className="relative mx-auto aspect-[1600/666] w-full max-w-[1280px] min-h-[200px]"
+              >
+                <Image
+                  src={src}
+                  alt="AskEasy AI assistant alongside Formezy data and workflows"
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  className="object-contain object-center"
+                />
+              </div>
+            ))}
+          </Carousel>
         </motion.div>
       </div>
     </section>
