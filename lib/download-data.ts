@@ -4,6 +4,9 @@ export function downloadImageSrc(filename: string): string {
   return `/images/${encodeURIComponent(DOWNLOAD_DIR)}/${encodeURIComponent(filename)}`;
 }
 
+/** `public/Formezy Brochure_2026.pdf` */
+export const formezyBrochurePdfPath = "/Formezy Brochure_2026.pdf";
+
 export const mainBrochure = {
   title: "Formezy Brochure",
   titleHighlight: "Brochure",
@@ -11,8 +14,8 @@ export const mainBrochure = {
   description:
     "Get a complete overview of Formezy — how businesses design, automate, and scale ERP, CRM, and operations systems on one intelligent platform. Ideal for leadership, IT, and operations teams evaluating their next system.",
   image: downloadImageSrc("Formezy_Brochure.png"),
-  file: downloadImageSrc("Formezy_Brochure.png"),
-  fileName: "Formezy-Brochure.png",
+  file: encodeURI(formezyBrochurePdfPath),
+  fileName: "Formezy Brochure_2026.pdf",
 };
 
 export type IndustryBrochure = {

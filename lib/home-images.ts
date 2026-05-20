@@ -15,6 +15,11 @@ export const testimonialNetworkImage = `${HOME_WEBP}/ClientSays.svg`;
 /** Operations section — mobile devices illustration */
 export const homeTwoMobileImage = `${HOME_WEBP}/two_mobile.webp`;
 
+/** Hero — platform diagram (2x WebP, intrinsic 1489×1013) */
+export const homeHeroBannerImage = "/images/Home/m_banner_2x.webp";
+export const homeHeroBannerWidth = 1489;
+export const homeHeroBannerHeight = 1013;
+
 /** Preload on home page for faster first paint in key carousels */
 export const homePreloadImages = [
   `${HOME_WEBP}/business_systems.webp`,

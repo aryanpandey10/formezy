@@ -276,6 +276,27 @@
   }
 }
 
+/* Hero platform diagram — margin float avoids transform blur on raster text */
+.hero-banner-float {
+  animation: hero-banner-float 6s ease-in-out infinite;
+}
+
+@keyframes hero-banner-float {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: -8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-float {
+    animation: none;
+  }
+}
+
 .hero_top_arrow {
   position: absolute;
   top: 15%;

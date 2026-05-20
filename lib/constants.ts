@@ -20,10 +20,10 @@ export const platformFeatureNavChildren: NavSubLink[] = [
   { label: "Developer Studio", href: "/platform/features/developer-studio" },
   { label: "Logic Builder", href: "/platform/features/logic-builder" },
   { label: "Workflow Automation", href: "/platform/features/workflow-automation" },
-  {
-    label: "Integrations & Connectors",
-    href: "/platform/integrations-connectors",
-  },
+  // {
+  //   label: "Integrations & Connectors",
+  //   href: "/platform/integrations-connectors",
+  // },
   { label: "Agentic Workflows", href: "/platform/features/agentic-workflows" },
   {
     label: "Reporting & Dashboards",
@@ -112,11 +112,11 @@ export const navLinks: NavItem[] = [
         href: "/about/safal-infosoft",
         description: "Our parent technology group.",
       },
-      {
-        label: "Leadership",
-        href: "/about/leadership",
-        description: "The minds behind the platform.",
-      },
+      // {
+      //   label: "Leadership",
+      //   href: "/about/leadership",
+      //   description: "The minds behind the platform.",
+      // },
       {
         label: "Careers",
         href: "/about/careers",
@@ -126,11 +126,6 @@ export const navLinks: NavItem[] = [
         label: "Contact",
         href: "/contact",
         description: "Get in touch with our team.",
-      },
-      {
-        label: "Book Demo",
-        href: "#demo",
-        description: "Schedule a personalized walkthrough.",
       },
     ],
   },
@@ -146,7 +141,7 @@ export const footerColumns: FooterColumn[] = [
     title: "About",
     links: [
       { label: "Company", href: "/about/company" },
-      { label: "Safal Infosoft", href: "/about/safal-infosoft" },
+      // { label: "Safal Infosoft", href: "/about/safal-infosoft" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact", href: "/contact" },

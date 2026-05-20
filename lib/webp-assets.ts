@@ -59,13 +59,12 @@ export const useCasesIndustryWebp = {
   serviceBased: publicAssetUrl("images", "Use Cases", "Webp", "service_based_businesses.webp"),
 } as const;
 
-/** Careers culture carousel — `public/images/Career/webp/`. */
+/** Careers culture carousel — `public/images/Career/webp/` (office photos only). */
 export const careerCultureWebp = [
   publicAssetUrl("images", "Career", "webp", "career_1.webp"),
   publicAssetUrl("images", "Career", "webp", "career_2.webp"),
   publicAssetUrl("images", "Career", "webp", "career_3.webp"),
   publicAssetUrl("images", "Career", "webp", "career_4.webp"),
-  publicAssetUrl("images", "Career", "webp", "build_what_powers_modern_businesses.webp"),
 ] as const;
 
 /** Tailored CRM — `public/images/Tailored_crm/Webp/`. */

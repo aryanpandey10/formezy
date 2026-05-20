@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import VideoGrid, { type VideoItem } from "@/components/sections/VideoGrid";
+import { youtubeEmbedUrl } from "@/lib/youtube";
 import {
   NumberFieldThumb,
   DateBoxThumb,
@@ -17,8 +18,13 @@ export const metadata: Metadata = {
     "Visual insights into how businesses build, automate and scale with Formezy. Watch product walkthroughs, explainer videos and real-world use cases.",
 };
 
-const PLACEHOLDER_VIDEO =
-  "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0";
+const YT = {
+  numberField: "https://youtu.be/wwm9jgJbwJQ?si=W4yKq-TlVEaihLNf",
+  dateBox: "https://youtu.be/iOORMK1uSy0?si=N3FpEc33GMU2GPEZ",
+  textBox: "https://youtu.be/5DcUxxiNKKM?si=efc7pr4aPSGR5pPe",
+  transfer: "https://youtu.be/xqZPOOJmiQY?si=Ln179W13vaFMSF58",
+  ticket: "https://youtu.be/vpTL6-1203g?si=GQhmGg4YM-rGStK8",
+} as const;
 
 const videos: VideoItem[] = [
   {
@@ -26,38 +32,38 @@ const videos: VideoItem[] = [
     title: "How to Add a Number Field in Formezy",
     step: "Step 1",
     thumb: <NumberFieldThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.numberField),
   },
   {
     id: "v2",
     title: "How to Add a Date Box in Inquiry Form",
     thumb: <DateBoxThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.dateBox),
   },
   {
     id: "v3",
     title: "How to Add a Custom Text Box",
     thumb: <TextBoxThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.textBox),
   },
   {
     id: "v4",
     title: "How to Transfer an Entry to Another User in Formezy",
     step: "Step 1",
     thumb: <TransferEntryThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.transfer),
   },
   {
     id: "v5",
     title: "How to Raise a Ticket in Formezy",
     thumb: <RaiseTicketThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.ticket),
   },
   {
     id: "v6",
     title: "User Roles & Rights Explained",
     thumb: <UserRolesThumb />,
-    videoUrl: PLACEHOLDER_VIDEO,
+    videoUrl: youtubeEmbedUrl(YT.numberField),
   },
 ];
 

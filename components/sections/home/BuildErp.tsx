@@ -10,7 +10,6 @@ import {
   viewportOnce,
 } from "@/lib/animations";
 
-
 // build ERp
 export default function BuildErp() {
   return (
@@ -35,32 +34,32 @@ export default function BuildErp() {
   lg:min-h-[920px]
 "
         >
-          {/* Background image — fills the card, anchored to bottom so UI is visible */}
           <Image
             src="/images/BuildYourERP.png"
             alt="Build your ERP with Formezy modules"
             fill
             sizes="100vw"
             className="
-               object-cover
-               object-center
+              hidden
+              object-cover
+              object-center
               opacity-40
               sm:opacity-50
               md:opacity-100
               md:object-bottom
-              hidden lg:block
+              lg:block
             "
             priority={false}
           />
 
-           <Image
+          <Image
             src="/images/m_cta_banner.webp"
             alt="Build your ERP with Formezy modules"
             fill
             sizes="100vw"
             className="
-               object-cover
-               object-center
+              object-cover
+              object-center
               opacity-40
               sm:opacity-50
               md:opacity-100
@@ -69,7 +68,6 @@ export default function BuildErp() {
             "
             priority={false}
           />
-
 
           {/* Gradient overlay — strong at top for text legibility, fades out toward bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/20 to-transparent" />

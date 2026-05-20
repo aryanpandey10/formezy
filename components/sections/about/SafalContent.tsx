@@ -1,19 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronRight,
-  ChevronLeft,
-  ArrowRight,
-  Check,
-  Pause,
-  Play,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import Button from "@/components/ui/Button";
+import { safalInfosoftImages } from "@/lib/safal-infosoft-images";
 
-/* ─── helpers ──────────────────────────────────────── */
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
     style={{
@@ -44,341 +38,43 @@ function Bullet({ items }: { items: string[] }) {
   );
 }
 
-function ImgPlaceholder({
-  height = 340,
-  label,
-}: {
-  height?: number;
-  label?: string;
-}) {
-  return (
-    <div
-      className="flex w-full items-center justify-center overflow-hidden rounded-[20px] border border-purple-100 bg-gradient-to-br from-purple-50 via-white to-blue-50/40"
-      style={{ height }}
-    >
-      <span className="font-sora text-[13px] text-[#6366A8]/60">
-        {label ?? "Illustration"}
-      </span>
-    </div>
-  );
-}
+const whatWeDo = [
+  "Custom Software Development",
+  "Enterprise Resource Planning (ERP)",
+  "Business Process Automation",
+  "Cloud Solutions & Integration",
+];
 
-/* ─── timeline data ─────────────────────────────────── */
-const TIMELINE = [
+const journeyMilestones = [
   {
-    year: "2005",
-    title: "Establishment",
-    color: "#708FF4",
-    desc: "Safal Infosoft was founded with a mission to deliver intelligent, structured business solutions. Our early work laid the groundwork for what would become a trusted enterprise partner.",
-    tags: ["Founded", "Core Systems", "First Clients"],
-  },
-  {
-    year: "2010",
-    title: "Product Expansion",
-    color: "#6C60E8",
-    desc: "We expanded our product portfolio, building industry-specific modules for manufacturing, retail and services. Cross-vertical expertise became our defining strength.",
-    tags: ["New Verticals", "50+ Clients", "Product Suite"],
-  },
-  {
-    year: "2014",
-    title: "Scaling Excellence",
-    color: "#7C3AED",
-    desc: "Intelliworks and other platforms were rolled out across enterprise clients. Automation and workflow digitisation became the focus — reducing manual overhead and improving accuracy.",
-    tags: ["Intelliworks Launch", "Automation", "Enterprise Scale"],
-  },
-  {
-    year: "2018",
-    title: "Digital Transformation",
-    color: "#5B7FE8",
-    desc: "A full pivot to cloud-native delivery. Mobile-first modules, real-time dashboards, and API-first integrations enabled seamless connectivity across every business unit.",
-    tags: ["Cloud-native", "Mobile-first", "APIs"],
-  },
-  {
-    year: "2022",
-    title: "Formezy Innovation",
-    color: "#6C60E8",
-    desc: "Formezy was born — an Enterprise Application Platform that unifies every input, team and workflow into one intelligent, adaptable system. A new category of enterprise software.",
-    tags: ["Formezy Launch", "No-code Builder", "EAP"],
+    year: "2025",
+    title: "Digital Legacy",
+    desc: "Focused on future-ready platforms, deeper automation, and expanding enterprise capabilities across industries.",
   },
   {
     year: "2024",
-    title: "AI-Powered Future",
-    color: "#708FF4",
-    desc: "AskEzy AI, advanced logic builder and cross-system intelligence landed in Formezy, enabling businesses to operate with greater clarity, prediction and scale than ever before.",
-    tags: ["AskEzy AI", "Logic Builder", "Scale"],
+    title: "Business Empowerment",
+    desc: "Scaling delivery, strengthening client partnerships, and enabling businesses to operate with greater clarity and control.",
+  },
+  {
+    year: "2022",
+    title: "The Next Innovation",
+    desc: "Advancing structured systems, workflow digitisation, and the foundation for modern enterprise application platforms.",
   },
 ];
 
-/* ─── Animated Timeline Carousel ───────────────────── */
-function TimelineCarousel() {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [autoplaying, setAutoplaying] = useState(true);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const total = TIMELINE.length;
-
-  const go = useCallback(
-    (dir: number) => {
-      setDirection(dir);
-      setActiveIdx((prev) => ((prev + dir) % total + total) % total);
-    },
-    [total]
-  );
-
-  /* autoplay */
-  const startAuto = useCallback(() => {
-    intervalRef.current = setInterval(() => go(1), 4000);
-  }, [go]);
-
-  const stopAuto = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (autoplaying) startAuto();
-    return stopAuto;
-  }, [autoplaying, startAuto, stopAuto]);
-
-  /* visible indices: prev, active, next (always 3) */
-  const prevIdx = ((activeIdx - 1) % total + total) % total;
-  const nextIdx = (activeIdx + 1) % total;
-
-  const cardVariants = {
-    enter: (d: number) => ({
-      x: d > 0 ? 120 : -120,
-      opacity: 0,
-      scale: 0.8,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-    },
-    exit: (d: number) => ({
-      x: d > 0 ? -120 : 120,
-      opacity: 0,
-      scale: 0.8,
-      transition: { duration: 0.35 },
-    }),
-  };
-
-  const sideCard = (idx: number, side: "left" | "right") => {
-    const item = TIMELINE[idx];
-    const isLeft = side === "left";
-    return (
-      <motion.button
-        key={`${side}-${idx}`}
-        onClick={() => {
-          stopAuto();
-          setAutoplaying(false);
-          const d = side === "right" ? 1 : -1;
-          setDirection(d);
-          setActiveIdx(idx);
-        }}
-        whileHover={{ scale: 1.03 }}
-        className={`hidden w-[260px] shrink-0 cursor-pointer flex-col gap-4 overflow-hidden rounded-[20px] border border-purple-100 bg-white/70 p-6 shadow-card backdrop-blur-sm transition-all hover:border-purple-300 hover:shadow-card-hover lg:flex ${isLeft ? "origin-right" : "origin-left"}`}
-        style={{ opacity: 0.65, transform: "scale(0.92)" }}
-      >
-        <span
-          className="inline-flex items-center rounded-pill px-3 py-1 font-sora text-[11px] font-bold text-white"
-          style={{ background: item.color }}
-        >
-          {item.year}
-        </span>
-        <h3 className="font-sora text-[17px] font-bold text-[#2C0E3A]">
-          {item.title}
-        </h3>
-        <p className="line-clamp-3 font-sora text-[13px] leading-[22px] text-[#6366A8]">
-          {item.desc}
-        </p>
-      </motion.button>
-    );
-  };
-
-  return (
-    <div className="flex flex-col items-center gap-8">
-      {/* Progress track — scrollable on small screens */}
-      <div className="w-full overflow-x-auto pb-1">
-        <div className="flex min-w-max items-center justify-center gap-2 px-2">
-        {TIMELINE.map((t, i) => (
-          <button
-            key={t.year}
-            onClick={() => {
-              stopAuto();
-              setAutoplaying(false);
-              setDirection(i > activeIdx ? 1 : -1);
-              setActiveIdx(i);
-            }}
-            className="flex flex-col items-center gap-1.5 px-1"
-          >
-            <span
-              className={`font-sora text-[12px] font-bold transition-colors ${i === activeIdx ? "text-[#2C0E3A]" : "text-[#6366A8]/40"}`}
-            >
-              {t.year}
-            </span>
-            <span
-              className={`h-1 rounded-full transition-all duration-500 ${i === activeIdx ? "w-8 bg-[#6C60E8]" : "w-3 bg-purple-100"}`}
-            />
-          </button>
-        ))}
-        </div>
-      </div>
-
-      {/* Cards row */}
-      <div className="flex w-full items-center justify-center gap-4">
-        {/* Left side card — hidden on mobile */}
-        <div className="hidden lg:block">{sideCard(prevIdx, "left")}</div>
-
-        {/* Centre active card */}
-        <div className="relative w-full max-w-[480px] overflow-hidden">
-          <AnimatePresence custom={direction} mode="wait">
-            <motion.div
-              key={activeIdx}
-              custom={direction}
-              variants={cardVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              className="flex flex-col gap-5 overflow-hidden rounded-[24px] border border-[#6C60E8]/30 bg-white p-8 shadow-[0_8px_40px_rgba(108,96,232,0.18)]"
-            >
-              {/* Year badge */}
-              <div className="flex items-center justify-between">
-                <span
-                  className="inline-flex items-center rounded-pill px-4 py-1.5 font-sora text-[13px] font-bold text-white shadow-md"
-                  style={{
-                    background: `linear-gradient(135deg, ${TIMELINE[activeIdx].color}, #6C60E8)`,
-                  }}
-                >
-                  {TIMELINE[activeIdx].year}
-                </span>
-                <span className="font-sora text-[12px] text-[#6366A8]/50">
-                  {activeIdx + 1} / {total}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3
-                className="font-sora text-[26px] font-bold text-[#2C0E3A]"
-                style={{ lineHeight: "1.15" }}
-              >
-                {TIMELINE[activeIdx].title}
-              </h3>
-
-              {/* Description */}
-              <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                {TIMELINE[activeIdx].desc}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {TIMELINE[activeIdx].tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-pill border border-purple-100 bg-purple-50 px-3 py-1 font-sora text-[12px] font-semibold text-[#6C60E8]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Animated accent line */}
-              <motion.div
-                key={`line-${activeIdx}`}
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="h-1 origin-left rounded-full"
-                style={{
-                  background: `linear-gradient(90deg, ${TIMELINE[activeIdx].color}, transparent)`,
-                }}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Right side card — hidden on mobile */}
-        <div className="hidden lg:block">{sideCard(nextIdx, "right")}</div>
-      </div>
-
-      {/* Controls */}
-      <div className="flex items-center gap-4">
-        <motion.button
-          whileTap={{ scale: 0.85 }}
-          onClick={() => {
-            stopAuto();
-            setAutoplaying(false);
-            go(-1);
-          }}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-100 bg-white text-[#6366A8] shadow-card transition-colors hover:border-purple-400 hover:text-[#6C60E8]"
-          aria-label="Previous"
-        >
-          <ChevronLeft size={18} />
-        </motion.button>
-
-        <motion.button
-          whileTap={{ scale: 0.85 }}
-          onClick={() => {
-            if (autoplaying) {
-              stopAuto();
-              setAutoplaying(false);
-            } else {
-              setAutoplaying(true);
-            }
-          }}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-100 bg-white text-[#6366A8] shadow-card transition-colors hover:border-purple-400 hover:text-[#6C60E8]"
-          aria-label={autoplaying ? "Pause" : "Play"}
-        >
-          {autoplaying ? <Pause size={16} /> : <Play size={16} />}
-        </motion.button>
-
-        <motion.button
-          whileTap={{ scale: 0.85 }}
-          onClick={() => {
-            stopAuto();
-            setAutoplaying(false);
-            go(1);
-          }}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-purple-100 bg-white text-[#6366A8] shadow-card transition-colors hover:border-purple-400 hover:text-[#6C60E8]"
-          aria-label="Next"
-        >
-          <ChevronRight size={18} />
-        </motion.button>
-      </div>
-    </div>
-  );
-}
-
-/* ─── Page content ──────────────────────────────────── */
-const whatWeDo = [
-  "Enterprise Application Platform (EAP) development",
-  "Workflow automation and system integration",
-  "Custom ERP, CRM and business intelligence tools",
-  "Cloud-native mobile and web application delivery",
-];
-const approach = [
-  "Listen before building — every system fits the client",
-  "Agile delivery with structured QA at every milestone",
-  "Long-term partnerships, not one-time projects",
-];
-const trust = [
-  "19+ years of consistent enterprise delivery",
-  "Clients across manufacturing, retail, services and healthcare",
-  "100+ successful implementations across India",
-];
-const future = [
-  "Expanding AI-powered workflows inside Formezy",
-  "Deeper integrations with Oracle, SAP and Microsoft",
-  "Bringing enterprise-grade tools to mid-market businesses",
+const verticals = [
+  { name: "intelliWorkz", color: "#6C60E8" },
+  { name: "WebShop", color: "#708FF4" },
+  { name: "IntelliText", color: "#2C0E3A" },
 ];
 
 export default function SafalContent() {
   return (
-    <>
+    <main className="flex flex-col">
       {/* ── 1. Hero ── */}
-      <section className="overflow-hidden pb-6 pt-8 md:pt-12">
+      <section className="overflow-hidden pb-8 pt-8 md:pt-12">
         <div className="container-app">
-          {/* Breadcrumbs */}
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -386,56 +82,58 @@ export default function SafalContent() {
             className="mb-6 flex items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
             aria-label="Breadcrumb"
           >
-            <Link href="/" className="hover:text-[#2C0E3A]">Home</Link>
+            <Link href="/" className="hover:text-[#2C0E3A]">
+              Home
+            </Link>
             <ChevronRight size={13} className="opacity-50" />
-            <Link href="/about/company" className="hover:text-[#2C0E3A]">About</Link>
+            <Link href="/about/company" className="hover:text-[#2C0E3A]">
+              About
+            </Link>
             <ChevronRight size={13} className="opacity-50" />
             <span className="font-semibold text-[#2C0E3A]">Safal Infosoft</span>
           </motion.nav>
 
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-5"
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={staggerContainer}
+            className="flex flex-col items-center text-center"
+          >
+            <motion.span
+              variants={fadeUp}
+              className="mb-6 inline-flex items-center rounded-full border border-purple-100 bg-purple-50 px-4 py-1.5 font-sora text-[12px] font-bold uppercase tracking-wide text-[#6C60E8]"
             >
-              <h1
-                className="font-sora text-[30px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[46px] lg:text-[56px]"
-                style={{ lineHeight: "1.08" }}
-              >
-                Driving Business
-                <br />
-                <G>Innovation Since 2006</G>
-              </h1>
-              <p className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
-                Safal Infosoft is a technology company powering enterprise
-                operations across industries — from ERP implementations to
-                custom application platforms to EAP — for over 19 years.
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Link
-                  href="#journey"
-                  className="inline-flex items-center rounded-[10px] bg-[#2C0E3A] px-6 py-3 font-sora text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(44,14,58,0.3)] transition-colors hover:bg-[#3d1650]"
-                >
-                  Our Journey
-                </Link>
-                <Link
-                  href="/platform/overview"
-                  className="inline-flex items-center gap-1.5 rounded-[10px] border border-purple-200 bg-white px-6 py-3 font-sora text-[14px] font-semibold text-[#2C0E3A] shadow-card transition-colors hover:border-purple-400"
-                >
-                  Explore Formezy <ArrowRight size={14} />
-                </Link>
+              Safal Infosoft
+            </motion.span>
+
+            <motion.h1
+              variants={fadeUp}
+              className="max-w-[900px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] sm:text-[42px] md:text-[52px] lg:text-[58px]"
+            >
+              Driving Business <G>Innovation Since 2006</G>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeUp}
+              className="mt-5 max-w-[720px] font-sora text-[15px] leading-[28px] text-[#6366A8] md:text-[17px]"
+            >
+              Safal Infosoft has been at the forefront of innovation, delivering
+              cutting-edge solutions for businesses worldwide.
+            </motion.p>
+
+            <motion.div variants={fadeUp} className="mt-10 w-full">
+              <div className="relative mx-auto aspect-[16/9] w-full max-w-[1100px] sm:aspect-[2/1]">
+                <Image
+                  src={safalInfosoftImages.hero}
+                  alt="Driving business innovation since 2006"
+                  fill
+                  priority
+                  sizes="(max-width: 1280px) 100vw, 1100px"
+                  className="object-contain object-center"
+                />
               </div>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <ImgPlaceholder height={400} label="Business Innovation / Pipeline Illustration" />
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -451,20 +149,20 @@ export default function SafalContent() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
+              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[48px]"
               style={{ lineHeight: "1.1" }}
             >
               Who <G>We Are</G>
             </motion.h2>
-            <motion.p variants={fadeUp} className="font-sora text-[16px] leading-[28px] text-[#6366A8]">
-              Safal Infosoft Ltd. is an Ahmedabad-based enterprise technology company
-              with deep expertise in building structured, intelligent business systems. Over
-              nearly two decades, we&apos;ve helped organizations across India replace
-              fragmented tools with unified, process-driven platforms.
-            </motion.p>
-            <motion.p variants={fadeUp} className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-              Formezy is our flagship — an Enterprise Application Platform (EAP) purpose-built for
-              businesses that have outgrown spreadsheets and off-the-shelf software.
+            <motion.p
+              variants={fadeUp}
+              className="font-sora text-[15px] leading-[28px] text-[#6366A8] md:text-[17px]"
+            >
+              Safal Infosoft Ltd. is an enterprise technology company with deep
+              expertise in building structured, intelligent business systems. For
+              nearly two decades, we have helped organizations replace fragmented
+              tools with unified, process-driven platforms — including Formezy,
+              our Enterprise Application Platform.
             </motion.p>
           </motion.div>
         </div>
@@ -478,22 +176,25 @@ export default function SafalContent() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="overflow-hidden rounded-[28px] border border-purple-100 bg-white/90 p-6 shadow-card backdrop-blur-sm md:p-10"
+            className="overflow-hidden rounded-[24px] border border-purple-100 bg-white p-6 shadow-[0_8px_40px_rgba(108,96,232,0.08)] md:p-10"
           >
             <div className="grid items-center gap-10 lg:grid-cols-2">
-              <motion.div variants={fadeUp}>
-                <ImgPlaceholder height={320} label="3D Modules / Hexagon Illustration" />
+              <motion.div variants={fadeUp} className="relative aspect-square w-full max-w-[520px] lg:max-w-none">
+                <Image
+                  src={safalInfosoftImages.whatWeDo}
+                  alt="What we do — modular enterprise systems"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 520px"
+                  className="object-contain object-center"
+                />
               </motion.div>
               <motion.div variants={fadeUp} className="flex flex-col gap-5">
-                <h2
-                  className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[40px]"
-                  style={{ lineHeight: "1.1" }}
-                >
+                <h2 className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[40px]">
                   What <G>We Do</G>
                 </h2>
                 <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                  We design, build and deploy technology systems that help
-                  businesses operate with structure, speed and scale.
+                  We design, build, and deploy technology systems that help
+                  businesses operate with structure, speed, and scale.
                 </p>
                 <Bullet items={whatWeDo} />
               </motion.div>
@@ -502,7 +203,7 @@ export default function SafalContent() {
         </div>
       </section>
 
-      {/* ── 4. Journey of Growth (Animated Timeline) ── */}
+      {/* ── 4. Journey of Growth ── */}
       <section id="journey" className="section">
         <div className="container-app">
           <motion.div
@@ -510,24 +211,50 @@ export default function SafalContent() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="flex flex-col items-center gap-8"
+            className="flex flex-col items-center gap-10"
           >
-            <motion.div variants={fadeUp} className="flex flex-col items-center gap-3 text-center">
-              <h2
-                className="font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
-                style={{ lineHeight: "1.1" }}
-              >
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col items-center gap-3 text-center"
+            >
+              <h2 className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[48px]">
                 Our Journey <G>of Growth</G>
               </h2>
-              <p className="font-sora text-[15px] text-[#6366A8]">
+              <p className="max-w-2xl font-sora text-[15px] leading-[26px] text-[#6366A8]">
+                From foundational systems to advanced, scalable platforms — a
+                continuous evolution in enterprise technology.
+              </p>
+              <p className="font-sora text-[14px] font-medium text-[#6C60E8]">
                 From foundational systems{" "}
-                <ArrowRight className="mx-1 inline text-[#6C60E8]" size={15} />{" "}
+                <ArrowRight className="mx-1 inline" size={14} />
                 to advanced, scalable platforms.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="w-full">
-              <TimelineCarousel />
+            <motion.div
+              variants={fadeUp}
+              className="relative grid w-full gap-6 md:grid-cols-3"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-[16%] right-[16%] top-8 hidden h-px bg-gradient-to-r from-transparent via-purple-200 to-transparent md:block"
+              />
+              {journeyMilestones.map((m) => (
+                <div
+                  key={m.year}
+                  className="relative flex flex-col gap-4 rounded-[20px] border border-purple-100 bg-white p-6 shadow-card md:pt-10"
+                >
+                  <span className="inline-flex w-fit rounded-full bg-gradient-to-b from-[#708FF4] to-[#6C60E8] px-3.5 py-1 font-sora text-[12px] font-bold text-white">
+                    {m.year}
+                  </span>
+                  <h3 className="font-sora text-[20px] font-bold text-[#2C0E3A]">
+                    {m.title}
+                  </h3>
+                  <p className="font-sora text-[14px] leading-[24px] text-[#6366A8]">
+                    {m.desc}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -545,43 +272,35 @@ export default function SafalContent() {
           >
             <motion.h2
               variants={fadeUp}
-              className="font-sora text-[38px] font-bold text-[#2C0E3A] md:text-[48px]"
-              style={{ lineHeight: "1.1" }}
+              className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[48px]"
             >
               Our Business <G>Verticals</G>
             </motion.h2>
-            <motion.p variants={fadeUp} className="max-w-xl font-sora text-[15px] leading-[26px] text-[#6366A8]">
+            <motion.p
+              variants={fadeUp}
+              className="max-w-xl font-sora text-[15px] leading-[26px] text-[#6366A8]"
+            >
               A diversified approach built to support businesses at every stage.
             </motion.p>
-
-            {/* Brand logos */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center justify-center gap-6"
+              className="flex flex-wrap items-center justify-center gap-8 md:gap-14"
             >
-              {[
-                { name: "Intelliworks", color: "#6C60E8" },
-                { name: "Safal ERP", color: "#708FF4" },
-                { name: "Formezy", color: "#2C0E3A" },
-              ].map((brand) => (
-                <div
+              {verticals.map((brand) => (
+                <span
                   key={brand.name}
-                  className="flex items-center justify-center rounded-[14px] border border-purple-100 bg-white/90 px-8 py-5 shadow-card backdrop-blur-sm"
+                  className="font-sora text-[22px] font-bold md:text-[26px]"
+                  style={{ color: brand.color }}
                 >
-                  <span
-                    className="font-sora text-[18px] font-bold"
-                    style={{ color: brand.color }}
-                  >
-                    {brand.name}
-                  </span>
-                </div>
+                  {brand.name}
+                </span>
               ))}
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── 6. Our Approach + Built on Trust (2-col) ── */}
+      {/* ── 6. Approach + Trust ── */}
       <section className="section">
         <div className="container-app">
           <motion.div
@@ -589,44 +308,28 @@ export default function SafalContent() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="grid gap-6 lg:grid-cols-2"
+            className="grid gap-8 lg:grid-cols-2"
           >
-            {/* Approach */}
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-col gap-5 rounded-[28px] border border-purple-100 bg-white/90 p-8 shadow-card backdrop-blur-sm"
-            >
-              <h2
-                className="font-sora text-[28px] font-bold text-[#2C0E3A] md:text-[32px]"
-                style={{ lineHeight: "1.15" }}
-              >
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <h2 className="font-sora text-[28px] font-bold text-[#2C0E3A] md:text-[36px]">
                 Our <G>Approach</G>
               </h2>
-              <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                We don&apos;t sell software — we architect systems around how
-                your business actually works. Our delivery philosophy is built
-                on deep listening, collaborative design, and measured execution.
+              <p className="font-sora text-[15px] leading-[28px] text-[#6366A8]">
+                We architect systems around how your business actually works —
+                through deep listening, collaborative design, and measured
+                execution. Every solution is tailored to your workflows, not the
+                other way around.
               </p>
-              <Bullet items={approach} />
             </motion.div>
-
-            {/* Built on Experience */}
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-col gap-5 rounded-[28px] border border-purple-100 bg-white/90 p-8 shadow-card backdrop-blur-sm"
-            >
-              <h2
-                className="font-sora text-[28px] font-bold text-[#2C0E3A] md:text-[32px]"
-                style={{ lineHeight: "1.15" }}
-              >
+            <motion.div variants={fadeUp} className="flex flex-col gap-4">
+              <h2 className="font-sora text-[28px] font-bold text-[#2C0E3A] md:text-[36px]">
                 Built on <G>Experience and Trust</G>
               </h2>
-              <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
-                Every implementation carries the weight of nearly two decades of
-                enterprise learning. Our clients trust us because we deliver
-                what we promise — on time and on budget.
+              <p className="font-sora text-[15px] leading-[28px] text-[#6366A8]">
+                Nearly two decades of enterprise delivery across manufacturing,
+                retail, services, and more. Our clients trust us because we deliver
+                what we promise — on time, on budget, and built to scale.
               </p>
-              <Bullet items={trust} />
             </motion.div>
           </motion.div>
         </div>
@@ -640,14 +343,11 @@ export default function SafalContent() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="overflow-hidden rounded-[28px] border border-purple-100 bg-white/90 p-6 shadow-card backdrop-blur-sm md:p-10"
+            className="overflow-hidden rounded-[24px] border border-purple-100 bg-white p-6 shadow-[0_8px_40px_rgba(108,96,232,0.08)] md:p-10"
           >
             <div className="grid items-center gap-10 lg:grid-cols-2">
-              <motion.div variants={fadeUp} className="flex flex-col gap-5">
-                <h2
-                  className="font-sora text-[34px] font-bold text-[#2C0E3A] md:text-[40px]"
-                  style={{ lineHeight: "1.1" }}
-                >
+              <motion.div variants={fadeUp} className="order-2 flex flex-col gap-5 lg:order-1">
+                <h2 className="font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[40px]">
                   Driving the <G>Future Forward</G>
                 </h2>
                 <p className="font-sora text-[15px] leading-[26px] text-[#6366A8]">
@@ -655,74 +355,61 @@ export default function SafalContent() {
                   enterprise platform for growing businesses. Formezy evolves
                   continuously to match the ambition of the companies we serve.
                 </p>
-                <Bullet items={future} />
               </motion.div>
-              <motion.div variants={fadeUp}>
-                <ImgPlaceholder height={340} label="Future / Isometric Platform Illustration" />
+              <motion.div
+                variants={fadeUp}
+                className="relative order-1 aspect-[4/3] w-full lg:order-2"
+              >
+                <Image
+                  src={safalInfosoftImages.drivingFuture}
+                  alt="Driving the future forward"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  className="object-contain object-center"
+                />
               </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── 8. CTA ── */}
-      <section className="section">
+      {/* ── 8. CTA — Legacy of Innovation ── */}
+      <section className="section pb-20">
         <div className="container-app">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[28px] bg-[#0f0620] p-8 text-center md:p-16"
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            className="relative min-h-[400px] overflow-hidden rounded-[24px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] sm:min-h-[520px] md:min-h-[620px] lg:min-h-[720px]"
           >
-            {/* Glows */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#6C60E8]/25 blur-3xl"
+            <Image
+              src={safalInfosoftImages.cta}
+              alt="A legacy of innovation — enterprise platform journey"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1200px"
+              className="object-cover object-bottom opacity-90 md:opacity-100"
             />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-[#708FF4]/20 blur-3xl"
-            />
-            {/* Dot grid */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-[0.15]"
-              style={{
-                backgroundImage:
-                  "radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px)",
-                backgroundSize: "24px 24px",
-              }}
-            />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/40 to-transparent" />
 
-            <div className="relative flex flex-col items-center gap-6">
-              <h2
-                className="mx-auto max-w-3xl font-sora text-[36px] font-bold text-white md:text-[48px]"
-                style={{ lineHeight: "1.12" }}
-              >
-                A Legacy of Innovation.
-                <br />
+            <div className="relative z-10 flex flex-col items-center px-6 pt-10 text-center md:px-12 md:pt-14">
+              <h2 className="max-w-[900px] font-sora text-[28px] font-bold leading-[1.15] text-[#2C0E3A] sm:text-[36px] md:text-[48px] lg:text-[52px]">
+                A Legacy of Innovation.{" "}
                 <G>A Future of Possibilities.</G>
               </h2>
-              <p className="mx-auto max-w-xl font-sora text-[16px] leading-[28px] text-white/60">
-                Discover our platforms and see how Safal Infosoft can
-                transform your business operations.
+              <p className="mt-5 max-w-[640px] font-sora text-[15px] leading-[28px] text-[#6366A8] md:text-[17px]">
+                Explore Safal Infosoft&apos;s evolution and our vision for the
+                future. Discover our journey and capabilities.
               </p>
-              <Link
-                href="/platform/overview"
-                className="inline-flex items-center gap-2 rounded-[10px] bg-white px-7 py-3.5 font-sora text-[15px] font-semibold text-[#2C0E3A] shadow-[0_4px_20px_rgba(255,255,255,0.25)] transition-colors hover:bg-purple-50"
-              >
-                Explore Formezy <ArrowRight size={15} />
-              </Link>
-
-              {/* Illustration */}
-              <div className="mt-6 w-full max-w-2xl opacity-70">
-                <ImgPlaceholder height={220} label="Journey / Platform Illustration" />
+              <div className="mt-8">
+                <Button href="/platform/use-cases" size="lg" className="rounded-[12px]">
+                  Explore Solutions <ArrowRight size={16} />
+                </Button>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

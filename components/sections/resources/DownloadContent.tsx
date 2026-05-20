@@ -5,12 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronRight, Download } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import {
-  industryBrochures,
-  industryBrochureImageSrc,
-  industryDownloadHref,
-  mainBrochure,
-} from "@/lib/download-data";
+import { mainBrochure } from "@/lib/download-data";
+// import {
+//   industryBrochures,
+//   industryBrochureImageSrc,
+//   industryDownloadHref,
+// } from "@/lib/download-data";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -48,60 +48,60 @@ function DownloadButton({
   );
 }
 
-function IndustryCard({
-  name,
-  imageFile,
-  description,
-  index,
-}: {
-  name: string;
-  imageFile: string;
-  description: string;
-  index: number;
-}) {
-  const imageSrc = industryBrochureImageSrc(imageFile);
-  const downloadName = `Formezy-${name.replace(/\s+/g, "-")}-Industry.png`;
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={viewportOnce}
-      transition={{
-        duration: 0.55,
-        delay: (index % 2) * 0.08,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="flex h-full flex-col overflow-hidden rounded-[20px] border border-purple-100/70 bg-white/90 shadow-card backdrop-blur-sm"
-    >
-      <div className="relative aspect-[16/11] w-full overflow-hidden bg-gradient-to-br from-purple-50/80 to-blue-50/40">
-        <Image
-          src={imageSrc}
-          alt={`${name} industry brochure`}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          loading={index < 2 ? "eager" : "lazy"}
-          priority={index < 2}
-          className="object-contain p-4 transition-transform duration-500 hover:scale-[1.02]"
-        />
-      </div>
-
-      <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
-        <h3 className="font-sora text-[22px] font-bold leading-tight text-[#2C0E3A] md:text-[24px]">
-          {name} <G>Industry</G>
-        </h3>
-        <p className="flex-1 font-sora text-[14px] leading-[24px] text-[#6366A8] md:text-[15px] md:leading-[26px]">
-          {description}
-        </p>
-        <DownloadButton
-          href={industryDownloadHref(imageFile)}
-          downloadName={downloadName}
-          className="w-fit"
-        />
-      </div>
-    </motion.article>
-  );
-}
+// function IndustryCard({
+//   name,
+//   imageFile,
+//   description,
+//   index,
+// }: {
+//   name: string;
+//   imageFile: string;
+//   description: string;
+//   index: number;
+// }) {
+//   const imageSrc = industryBrochureImageSrc(imageFile);
+//   const downloadName = `Formezy-${name.replace(/\s+/g, "-")}-Industry.png`;
+//
+//   return (
+//     <motion.article
+//       initial={{ opacity: 0, y: 24 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       viewport={viewportOnce}
+//       transition={{
+//         duration: 0.55,
+//         delay: (index % 2) * 0.08,
+//         ease: [0.22, 1, 0.36, 1],
+//       }}
+//       className="flex h-full flex-col overflow-hidden rounded-[20px] border border-purple-100/70 bg-white/90 shadow-card backdrop-blur-sm"
+//     >
+//       <div className="relative aspect-[16/11] w-full overflow-hidden bg-gradient-to-br from-purple-50/80 to-blue-50/40">
+//         <Image
+//           src={imageSrc}
+//           alt={`${name} industry brochure`}
+//           fill
+//           sizes="(max-width: 768px) 100vw, 50vw"
+//           loading={index < 2 ? "eager" : "lazy"}
+//           priority={index < 2}
+//           className="object-contain p-4 transition-transform duration-500 hover:scale-[1.02]"
+//         />
+//       </div>
+//
+//       <div className="flex flex-1 flex-col gap-4 p-6 md:p-7">
+//         <h3 className="font-sora text-[22px] font-bold leading-tight text-[#2C0E3A] md:text-[24px]">
+//           {name} <G>Industry</G>
+//         </h3>
+//         <p className="flex-1 font-sora text-[14px] leading-[24px] text-[#6366A8] md:text-[15px] md:leading-[26px]">
+//           {description}
+//         </p>
+//         <DownloadButton
+//           href={industryDownloadHref(imageFile)}
+//           downloadName={downloadName}
+//           className="w-fit"
+//         />
+//       </div>
+//     </motion.article>
+//   );
+// }
 
 export default function DownloadContent() {
   return (
@@ -192,7 +192,7 @@ export default function DownloadContent() {
       </section>
 
       {/* Industry grid */}
-      <section className="section pt-4 md:pt-6">
+      {/* <section className="section pt-4 md:pt-6">
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -229,7 +229,7 @@ export default function DownloadContent() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

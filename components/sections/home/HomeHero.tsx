@@ -4,6 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, X } from "lucide-react";
 import Button from "@/components/ui/Button";
+import {
+  homeHeroBannerImage,
+  homeHeroBannerWidth,
+  homeHeroBannerHeight,
+} from "@/lib/home-images";
 
 const ChaosBadge = ({ text }: { text: string }) => (
   <motion.div 
@@ -193,23 +198,19 @@ export default function HomeHero() {
               className="absolute bottom-[2vw] -left-[24vw] w-[28vw] opacity-60 hidden lg:block pointer-events-none z-0"
             />
 
-            {/* Central Image */}
-            <div className="relative w-full max-w-[450px] lg:max-w-none lg:w-[44vw] z-10">
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10"
-              >
-                <Image 
-                  src="/images/Home/m_banner_2x.webp" 
-                  alt="Formezy EAP Platform Overview" 
-                  width={850}
-                  height={850}
+            {/* Central Image — native 1489×1013; never upscale past intrinsic size */}
+            <div className="relative z-10 w-full max-w-[1489px]">
+              <div className="hero-banner-float relative drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+                <Image
+                  src={homeHeroBannerImage}
+                  alt="Formezy EAP Platform Overview"
+                  width={homeHeroBannerWidth}
+                  height={homeHeroBannerHeight}
                   priority
-                  className="w-full h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                  sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 55vw, 1489px"
+                  className="h-auto w-full max-w-full"
                 />
-                
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

@@ -71,7 +71,7 @@ export const jobs: Job[] = [
     slug: "pre-sales-executive",
     title: "Pre-Sales",
     titleHighlight: "Executive (IT)",
-    department: "Sales",
+    department: "Sales & Strategy",
     location: "Ahmedabad, India",
     type: "Full-Time",
     experience: "1–3 Years",
