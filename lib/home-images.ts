@@ -8,7 +8,7 @@ export const industrySolutionImages = {
   "Retail & Wholesale": `${HOME_WEBP}/retail_wholesale.webp`,
 } as const;
 
-export const testimonialNetworkImage = `${HOME_WEBP}/testimonial_img.webp`;
+export const testimonialNetworkImage = `${HOME_WEBP}/ClientSays.svg`;
 
 /** Preload on home page for faster first paint in key carousels */
 export const homePreloadImages = [

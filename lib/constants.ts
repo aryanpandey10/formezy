@@ -87,7 +87,7 @@ export const navLinks: NavItem[] = [
       },
       {
         label: "Leadership",
-        href: "#",
+        href: "/about/leadership",
         description: "The minds behind the platform.",
       },
       {
@@ -120,7 +120,7 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Company", href: "/about/company" },
       { label: "Safal Infosoft", href: "/about/safal-infosoft" },
-      { label: "Leadership", href: "#" },
+      { label: "Leadership", href: "/about/leadership" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact", href: "/contact" },
       { label: "Book Demo", href: "#demo" },
