@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Check, ChevronRight, Quote } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import Button from "@/components/ui/Button";
 import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
@@ -40,16 +41,10 @@ function HeroSection() {
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home
           </Link>
-
-         
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>
-          <span className="text-[#2C0E3A]">Platform</span>
-          <span className="text-[#C4B5FD]" aria-hidden>
-            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
-          </span>
-          <span className="text-[#2C0E3A]">How It Works</span>
+          <span className="text-[#2C0E3A]">How it Works</span>
         </motion.nav>
 
         <motion.div
@@ -60,7 +55,7 @@ function HeroSection() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-sora text-[34px] font-bold tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] 2xl:text-[80px] 2xl:leading-[84px]"
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[54px]"
           >
             From Idea to <G>Execution, Seamlessly</G>
           </motion.h1>
@@ -113,16 +108,19 @@ function HiwJourneyCard({
   description,
   imageSrc,
   color,
+  priority = false,
 }: {
   title: string;
   description: string;
   imageSrc: string;
   color: string;
+  priority?: boolean;
 }) {
   return (
     <motion.article
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="flex h-auto min-h-[400px] w-[min(88vw,430px)] shrink-0 flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[480px]"
+      className="flex h-auto min-h-[400px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[480px]"
       style={{ backgroundColor: color }}
     >
       <div className="flex w-full flex-col items-start gap-3">
@@ -138,7 +136,9 @@ function HiwJourneyCard({
           src={imageSrc}
           alt={title}
           fill
-          sizes="(max-width: 768px) 90vw, 430px"
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
+          sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 380px"
           className="object-contain transition-transform duration-700"
         />
       </div>
@@ -169,20 +169,39 @@ const hiwJourneySteps = [
     title: "Unify Operations",
     description:
       "Run the full journey on one spine — fewer silos, clearer ownership, and faster decisions across teams.",
-    imageSrc: howItWorksPageImages.hiwCarouselConnect,
+    imageSrc: howItWorksPageImages.hiwCarouselUnify,
   },
 ];
 
 /* ─────────────────────────────────────────────
-   Section 2 — How Formezy Works (Build Powerful cards + scroll-linked L→R motion)
+   Section 2 — How Formezy Works (carousel, same pattern as home Build Powerful)
 ───────────────────────────────────────────── */
 function HowItWorksStepsSection() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: trackRef,
-   offset: ["start center", "end center"]
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
   });
-  const x = useTransform(scrollYProgress, [0, 1], ["4vw", "-52vw"]);
+
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanPrev(emblaApi.canScrollPrev());
+    setCanNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
@@ -212,25 +231,69 @@ function HowItWorksStepsSection() {
             </Button>
           </motion.div>
         </motion.div>
-      </div>
 
-      <div
-        ref={trackRef}
-        className="relative mt-10 min-h-[min(220vh,2600px)] w-full md:mt-12"
-        aria-label="Formezy journey steps"
-      >
-        <div className="sticky top-0 z-0 flex h-[min(92dvh,920px)] w-full items-center overflow-hidden py-8 md:py-10">
-          <motion.div style={{ x }} className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12">
-            {hiwJourneySteps.map((s, i) => (
-              <HiwJourneyCard
-                key={s.title}
-                title={s.title}
-                description={s.description}
-                imageSrc={s.imageSrc}
-                color={HIW_CARD_COLORS[i % HIW_CARD_COLORS.length]}
-              />
-            ))}
-          </motion.div>
+        <div className="relative mt-8 md:mt-10" aria-label="Formezy journey steps">
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.88 }}
+            onClick={() => emblaApi?.scrollPrev()}
+            disabled={!canPrev}
+            aria-label="Previous step"
+            className="absolute left-0 top-[45%] z-10 hidden h-[88px] w-[88px] -translate-x-[48%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 lg:flex xl:h-[99px] xl:w-[99px] xl:-translate-x-[52%]"
+          >
+            <ChevronLeft size={32} className="text-[#2C0E3A]" />
+          </motion.button>
+
+          <div className="overflow-hidden lg:mx-10 xl:mx-12" ref={emblaRef}>
+            <div className="flex -ml-5">
+              {hiwJourneySteps.map((s, i) => (
+                <div
+                  key={s.title}
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                >
+                  <HiwJourneyCard
+                    title={s.title}
+                    description={s.description}
+                    imageSrc={s.imageSrc}
+                    color={HIW_CARD_COLORS[i % HIW_CARD_COLORS.length]}
+                    priority={i < 2}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <motion.button
+            type="button"
+            whileTap={{ scale: 0.88 }}
+            onClick={() => emblaApi?.scrollNext()}
+            disabled={!canNext}
+            aria-label="Next step"
+            className="absolute right-0 top-[45%] z-10 hidden h-[88px] w-[88px] translate-x-[48%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 lg:flex xl:h-[99px] xl:w-[99px] xl:translate-x-[52%]"
+          >
+            <ChevronRight size={32} className="text-[#2C0E3A]" />
+          </motion.button>
+
+          <div className="mt-4 flex items-center justify-center gap-3 lg:hidden">
+            <button
+              type="button"
+              onClick={() => emblaApi?.scrollPrev()}
+              disabled={!canPrev}
+              aria-label="Previous step"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-card transition-colors hover:border-[#6C60E8] disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <ChevronLeft size={20} className="text-[#2C0E3A]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => emblaApi?.scrollNext()}
+              disabled={!canNext}
+              aria-label="Next step"
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3D1650] disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -1,9 +1,11 @@
+export type NavSubLink = { label: string; href: string };
+
 export type NavDropdownItem = {
   label: string;
   href: string;
   description?: string;
   /** Nested links (e.g. Features → AskEzy) */
-  children?: { label: string; href: string }[];
+  children?: NavSubLink[];
 };
 
 export type NavItem = {
@@ -11,6 +13,28 @@ export type NavItem = {
   href: string;
   children?: NavDropdownItem[];
 };
+
+/** All platform feature pages — used in Platform → Features nav dropdown. */
+export const platformFeatureNavChildren: NavSubLink[] = [
+  { label: "AskEzy Intelligence", href: "/platform/features/ask-ezy" },
+  { label: "Developer Studio", href: "/platform/features/developer-studio" },
+  { label: "Logic Builder", href: "/platform/features/logic-builder" },
+  { label: "Workflow Automation", href: "/platform/features/workflow-automation" },
+  {
+    label: "Integrations & Connectors",
+    href: "/platform/integrations-connectors",
+  },
+  { label: "Agentic Workflows", href: "/platform/features/agentic-workflows" },
+  {
+    label: "Reporting & Dashboards",
+    href: "/platform/features/reporting-dashboards",
+  },
+  { label: "Mobile Access", href: "/platform/features/mobile-access" },
+  {
+    label: "Security & Compliance",
+    href: "/platform/features/security-compliance",
+  },
+];
 
 export const navLinks: NavItem[] = [
   {
@@ -36,35 +60,7 @@ export const navLinks: NavItem[] = [
         label: "Features",
         href: "/platform/features",
         description: "Powerful features for intelligent operations.",
-        children: [
-          { label: "AskEzy Intelligence", href: "/platform/features/ask-ezy" },
-          { label: "Developer Studio", href: "/platform/features/developer-studio" },
-          { label: "Logic Builder", href: "/platform/features/logic-builder" },
-          {
-            label: "Workflow Automation",
-            href: "/platform/features/workflow-automation",
-          },
-          {
-            label: "Integrations & Connectors",
-            href: "/platform/integrations-connectors",
-          },
-          {
-            label: "Agentic Workflows",
-            href: "/platform/features/agentic-workflows",
-          },
-          {
-            label: "Reporting & Dashboards",
-            href: "/platform/features/reporting-dashboards",
-          },
-          {
-            label: "Mobile Access",
-            href: "/platform/features/mobile-access",
-          },
-          {
-            label: "Security & Compliance",
-            href: "/platform/features/security-compliance",
-          },
-        ],
+        children: platformFeatureNavChildren,
       },
     ],
   },
@@ -172,7 +168,8 @@ export const footerColumns: FooterColumn[] = [
       { label: "Overview", href: "/platform/overview" },
       { label: "How It Works", href: "/platform/how-it-works" },
       { label: "Capabilities", href: "/platform/capabilities" },
-      { label: "Features", href: "/platform/features" },
+      { label: "All Features", href: "/platform/features" },
+      ...platformFeatureNavChildren,
     ],
   },
   {

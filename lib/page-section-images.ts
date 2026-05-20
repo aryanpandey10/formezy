@@ -20,6 +20,7 @@ export const howItWorksPageImages = {
   hiwCarouselMap: hiw("map_workflows.webp"),
   hiwCarouselEnable: hiw("enable_automation.webp"),
   hiwCarouselConnect: hiw("connect_ ecosystem.webp"),
+  hiwCarouselUnify: hiw("scale_structure.webp"),
   defineDeep: hiw("define_workflows.webp"),
   logicLarge: hiw("Build with Logic Builder.webp"),
   automateWide: hiw("automate_processes.webp"),
