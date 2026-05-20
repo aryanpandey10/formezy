@@ -171,20 +171,35 @@ function NavLinkItem({
           >
             <div className="overflow-hidden rounded-2xl border border-surface-border bg-white p-2 shadow-card-hover">
               {link.children.map((child) => (
-                <Link
-                  key={child.label}
-                  href={child.href}
-                  className="flex flex-col gap-1 rounded-xl px-4 py-3 transition-colors hover:bg-purple-50"
-                >
-                  <span className="text-sm font-semibold text-ink">
-                    {child.label}
-                  </span>
-                  {child.description ? (
-                    <span className="text-xs text-ink-secondary">
-                      {child.description}
+                <div key={child.label}>
+                  <Link
+                    href={child.href}
+                    className="flex flex-col gap-1 rounded-xl px-4 py-3 transition-colors hover:bg-purple-50"
+                  >
+                    <span className="text-sm font-semibold text-ink">
+                      {child.label}
                     </span>
+                    {child.description ? (
+                      <span className="text-xs text-ink-secondary">
+                        {child.description}
+                      </span>
+                    ) : null}
+                  </Link>
+                  {child.children?.length ? (
+                    <ul className="mb-1 ml-3 border-l border-purple-100 pl-3">
+                      {child.children.map((sub) => (
+                        <li key={sub.label}>
+                          <Link
+                            href={sub.href}
+                            className="block rounded-lg px-3 py-2 text-[13px] font-medium text-ink-secondary transition-colors hover:bg-purple-50 hover:text-purple-primary"
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   ) : null}
-                </Link>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -250,10 +265,20 @@ function MobileNavLink({
                 <Link
                   href={child.href}
                   onClick={onNavigate}
-                  className="block rounded-xl px-4 py-2.5 text-[14px] text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
+                  className="block rounded-xl px-4 py-2.5 text-[14px] font-semibold text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
                 >
                   {child.label}
                 </Link>
+                {child.children?.map((sub) => (
+                  <Link
+                    key={sub.label}
+                    href={sub.href}
+                    onClick={onNavigate}
+                    className="block rounded-xl py-2 pl-8 pr-4 text-[13px] text-ink-secondary hover:bg-purple-50 hover:text-purple-primary"
+                  >
+                    {sub.label}
+                  </Link>
+                ))}
               </li>
             ))}
           </motion.ul>

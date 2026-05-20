@@ -10,30 +10,36 @@ import { industrySolutionImages } from "@/lib/home-images";
 
 const industries = [
   {
-    title: "Heavy Manufacturing" as const,
+    title: "Heavy Manufacturing",
     image: industrySolutionImages["Heavy Manufacturing"],
+    href: "/platform/use-cases/heavy-manufacturing",
   },
   {
-    title: "Process Industries" as const,
+    title: "Process Industries",
     image: industrySolutionImages["Process Industries"],
+    href: "/platform/use-cases/process-industries",
   },
   {
-    title: "Discrete Manufacturing" as const,
+    title: "Discrete Manufacturing",
     image: industrySolutionImages["Discrete Manufacturing"],
+    href: "/platform/use-cases/discrete-manufacturing",
   },
   {
-    title: "Retail & Wholesale" as const,
-    image: industrySolutionImages["Retail & Wholesale"],
+    title: "Retail",
+    image: industrySolutionImages.Retail,
+    href: "/platform/use-cases/retail-industry",
   },
   {
-    title: "Retail & Wholesale" as const,
-    image: industrySolutionImages["Retail & Wholesale"],
+    title: "Wholesale",
+    image: industrySolutionImages.Wholesale,
+    href: "/platform/use-cases/wholesale-industry",
   },
   {
-    title: "Retail & Wholesale" as const,
-    image: industrySolutionImages["Retail & Wholesale"],
+    title: "Rental",
+    image: industrySolutionImages.Rental,
+    href: "/platform/use-cases/rental-industry",
   },
-];
+] as const;
 
 export default function IndustrySolutions() {
   return (
@@ -72,36 +78,30 @@ export default function IndustrySolutions() {
         </motion.div>
 
         <motion.div
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
-          variants={staggerContainer}
-          className="mt-14 hidden lg:flex lg:items-start lg:gap-6"
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mt-14 px-2 md:px-12 lg:px-16"
         >
-          {industries.map((item, i) => (
-            <motion.div
-              key={item.title}
-              variants={fadeUp}
-              className={`flex-1 ${i % 2 === 1 ? "mt-16" : ""}`}
-            >
-              <IndustryCard {...item} priority />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <div className="mt-14 lg:hidden">
           <Carousel
-            options={{ align: "start" }}
-            slideClassName="basis-[80%] sm:basis-[55%]"
+            options={{ align: "start", loop: true }}
+            slideClassName="basis-[85%] sm:basis-[55%] md:basis-[42%] lg:basis-[calc(25%-12px)]"
             showDots
-            showArrows={false}
+            showArrows
+            arrowPlacement="overlay"
+            overlayArrowsFrom="always"
           >
             {industries.map((item, i) => (
-              <IndustryCard key={item.title} {...item} priority={i === 0} />
+              <div
+                key={item.title}
+                className={`h-full ${i % 2 === 1 ? "pt-12 md:pt-16 lg:pt-20" : ""}`}
+              >
+                <IndustryCard {...item} priority={i === 0} />
+              </div>
             ))}
           </Carousel>
-        </div>
-        
+        </motion.div>
       </div>
     </section>
   );
@@ -110,15 +110,17 @@ export default function IndustrySolutions() {
 function IndustryCard({
   title,
   image,
+  href,
   priority = false,
 }: {
   title: string;
   image: string;
+  href: string;
   priority?: boolean;
 }) {
   return (
     <Link
-      href="/platform/use-cases"
+      href={href}
       className="group relative block h-[280px] overflow-hidden rounded-[20px] shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover sm:h-[300px]"
     >
       <Image
@@ -127,7 +129,7 @@ function IndustryCard({
         fill
         priority={priority}
         loading={priority ? "eager" : "lazy"}
-        sizes="(max-width: 768px) 80vw, 25vw"
+        sizes="(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 25vw"
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />

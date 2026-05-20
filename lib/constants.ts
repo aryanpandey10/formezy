@@ -2,6 +2,8 @@ export type NavDropdownItem = {
   label: string;
   href: string;
   description?: string;
+  /** Nested links (e.g. Features → AskEzy) */
+  children?: { label: string; href: string }[];
 };
 
 export type NavItem = {
@@ -34,6 +36,35 @@ export const navLinks: NavItem[] = [
         label: "Features",
         href: "/platform/features",
         description: "Powerful features for intelligent operations.",
+        children: [
+          { label: "AskEzy Intelligence", href: "/platform/features/ask-ezy" },
+          { label: "Developer Studio", href: "/platform/features/developer-studio" },
+          { label: "Logic Builder", href: "/platform/features/logic-builder" },
+          {
+            label: "Workflow Automation",
+            href: "/platform/features/workflow-automation",
+          },
+          {
+            label: "Integrations & Connectors",
+            href: "/platform/integrations-connectors",
+          },
+          {
+            label: "Agentic Workflows",
+            href: "/platform/features/agentic-workflows",
+          },
+          {
+            label: "Reporting & Dashboards",
+            href: "/platform/features/reporting-dashboards",
+          },
+          {
+            label: "Mobile Access",
+            href: "/platform/features/mobile-access",
+          },
+          {
+            label: "Security & Compliance",
+            href: "/platform/features/security-compliance",
+          },
+        ],
       },
     ],
   },
@@ -43,7 +74,7 @@ export const navLinks: NavItem[] = [
   },
   {
     label: "Integrations",
-    href: "/integrations",
+    href: "/platform/integrations-connectors",
   },
   {
     label: "Resources",
@@ -56,7 +87,7 @@ export const navLinks: NavItem[] = [
       },
       {
         label: "Case Studies",
-        href: "#",
+        href: "/resources/case-studies",
         description: "Real-world success stories.",
       },
       {
@@ -87,7 +118,7 @@ export const navLinks: NavItem[] = [
       },
       {
         label: "Leadership",
-        href: "#",
+        href: "/about/leadership",
         description: "The minds behind the platform.",
       },
       {
@@ -120,7 +151,7 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Company", href: "/about/company" },
       { label: "Safal Infosoft", href: "/about/safal-infosoft" },
-      { label: "Leadership", href: "#" },
+      { label: "Leadership", href: "/about/leadership" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact", href: "/contact" },
       { label: "Book Demo", href: "#demo" },
@@ -130,7 +161,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Resources",
     links: [
       { label: "Blogs", href: "/resources/blogs" },
-      { label: "Case Studies", href: "#" },
+      { label: "Case Studies", href: "/resources/case-studies" },
       { label: "Downloads", href: "/resources/downloads" },
       { label: "Videos", href: "/resources/videos" },
     ],
