@@ -40,10 +40,19 @@ function HeroSection() {
           <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
             Home
           </Link>
+
+           {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Platform
+          </Link> */
+          }
           <span className="text-[#C4B5FD]" aria-hidden>
             <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
           </span>
-          <span className="text-[#2C0E3A]">How it Works</span>
+          <span className="text-[#2C0E3A]">Platform</span>
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">How It Works</span>
         </motion.nav>
 
         <motion.div
@@ -54,7 +63,7 @@ function HeroSection() {
         >
           <motion.h1
             variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[54px]"
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[84px]"
           >
             From Idea to <G>Execution, Seamlessly</G>
           </motion.h1>
@@ -115,7 +124,6 @@ function HiwJourneyCard({
 }) {
   return (
     <motion.article
-      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       className="flex h-auto min-h-[400px] w-[min(88vw,430px)] shrink-0 flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[480px]"
       style={{ backgroundColor: color }}
@@ -173,12 +181,21 @@ const hiwJourneySteps = [
 ───────────────────────────────────────────── */
 function HowItWorksStepsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: trackRef,
-    offset: ["start 0.92", "end 0.08"],
-  });
-  const x = useTransform(scrollYProgress, [0, 1], ["4vw", "-52vw"]);
 
+    // animation starts when section center reaches viewport center
+    // and ends when bottom reaches center
+    offset: ["center center", "end center"],
+  });
+
+  // smoother horizontal movement
+const x = useTransform(
+  scrollYProgress,
+  [0, 1],
+  ["0%", "-68%"]
+);
   return (
     <section className="section bg-white/90 backdrop-blur-sm">
       <div className="container-app">
@@ -195,27 +212,37 @@ function HowItWorksStepsSection() {
           >
             How <G>Formezy Works</G>
           </motion.h2>
+
           <motion.p
             variants={fadeUp}
             className="max-w-xl font-sora text-[16px] leading-[24px] text-[#6366A8]"
           >
             The same structured journey behind every successful Formezy rollout.
           </motion.p>
+
           <motion.div variants={fadeUp}>
-            <Button href="/platform/overview" size="lg" className="rounded-[10px]">
+            <Button
+              href="/platform/overview"
+              size="lg"
+              className="rounded-[10px]"
+            >
               Explore the Platform <ArrowRight size={16} />
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
+      {/* TRACK */}
       <div
         ref={trackRef}
-        className="relative mt-10 min-h-[min(220vh,2600px)] w-full md:mt-12"
-        aria-label="Formezy journey steps"
+        className="relative mt-10 h-[220vh] w-full md:mt-12"
       >
-        <div className="sticky top-0 z-0 flex h-[min(92dvh,920px)] w-full items-center overflow-hidden py-8 md:py-10">
-          <motion.div style={{ x }} className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12">
+        {/* STICKY AREA */}
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          <motion.div
+            style={{ x }}
+            className="flex gap-5 px-5 md:gap-6 md:px-8 lg:px-12"
+          >
             {hiwJourneySteps.map((s, i) => (
               <HiwJourneyCard
                 key={s.title}
@@ -231,7 +258,6 @@ function HowItWorksStepsSection() {
     </section>
   );
 }
-
 /* ─────────────────────────────────────────────
    Section 3 — Define Your Workflows
 ───────────────────────────────────────────── */
