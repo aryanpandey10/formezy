@@ -528,11 +528,11 @@ function CtaSection() {
         className="object-cover object-center"
       />
             <div className="relative z-10 px-6">
-              <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Build an ERP That  <G>Fits Your Business</G>
+              <h2 className="mx-auto max-w-[1000px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
+               Connect Your <G>Business Without Limits</G>
               </h2>
               <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond rigid systems and create one designed around your operations.
+                Integrate Formezy with your existing systems and build a connected operation.
               </p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">
