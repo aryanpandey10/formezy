@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { featuresPageImages } from "@/lib/page-section-images";
+import Image from "next/image";
+import Link from "next/link";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -218,62 +220,69 @@ function FeatureCentered({
 ───────────────────────────────────────────── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
-      <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left — text */}
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-            className="flex flex-col items-start gap-6"
-          >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Features
-              </span>
-            </motion.div>
-            <motion.h1
-              variants={fadeUp}
-              className="font-sora text-[30px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[46px] lg:text-[56px]"
-            >
-              Powerful Features Built for{" "}
-              <G>Intelligent Operations</G>
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[520px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Every capability your operations team needs — from AI assistance
-              to enterprise-grade security — in one deeply integrated platform.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Book a Demo <ArrowRight size={16} />
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Right — 3D isometric illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          >
-            <SectionWebpImage
-              src={featuresPageImages.hero}
-              alt="Formezy platform features overview"
-              aspectWidth={800}
-              aspectHeight={580}
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </motion.div>
-        </div>
-      </div>
-    </section>
+         <section className="relative overflow-hidden pt-[60px] pb-[60px] md:pt-[80px]">
+            {/* Transparent section to let HomeBG show */}
+            <div className="container-app relative z-10">
+                <motion.nav
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45 }}
+                        aria-label="Breadcrumb"
+                        className="mb-8 inline-flex h-11 shrink-0 items-center gap-[5px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
+                      >
+                        <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+                          Home
+                        </Link>
+              
+                         {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+                          Platform
+                        </Link> */
+                        }
+                        <span className="text-[#C4B5FD]" aria-hidden>
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+                        </span>
+                        <span className="text-[#2C0E3A]">Platform</span>
+                        <span className="text-[#C4B5FD]" aria-hidden>
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+                        </span>
+                        <span className="text-[#2C0E3A]">Features</span>
+                      </motion.nav>
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={staggerContainer}
+                
+              >
+                <motion.h1
+                  variants={fadeUp}
+                  className="font-sora text-[44px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[54px] md:text-[64px] lg:text-[76px]"
+                >
+                  Powerful Features <div><G>Built for Intelligent Operations</G></div> 
+                </motion.h1>
+    
+                <motion.p
+                  variants={fadeUp}
+                  className="mt-8  font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[19px]"
+                >
+                 From AI-driven insights to workflow automation, Formezy equips your business with the tools to operate smarter, faster, and with complete control.                </motion.p>
+    
+                <motion.div variants={fadeUp} className="mt-12 w-full">
+                  <div className="relative aspect-[21/9] w-full overflow-hidden">
+                    <Image
+                      src={featuresPageImages.hero}
+                      alt="Enterprise systems reimagined with Formezy"
+                      fill
+                      priority
+                      className="object-contain object-bottom"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
   );
 }
+
 
 /* ─────────────────────────────────────────────
    Section 2 — Explore Features (transition heading)
