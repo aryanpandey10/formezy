@@ -220,7 +220,7 @@ function HeroSection() {
   return (
     <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
       <div className="container-app">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="">
           {/* Left — text */}
           <motion.div
             initial="hidden"
@@ -237,12 +237,12 @@ function HeroSection() {
               variants={fadeUp}
               className="font-sora text-[30px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[46px] lg:text-[56px]"
             >
-              Powerful Features Built for{" "}
+              Powerful Features Built for <br/>
               <G>Intelligent Operations</G>
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="max-w-[520px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+              className=" font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
               Every capability your operations team needs — from AI assistance
               to enterprise-grade security — in one deeply integrated platform.
@@ -264,7 +264,7 @@ function HeroSection() {
               src={featuresPageImages.hero}
               alt="Formezy platform features overview"
               aspectWidth={800}
-              aspectHeight={580}
+              aspectHeight={250}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
             />

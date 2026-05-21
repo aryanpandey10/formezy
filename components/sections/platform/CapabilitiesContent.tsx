@@ -76,7 +76,7 @@ function HeroSection() {
             variants={fadeUp}
             className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[60px] lg:leading-[1.06] xl:text-[68px]"
           >
-            Capabilities Built for <G>Modern Business Operations</G>
+            Capabilities Built for <br/> <G>Modern Business Operations</G>
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -96,7 +96,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-          className="mt-10 w-full md:mt-12 lg:mt-14"
+          className=" w-full"
         >
           <div className="relative aspect-[1923/680] w-full max-w-[1280px]">
             <Image

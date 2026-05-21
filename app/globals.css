@@ -57,8 +57,8 @@
   }
 
   img {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    /* image-rendering: -webkit-optimize-contrast; */
+    /* image-rendering: crisp-edges; */
   }
 
   h1,
@@ -265,6 +265,7 @@
   animation-play-state: paused;
 }
 
+
 .trusted-marquee--static .trusted-marquee__track {
   animation: none;
   flex-wrap: wrap;
@@ -309,6 +310,8 @@
     left: -5em;
   }
 }
+
+
 
 
 /* @media (max-width: 2241px) {

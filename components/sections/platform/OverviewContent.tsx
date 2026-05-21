@@ -103,7 +103,7 @@ function HeroSection() {
 /* ── What is an EAP — centered copy; full-width illustration (previous style) ── */
 function WhatIsEapSection() {
   return (
-    <section className="section bg-white/90 backdrop-blur-sm">
+    <section className="section bg-white/90 backdrop-blur-sm" style={{ paddingBottom: 0 }}>
       <div className="container-app">
         <motion.div
           initial="hidden"
@@ -138,7 +138,7 @@ function WhatIsEapSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportOnce}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 w-full md:mt-14 lg:mt-16"
+          className="mt-12 w-full md:mt-10"
         >
           <div className="relative mx-auto w-full max-w-5xl">
             <div className="relative aspect-[1200/560] w-full">
@@ -149,6 +149,7 @@ function WhatIsEapSection() {
                 sizes="(max-width: 1024px) 100vw, 1000px"
                 className="object-contain object-center"
               />
+              
             </div>
           </div>
         </motion.div>

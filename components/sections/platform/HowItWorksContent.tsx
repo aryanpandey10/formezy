@@ -51,18 +51,18 @@ function HeroSection() {
           initial="hidden"
           animate="show"
           variants={staggerContainer}
-          className="flex w-full max-w-[1100px] flex-col items-start gap-6 md:gap-8"
+          className="flex w-full  flex-col items-start gap-6 md:gap-8"
         >
           <motion.h1
             variants={fadeUp}
             className="font-sora leading-none text-[34px] font-bold tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] 2xl:text-[80px]"
           >
-            From Idea to <G>Execution, Seamlessly</G>
+            From Idea to <br/> <G>Execution, Seamlessly</G>
           </motion.h1>
 
           <motion.div
             variants={fadeUp}
-            className="max-w-[720px] space-y-2 font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px]"
+            className=" space-y-2 font-sora text-[15px] leading-[24px] text-[#6366A8] sm:text-[16px]"
           >
             <p className="font-normal">
               Formezy turns process thinking into working systems — in weeks, not quarters.
@@ -598,7 +598,8 @@ function AutomateProcessesSection() {
 ───────────────────────────────────────────── */
 function CtaSection() {
   return (
-    <section className="section overflow-hidden bg-white/80 backdrop-blur-sm">
+    <section className="section overflow-hidden bg-white/80 backdrop-blur-sm padding_top
+ ">
       <div className="container-app">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
