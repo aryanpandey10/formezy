@@ -265,6 +265,15 @@
   animation-play-state: paused;
 }
 
+.trusted-marquee--static .trusted-marquee__track {
+  animation: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .trusted-marquee__track {
     animation: none;
@@ -273,27 +282,6 @@
     width: 100%;
     max-width: 72rem;
     margin-inline: auto;
-  }
-}
-
-/* Hero platform diagram — slow margin float (keeps image sharp) */
-.hero-banner-float {
-  animation: hero-banner-float 8s ease-in-out infinite;
-}
-
-@keyframes hero-banner-float {
-  0%,
-  100% {
-    margin-top: 0;
-  }
-  50% {
-    margin-top: -12px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-banner-float {
-    animation: none;
   }
 }
 

@@ -200,7 +200,7 @@ export default function HomeHero() {
 
             {/* Central Image — native 1489×1013; never upscale past intrinsic size */}
             <div className="relative z-10 w-full max-w-[1489px]">
-              <div className="hero-banner-float relative drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
+              <div className="relative drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
                 <Image
                   src={homeHeroBannerImage}
                   alt="Formezy EAP Platform Overview"

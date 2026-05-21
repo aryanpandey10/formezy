@@ -29,14 +29,14 @@ const YT = {
 const videos: VideoItem[] = [
   {
     id: "v1",
-    title: "How to Add a Number Field in Formezy",
+    title: "Best Enterprise Workflow Automation",
     step: "Step 1",
     thumb: <NumberFieldThumb />,
     videoUrl: youtubeEmbedUrl(YT.numberField),
   },
   {
     id: "v2",
-    title: "How to Add a Date Box in Inquiry Form",
+    title: "How to Add a Number Field in Formezy", 
     thumb: <DateBoxThumb />,
     videoUrl: youtubeEmbedUrl(YT.dateBox),
   },
