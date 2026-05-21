@@ -276,9 +276,9 @@
   }
 }
 
-/* Hero platform diagram — margin float avoids transform blur on raster text */
+/* Hero platform diagram — slow margin float (keeps image sharp) */
 .hero-banner-float {
-  animation: hero-banner-float 6s ease-in-out infinite;
+  animation: hero-banner-float 8s ease-in-out infinite;
 }
 
 @keyframes hero-banner-float {
@@ -287,7 +287,7 @@
     margin-top: 0;
   }
   50% {
-    margin-top: -8px;
+    margin-top: -12px;
   }
 }
 
@@ -303,23 +303,9 @@
   left: 7em;
 }
 
-/* @media (min-width: 1919px) {
-  .container_home {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-} */
-
- .container_home {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-
-@media (max-width: 1537px) {
-  /* .hero_top_arrow{
- height: 80%;
-} */
+.container_home {
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 @media (max-width: 1441px) {
@@ -330,10 +316,10 @@
 }
 
 @media (max-width: 1366px) {
-      .hero_top_arrow {
-        height: 70px;
-        left: -5em;
-    }
+  .hero_top_arrow {
+    height: 70px;
+    left: -5em;
+  }
 }
 
 
