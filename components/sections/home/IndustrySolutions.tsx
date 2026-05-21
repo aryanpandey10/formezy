@@ -95,7 +95,7 @@ export default function IndustrySolutions() {
             {industries.map((item, i) => (
               <div
                 key={item.title}
-                className={`h-full ${i % 2 === 1 ? " md:pt-16 lg:pt-20" : ""}`}
+                className={`h-full ${i % 2 === 1 ? " md:pt-16  lg:pt-20" : ""}`}
               >
                 <IndustryCard {...item} priority={i === 0} />
               </div>

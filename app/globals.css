@@ -265,6 +265,11 @@
   animation-play-state: paused;
 }
 
+.img-fluid {
+  max-width: 100% !important;
+  height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .trusted-marquee__track {
     animation: none;
@@ -335,6 +340,8 @@
         left: -5em;
     }
 }
+
+
 
 
 /* @media (max-width: 2241px) {
