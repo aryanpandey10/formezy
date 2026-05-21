@@ -510,38 +510,51 @@ function CenteredSection({
 
 function CtaSection() {
   return (
-    <section className="section pb-20 pt-4 md:pb-28">
-      <div className="container-app">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="relative min-h-[520px] overflow-hidden rounded-[32px] border border-purple-100 md:min-h-[600px] lg:min-h-[680px]"
-        >
-          <Image
-            src={integrationsConnectorsPageImages.cta}
-            alt="Connect your business without limits"
-            fill
-            sizes="100vw"
-            className="object-cover object-bottom"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/78 to-white/55" />
-          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-14 text-center md:py-20">
-            <h2 className="max-w-[800px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
-              Connect Your <G>Business Without Limits</G>
-            </h2>
-            <p className="max-w-[560px] font-sora text-[16px] leading-[28px] text-[#6366A8]">
-              Integrate everything, everyone, and every system — so Formezy
-              becomes the layer where your business actually runs.
-            </p>
-            <Button href="#demo" size="lg" className="rounded-[12px] px-10">
-              Book Demo <ArrowRight size={18} />
-            </Button>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+    <>
+      < section className="section pt-0" >
+        <div className="container-app">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
+          >
+             {/* Background Image */}
+      <Image
+        src={integrationsConnectorsPageImages.bgcta}
+        alt="CTA Background"
+        fill
+        className="object-cover object-center"
+      />
+            <div className="relative z-10 px-6">
+              <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
+                Build an ERP That  <G>Fits Your Business</G>
+              </h2>
+              <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
+                Move beyond rigid systems and create one designed around your operations.
+              </p>
+              <div className="mt-8 flex justify-center">
+                <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">
+                  Book a Demo
+                </Button>
+              </div>
+            </div>
+
+            <div className="relative z-10 mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
+              <Image
+                src={integrationsConnectorsPageImages.cta}
+                alt="Build a CRM That Works Your Way Illustration"
+                width={924}
+                height={436}
+                className="mx-auto h-auto w-full pb-12 rounded-t-[20px]"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </ section>
+   
+    </>
   );
 }
 

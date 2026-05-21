@@ -20,7 +20,7 @@ const G = ({ children }: { children: React.ReactNode }) => (
 
 function Bullet({ items }: { items: string[] }) {
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="flex flex-col gap-0 md:gap-4">
       {items.map((b) => (
         <li key={b} className="flex items-start gap-3.5">
           <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6C60E8] text-white shadow-sm">
@@ -75,19 +75,36 @@ export default function CompanyContent() {
       <section className="relative overflow-hidden pt-[60px] pb-0 md:pt-[80px]">
         {/* Transparent section to let HomeBG show */}
         <div className="container-app relative z-10">
+          <motion.nav
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45 }}
+                        aria-label="Breadcrumb"
+                        className="mb-8 inline-flex h-11 shrink-0 items-center gap-[5px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
+                      >
+                        <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+                          Home
+                        </Link>
+              
+                         {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+                          Platform
+                        </Link> */
+                        }
+                        <span className="text-[#C4B5FD]" aria-hidden>
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+                        </span>
+                        <span className="text-[#2C0E3A]">About</span>
+                        <span className="text-[#C4B5FD]" aria-hidden>
+                          <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+                        </span>
+                        <span className="text-[#2C0E3A]">Company</span>
+                      </motion.nav>
           <motion.div
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center "
           >
-            <motion.div
-              variants={fadeUp}
-              className="mb-8 inline-flex items-center rounded-full border border-purple-100 bg-white/80 px-4 py-1.5 font-sora text-[13px] font-bold text-purple-primary shadow-sm"
-            >
-              Enterprise Systems
-            </motion.div>
-
             <motion.h1
               variants={fadeUp}
               className="font-sora text-[44px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[54px] md:text-[64px] lg:text-[76px]"
@@ -97,7 +114,7 @@ export default function CompanyContent() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-8 max-w-[800px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[19px]"
+              className="mt-8  max-w-[1000px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[19px]"
             >
               Formezy EAP helps businesses move beyond disconnected tools and build a unified, intelligent way of operating — built around how you actually work.
             </motion.p>
@@ -109,7 +126,7 @@ export default function CompanyContent() {
                   alt="Enterprise systems reimagined with Formezy"
                   fill
                   priority
-                  className="object-contain object-bottom"
+                  className="object-contain hero_alignment object-bottom"
                 />
               </div>
             </motion.div>
@@ -141,7 +158,7 @@ export default function CompanyContent() {
             </motion.p>
             <motion.div variants={fadeUp} className="mt-12">
               <ScriptText>
-                From fragmented operations • To system-driven execution.
+                From fragmented operations {'->'} To system-driven execution.
               </ScriptText>
             </motion.div>
           </motion.div>
@@ -149,7 +166,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 3. Why EAP Matters Today ── */}
-      <section className="section bg-white/90 py-24 backdrop-blur-sm">
+      <section className="section padding_top bg-white/90 py-24 backdrop-blur-sm">
         <div className="container-app">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
             <motion.div
@@ -157,13 +174,13 @@ export default function CompanyContent() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewportOnce}
               transition={{ duration: 0.8 }}
-              className="relative aspect-square overflow-hidden rounded-[40px] border border-purple-100 bg-white p-2 shadow-card"
+              className="relative aspect-square overflow-hidden rounded-[40px] "
             >
               <Image
                 src={companyPageImages.whyEap}
                 alt="Why EAP Matters Today"
                 fill
-                className="object-contain p-8 md:p-12"
+                className="object-contain "
               />
             </motion.div>
             <motion.div
@@ -188,7 +205,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 4. Our Approach ── */}
-      <section className="section bg-white/90 py-24 backdrop-blur-sm">
+      <section className="section  padding_top bg-white/90 py-24 backdrop-blur-sm">
         <div className="container-app">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
             <motion.div
@@ -213,13 +230,13 @@ export default function CompanyContent() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewportOnce}
               transition={{ duration: 0.8 }}
-              className="order-1 relative aspect-square overflow-hidden rounded-[40px] border border-purple-100 bg-white p-2 shadow-card lg:order-2"
+              className="order-1 relative aspect-square overflow-hidden rounded-[40px] "
             >
               <Image
                 src={companyPageImages.approach}
                 alt="Our Approach"
                 fill
-                className="object-contain p-8 md:p-12"
+                className="object-contain "
               />
             </motion.div>
           </div>
@@ -227,7 +244,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 5. Vision + Mission ── */}
-      <section className="section bg-white/90 py-24 backdrop-blur-sm">
+      <section className="section  padding_top bg-white/90 py-24 backdrop-blur-sm">
         <div className="container-app">
           <div className="grid gap-8 md:grid-cols-2">
             <motion.div
@@ -269,7 +286,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 6. Beyond Traditional Software ── */}
-      <section className="section bg-white/95 py-24 md:py-32 backdrop-blur-sm">
+      <section className="section  padding_top bg-white/95 py-24 md:py-32 backdrop-blur-sm">
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -292,12 +309,12 @@ export default function CompanyContent() {
             </motion.p>
             
             <motion.div variants={fadeUp} className="mt-16 w-full max-w-[1000px]">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-[32px] border border-purple-100 bg-white p-2 shadow-xl">
+              <div className="relative aspect-[16/9] overflow-hidden   p-2">
                 <Image
-                  src={companyPageImages.beyond}
+                  src={companyPageImages.scalable}
                   alt="Beyond Traditional Software"
                   fill
-                  className="object-contain p-4 md:p-8"
+                  className="object-contain "
                 />
               </div>
             </motion.div>
@@ -312,7 +329,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 7. Built for Scalable Operations ── */}
-      <section className="section bg-white/95 py-24 backdrop-blur-sm">
+      <section className="section  padding_top bg-white/95 py-24 backdrop-blur-sm">
         <div className="container-app">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
             <motion.div
@@ -320,13 +337,13 @@ export default function CompanyContent() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewportOnce}
               transition={{ duration: 0.8 }}
-              className="relative aspect-square overflow-hidden rounded-[40px] border border-purple-100 bg-white p-2 shadow-card"
+              className="relative aspect-square overflow-hidden rounded-[40px] "
             >
               <Image
-                src={companyPageImages.scalable}
+                src={companyPageImages.beyond}
                 alt="Built for Scalable Operations"
                 fill
-                className="object-contain p-8 md:p-12"
+                className="object-contain"
               />
             </motion.div>
             <motion.div
@@ -351,7 +368,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 8. CTA Section (Mirrored from Home page BuildErp style) ── */}
-      <section className="section bg-transparent py-24 md:py-32">
+      <section className="section  padding_top bg-transparent py-24 md:py-32">
         <div className="container-app">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -400,6 +417,6 @@ export default function CompanyContent() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </main> 
   );
 }

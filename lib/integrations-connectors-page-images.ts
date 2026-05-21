@@ -8,5 +8,6 @@ export const integrationsConnectorsPageImages = {
   ecosystem: ic("workflow_automation_ecosystem.webp"),
   erp: ic("integrations_connectors_ERP.webp"),
   growth: ic("integrations_connectors_growth.webp"),
-  cta: ic("integrations_connectors_CTA.webp"),
+  cta: ic("integrations_connectors_CTA.png"),
+  bgcta:ic("integration_bg.png")
 } as const;

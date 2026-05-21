@@ -13,43 +13,6 @@ import {
 // build ERp
 export default function BuildErp() {
   return (
-    <>
-        < section className="section pt-0" >
-        <div className="container-app">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 0.8 }}
-            className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
-          >
-            <div className="relative z-10 px-6">
-              <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
-                Build an ERP That 
-              </h2>
-              <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
-                Move beyond rigid systems and create one designed around your operations.
-              </p>
-              <div className="mt-8 flex justify-center">
-                <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide">
-                  Book a Demo
-                </Button>
-              </div>
-            </div>
-
-            <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
-              <Image
-                src="/images/BuildYourERP.png"
-                alt="Build a CRM That Works Your Way Illustration"
-                width={1200}
-                height={600}
-                className="mx-auto h-auto w-full rounded-t-[20px]"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </ section>
-  
     <section className="section overflow-hidden bg-white/80 backdrop-blur-sm">
       <div className="container-app">
         <motion.div
@@ -64,6 +27,7 @@ export default function BuildErp() {
          className="relative overflow-hidden rounded-[24px]
   border border-purple-100
   shadow-[0_8px_48px_rgba(108,96,232,0.12)]
+
   min-h-[400px]
   sm:min-h-[580px]
   md:min-h-[660px]
@@ -195,6 +159,5 @@ export default function BuildErp() {
         </motion.div>
       </div>
     </section>
-      </>
   );
 }
