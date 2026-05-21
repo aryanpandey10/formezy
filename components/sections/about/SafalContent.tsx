@@ -6,7 +6,10 @@ import { motion } from "framer-motion";
 import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
-import { safalInfosoftImages } from "@/lib/safal-infosoft-images";
+import {
+  safalInfosoftImages,
+  SAFAL_SECTION,
+} from "@/lib/safal-infosoft-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -63,17 +66,32 @@ const journeyMilestones = [
   },
 ];
 
-const verticals = [
-  { name: "intelliWorkz", color: "#6C60E8" },
-  { name: "WebShop", color: "#708FF4" },
-  { name: "IntelliText", color: "#2C0E3A" },
-];
+const verticalLogos = [
+  {
+    src: safalInfosoftImages.verticalLogos.intelliWorks,
+    alt: "intelliWorkz",
+    width: 160,
+    height: 48,
+  },
+  {
+    src: safalInfosoftImages.verticalLogos.webShop,
+    alt: "WebShop",
+    width: 140,
+    height: 48,
+  },
+  {
+    src: safalInfosoftImages.verticalLogos.intelliText,
+    alt: "IntelliText",
+    width: 140,
+    height: 48,
+  },
+] as const;
 
 export default function SafalContent() {
   return (
     <main className="flex flex-col">
       {/* ── 1. Hero ── */}
-      <section className="overflow-hidden pb-8 pt-8 md:pt-12">
+      <section className="overflow-hidden pb-6 pt-6 md:pt-10">
         <div className="container-app">
           <motion.nav
             initial={{ opacity: 0, y: -8 }}
@@ -121,7 +139,7 @@ export default function SafalContent() {
               cutting-edge solutions for businesses worldwide.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="mt-10 w-full">
+            <motion.div variants={fadeUp} className="mt-6 w-full md:mt-8">
               <div className="relative mx-auto aspect-[16/9] w-full max-w-[1100px] sm:aspect-[2/1]">
                 <Image
                   src={safalInfosoftImages.hero}
@@ -138,14 +156,14 @@ export default function SafalContent() {
       </section>
 
       {/* ── 2. Who We Are ── */}
-      <section className="section">
+      <section className={SAFAL_SECTION}>
         <div className="container-app">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center"
+            className="mx-auto flex max-w-3xl flex-col items-center gap-3 text-center"
           >
             <motion.h2
               variants={fadeUp}
@@ -169,7 +187,7 @@ export default function SafalContent() {
       </section>
 
       {/* ── 3. What We Do ── */}
-      <section className="section">
+      <section className={SAFAL_SECTION}>
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -261,14 +279,14 @@ export default function SafalContent() {
       </section>
 
       {/* ── 5. Business Verticals ── */}
-      <section className="section">
+      <section className={SAFAL_SECTION}>
         <div className="container-app">
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="flex flex-col items-center gap-8 text-center"
+            className="flex flex-col items-center gap-4 text-center md:gap-5"
           >
             <motion.h2
               variants={fadeUp}
@@ -284,16 +302,17 @@ export default function SafalContent() {
             </motion.p>
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center justify-center gap-8 md:gap-14"
+              className="mt-2 flex flex-wrap items-center justify-center gap-10 md:gap-16 lg:gap-20"
             >
-              {verticals.map((brand) => (
-                <span
-                  key={brand.name}
-                  className="font-sora text-[22px] font-bold md:text-[26px]"
-                  style={{ color: brand.color }}
-                >
-                  {brand.name}
-                </span>
+              {verticalLogos.map((logo) => (
+                <Image
+                  key={logo.alt}
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  className="h-10 w-auto object-contain md:h-12"
+                />
               ))}
             </motion.div>
           </motion.div>
@@ -301,7 +320,7 @@ export default function SafalContent() {
       </section>
 
       {/* ── 6. Approach + Trust ── */}
-      <section className="section">
+      <section className={SAFAL_SECTION}>
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -336,7 +355,7 @@ export default function SafalContent() {
       </section>
 
       {/* ── 7. Driving the Future Forward ── */}
-      <section className="section">
+      <section className={SAFAL_SECTION}>
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -374,7 +393,7 @@ export default function SafalContent() {
       </section>
 
       {/* ── 8. CTA — Legacy of Innovation ── */}
-      <section className="section pb-20">
+      <section className={`${SAFAL_SECTION} pb-12 md:pb-16`}>
         <div className="container-app">
           <motion.div
             initial={{ opacity: 0, y: 32 }}

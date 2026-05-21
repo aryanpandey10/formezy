@@ -141,7 +141,7 @@ export const footerColumns: FooterColumn[] = [
     title: "About",
     links: [
       { label: "Company", href: "/about/company" },
-      // { label: "Safal Infosoft", href: "/about/safal-infosoft" },
+      { label: "Safal Infosoft", href: "/about/safal-infosoft" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact", href: "/contact" },
