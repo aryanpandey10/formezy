@@ -32,15 +32,26 @@ function LogoStrip({ ariaHidden = false }: { ariaHidden?: boolean }) {
   );
 }
 
-export default function TrustedLogos({ className }: { className?: string }) {
+export default function TrustedLogos({
+  className,
+  animate = true,
+}: {
+  className?: string;
+  /** When false, logos are centered with no scroll animation (e.g. home page). */
+  animate?: boolean;
+}) {
   return (
     <div
-      className={cn("trusted-marquee relative overflow-hidden", className)}
+      className={cn(
+        "trusted-marquee relative overflow-hidden",
+        !animate && "trusted-marquee--static",
+        className
+      )}
       aria-label="Trusted enterprise logos"
     >
       <div className="trusted-marquee__track flex w-max items-center gap-3 sm:gap-5 md:gap-8">
         <LogoStrip />
-        <LogoStrip ariaHidden />
+        {animate ? <LogoStrip ariaHidden /> : null}
       </div>
     </div>
   );

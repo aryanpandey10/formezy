@@ -1,3 +1,4 @@
+import HomeMotionProvider from "@/components/sections/home/HomeMotionProvider";
 import HomePreloads from "@/components/sections/home/HomePreloads";
 import HomeHero from "@/components/sections/home/HomeHero";
 import TrustedBy from "@/components/sections/home/TrustedBy";
@@ -14,20 +15,22 @@ import Oprations from "@/components/sections/home/Operations";
 
 export default function HomePage() {
   return (
-    <>
-      <HomePreloads />
-      <HomeHero />
-      <TrustedBy />
-      <WhatIsFormezy />
-      <BuildPowerful />
-      <WhyChoose />
-      <AskEzyHomeSection />
-      <CoreCapabilities />
-      <IndustrySolutions />
-      <Testimonials />
-      <BuildErp />
-      <Integrations />
-      <Oprations/>
-    </>
+    <HomeMotionProvider>
+      <>
+        <HomePreloads />
+        <HomeHero />
+        <TrustedBy />
+        <WhatIsFormezy />
+        <BuildPowerful />
+        <WhyChoose />
+        <AskEzyHomeSection />
+        <CoreCapabilities />
+        <IndustrySolutions />
+        <Testimonials />
+        <BuildErp />
+        <Integrations />
+        <Oprations />
+      </>
+    </HomeMotionProvider>
   );
 }
