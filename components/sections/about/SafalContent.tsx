@@ -94,22 +94,29 @@ export default function SafalContent() {
       <section className="overflow-hidden pb-6 pt-6 md:pt-10">
         <div className="container-app">
           <motion.nav
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-6 flex items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-            aria-label="Breadcrumb"
-          >
-            <Link href="/" className="hover:text-[#2C0E3A]">
-              Home
-            </Link>
-            <ChevronRight size={13} className="opacity-50" />
-            <Link href="/about/company" className="hover:text-[#2C0E3A]">
-              About
-            </Link>
-            <ChevronRight size={13} className="opacity-50" />
-            <span className="font-semibold text-[#2C0E3A]">Safal Infosoft</span>
-          </motion.nav>
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          aria-label="Breadcrumb"
+          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[5px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
+        >
+          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Home
+          </Link>
+
+           {/* <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
+            Platform
+          </Link> */
+          }
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">About</span>
+          <span className="text-[#C4B5FD]" aria-hidden>
+            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
+          </span>
+          <span className="text-[#2C0E3A]">Safal Infosoft</span>
+        </motion.nav>
 
           <motion.div
             initial="hidden"
@@ -117,12 +124,7 @@ export default function SafalContent() {
             variants={staggerContainer}
             className="flex flex-col items-center text-center"
           >
-            <motion.span
-              variants={fadeUp}
-              className="mb-6 inline-flex items-center rounded-full border border-purple-100 bg-purple-50 px-4 py-1.5 font-sora text-[12px] font-bold uppercase tracking-wide text-[#6C60E8]"
-            >
-              Safal Infosoft
-            </motion.span>
+           
 
             <motion.h1
               variants={fadeUp}
