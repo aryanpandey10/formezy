@@ -29,7 +29,7 @@ export default function TrustedBy() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white/80 to-transparent"
         />
 
-        <TrustedLogos className="py-0" />
+        <TrustedLogos className="py-0" animate={false} />
       </div>
     </section>
   );

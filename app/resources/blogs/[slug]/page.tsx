@@ -132,7 +132,7 @@ export default async function BlogDetailPage({
       </section>
 
       {/* ── Article Body ── */}
-      <section className="section pt-0">
+      <section className="section pt-0" style={{ paddingTop: "0rem" }}>
         <div className="container-app">
           <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[1fr_300px]">
 
@@ -287,7 +287,7 @@ export default async function BlogDetailPage({
       </section>
 
       {/* ── Bottom CTA ── */}
-      <section className="section">
+      <section className="section" style={{paddingTop: 0}}>
         <div className="container-app">
           <div className="relative overflow-hidden rounded-[28px] border border-purple-100 bg-gradient-to-br from-purple-50 via-white to-blue-50/40 px-8 py-14 text-center shadow-card md:px-16 md:py-20">
             <div
