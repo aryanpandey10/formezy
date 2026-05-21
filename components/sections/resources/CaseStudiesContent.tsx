@@ -145,7 +145,7 @@ export default function CaseStudiesContent() {
         </div>
       </section>
 
-      <section className="section pt-0 pb-20 md:pb-28">
+      <section className="section" style={{ paddingTop: "0rem" }}>
         <div className="container-app">
           <div className="grid gap-8 md:grid-cols-2 md:gap-10">
             {caseStudies.map((study, index) => (

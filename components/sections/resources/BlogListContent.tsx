@@ -100,13 +100,13 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
             initial="hidden"
             animate="show"
             variants={staggerContainer}
-            className="flex max-w-3xl flex-col gap-5"
+            className="flex flex-col gap-5"
           >
             <motion.h1
               variants={fadeUp}
               className="font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
             >
-              Insights That Power{" "}
+              Insights That Power <br/>
               <span
                 style={{
                   background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
@@ -121,7 +121,7 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
 
             <motion.p
               variants={fadeUp}
-              className="max-w-[680px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+              className=" font-sora text-[16px] leading-[28px] text-[#6366A8]"
             >
               Stay updated with ideas, trends, and practical knowledge across
               automation, workflows, and modern business operations. Explore
@@ -133,7 +133,7 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
       </section>
 
       {/* ── Blog Grid ── */}
-      <section className="section pt-0">
+      <section className="section" style={{ paddingTop: "0rem" }}>
         <div className="container-app">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => (
@@ -144,7 +144,7 @@ export default function BlogListContent({ posts }: { posts: BlogPost[] }) {
       </section>
 
       {/* ── Subscribe CTA ── */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: "0rem" }}>
         <div className="container-app">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
