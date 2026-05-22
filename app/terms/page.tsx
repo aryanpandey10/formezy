@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import LegalPageHeader, { GradientText } from "@/components/legal/LegalPageHeader";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Formezy",
@@ -161,49 +160,19 @@ const SECTIONS: Section[] = [
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="pb-24 pt-8 md:pt-12">
-      <div className="container-app">
-        {/* Breadcrumbs */}
-        <nav
-          className="mb-6 flex items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">Terms & Conditions</span>
-        </nav>
+    <div className="pb-24 pt-8 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <LegalPageHeader
+          breadcrumbLabel="Terms & Conditions"
+          title={
+            <>
+              Terms &amp; <GradientText>Conditions</GradientText>
+            </>
+          }
+          description="These Terms & Conditions govern your access to and use of the Formezy platform, operated by Safal Infosoft Pvt. Ltd. By using our platform, you agree to be bound by these terms. Please read them carefully before proceeding."
+        />
 
-        {/* Heading */}
-        <h1
-          className="font-sora text-[28px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[42px] lg:text-[52px]"
-          style={{ lineHeight: "1.1" }}
-        >
-          Terms &amp;
-          <br />
-          <span
-            style={{
-              background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Conditions
-          </span>
-        </h1>
-
-        {/* Intro */}
-        <p className="mt-5 max-w-3xl font-sora text-[14px] leading-[26px] text-[#6366A8]">
-          These Terms &amp; Conditions govern your access to and use of the Formezy
-          platform, operated by Safal Infosoft Pvt. Ltd. By using our platform,
-          you agree to be bound by these terms. Please read them carefully before
-          proceeding.
-        </p>
-
-        {/* Divider */}
-        <div className="my-8 h-px bg-purple-100" />
+        <div className="my-8 h-px w-full max-w-3xl bg-purple-100" />
 
         {/* Sections */}
         <article className="flex max-w-3xl flex-col gap-10">

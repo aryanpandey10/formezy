@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Button from "@/components/ui/Button";
 import SectionWebpImage from "@/components/ui/SectionWebpImage";
+import PlatformBreadcrumb from "@/components/ui/PlatformBreadcrumb";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { featuresPageImages } from "@/lib/page-section-images";
 
@@ -218,58 +219,52 @@ function FeatureCentered({
 ───────────────────────────────────────────── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-8 md:pt-12 lg:pt-16">
-      <div className="container-app">
-        <div className="">
-          {/* Left — text */}
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={staggerContainer}
-            className="flex flex-col items-start gap-6"
-          >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center rounded-pill border border-purple-100 bg-purple-50 px-3.5 py-1.5 font-sora text-[13px] font-medium text-purple-primary">
-                Features
-              </span>
-            </motion.div>
-            <motion.h1
-              variants={fadeUp}
-              className="font-sora text-[30px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[46px] lg:text-[56px]"
-            >
-              Powerful Features Built for <br/>
-              <G>Intelligent Operations</G>
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className=" font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Every capability your operations team needs — from AI assistance
-              to enterprise-grade security — in one deeply integrated platform.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Book a Demo <ArrowRight size={16} />
-              </Button>
-            </motion.div>
-          </motion.div>
+    <section className="relative overflow-hidden pb-0 pt-8 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <PlatformBreadcrumb currentLabel="Features" />
 
-          {/* Right — 3D isometric illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={staggerContainer}
+          className="flex w-full max-w-[1100px] flex-col items-start gap-6 md:gap-8"
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="font-sora text-[34px] font-bold leading-[1.08] tracking-tight text-[#2C0E3A] sm:text-[44px] md:text-[52px] lg:text-[64px] lg:leading-[1.05] xl:text-[72px] xl:leading-[1.02] 2xl:text-[80px] 2xl:leading-[84px]"
           >
-            <SectionWebpImage
-              src={featuresPageImages.hero}
-              alt="Formezy platform features overview"
-              aspectWidth={800}
-              aspectHeight={250}
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            Powerful Features Built for <br />
+            <G>Intelligent Operations</G>
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            className="max-w-[720px] font-sora text-[15px] font-normal leading-[24px] text-[#6366A8] sm:text-[16px]"
+          >
+            Every capability your operations team needs — from AI assistance to
+            enterprise-grade security — in one deeply integrated platform.
+          </motion.p>
+          <motion.div variants={fadeUp}>
+            <Button href="#demo" size="lg" className="rounded-[10px]">
+              Book a Demo <ArrowRight size={16} />
+            </Button>
           </motion.div>
-        </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
+          className="mt-8 w-full md:mt-10"
+        >
+          <SectionWebpImage
+            src={featuresPageImages.hero}
+            alt="Formezy platform features overview"
+            aspectWidth={800}
+            aspectHeight={250}
+            priority
+            sizes="(max-width: 1024px) 100vw, 100vw"
+          />
+        </motion.div>
       </div>
     </section>
   );

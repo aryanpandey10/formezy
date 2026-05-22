@@ -51,7 +51,7 @@ function CaseStudyCard({
         </h2>
       </div>
 
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-purple-50/40 p-4">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-purple-50/40 p-6 md:p-8">
         <Image
           src={caseStudyImageSrc(imageFile)}
           alt={title}
@@ -59,7 +59,7 @@ function CaseStudyCard({
           sizes="(max-width: 768px) 100vw, 50vw"
           loading={index < 2 ? "eager" : "lazy"}
           priority={index < 2}
-          className="object-cover"
+          className="object-contain"
         />
       </div>
 

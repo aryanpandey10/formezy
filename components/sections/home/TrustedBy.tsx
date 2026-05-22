@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { MotionConfig, motion } from "framer-motion";
 import { fadeUp, viewportOnce } from "@/lib/animations";
 import TrustedLogos from "@/components/illustrations/TrustedLogos";
 
 export default function TrustedBy() {
   return (
+    <MotionConfig reducedMotion="never">
     <section className="border-y border-purple-100/60 bg-white/80 py-4 backdrop-blur-sm md:py-6">
       <div className="container-app">
         <motion.p
@@ -29,8 +30,9 @@ export default function TrustedBy() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-white/80 to-transparent"
         />
 
-        <TrustedLogos className="py-0" animate={false} />
+        <TrustedLogos className="py-0" />
       </div>
     </section>
+    </MotionConfig>
   );
 }

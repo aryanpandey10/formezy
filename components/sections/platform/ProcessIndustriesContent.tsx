@@ -5,8 +5,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import PlatformBreadcrumb from "@/components/ui/PlatformBreadcrumb";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import { tailoredCrmWebp } from "@/lib/webp-assets";
+import { processIndustriesWebp } from "@/lib/use-case-webp";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -27,27 +28,7 @@ export default function ProcessIndustriesContent() {
       {/* ── Section 1: Hero & Breadcrumb ── */}
       <section className="relative pt-8 pb-10 md:pt-12 lg:pt-16">
         <div className="container-app">
-          <motion.nav
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            aria-label="Breadcrumb"
-            className="mb-8 inline-flex h-11 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
-          >
-            <Link href="/" className="transition-colors hover:text-[#6C60E8]">
-              Home
-            </Link>
-            <span className="text-[#C4B5FD]" aria-hidden>
-              <ChevronRight size={14} strokeWidth={2.5} />
-            </span>
-            <Link href="/platform/use-cases" className="transition-colors hover:text-[#6C60E8]">
-              Use Cases
-            </Link>
-            <span className="text-[#C4B5FD]" aria-hidden>
-              <ChevronRight size={14} strokeWidth={2.5} />
-            </span>
-            <span className="text-[#2C0E3A]">Process Industries</span>
-          </motion.nav>
+          <PlatformBreadcrumb currentLabel="Process Industries" />
 
           <motion.div
             initial="hidden"
@@ -95,7 +76,7 @@ export default function ProcessIndustriesContent() {
             >
               <div className="overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-gradient-to-br from-[#EEF4FF] to-[#F5F0FF] p-2 shadow-sm">
                 <Image
-                  src={tailoredCrmWebp.businessChallenges}
+                  src={processIndustriesWebp.businessChallenges}
                   alt="Key Challenges in Process Manufacturing"
                   width={600}
                   height={400}
@@ -191,7 +172,7 @@ export default function ProcessIndustriesContent() {
             className="relative mx-auto w-full overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-white shadow-xl"
           >
             <Image
-              src={tailoredCrmWebp.whatIsTailoredTenant}
+              src={processIndustriesWebp.whatIs}
               alt="Structured Process Manufacturing Concept"
               width={1200}
               height={600}
@@ -431,7 +412,7 @@ export default function ProcessIndustriesContent() {
 
             <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
               <Image
-                src={tailoredCrmWebp.buildCrmWorksYourWay}
+                src={processIndustriesWebp.cta}
                 alt="Process Manufacturing CTA Illustration"
                 width={1200}
                 height={600}

@@ -1,17 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import businessChallenges from "../../../public/images/Supply_Chain_Management/Webp/business_challenges.webp";
-import howFormezy from "../../../public/images/Supply_Chain_Management/Webp/how_formezy_enables _it.webp";
-import realWorkflow from "../../../public/images/Supply_Chain_Management/Webp/real_workflow_in_action.webp";
-import tailored from "../../../public/images/Supply_Chain_Management/Webp/tailored.webp";
-import cta from "../../../public/images/Supply_Chain_Management/Webp/bring_control_to_your_supply_chain.webp";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Button from "@/components/ui/Button";
+import PlatformBreadcrumb from "@/components/ui/PlatformBreadcrumb";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import { tailoredCrmWebp } from "@/lib/webp-assets";
+import { supplyChainManagementWebp } from "@/lib/use-case-webp";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -32,27 +27,7 @@ export default function SupplyChainContent() {
       {/* ── Section 1: Hero & Breadcrumb ── */}
       <section className="relative pt-8 pb-10 md:pt-12 lg:pt-16">
         <div className="container-app">
-          <motion.nav
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            aria-label="Breadcrumb"
-            className="mb-8 inline-flex h-11 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
-          >
-            <Link href="/" className="transition-colors hover:text-[#6C60E8]">
-              Home
-            </Link>
-            <span className="text-[#C4B5FD]" aria-hidden>
-              <ChevronRight size={14} strokeWidth={2.5} />
-            </span>
-            <Link href="/platform/use-cases" className="transition-colors hover:text-[#6C60E8]">
-              Use Cases
-            </Link>
-            <span className="text-[#C4B5FD]" aria-hidden>
-              <ChevronRight size={14} strokeWidth={2.5} />
-            </span>
-            <span className="text-[#2C0E3A]">Supply Chain Management</span>
-          </motion.nav>
+          <PlatformBreadcrumb currentLabel="Supply Chain Management" />
 
           <motion.div
             initial="hidden"
@@ -95,7 +70,7 @@ export default function SupplyChainContent() {
             >
               <div className="overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-gradient-to-br from-[#EEF4FF] to-[#F5F0FF] p-2 shadow-sm">
                 <Image
-                  src={businessChallenges}
+                  src={supplyChainManagementWebp.businessChallenges}
                   alt="Business Challenges Illustration"
                   width={600}
                   height={400}
@@ -208,7 +183,7 @@ export default function SupplyChainContent() {
             className="relative mx-auto w-full overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-white shadow-xl"
           >
             <Image
-              src={tailored}
+              src={supplyChainManagementWebp.whatIs}
               alt="Tailored CRM Workflow"
               width={1200}
               height={600}
@@ -269,7 +244,7 @@ export default function SupplyChainContent() {
             >
               <div className="overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-white p-2 shadow-sm">
                 <Image
-                  src={howFormezy}
+                  src={supplyChainManagementWebp.howFormezyEnables}
                   alt="How Formezy Enables It Illustration"
                   width={600}
                   height={400}
@@ -313,7 +288,7 @@ export default function SupplyChainContent() {
             className="relative mx-auto w-full overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-white shadow-lg"
           >
             <Image
-              src={realWorkflow}
+              src={supplyChainManagementWebp.realWorkflow}
               alt="Real Workflow Illustration"
               width={1200}
               height={500}
@@ -529,7 +504,7 @@ export default function SupplyChainContent() {
 
             <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
               <Image
-                src={cta}
+                src={supplyChainManagementWebp.cta}
                 alt="Build a CRM That Works Your Way Illustration"
                 width={1200}
                 height={600}

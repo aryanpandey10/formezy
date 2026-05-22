@@ -11,6 +11,8 @@ type Props = {
   children: React.ReactNode;
   options?: EmblaOptions;
   className?: string;
+  /** Applied to the scroll viewport (use for container-query slide sizing). */
+  viewportClassName?: string;
   slideClassName?: string;
   showArrows?: boolean;
   showDots?: boolean;
@@ -26,6 +28,7 @@ export default function Carousel({
   children,
   options = { align: "start", loop: false, slidesToScroll: 1 },
   className,
+  viewportClassName,
   slideClassName,
   showArrows = true,
   showDots = false,
@@ -90,13 +93,16 @@ export default function Carousel({
 
   return (
     <div className={cn("relative", className)}>
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex -ml-6">
+      <div
+        className={cn("overflow-hidden [container-type:inline-size]", viewportClassName)}
+        ref={emblaRef}
+      >
+        <div className="flex">
           {childrenArray.map((child, i) => (
             <div
               key={i}
               className={cn(
-                "min-w-0 shrink-0 grow-0 pl-6",
+                "mx-2 min-w-0 shrink-0 grow-0 pl-6",
                 slideClassName,
               )}
             >

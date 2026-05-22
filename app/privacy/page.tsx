@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import LegalPageHeader, { GradientText } from "@/components/legal/LegalPageHeader";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Formezy",
@@ -99,49 +98,19 @@ const SECTIONS: Section[] = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="pb-24 pt-8 md:pt-12">
-      <div className="container-app">
-        {/* Breadcrumbs */}
-        <nav
-          className="mb-6 flex items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">Privacy Policy</span>
-        </nav>
+    <div className="pb-24 pt-8 md:pt-10 lg:pt-12">
+      <div className="container-app flex flex-col items-start text-left">
+        <LegalPageHeader
+          breadcrumbLabel="Privacy Policy"
+          title={
+            <>
+              Your Privacy <GradientText>Matters to Us</GradientText>
+            </>
+          }
+          description="At Formezy, we are committed to protecting your privacy and ensuring that your personal and business information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, store, and protect your data when you interact with our platform and services."
+        />
 
-        {/* Heading */}
-        <h1
-          className="font-sora text-[28px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[42px] lg:text-[52px]"
-          style={{ lineHeight: "1.1" }}
-        >
-          Your Privacy{" "}
-          <span
-            style={{
-              background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Matters to Us
-          </span>
-        </h1>
-
-        {/* Intro */}
-        <p className="mt-5 max-w-3xl font-sora text-[14px] leading-[26px] text-[#6366A8]">
-          At Formezy, we are committed to protecting your privacy and ensuring
-          that your personal and business information is handled in a safe and
-          responsible manner. This Privacy Policy outlines how we collect, use,
-          store, and protect your data when you interact with our platform and
-          services.
-        </p>
-
-        {/* Divider */}
-        <div className="my-8 h-px bg-purple-100" />
+        <div className="my-8 h-px w-full max-w-3xl bg-purple-100" />
 
         {/* Sections */}
         <article className="flex max-w-3xl flex-col gap-10">

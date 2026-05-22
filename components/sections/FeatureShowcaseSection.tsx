@@ -90,13 +90,13 @@ export default function FeatureShowcaseSection({
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
       className="relative w-full overflow-hidden rounded-[20px] border border-purple-100/70 bg-white/60 shadow-card md:rounded-[24px]"
     >
-      <div className="relative aspect-[4/3] w-full md:aspect-[680/480]">
+      <div className="relative aspect-[4/3] w-full min-h-[220px] md:min-h-[280px]">
         <Image
           src={image}
           alt={imageAlt}
           fill
           sizes={imageSizes}
-          className="object-contain object-center"
+          className="object-contain object-center p-2 md:p-4"
         />
       </div>
     </motion.div>

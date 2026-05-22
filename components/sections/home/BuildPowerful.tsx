@@ -17,7 +17,7 @@ const HOME_WEBP = "/images/Home/Webp";
 const SOLUTION_IMAGE_BY_ID: Record<number, string> = {
   1: `${HOME_WEBP}/business_systems.webp`,
   2: `${HOME_WEBP}/mfg.webp`,
-  3: `${HOME_WEBP}/quality.webp`,  
+  3: `${HOME_WEBP}/quality.webp`,
   4: `${HOME_WEBP}/crm_systems.webp`,
   5: `${HOME_WEBP}/supply_chain_systems.webp`,
   6: `${HOME_WEBP}/operations_platforms.webp`,
@@ -37,7 +37,7 @@ const solutions: Solution[] = [
     title: "Business Workflows",
     description:
       "Unify finance, inventory, procurement and HR into one configurable system that scales as your business grows.",
-  },  
+  },
   {
     id: 2,
     title: "MFG / Production Systems",
@@ -91,6 +91,7 @@ export default function BuildPowerful() {
 
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setCanPrev(emblaApi.canScrollPrev());
@@ -109,7 +110,7 @@ export default function BuildPowerful() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="bg-white/80 py-10 backdrop-blur-sm md:py-12 lg:py-14">
+    <section className="overflow-hidden bg-white/80 py-10 backdrop-blur-sm md:py-12 lg:py-14">
       <div className="container-app">
         {/* ── Heading ── */}
         <motion.div
@@ -154,65 +155,84 @@ export default function BuildPowerful() {
             </Button>
           </motion.div>
         </motion.div>
+      </div>
 
-        {/* ── Carousel with side buttons ── */}
-        <div className="relative mt-8 md:mt-10">
-          {/* LEFT NAV BUTTON — outside track on lg */}
-          <motion.button
-            whileTap={{ scale: 0.88 }}
+      {/* ── Full-width carousel with edge blur + side arrows ── */}
+      <div className="relative mt-8 w-full md:mt-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/80 to-transparent backdrop-blur-[2px] sm:w-24 md:w-32 lg:w-40"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white via-white/80 to-transparent backdrop-blur-[2px] sm:w-24 md:w-32 lg:w-40"
+        />
+
+        <motion.button
+          type="button"
+          whileTap={{ scale: 0.88 }}
+          onClick={() => emblaApi?.scrollPrev()}
+          disabled={!canPrev}
+          aria-label="Previous solution"
+          className="absolute left-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 sm:left-4 md:left-6 lg:left-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
+        >
+          <ChevronLeft size={28} className="text-[#2C0E3A] lg:hidden" />
+          <ChevronLeft size={32} className="hidden text-[#2C0E3A] lg:block" />
+        </motion.button>
+
+        <motion.button
+          type="button"
+          whileTap={{ scale: 0.88 }}
+          onClick={() => emblaApi?.scrollNext()}
+          disabled={!canNext}
+          aria-label="Next solution"
+          className="absolute right-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 sm:right-4 md:right-6 lg:right-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
+        >
+          <ChevronRight size={28} className="text-[#2C0E3A] lg:hidden" />
+          <ChevronRight size={32} className="hidden text-[#2C0E3A] lg:block" />
+        </motion.button>
+
+        <div
+          className="overflow-hidden pl-4 sm:pl-6 md:pl-8 lg:mx-14 xl:mx-16"
+          ref={emblaRef}
+        >
+          <div className="flex">
+            {solutions.map((s, i) => (
+              <div
+                key={s.id}
+                className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[32%] xl:basis-[28%]"
+              >
+                <SolutionCard
+                  solution={s}
+                  color={CARD_COLORS[i % CARD_COLORS.length]}
+                  imageSrc={SOLUTION_IMAGE_BY_ID[s.id]}
+                  priority={i < 2}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile nav — below the track */}
+        <div className="mt-4 flex items-center justify-center gap-3 lg:hidden">
+          <button
+            type="button"
             onClick={() => emblaApi?.scrollPrev()}
-            aria-label="Previous solution"
-            className="absolute left-0 top-[45%] z-10 hidden h-[99px] w-[99px] -translate-x-[52%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] lg:flex"
+            disabled={!canPrev}
+            aria-label="Previous"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-card transition-colors hover:border-[#6C60E8] disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <ChevronLeft size={32} className="text-[#2C0E3A]" />
-          </motion.button>
-
-          {/* Embla viewport — inset on lg to leave room for side buttons */}
-          <div className="overflow-hidden lg:mx-10 xl:mx-12" ref={emblaRef}>
-            <div className="flex -ml-5">
-              {solutions.map((s, i) => (
-                <div
-                  key={s.id}
-                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
-                >
-                  <SolutionCard
-                    solution={s}
-                    color={CARD_COLORS[i % CARD_COLORS.length]}
-                    imageSrc={SOLUTION_IMAGE_BY_ID[s.id]}
-                    priority={i < 2}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT NAV BUTTON — outside track on lg */}
-          <motion.button
-            whileTap={{ scale: 0.88 }}
+            <ChevronLeft size={20} className="text-[#2C0E3A]" />
+          </button>
+          <button
+            type="button"
             onClick={() => emblaApi?.scrollNext()}
-            aria-label="Next solution"
-            className="absolute right-0 top-[45%] z-10 hidden h-[99px] w-[99px] translate-x-[52%] -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] lg:flex"
+            disabled={!canNext}
+            aria-label="Next"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3D1650] disabled:cursor-not-allowed disabled:opacity-40"
           >
-            <ChevronRight size={32} className="text-[#2C0E3A]" />
-          </motion.button>
-
-          {/* Mobile nav — below the track */}
-          <div className="mt-4 flex items-center justify-center gap-3 lg:hidden">
-            <button
-              onClick={() => emblaApi?.scrollPrev()}
-              aria-label="Previous"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-card transition-colors hover:border-[#6C60E8]"
-            >
-              <ChevronLeft size={20} className="text-[#2C0E3A]" />
-            </button>
-            <button
-              onClick={() => emblaApi?.scrollNext()}
-              aria-label="Next"
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2C0E3A] text-white shadow-card transition-colors hover:bg-[#3D1650]"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>

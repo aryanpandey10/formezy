@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import FeatureShowcaseSection from "@/components/sections/FeatureShowcaseSection";
+import PlatformFeatureHero from "@/components/sections/platform/PlatformFeatureHero";
 import { agenticWorkflowsPageImages } from "@/lib/agentic-workflows-page-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -122,67 +122,38 @@ function BulletList({ items }: { items: string[] }) {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-6 pt-8 md:pb-10 md:pt-12 lg:pt-14">
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
-        style={{
-          backgroundImage: "radial-gradient(#6C60E8 1.5px, transparent 1.5px)",
-          backgroundSize: "60px 60px",
-        }}
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute -right-20 top-24 h-48 w-48 rounded-full bg-gradient-to-br from-[#708FF4]/25 to-[#6C60E8]/20 blur-3xl md:h-64 md:w-64" aria-hidden />
-      <div className="container-app">
-        <motion.nav
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 flex flex-wrap items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/overview" className="hover:text-[#2C0E3A]">
-            Platform
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/features" className="hover:text-[#2C0E3A]">
-            Features
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">Agentic Workflows</span>
-        </motion.nav>
-
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={staggerContainer}
-          className="mx-auto flex max-w-[1000px] flex-col items-center gap-5 text-center"
-        >
-          <motion.span
-            variants={fadeUp}
-            className="inline-flex items-center rounded-full border border-purple-100 bg-purple-50/60 px-4 py-1.5 font-sora text-[12px] font-bold uppercase tracking-wider text-[#6C60E8]"
-          >
-            Agentic Workflows
-          </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.1] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
-          >
-            Workflows That Think, <G>Decide, and Act</G>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="max-w-[760px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[17px]"
-          >
-            Formezy agentic workflows combine automation, context, and
-            intelligence — so processes don&apos;t just run, they adapt and
-            execute with purpose.
-          </motion.p>
-        </motion.div>
-      </div>
-    </section>
+    <PlatformFeatureHero
+      currentLabel="Agentic Workflows"
+      title={
+        <>
+          Workflows That Think, <G>Decide, and Act</G>
+        </>
+      }
+      description={
+        <p>
+          Formezy agentic workflows combine automation, context, and intelligence
+          — so processes don&apos;t just run, they adapt and execute with
+          purpose.
+        </p>
+      }
+      sectionClassName="pb-6 md:pb-10"
+      decorations={
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
+            style={{
+              backgroundImage: "radial-gradient(#6C60E8 1.5px, transparent 1.5px)",
+              backgroundSize: "60px 60px",
+            }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-20 top-24 -z-10 h-48 w-48 rounded-full bg-gradient-to-br from-[#708FF4]/25 to-[#6C60E8]/20 blur-3xl md:h-64 md:w-64"
+            aria-hidden
+          />
+        </>
+      }
+    />
   );
 }
 

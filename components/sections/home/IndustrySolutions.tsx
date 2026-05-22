@@ -43,8 +43,8 @@ const industries = [
 
 export default function IndustrySolutions() {
   return (
-    <section className="section bg-white/70 backdrop-blur-sm">
-      <div className="mx-5">
+    <section className="section overflow-hidden bg-white/70 backdrop-blur-sm">
+      <div className="container-app">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -77,20 +77,23 @@ export default function IndustrySolutions() {
           </motion.p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-14 px-2 md:px-12 lg:px-16"
-        >
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={viewportOnce}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="relative mt-14 w-full px-2 sm:px-4"
+      >
           <Carousel
-            options={{ align: "start", loop: true }}
-            slideClassName="basis-[85%] sm:basis-[55%] md:basis-[42%] lg:basis-[calc(25%-12px)]"
+            options={{ align: "start", loop: true, slidesToScroll: 1 }}
+            viewportClassName="w-full"
+            slideClassName="basis-[85%] sm:basis-[55%] md:[flex:0_0_calc((100cqw-1.5rem)/2)] lg:[flex:0_0_calc((100cqw-4.5rem-2px)/4)]"
             showDots
-            showArrows
-            arrowPlacement="overlay"
-            overlayArrowsFrom="always"
+            showArrows={false}
+            autoplay
+            autoplayInterval={4500}
           >
             {industries.map((item, i) => (
               <div
@@ -101,8 +104,7 @@ export default function IndustrySolutions() {
               </div>
             ))}
           </Carousel>
-        </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

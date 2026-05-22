@@ -12,7 +12,7 @@ function LogoStrip({ ariaHidden = false }: { ariaHidden?: boolean }) {
       {trustedEnterpriseLogos.map(({ name, file }) => (
         <div
           key={`${file}-${ariaHidden ? "dup" : "orig"}`}
-          className="flex h-11 w-[100px] shrink-0 items-center justify-center px-1 sm:h-12 sm:w-[130px] md:h-14 md:w-[170px] lg:w-[190px]"
+          className="flex h-14 w-[120px] shrink-0 items-center justify-center px-0.5 sm:h-16 sm:w-[150px] md:h-[72px] md:w-[190px] lg:w-[210px]"
           title={ariaHidden ? undefined : name}
           aria-hidden={ariaHidden || undefined}
         >
@@ -24,7 +24,7 @@ function LogoStrip({ ariaHidden = false }: { ariaHidden?: boolean }) {
             loading="eager"
             decoding="async"
             draggable={false}
-            className="pointer-events-none h-8 w-auto max-h-full max-w-full select-none object-contain object-center sm:h-9 md:h-11"
+            className="pointer-events-none h-10 w-auto max-h-full max-w-full select-none object-contain object-center sm:h-12 md:h-14"
           />
         </div>
       ))}
@@ -49,7 +49,7 @@ export default function TrustedLogos({
       )}
       aria-label="Trusted enterprise logos"
     >
-      <div className="trusted-marquee__track flex w-max items-center gap-3 sm:gap-5 md:gap-8">
+      <div className="trusted-marquee__track flex w-max items-center gap-1.5 sm:gap-2.5 md:gap-4">
         <LogoStrip />
         {animate ? <LogoStrip ariaHidden /> : null}
       </div>

@@ -100,45 +100,117 @@
   }
 
   /**
-   * First-screen hero height: one viewport minus the layout spacer under the fixed navbar.
-   * Keep 60px / 72px in sync with `components/layout/Navbar.tsx` (spacer h-[60px] lg:h-[72px]).
-   * vh → svh → dvh cascade improves mobile toolbars and modern browsers; all scale with zoom.
+   * Home hero — desktop only (lg+): navbar spacer + hero = one viewport.
+   * Keep 72px in sync with `Navbar.tsx` spacer `lg:h-[72px]`. Mobile uses default hero layout.
    */
-  .home-hero-fold {
-    min-height: calc(100vh - 60px);
-  }
-
-  @supports (height: 100svh) {
-    .home-hero-fold {
-      min-height: calc(100svh - 60px);
-    }
-  }
-
-  @supports (height: 100dvh) {
-    .home-hero-fold {
-      min-height: calc(100dvh - 60px);
-    }
-  }
-
   @media (min-width: 1024px) {
     .home-hero-fold {
-      min-height: calc(100vh - 72px);
+      --home-hero-nav: 72px;
+      --home-hero-fold-h: calc(100vh - var(--home-hero-nav));
+      display: flex;
+      flex-direction: column;
+      min-height: var(--home-hero-fold-h);
+      max-height: var(--home-hero-fold-h);
+      overflow: hidden;
+      margin-top: 0 !important;
+    }
+
+    @supports (height: 100svh) {
+      .home-hero-fold {
+        --home-hero-fold-h: calc(100svh - var(--home-hero-nav));
+      }
+    }
+
+    @supports (height: 100dvh) {
+      .home-hero-fold {
+        --home-hero-fold-h: calc(100dvh - var(--home-hero-nav));
+      }
+    }
+
+    .home-hero-fold__inner {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .home-hero-fold__stage {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .home-hero-fold__grid {
+      flex: 1;
+      min-height: 0;
+      align-items: center;
+    }
+
+    .home-hero-fold__copy {
+      align-self: center;
+    }
+
+    .home-hero-fold__diagram {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 1;
+      min-height: 0;
+      max-height: none;
+    }
+
+    .home-hero-fold__diagram-img {
+      max-height: min(56dvh, 520px);
+      width: 100% !important;
+      max-width: 100%;
+      height: auto !important;
+      object-fit: contain;
+    }
+
+    .home-hero-arrows {
+      z-index: 8;
+    }
+
+    .home-hero-chaos {
+      position: relative;
+      z-index: 14;
+    }
+
+    .home-hero-fold .hero_top_arrow,
+    .home-hero-fold .hero_bottom_arrow {
+      pointer-events: none;
+    }
+
+    .home-hero-help {
+      position: relative;
+      z-index: 22;
     }
   }
 
-  @supports (height: 100svh) {
-    @media (min-width: 1024px) {
-      .home-hero-fold {
-        min-height: calc(100svh - 72px);
-      }
+  @media (min-width: 1280px) {
+    .home-hero-fold__diagram-img {
+      max-height: min(58dvh, 560px);
     }
   }
 
-  @supports (height: 100dvh) {
-    @media (min-width: 1024px) {
-      .home-hero-fold {
-        min-height: calc(100dvh - 72px);
-      }
+  @media (min-width: 1440px) {
+    .home-hero-fold__diagram-img {
+      max-height: min(60dvh, 600px);
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .home-hero-fold__diagram-img {
+      max-height: min(62dvh, 640px);
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .home-hero-fold__diagram-img {
+      max-height: min(64dvh, 680px);
     }
   }
 
@@ -286,10 +358,9 @@
   }
 }
 
-.hero_top_arrow {
+.hero_top_arrow,
+.hero_bottom_arrow {
   position: absolute;
-  top: 15%;
-  left: 7em;
 }
 
 .container_home {
@@ -297,19 +368,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 1441px) {
-  .hero_top_arrow {
-    height: 75px;
-    left: -4em;
-  }
-}
-
-@media (max-width: 1366px) {
-  .hero_top_arrow {
-    height: 70px;
-    left: -5em;
-  }
-}
+/* Top arrow only shows lg+; sizing is controlled by `.home-hero-fold` rules above */
 
 
 

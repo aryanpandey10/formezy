@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
+import PlatformBreadcrumb from "@/components/ui/PlatformBreadcrumb";
 import Carousel from "@/components/ui/Carousel";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { capabilitiesPageImages } from "@/lib/page-section-images";
@@ -44,27 +45,7 @@ function HeroSection() {
   return (
     <section className="relative overflow-hidden pt-8 pb-0 md:pt-10 lg:pt-12">
       <div className="container-app flex flex-col items-start text-left">
-        <motion.nav
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          aria-label="Breadcrumb"
-          className="mb-8 inline-flex h-11 shrink-0 items-center gap-[10px] rounded-[50px] border border-[#E8E4FF] bg-white/90 px-5 py-[10px] font-sora text-[14px] font-medium text-[#6366A8] shadow-sm backdrop-blur-sm"
-        >
-          <Link href="/" className="text-[#6366A8] transition-colors hover:text-purple-primary">
-            Home
-          </Link>
-
-         
-          <span className="text-[#C4B5FD]" aria-hidden>
-            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
-          </span>
-          <span className="text-[#2C0E3A]">Platform</span>
-          <span className="text-[#C4B5FD]" aria-hidden>
-            <ChevronRight className="h-3.5 w-3.5" strokeWidth={2} />
-          </span>
-          <span className="text-[#2C0E3A]">Capabilities</span>
-        </motion.nav>
+        <PlatformBreadcrumb currentLabel="Capabilities" />
 
         <motion.div
           initial="hidden"

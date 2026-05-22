@@ -16,7 +16,7 @@ export const testimonialNetworkImage = `${HOME_WEBP}/ClientSays.svg`;
 export const homeTwoMobileImage = `${HOME_WEBP}/two_mobile.webp`;
 
 /** Hero — platform diagram (2x WebP, intrinsic 1489×1013) */
-export const homeHeroBannerImage = "/images/Home/m_banner_2x.webp";
+export const homeHeroBannerImage = "/images/Home/m_banner_2x.svg";
 export const homeHeroBannerWidth = 1489;
 export const homeHeroBannerHeight = 1013;
 

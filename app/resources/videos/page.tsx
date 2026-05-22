@@ -24,6 +24,7 @@ const YT = {
   textBox: "https://youtu.be/5DcUxxiNKKM?si=efc7pr4aPSGR5pPe",
   transfer: "https://youtu.be/xqZPOOJmiQY?si=Ln179W13vaFMSF58",
   ticket: "https://youtu.be/vpTL6-1203g?si=GQhmGg4YM-rGStK8",
+  sales : "https://youtu.be/hrdww4hOy7w?si=yTr4KBHEjYffTN25",
 } as const;
 
 const videos: VideoItem[] = [
@@ -36,34 +37,35 @@ const videos: VideoItem[] = [
   },
   {
     id: "v2",
-    title: "How to Add a Number Field in Formezy", 
+    title: "How to Add a Number Field in Formezy",
+    
     thumb: <DateBoxThumb />,
     videoUrl: youtubeEmbedUrl(YT.dateBox),
   },
   {
     id: "v3",
-    title: "How to Add a Custom Text Box",
+    title: "How to Add a Date Box in Inquiry Form", 
     thumb: <TextBoxThumb />,
     videoUrl: youtubeEmbedUrl(YT.textBox),
   },
   {
     id: "v4",
-    title: "How to Transfer an Entry to Another User in Formezy",
+    title: "How to Add a Custom Text Box",
     step: "Step 1",
     thumb: <TransferEntryThumb />,
     videoUrl: youtubeEmbedUrl(YT.transfer),
   },
   {
     id: "v5",
-    title: "How to Raise a Ticket in Formezy",
+    title: "How to Transfer an Entry to Another User in Formezy",
     thumb: <RaiseTicketThumb />,
     videoUrl: youtubeEmbedUrl(YT.ticket),
   },
   {
     id: "v6",
-    title: "User Roles & Rights Explained",
+    title: "How to Add and Manage Salesperson Parameters in Formezy",
     thumb: <UserRolesThumb />,
-    videoUrl: youtubeEmbedUrl(YT.numberField),
+    videoUrl: youtubeEmbedUrl(YT.sales),
   },
 ];
 

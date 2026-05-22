@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import FeatureShowcaseSection from "@/components/sections/FeatureShowcaseSection";
+import PlatformFeatureHero from "@/components/sections/platform/PlatformFeatureHero";
 import { reportingDashboardsPageImages } from "@/lib/reporting-dashboards-page-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -75,74 +75,47 @@ function BulletList({ items }: { items: string[] }) {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-4 pt-8 md:pb-8 md:pt-12 lg:pt-14">
-      <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-[#708FF4]/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-[#6C60E8]/15 blur-3xl" aria-hidden />
-      <div className="container-app">
-        <motion.nav
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 flex flex-wrap items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/overview" className="hover:text-[#2C0E3A]">
-            Platform
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/features" className="hover:text-[#2C0E3A]">
-            Features
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">
-            Reporting &amp; Dashboards
-          </span>
-        </motion.nav>
-
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={staggerContainer}
-          className="mx-auto flex max-w-[1000px] flex-col items-center gap-5 text-center"
-        >
-          <motion.h1
-            variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.1] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
-          >
-            Clarity That <G>Drives Decisions</G>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="max-w-[760px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[17px]"
-          >
-            Reporting and dashboards in Formezy turn live operational data into
-            clear visibility — so leaders and teams act with confidence, not
-            guesswork.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative mx-auto mt-10 w-full max-w-5xl overflow-hidden rounded-[24px] border border-purple-100/70 shadow-[0_20px_56px_rgba(108,96,232,0.18)] md:rounded-[28px]"
-        >
-          <div className="relative aspect-[21/10] w-full min-h-[240px] md:min-h-[400px]">
-            <Image
-              src={reportingDashboardsPageImages.hero}
-              alt="Formezy reporting dashboard with charts and KPIs"
-              fill
-              priority
-              sizes="(max-width: 1200px) 100vw, 1000px"
-              className="object-cover object-center"
-            />
-          </div>
-        </motion.div>
+    <PlatformFeatureHero
+      currentLabel="Reporting & Dashboards"
+      title={
+        <>
+          Clarity That <G>Drives Decisions</G>
+        </>
+      }
+      description={
+        <p>
+          Reporting and dashboards in Formezy turn live operational data into
+          clear visibility — so leaders and teams act with confidence, not
+          guesswork.
+        </p>
+      }
+      sectionClassName="pb-4 md:pb-8"
+      decorations={
+        <>
+          <div
+            className="pointer-events-none absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-[#708FF4]/20 blur-3xl"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-24 top-20 -z-10 h-72 w-72 rounded-full bg-[#6C60E8]/15 blur-3xl"
+            aria-hidden
+          />
+        </>
+      }
+    >
+      <div className="relative w-full overflow-hidden rounded-[24px] border border-purple-100/70 shadow-[0_20px_56px_rgba(108,96,232,0.18)] md:rounded-[28px]">
+        <div className="relative aspect-[21/10] w-full min-h-[240px] md:min-h-[400px]">
+          <Image
+            src={reportingDashboardsPageImages.hero}
+            alt="Formezy reporting dashboard with charts and KPIs"
+            fill
+            priority
+            sizes="(max-width: 1200px) 100vw, 1000px"
+            className="object-cover object-center"
+          />
+        </div>
       </div>
-    </section>
+    </PlatformFeatureHero>
   );
 }
 

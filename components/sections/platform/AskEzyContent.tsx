@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import FeatureShowcaseSection from "@/components/sections/FeatureShowcaseSection";
+import PlatformFeatureHero from "@/components/sections/platform/PlatformFeatureHero";
 import { askezyPageImages } from "@/lib/askezy-page-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -58,73 +58,38 @@ const proactiveBullets = [
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-4 pt-8 md:pb-8 md:pt-12 lg:pt-14">
-      <div className="container-app">
-        <motion.nav
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 flex flex-wrap items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/overview" className="hover:text-[#2C0E3A]">
-            Platform
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/features" className="hover:text-[#2C0E3A]">
-            Features
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">AskEzy</span>
-        </motion.nav>
-
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={staggerContainer}
-          className="mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center"
-        >
-          <motion.h1
-            variants={fadeUp}
-            className="font-sora text-[36px] font-bold leading-[1.1] text-[#2C0E3A] md:text-[52px] lg:text-[64px]"
-          >
-            Ask. <G>Understand. Act.</G>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="max-w-[720px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[17px]"
-          >
-            AskEzy Intelligence turns scattered business data into instant
-            answers — so teams understand what is happening and what to do next,
-            without switching tools.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative mx-auto mt-10 w-full max-w-5xl overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-[#F5F3FF] shadow-[0_16px_48px_rgba(108,96,232,0.15)] md:rounded-[28px]"
-        >
-          <div className="relative aspect-video w-full">
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              src={askezyPageImages.heroVideo}
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-              preload="metadata"
-              aria-label="AskEzy Intelligence product overview"
-            />
-          </div>
-        </motion.div>
+    <PlatformFeatureHero
+      currentLabel="AskEzy"
+      title={
+        <>
+          Ask. <G>Understand. Act.</G>
+        </>
+      }
+      description={
+        <p>
+          AskEzy Intelligence turns scattered business data into instant answers
+          — so teams understand what is happening and what to do next, without
+          switching tools.
+        </p>
+      }
+      sectionClassName="pb-4 md:pb-8"
+    >
+      <div className="relative w-full overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-[#F5F3FF] shadow-[0_16px_48px_rgba(108,96,232,0.15)] md:rounded-[28px]">
+        <div className="relative aspect-video w-full">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={askezyPageImages.heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            preload="metadata"
+            aria-label="AskEzy Intelligence product overview"
+          />
+        </div>
       </div>
-    </section>
+    </PlatformFeatureHero>
   );
 }
 

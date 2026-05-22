@@ -1,4 +1,4 @@
-const CASE_STUDY_DIR = "Case Study";
+const CASE_STUDY_DIR = "Case Studies";
 
 export function caseStudyImageSrc(filename: string): string {
   return `/images/${encodeURIComponent(CASE_STUDY_DIR)}/${encodeURIComponent(filename)}`;
@@ -16,7 +16,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 1,
     title: "Stage-Wise Inventory Stock Management",
-    imageFile: "Case Study 1.png",
+    imageFile: "Stage-Wise Inventory Stock Management.webp",
     problem:
       "Stock levels were tracked across spreadsheets and disconnected tools, making it impossible to see how inventory moved through each stage of the supply chain in real time.",
     solutions: [
@@ -28,7 +28,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 2,
     title: "Inventory Management with Code Tracking",
-    imageFile: "Case Study 2.png",
+    imageFile: "Inventory management with Code tracking.webp",
     problem:
       "Teams relied on manual barcode logs and paper trails to trace items, leading to mismatches, delayed fulfillment, and no reliable audit history.",
     solutions: [
@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 3,
     title: "Batch & Expiry Management",
-    imageFile: "Case Study 3.png",
+    imageFile: "Batch & Expiry Management.webp",
     problem:
       "Expiry dates and batch numbers lived in separate sheets, increasing the risk of shipping expired goods and failing compliance checks.",
     solutions: [
@@ -52,7 +52,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 4,
     title: "Bulk Invoice Generation",
-    imageFile: "Case Study 4.png",
+    imageFile: "Bulk Invoice Generation.webp",
     problem:
       "Finance teams spent hours creating invoices one by one from order data, with frequent errors and delays in month-end billing cycles.",
     solutions: [
@@ -64,7 +64,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 5,
     title: "Multi-Format File Importing",
-    imageFile: "Case Study 5.png",
+    imageFile: "Multi-Format File Importing.webp",
     problem:
       "Data arrived in Excel, CSV, and legacy formats from partners and branches, requiring repetitive manual imports and cleanup before it could be used.",
     solutions: [
@@ -76,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 6,
     title: "Dealer & Site Stock Management",
-    imageFile: "Case Study 6.png",
+    imageFile: "Dealer & Site Stock Management.webp",
     problem:
       "Dealer and site-level stock was invisible to headquarters, causing stockouts in some regions and excess inventory in others.",
     solutions: [

@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import FeatureShowcaseSection from "@/components/sections/FeatureShowcaseSection";
+import PlatformFeatureHero from "@/components/sections/platform/PlatformFeatureHero";
 import { logicBuilderPageImages } from "@/lib/logic-builder-page-images";
 
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -56,70 +56,35 @@ const continuousChangeBullets = [
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pb-4 pt-8 md:pb-8 md:pt-12 lg:pt-14">
-      <div className="container-app">
-        <motion.nav
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 flex flex-wrap items-center gap-1.5 font-sora text-[13px] text-[#6366A8]"
-          aria-label="Breadcrumb"
-        >
-          <Link href="/" className="hover:text-[#2C0E3A]">
-            Home
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/overview" className="hover:text-[#2C0E3A]">
-            Platform
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <Link href="/platform/features" className="hover:text-[#2C0E3A]">
-            Features
-          </Link>
-          <ChevronRight size={13} className="opacity-50" />
-          <span className="font-semibold text-[#2C0E3A]">Logic Builder</span>
-        </motion.nav>
-
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={staggerContainer}
-          className="mx-auto flex max-w-[1000px] flex-col items-center gap-5 text-center"
-        >
-          <motion.h1
-            variants={fadeUp}
-            className="font-sora text-[34px] font-bold leading-[1.1] text-[#2C0E3A] md:text-[48px] lg:text-[58px]"
-          >
-            Turn Processes Into <G>Intelligent Workflows</G>
-          </motion.h1>
-          <motion.p
-            variants={fadeUp}
-            className="max-w-[760px] font-sora text-[16px] leading-[28px] text-[#6366A8] md:text-[17px]"
-          >
-            Logic Builder lets teams design, automate, and refine business
-            workflows visually — turning static processes into adaptive systems
-            that scale with your operations.
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="relative mx-auto mt-10 w-full max-w-5xl overflow-hidden rounded-[24px] border border-purple-100/70 bg-white/60 shadow-[0_16px_48px_rgba(108,96,232,0.12)] md:rounded-[28px]"
-        >
-          <div className="relative aspect-[21/10] w-full min-h-[240px] md:min-h-[380px]">
-            <Image
-              src={logicBuilderPageImages.hero}
-              alt="Logic Builder intelligent workflow diagram"
-              fill
-              priority
-              sizes="(max-width: 1200px) 100vw, 1000px"
-              className="object-contain object-center p-2 md:p-4"
-            />
-          </div>
-        </motion.div>
+    <PlatformFeatureHero
+      currentLabel="Logic Builder"
+      title={
+        <>
+          Turn Processes Into <G>Intelligent Workflows</G>
+        </>
+      }
+      description={
+        <p>
+          Logic Builder lets teams design, automate, and refine business
+          workflows visually — turning static processes into adaptive systems
+          that scale with your operations.
+        </p>
+      }
+      sectionClassName="pb-4 md:pb-8"
+    >
+      <div className="relative w-full overflow-hidden rounded-[24px] border border-purple-100/70 bg-white/60 shadow-[0_16px_48px_rgba(108,96,232,0.12)] md:rounded-[28px]">
+        <div className="relative aspect-[21/10] w-full min-h-[240px] md:min-h-[380px]">
+          <Image
+            src={logicBuilderPageImages.hero}
+            alt="Logic Builder intelligent workflow diagram"
+            fill
+            priority
+            sizes="(max-width: 1200px) 100vw, 1000px"
+            className="object-contain object-center p-2 md:p-4"
+          />
+        </div>
       </div>
-    </section>
+    </PlatformFeatureHero>
   );
 }
 

@@ -141,7 +141,7 @@ export default function SeamlessIntegrations() {
                     key={posIdx}
                     animate={{ opacity }}
                     transition={{ duration: 0.45, ease: "easeInOut" }}
-                    className="flex flex-shrink-0 cursor-pointer flex-col items-center"
+                    className="flex max-w-[88px] flex-shrink-0 cursor-pointer flex-col items-center sm:max-w-none"
                     onClick={() => {
                       const offset = posIdx - 3;
                       if (offset !== 0) handleClick(offset > 0 ? 1 : -1);
@@ -198,6 +198,13 @@ export default function SeamlessIntegrations() {
                         </motion.div>
                       </AnimatePresence>
                     </motion.div>
+                    <p
+                      className={`mt-2 max-w-[72px] text-center font-sora text-[10px] font-medium leading-tight sm:max-w-[88px] sm:text-[11px] md:text-[12px] ${
+                        isCenter ? "text-[#2C0E3A]" : "text-[#6366A8]/80"
+                      }`}
+                    >
+                      {item.name}
+                    </p>
                   </motion.div>
                 );
               })}
@@ -224,15 +231,8 @@ export default function SeamlessIntegrations() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.28 }}
-                className="inline-flex items-center gap-2.5 rounded-pill border border-purple-100 bg-white px-5 py-2.5 shadow-card"
+                className="rounded-pill border border-purple-100 bg-white px-5 py-2.5 shadow-card"
               >
-                <Image
-                  src={centerItem.src}
-                  alt={centerItem.name}
-                  width={18}
-                  height={18}
-                  className="h-4 w-4 object-contain"
-                />
                 <span className="font-sora text-[14px] font-semibold text-[#2C0E3A]">
                   {centerItem.label}
                 </span>
