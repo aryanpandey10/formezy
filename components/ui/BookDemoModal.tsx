@@ -92,12 +92,16 @@ function ModalContent({ onClose }: { onClose: () => void }) {
           setStep("success");
         } else {
           setServerError(result.message);
+          console.log(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
         }
       } finally {
         setLoading(false);
       }
     },
     [form]
+
+
+
   );
 
   return (

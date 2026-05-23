@@ -234,8 +234,8 @@ function CtaSection() {
             sizes="100vw"
             className="object-cover object-bottom"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/50" />
-          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-14 text-center md:py-20">
+          <div className="absolute inset-0"/>
+          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-14 text-center md:py-10">
             <h2 className="max-w-[800px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
               Let Your <G>Workflows Run Themselves</G>
             </h2>

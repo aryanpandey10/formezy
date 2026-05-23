@@ -35,7 +35,7 @@ export default function SectionWebpImage({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-2xl border border-purple-100 bg-gradient-to-br from-purple-50/30 to-blue-50/20",
+        "relative w-full overflow-hidden rounded-2xl  bg-gradient-to-br from-purple-50/30 to-blue-50/20",
         className,
       )}
       style={

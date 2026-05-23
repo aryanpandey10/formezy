@@ -257,7 +257,7 @@ function SolutionCard({
       style={{ backgroundColor: color }}
     >
       <div className="flex w-full flex-col items-start gap-3">
-        <h3 className="font-sora text-[24px] font-semibold leading-[28px] text-[#2C0E3A]">
+        <h3 className="font-sora  text-[20px] font-semibold leading-[28px] text-[#2C0E3A]">
           {solution.title}
         </h3>
         <p className="font-sora text-[16px] font-normal leading-[26px] text-[#6366A8]">

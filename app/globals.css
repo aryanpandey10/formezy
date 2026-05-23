@@ -368,6 +368,11 @@
   margin: 0 auto;
 }
 
+.padding_top
+{
+  
+}
+
 /* Top arrow only shows lg+; sizing is controlled by `.home-hero-fold` rules above */
 
 

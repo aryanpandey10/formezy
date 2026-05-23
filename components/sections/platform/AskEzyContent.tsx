@@ -74,10 +74,10 @@ function HeroSection() {
       }
       sectionClassName="pb-4 md:pb-8"
     >
-      <div className="relative w-full overflow-hidden rounded-[24px] border border-[#E8E4FF] bg-[#F5F3FF] shadow-[0_16px_48px_rgba(108,96,232,0.15)] md:rounded-[28px]">
+      <div className="relative w-full overflow-hidden ">
         <div className="relative aspect-video w-full">
           <video
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0  w-full"
             src={askezyPageImages.heroVideo}
             autoPlay
             muted
@@ -220,7 +220,7 @@ function CtaSection() {
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/70 to-white/40" />
-          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-16 text-center md:py-20">
+          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-16 text-center md:py-10">
             <h2 className="max-w-[800px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
               Turn Data Into <G>Instant Decisions</G>
             </h2>

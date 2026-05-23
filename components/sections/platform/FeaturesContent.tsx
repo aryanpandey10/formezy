@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import Button from "@/components/ui/Button";
@@ -7,6 +8,7 @@ import SectionWebpImage from "@/components/ui/SectionWebpImage";
 import PlatformBreadcrumb from "@/components/ui/PlatformBreadcrumb";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { featuresPageImages } from "@/lib/page-section-images";
+import cta from "../../../public/images/Features/Webp/features_CTA.webp";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -309,74 +311,115 @@ function ExploreFeaturesSection() {
 ───────────────────────────────────────────── */
 function CtaSectionBlock() {
   return (
-    <section className="section">
-      <div className="container-app">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-[30px] border border-purple-100 bg-white/90 shadow-[0_8px_48px_rgba(108,96,232,0.12)] backdrop-blur-sm"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-[10%] top-0 h-[200px] rounded-full bg-[#6C60E8]/8 blur-[60px]"
-          />
-          <div className="grid items-center lg:grid-cols-2">
-            {/* Text */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={viewportOnce}
-              variants={staggerContainer}
-              className="flex flex-col items-start gap-6 p-10 md:p-14 lg:p-16"
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sora text-[34px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
+    // <section className="section">
+    //   <div className="container-app">
+    //     <motion.div
+    //       initial={{ opacity: 0, y: 32 }}
+    //       whileInView={{ opacity: 1, y: 0 }}
+    //       viewport={viewportOnce}
+    //       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+    //       className="relative overflow-hidden rounded-[30px] border border-purple-100 bg-white/90 shadow-[0_8px_48px_rgba(108,96,232,0.12)] backdrop-blur-sm"
+    //     >
+    //       <div
+    //         aria-hidden
+    //         className="pointer-events-none absolute inset-x-[10%] top-0 h-[200px] rounded-full bg-[#6C60E8]/8 blur-[60px]"
+    //       />
+    //       <div className="grid items-center lg:grid-cols-2">
+    //         {/* Text */}
+    //         <motion.div
+    //           initial="hidden"
+    //           whileInView="show"
+    //           viewport={viewportOnce}
+    //           variants={staggerContainer}
+    //           className="flex flex-col items-start gap-6 p-10 md:p-14 lg:p-16"
+    //         >
+    //           <motion.h2
+    //             variants={fadeUp}
+    //             className="font-sora text-[34px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]"
+    //           >
+    //             Ready to Explore{" "}
+    //             <G>Formezy in Depth?</G>
+    //           </motion.h2>
+    //           <motion.p
+    //             variants={fadeUp}
+    //             className="max-w-[400px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
+    //           >
+    //             See every feature live, with your data, on your workflows — in
+    //             a 30-minute personalised walkthrough.
+    //           </motion.p>
+    //           <motion.div variants={fadeUp}>
+    //             <Button href="#demo" size="lg" className="rounded-[10px]">
+    //               Contact Us <ArrowRight size={16} />
+    //             </Button>
+    //           </motion.div>
+    //         </motion.div>
+
+    //         {/* Illustration */}
+    //         <motion.div
+    //           initial={{ opacity: 0, x: 32 }}
+    //           whileInView={{ opacity: 1, x: 0 }}
+    //           viewport={viewportOnce}
+    //           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+    //           className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 px-8  lg:h-full lg:min-h-[360px]"
+    //         >
+    //           <div
+    //             aria-hidden
+    //             className="pointer-events-none absolute inset-0 "
+    //           />
+    //           <SectionWebpImage
+    //             src={featuresPageImages.cta}
+    //             alt="Explore Formezy in depth"
+    //             aspectWidth={480}
+    //             aspectHeight={360}
+    //             sizes="(max-width: 1024px) 90vw, 380px"
+    //             className="relative z-10 "
+    //           />
+    //         </motion.div> 
+    //       </div>
+    //     </motion.div>
+    //   </div>
+    // </section>
+
+
+
+      < section className="section pt-0" >
+            <div className="container-app">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={viewportOnce}
+                transition={{ duration: 0.8 }}
+                className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
               >
-                Ready to Explore{" "}
+                <div className="relative z-10 px-6">
+                  <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
+                    Ready to Explore{" "}
                 <G>Formezy in Depth?</G>
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="max-w-[400px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-              >
-                See every feature live, with your data, on your workflows — in
+                  </h2>
+                  <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
+                     See every feature live, with your data, on your workflows — in
                 a 30-minute personalised walkthrough.
-              </motion.p>
-              <motion.div variants={fadeUp}>
-                <Button href="#demo" size="lg" className="rounded-[10px]">
+                  </p>
+                  <div className="mt-8 flex justify-center">
+                   <Button href="#demo" size="lg" className="rounded-[10px]">
                   Contact Us <ArrowRight size={16} />
                 </Button>
+                  </div>
+                </div>
+    
+                <div className="mt-12 overflow-hidden ">
+                  <Image
+                    src={cta}
+                    alt="Build a CRM That Works Your Way Illustration"
+                    width={1200}
+                    height={600}
+                    className="mx-auto h-auto w-full rounded-t-[20px]"
+                  />
+                </div>
               </motion.div>
-            </motion.div>
-
-            {/* Illustration */}
-            <motion.div
-              initial={{ opacity: 0, x: 32 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={viewportOnce}
-              transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-              className="relative flex items-end justify-center overflow-hidden bg-gradient-to-br from-purple-50 to-blue-50 px-8 pt-10 lg:h-full lg:min-h-[360px]"
-            >
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,rgba(108,96,232,0.12)_0%,transparent_70%)]"
-              />
-              <SectionWebpImage
-                src={featuresPageImages.cta}
-                alt="Explore Formezy in depth"
-                aspectWidth={480}
-                aspectHeight={360}
-                sizes="(max-width: 1024px) 90vw, 380px"
-                className="relative z-10 max-w-[380px] rounded-2xl border-0 bg-transparent shadow-none"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+            </div>
+          </ section>
+    
   );
 }
 

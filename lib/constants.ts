@@ -142,7 +142,7 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Company", href: "/about/company" },
       { label: "Safal Infosoft", href: "/about/safal-infosoft" },
-      { label: "Leadership", href: "/about/leadership" },
+      // { label: "Leadership", href: "/about/leadership" },
       { label: "Careers", href: "/about/careers" },
       { label: "Contact", href: "/contact" },
       { label: "Book Demo", href: "#demo" },
@@ -170,7 +170,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Use Cases",
     links: [
-      { label: "Business Systems", href: "/platform/use-cases" },
+      // { label: "Business Systems", href: "/platform/use-cases" },
       { label: "Document Management", href: "/platform/use-cases/document-management-system" },
       { label: "Inventory Management", href: "/platform/use-cases/inventory-management-system" },
       { label: "Supply Chain", href: "/platform/use-cases/supply-chain-management-system" },
@@ -182,12 +182,16 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Industry Solutions",
     links: [
-      { label: "Heavy Manufacturing", href: "/platform/use-cases" },
-      { label: "Process Industries", href: "/platform/use-cases" },
-      { label: "Discrete Manufacturing", href: "/platform/use-cases" },
-      { label: "Retail & Wholesale", href: "/platform/use-cases" },
-      { label: "Construction & EPC", href: "/platform/use-cases" },
-      { label: "Service based Industries", href: "/platform/use-cases" },
+      { label: "Heavy Manufacturing", href: "/platform/use-cases/heavy-manufacturing" },
+      { label: "Process Industries", href: "/platform/use-cases/process-industries" },
+      { label: "Discrete Manufacturing", href: "/platform/use-cases/discrete-manufacturing" },
+      { label: "Retail & Wholesale", href: "/platform/use-cases/construction-epc-projects" },
+      { label: "Construction & EPC", href: "/platform/use-cases/service-based-businesses" },
+      { label: "Service based Industries", href: "/platform/use-cases/retail-industry" },
+
+      { label: "Service based Industries", href: "/platform/use-cases/wholesale-industry" },
+      { label: "Service based Industries", href: "/platform/use-cases/rental-industry/" },
+
     ],
   },
 ];
@@ -310,6 +314,7 @@ export const trustedEnterpriseLogos: TrustedEnterpriseLogo[] = [
   { name: "PURNIMA ENTERPRISE", file: "PURNIMA ENTERPRISE.webp" },
   { name: "SABAR PUMPS PVT.LTD", file: "SABAR PUMPS PVT.LTD.webp" },
   { name: "Tent Studio", file: "Tent Studio.webp" },
+  { name: "BPPL", file: "BPPL.webp" },
 ];
 
 export function trustedEnterpriseLogoSrc(file: string): string {

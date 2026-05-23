@@ -86,7 +86,7 @@ function CultureGallery() {
         type="button"
         onClick={() => scroll(-1)}
         aria-label="Previous photos"
-        className="absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-purple-100 bg-white text-[#2C0E3A] shadow-card transition hover:border-purple-300 md:-left-5"
+        className=" lg:hidden absolute -left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-purple-100 bg-white text-[#2C0E3A] shadow-card transition hover:border-purple-300 md:-left-5"
       >
         <ChevronLeft size={20} />
       </button>
@@ -94,7 +94,7 @@ function CultureGallery() {
         type="button"
         onClick={() => scroll(1)}
         aria-label="Next photos"
-        className="absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-purple-100 bg-white text-[#2C0E3A] shadow-card transition hover:border-purple-300 md:-right-5"
+        className=" lg:hidden absolute -right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-purple-100 bg-white text-[#2C0E3A] shadow-card transition hover:border-purple-300 md:-right-5"
       >
         <ChevronRight size={20} />
       </button>

@@ -495,7 +495,7 @@ function AutomateProcessesSection() {
               fill="currentColor"
             />
             <p
-              className="font-rancho text-[22px] leading-snug text-purple-primary sm:text-[24px] md:text-[26px]"
+              className="font-rancho text-[22px] leading-snug text-purple-primary sm:text-[24px] md:text-[26px] px-4"
               style={{
                 WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.25)",
                 paintOrder: "stroke fill",
