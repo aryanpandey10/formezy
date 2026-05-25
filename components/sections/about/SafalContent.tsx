@@ -73,19 +73,21 @@ const verticalLogos = [
     alt: "intelliWorkz",
     width: 160,
     height: 48,
+    url: "https://intelliworkz.tech/",
   },
   {
     src: safalInfosoftImages.verticalLogos.webShop,
     alt: "WebShop",
     width: 140,
     height: 48,
+    url: "https://ideaz.ventures/",
   },
-  {
-    src: safalInfosoftImages.verticalLogos.intelliText,
-    alt: "IntelliText",
-    width: 140,
-    height: 48,
-  },
+  // {
+  //   src: safalInfosoftImages.verticalLogos.intelliText,
+  //   alt: "IntelliText",
+  //   width: 140,
+  //   height: 48,
+  // },
 ] as const;
 
 export default function SafalContent() {
@@ -306,14 +308,20 @@ export default function SafalContent() {
               className="mt-2 flex flex-wrap items-center justify-center gap-10 md:gap-16 lg:gap-20"
             >
               {verticalLogos.map((logo) => (
-                <Image
+                <a
                   key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  className="h-10 w-auto object-contain md:h-12"
-                />
+                  href={logo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    className="h-10 w-auto object-contain md:h-12"
+                  />
+                </a>
               ))}
             </motion.div>
           </motion.div>

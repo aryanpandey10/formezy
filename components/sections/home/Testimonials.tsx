@@ -156,7 +156,7 @@ export default function Testimonials() {
             </span>
           </motion.h2>
 
-          <motion.p
+          <motion.p 
             variants={fadeUp}
             className="max-w-[840px] font-sora text-[16px] font-normal leading-[24px] text-[#6366A8]"
           >

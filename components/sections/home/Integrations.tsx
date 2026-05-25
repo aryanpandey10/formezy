@@ -197,14 +197,7 @@ export default function SeamlessIntegrations() {
                           />
                         </motion.div>
                       </AnimatePresence>
-                    </motion.div>
-                    <p
-                      className={`mt-2 max-w-[72px] text-center font-sora text-[10px] font-medium leading-tight sm:max-w-[88px] sm:text-[11px] md:text-[12px] ${
-                        isCenter ? "text-[#2C0E3A]" : "text-[#6366A8]/80"
-                      }`}
-                    >
-                      {item.name}
-                    </p>
+                    </motion.div>                    
                   </motion.div>
                 );
               })}

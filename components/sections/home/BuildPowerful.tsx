@@ -161,20 +161,15 @@ export default function BuildPowerful() {
       <div className="relative mt-8 w-full md:mt-10">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/80 to-transparent backdrop-blur-[2px] sm:w-24 md:w-32 lg:w-40"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white via-white/80 to-transparent backdrop-blur-[2px] sm:w-24 md:w-32 lg:w-40"
-        />
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white via-white/80 to-transparent backdrop-blur-[2px] sm:w-24 md:w-32 lg:w-[]"
+        />        
 
         <motion.button
           type="button"
-          whileTap={{ scale: 0.88 }}
           onClick={() => emblaApi?.scrollPrev()}
           disabled={!canPrev}
           aria-label="Previous solution"
-          className="absolute left-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 sm:left-4 md:left-6 lg:left-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
+          className="absolute left-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all disabled:cursor-not-allowed disabled:opacity-40 sm:left-4 md:left-6 lg:left-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
         >
           <ChevronLeft size={28} className="text-[#2C0E3A] lg:hidden" />
           <ChevronLeft size={32} className="hidden text-[#2C0E3A] lg:block" />
@@ -182,11 +177,10 @@ export default function BuildPowerful() {
 
         <motion.button
           type="button"
-          whileTap={{ scale: 0.88 }}
           onClick={() => emblaApi?.scrollNext()}
           disabled={!canNext}
           aria-label="Next solution"
-          className="absolute right-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all hover:border-[#6C60E8] hover:shadow-[0_8px_40px_rgba(108,96,232,0.32)] disabled:cursor-not-allowed disabled:opacity-40 sm:right-4 md:right-6 lg:right-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
+          className="absolute right-2 top-[45%] z-30 hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-[#B8B1FD] bg-white shadow-[0_8px_32px_rgba(108,96,232,0.18)] transition-all disabled:cursor-not-allowed disabled:opacity-40 sm:right-4 md:right-6 lg:right-8 lg:flex lg:h-[88px] lg:w-[88px] xl:h-[99px] xl:w-[99px]"
         >
           <ChevronRight size={28} className="text-[#2C0E3A] lg:hidden" />
           <ChevronRight size={32} className="hidden text-[#2C0E3A] lg:block" />
@@ -273,7 +267,7 @@ function SolutionCard({
           priority={priority}
           loading={priority ? undefined : "lazy"}
           sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 380px"
-          className="object-contain"
+          className="object-cover"
         />
       </div>
     </motion.article>
