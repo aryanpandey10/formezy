@@ -171,7 +171,7 @@ function ApplyForm({ jobTitle }: { jobTitle: string }) {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="font-sora text-[12px] font-semibold text-[#2C0E3A]">
-              Company Email ID<span className="text-red-400">*</span>
+              Email ID<span className="text-red-400">*</span>
             </label>
             <input
               type="email"
