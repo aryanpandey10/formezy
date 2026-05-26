@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  ArrowRight, 
-  Check, 
+import {
+  ArrowRight,
+  Check,
   ChevronRight,
   Users2,
   Boxes,
@@ -18,6 +18,7 @@ import {
   Truck,
   Blend
 } from "lucide-react";
+import cta from "../../../public/images/Use Cases/Webp/use_cases_CTA_1.png";
 import Button from "@/components/ui/Button";
 import Accordion, { type AccordionItem } from "@/components/ui/Accordion";
 import UseCaseTabs from "@/components/sections/use-cases/UseCaseTabs";
@@ -56,15 +57,15 @@ function BulletList({ items }: { items: string[] }) {
    Use-case icon grid data
    ───────────────────────────────────────────── */
 const overviewItems = [
-  { label: "Customer Relationship Mgmt.", Icon: Users2,       color: "#6C63FF" },
-  { label: "Enterprise Resource Planning", Icon: Boxes,       color: "#A78BFA" },
-  { label: "Human Resource CRM",           Icon: HeartPulse,  color: "#06B6D4" },
-  { label: "Rental Industry",          Icon: Blend,   color: "#F59E0B" },
-  { label: "Manufacturing",                 Icon: Factory,     color: "#10B981" },
-  { label: "Healthcare",                    Icon: Stethoscope, color: "#EF4444" },
-  { label: "Financial Services / Banking",  Icon: Landmark,    color: "#8B5CF6" },
-  { label: "Retail & E-commerce",           Icon: ShoppingCart,color: "#14B8A6" },
-  { label: "Logistics / Supply Chain",      Icon: Truck,       color: "#F43F5E" },
+  { label: "Customer Relationship Mgmt.", Icon: Users2, color: "#6C63FF" },
+  { label: "Enterprise Resource Planning", Icon: Boxes, color: "#A78BFA" },
+  { label: "Human Resource CRM", Icon: HeartPulse, color: "#06B6D4" },
+  { label: "Rental Industry", Icon: Blend, color: "#F59E0B" },
+  { label: "Manufacturing", Icon: Factory, color: "#10B981" },
+  { label: "Healthcare", Icon: Stethoscope, color: "#EF4444" },
+  { label: "Financial Services / Banking", Icon: Landmark, color: "#8B5CF6" },
+  { label: "Retail & E-commerce", Icon: ShoppingCart, color: "#14B8A6" },
+  { label: "Logistics / Supply Chain", Icon: Truck, color: "#F43F5E" },
 ];
 
 const faqs: AccordionItem[] = [
@@ -165,7 +166,7 @@ function HeroSection() {
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {overviewItems.map((o, i) => {
                 const { Icon } = o;
-                const isCenter = i === 4; 
+                const isCenter = i === 4;
                 return (
                   <motion.div
                     key={o.label}
@@ -176,11 +177,10 @@ function HeroSection() {
                       delay: 0.1 + i * 0.06,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className={`flex flex-col items-center justify-center gap-2.5 rounded-[18px] border p-4 text-center shadow-sm transition-transform hover:-translate-y-1 ${
-                      isCenter
+                    className={`flex flex-col items-center justify-center gap-2.5 rounded-[18px] border p-4 text-center shadow-sm transition-transform hover:-translate-y-1 ${isCenter
                         ? "border-purple-200 bg-gradient-to-br from-purple-100 to-blue-50 shadow-md"
                         : "border-purple-100/60 bg-white/90"
-                    }`}
+                      }`}
                   >
                     <span
                       className="flex h-11 w-11 items-center justify-center rounded-2xl"
@@ -257,15 +257,15 @@ function TurningNeedsSection() {
               Every business has it&aposs own workflow we transform it into a solution.
             </motion.p>
             <motion.div variants={fadeUp}>
-                            <BulletList
-                              items={[
-                                "Custom workflows for your industry",
-                                "Fully configurable to match your ops",
-                                "Integration blueprints included",
-                                "Go live in weeks, not quarters",
-                              ]}
-                            />
-                          </motion.div>
+              <BulletList
+                items={[
+                  "Custom workflows for your industry",
+                  "Fully configurable to match your ops",
+                  "Integration blueprints included",
+                  "Go live in weeks, not quarters",
+                ]}
+              />
+            </motion.div>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-1">
               <Button href="#explore" size="lg" className="rounded-[10px]">
                 Get Started <ArrowRight size={16} />
@@ -308,66 +308,42 @@ function AdaptAndScaleSection() {
 }
 
 function CtaSection() {
-  return (
-    <section className="section overflow-hidden bg-white/80 backdrop-blur-sm">
-      <div className="container-app">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="relative min-h-[520px] overflow-hidden rounded-[30px] border border-[#D8D4F5] shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:min-h-[580px] lg:min-h-[640px]"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/92 via-white/55 to-transparent"
-          />
-          <Image
-            src={useCasesPageWebp.cta}
-            alt="Connected systems and secure operations with Formezy"
-            fill
-            sizes="(max-width: 1280px) 100vw, 1280px"
-            className="z-0 object-cover object-bottom"
-          />
+  return (        
+  <section className="section pt-0" >
+    <div className="container-app">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={viewportOnce}
+        transition={{ duration: 0.8 }}
+        className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
+      >
+        <div className="relative z-10 px-6">
+          <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
+            Ready to Build a System  <G>That Fits Your Business?</G>
+          </h2>
+          <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
+            Explore how Formezy adapts to your workflows, industry, and operational needs. Build your enterprise platform. Achieve more with clarity.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <Button href="#demo" size="lg" className="rounded-[10px]">
+              Get Started <ArrowRight size={16} />
+            </Button>
+          </div>
+        </div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={viewportOnce}
-            variants={staggerContainer}
-            className="relative z-10 flex flex-col items-center gap-6 px-6 pb-10 pt-12 text-center md:px-14 md:pt-16 lg:pt-16"
-          >
-            <motion.h2
-              variants={fadeUp}
-              className="max-w-[880px] font-sora text-[32px] font-bold leading-[1.15] text-[#2C0E3A] md:text-[48px] lg:text-[56px]"
-            >
-              Ready to Build a System{" "}
-              <span
-                style={{
-                  background: "linear-gradient(180deg, #708FF4 0%, #6C60E8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                That Fits Your Business?
-              </span>
-            </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="max-w-[720px] font-sora text-[16px] leading-[28px] text-[#6366A8]"
-            >
-              Explore how Formezy adapts to your workflows, industry, and operational needs. Build your enterprise platform. Achieve more with clarity.
-            </motion.p>
-            <motion.div variants={fadeUp}>
-              <Button href="#demo" size="lg" className="rounded-[10px]">
-                Get Started <ArrowRight size={16} />
-              </Button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
+          <Image
+            src={cta}
+            alt="Build a CRM That Works Your Way Illustration"
+            width={1200}
+            height={600}
+            className="mx-auto h-auto w-full rounded-t-[20px]"
+          />
+        </div>
+      </motion.div>
+    </div>
+  </section>
   );
 }
 
@@ -410,7 +386,7 @@ export default function UseCasesContent() {
     <>
       <HeroSection />
       <TurningNeedsSection />
-      
+
       <section id="explore" className="section bg-[#FAFAFE]">
         <div className="container-app">
           <motion.div

@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
-const integrations = [
+export const integrations = [
   { id: "gs",      name: "Google Sheets", label: "Google Sheets",     src: "/images/Google_Sheets_Logo.webp" },
   { id: "ns",      name: "NetSuite",      label: "NetSuite ERP",      src: "/images/NetSuite-Symbol.webp" },
   { id: "gw",      name: "G Suite",       label: "Google Workspace",  src: "/images/Gsuite_logo.webp" },

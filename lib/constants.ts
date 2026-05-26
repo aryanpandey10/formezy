@@ -190,7 +190,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Service based Industries", href: "/platform/use-cases/retail-industry" },
 
       { label: "Service based Industries", href: "/platform/use-cases/wholesale-industry" },
-      { label: "Service based Industries", href: "/platform/use-cases/rental-industry/" },
+      { label: "Service based Industries", href: "/platform/use-cases/rental-industry" },
 
     ],
   },

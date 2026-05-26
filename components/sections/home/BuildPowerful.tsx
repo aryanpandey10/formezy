@@ -247,10 +247,10 @@ function SolutionCard({
   return (
     <motion.article
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="flex h-490 min-h-[420px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 md:min-h-[500px]"
+      className="flex h-490 min-h-[420px] w-full max-w-[430px] flex-col items-start gap-4 overflow-hidden rounded-[30px] border border-[#B8B1FD] p-5 padding_bottom md:min-h-[500px]"
       style={{ backgroundColor: color }}
     >
-      <div className="flex w-full flex-col items-start gap-3">
+      <div className="flex w-full flex-col items-start gap-3 p-5">
         <h3 className="font-sora  text-[20px] font-semibold leading-[28px] text-[#2C0E3A]">
           {solution.title}
         </h3>
@@ -267,7 +267,7 @@ function SolutionCard({
           priority={priority}
           loading={priority ? undefined : "lazy"}
           sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 380px"
-          className="object-cover"
+          className="object-cover height_auto"
         />
       </div>
     </motion.article>

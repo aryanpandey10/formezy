@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import Button from "@/components/ui/Button";
 import FeatureShowcaseSection from "@/components/sections/FeatureShowcaseSection";
 import { integrationsConnectorsPageImages } from "@/lib/integrations-connectors-page-images";
+import { integrations } from "../home/Integrations";
 
 const G = ({ children }: { children: React.ReactNode }) => (
   <span
@@ -55,16 +56,7 @@ const growthBullets = [
   "Improve visibility without constant manual exports",
 ];
 
-const integrationsData = [
-  { id: "gs", name: "Google Sheets", src: "/images/Google_Sheets_Logo.png" },
-  { id: "ns", name: "NetSuite", src: "/images/NetSuite-Symbol.png" },
-  { id: "oracle", name: "Oracle", src: "/images/Oracle-logo.png" },
-  { id: "outlook", name: "Outlook", src: "/images/Microsoft_Office_Outlook.png" },
-  { id: "sap", name: "SAP", src: "/images/SAP-Logo.png" },
-  { id: "o365", name: "Office 365", src: "/images/Microsoft_360.png" },
-  { id: "wp", name: "WordPress", src: "/images/Wordpress.png" },
-  { id: "excel", name: "Excel", src: "/images/Microsoft_Excel-Logo.png" },
-];
+
 
 const DESKTOP_SIZES = [60, 84, 116, 168, 116, 84, 60];
 const MOBILE_SIZES = [0, 52, 80, 118, 80, 52, 0];
@@ -248,7 +240,7 @@ function ThirdPartySection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const N = integrationsData.length;
+  const N = integrations.length;
   const indexInScope = ((activeIndex % N) + N) % N;
 
   const handleRotate = useCallback((newDir: number) => {
@@ -265,7 +257,7 @@ function ThirdPartySection() {
     const itemIdx = ((indexInScope + offset) % N + N) % N;
     const sizes = isMobile ? MOBILE_SIZES : DESKTOP_SIZES;
     return {
-      item: integrationsData[itemIdx],
+      item: integrations[itemIdx],
       size: sizes[posIdx],
       opacity: OPACITIES[posIdx],
       isCenter: posIdx === 3,
@@ -300,117 +292,145 @@ function ThirdPartySection() {
           </motion.p>
         </motion.div>
 
-        <div className="flex items-center justify-center gap-3 md:gap-8">
-          <motion.button
-            type="button"
-            whileTap={{ scale: 0.85 }}
-            onClick={() => handleRotate(-1)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-purple-100 bg-white shadow-card hover:border-purple-primary md:h-12 md:w-12"
-            aria-label="Previous integration"
-          >
-            <ChevronLeft size={20} className="text-[#2C0E3A]" />
-          </motion.button>
+        {/* ── 7-circle fan carousel ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={viewportOnce}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-14"
+        >
+          {/* Nav + circles row */}
+          <div className="flex items-center justify-center gap-3 md:gap-6">
+            {/* Prev */}
+            <motion.button
+              whileTap={{ scale: 0.85 }}
+              onClick={() => handleRotate(-1)}
+              aria-label="Previous integration"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-purple-100 bg-white shadow-card transition-colors hover:border-purple-primary md:h-12 md:w-12"
+            >
+              <ChevronLeft size={18} className="text-[#2C0E3A]" />
+            </motion.button>
 
-          <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-5 lg:gap-8">
-            {positions.map(({ item, size, opacity, isCenter, hidden }, posIdx) => {
-              if (hidden) return null;
-              return (
-                <motion.div
-                  key={posIdx}
-                  animate={{ opacity }}
-                  transition={{ duration: 0.45 }}
-                  className="flex shrink-0 cursor-pointer flex-col items-center"
-                  onClick={() => {
-                    const offset = posIdx - 3;
-                    if (offset !== 0) handleRotate(offset > 0 ? 1 : -1);
-                  }}
-                >
+            {/* 7 circles — stable positional keys so only content animates */}
+            <div className="flex items-center justify-center gap-6 sm:gap-5 md:gap-5 lg:gap-6">
+              {positions.map(({ item, size, opacity, isCenter, hidden }, posIdx) => {
+                if (hidden) return null;
+                return (
                   <motion.div
-                    animate={{ width: size, height: size }}
-                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className={cn(
-                      "relative flex items-center justify-center rounded-full",
-                      isCenter
-                        ? "border border-[#6C60E8]/40 shadow-[0_8px_40px_rgba(108,96,232,0.15)]"
-                        : "border border-purple-100/70 bg-white",
-                    )}
-                    style={{ minWidth: size }}
+                    key={posIdx}
+                    animate={{ opacity }}
+                    transition={{ duration: 0.45, ease: "easeInOut" }}
+                    className="flex max-w-[88px] flex-shrink-0 cursor-pointer flex-col items-center sm:max-w-none"
+                    onClick={() => {
+                      const offset = posIdx - 3;
+                      if (offset !== 0) handleRotate(offset > 0 ? 1 : -1);
+                    }}
                   >
-                    {isCenter && (
-                      <svg
-                        viewBox="0 0 220 220"
-                        className="pointer-events-none absolute -inset-[22px] h-[calc(100%+44px)] w-[calc(100%+44px)]"
-                        fill="none"
-                        aria-hidden
-                      >
-                        <circle
-                          cx="110"
-                          cy="110"
-                          r="108"
-                          stroke="#6C60E8"
-                          strokeWidth="1.2"
-                          strokeOpacity="0.25"
-                          strokeDasharray="6 6"
-                        />
-                      </svg>
-                    )}
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={item.id}
-                        initial={{ opacity: 0, scale: 0.7 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.7 }}
-                        transition={{ duration: 0.28 }}
-                        className="absolute inset-0 flex items-center justify-center p-[20%]"
-                      >
-                        <Image
-                          src={item.src}
-                          alt={item.name}
-                          fill
-                          sizes={`${size}px`}
-                          className="object-contain"
-                        />
-                      </motion.div>
-                    </AnimatePresence>
+                    {/* Circle — transparent background, border only */}
+                    <motion.div
+                      animate={{ width: size, height: size }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                      className={`relative flex items-center justify-center overflow-visible rounded-full ${
+                        isCenter
+                          ? "border border-[#6C60E8]/40 shadow-[0_6px_32px_rgba(108,96,232,0.2)]"
+                          : "border border-purple-100/70"
+                      }`}
+                      style={{ minWidth: size }}
+                    >
+                      {/* Dashed orbit ring — center only */}
+                      {isCenter && (
+                        <svg
+                          viewBox="0 0 220 220"
+                          className="pointer-events-none absolute -inset-[18px] h-[calc(100%+36px)] w-[calc(100%+36px)]"
+                          fill="none"
+                          aria-hidden
+                        >
+                          <circle
+                            cx="110"
+                            cy="110"
+                            r="107"
+                            stroke="#6C60E8"
+                            strokeWidth="1.5"
+                            strokeOpacity="0.32"
+                            strokeDasharray="8 8"
+                          />
+                        </svg>
+                      )}
+
+                      {/* Logo image — animates on item change */}
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={item.id}
+                          initial={{ opacity: 0, scale: 0.7 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.7 }}
+                          transition={{ duration: 0.28 }}
+                          className="absolute inset-0 flex items-center justify-center p-[22%]"
+                        >
+                          <Image
+                            src={item.src}
+                            alt={item.name}
+                            fill
+                            sizes={`${size}px`}
+                            className="object-contain p-[22%]"
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    </motion.div>                    
                   </motion.div>
-                </motion.div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Next */}
+            <motion.button
+              whileTap={{ scale: 0.85 }}
+              onClick={() => handleRotate(1)}
+              aria-label="Next integration"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-purple-100 bg-white shadow-card transition-colors hover:border-purple-primary md:h-12 md:w-12"
+            >
+              <ChevronRight size={18} className="text-[#2C0E3A]" />
+            </motion.button>
           </div>
 
-          <motion.button
-            type="button"
-            whileTap={{ scale: 0.85 }}
-            onClick={() => handleRotate(1)}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-purple-100 bg-white shadow-card hover:border-purple-primary md:h-12 md:w-12"
-            aria-label="Next integration"
-          >
-            <ChevronRight size={20} className="text-[#2C0E3A]" />
-          </motion.button>
-        </div>
+          {/* Connector + active label */}
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <div className="h-8 w-px bg-gradient-to-b from-[#6C60E8]/50 to-transparent" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={centerItem.id + "-label"}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28 }}
+                className="rounded-pill border border-purple-100 bg-white px-5 py-2.5 shadow-card"
+              >
+                <span className="font-sora text-[14px] font-semibold text-[#2C0E3A]">
+                  {centerItem.label}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-        <div className="mt-8 flex flex-col items-center gap-2">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={centerItem.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-purple-100 bg-white px-6 py-3 shadow-card"
-            >
-              <Image
-                src={centerItem.src}
-                alt={centerItem.name}
-                width={20}
-                height={20}
-                className="h-5 w-5 object-contain"
+          {/* Dot nav */}
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {integrations.map((_, i) => (
+              <button
+                key={i}
+                onClick={() =>
+                  setActiveIndex([i, i > indexInScope ? 1 : -1])
+                }
+                aria-label={`Go to ${integrations[i].name}`}
+                className={`rounded-full transition-all duration-300 ${
+                  indexInScope === i
+                    ? "h-2 w-8 bg-[#6C60E8]"
+                    : "h-2 w-2 bg-[#2C0E3A]/20 hover:bg-[#2C0E3A]/40"
+                }`}
               />
-              <span className="font-sora text-[15px] font-semibold text-[#2C0E3A]">
-                {centerItem.name}
-              </span>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            ))}
+          </div>
+        </motion.div>
 
         <div className="mt-10 flex justify-center">
           <Button
@@ -526,12 +546,11 @@ function CtaSection() {
             sizes="100vw"
             className="object-cover object-bottom"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/78 to-white/55" />
-          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-14 text-center md:py-20">
-            <h2 className="max-w-[800px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
+          <div className="relative z-10 flex flex-col items-center gap-4 px-6 py-1 text-center">
+            <h2 className="max-w-full font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
               Connect Your <G>Business Without Limits</G>
             </h2>
-            <p className="max-w-[560px] font-sora text-[16px] leading-[28px] text-[#6366A8]">
+            <p className="max-w-[800px] font-sora text-[16px] leading-[28px] text-[#6366A8]">
               Integrate everything, everyone, and every system — so Formezy
               becomes the layer where your business actually runs.
             </p>

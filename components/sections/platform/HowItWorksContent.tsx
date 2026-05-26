@@ -221,7 +221,6 @@ function HowItWorksStepsSection() {
         <div className="relative mt-8 md:mt-10" aria-label="Formezy journey steps">
           <motion.button
             type="button"
-            whileTap={{ scale: 0.88 }}
             onClick={() => emblaApi?.scrollPrev()}
             disabled={!canPrev}
             aria-label="Previous step"
@@ -235,7 +234,7 @@ function HowItWorksStepsSection() {
               {hiwJourneySteps.map((s, i) => (
                 <div
                   key={s.title}
-                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[33%]"
                 >
                   <HiwJourneyCard
                     title={s.title}
@@ -251,7 +250,6 @@ function HowItWorksStepsSection() {
 
           <motion.button
             type="button"
-            whileTap={{ scale: 0.88 }}
             onClick={() => emblaApi?.scrollNext()}
             disabled={!canNext}
             aria-label="Next step"

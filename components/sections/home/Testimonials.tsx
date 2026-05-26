@@ -22,7 +22,7 @@ const clients: Client[] = [
   {
     id: 1,
     name: "Heavy Metal and Tubes Pvt Ltd.",
-    logo: "/images/Home/heavy_metal.png",
+    logo: "/images/Home/Webp/heavy_metal_test.webp",
     industry: "Manufacturing",
     color: "#6C63FF",
     quote:
@@ -34,7 +34,7 @@ const clients: Client[] = [
   {
     id: 2,
     name: "Twin Cool Engineers",
-    logo: "/images/Home/twin_cool.png",
+    logo: "/images/Home/Webp/twin_cool_test.webp",
     industry: "Engineering",
     color: "#06B6D4",
     quote:
@@ -46,7 +46,7 @@ const clients: Client[] = [
   {
     id: 3,
     name: "Yash Filter",
-    logo: "/images/Home/yash_filters.png",
+    logo: "/images/Home/Webp/yash_filters_test.webp",
     industry: "Filtration",
     color: "#F59E0B",
     quote:
@@ -58,7 +58,7 @@ const clients: Client[] = [
   {
     id: 4,
     name: "Pep Foods",
-    logo: "/images/Home/pepfood.png",
+    logo: "/images/Home/Webp/pepfood_test.webp",
     industry: "Food & Beverage",
     color: "#A78BFA",
     quote:
@@ -70,7 +70,7 @@ const clients: Client[] = [
   {
     id: 5,
     name: "Parishi Construction Equipment",
-    logo: "/images/Home/parishi.png",
+    logo: "/images/Home/Webp/parishi_test.webp",
     industry: "Construction",
     color: "#EF4444",
     quote:
@@ -82,7 +82,7 @@ const clients: Client[] = [
   {
     id: 6,
     name: "Armstrong Machinery LLP",
-    logo: "/images/Home/armstrong.webp",
+    logo: "/images/Home/Webp/armstrong_test.webp",
     industry: "Machinery",
     color: "#6366F1",
     quote:
@@ -94,7 +94,7 @@ const clients: Client[] = [
   {
     id: 7,
     name: "Navjivan Roller Flour & Pulse Mills",
-    logo: "/images/Home/navjeevan.png",
+    logo: "/images/Home/Webp/navjeevan_test.webp",
     industry: "Food & Milling",
     color: "#10B981",
     quote:

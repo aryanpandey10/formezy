@@ -42,35 +42,12 @@ export default function BuildErp() {
             className="
               hidden
               object-cover
-              object-center
-              opacity-40
-              sm:opacity-50
-              md:opacity-100
+              object-center              
               md:object-bottom
               lg:block
             "
             priority={false}
           />
-
-          <Image
-            src="/images/m_cta_banner.webp"
-            alt="Build your ERP with Formezy modules"
-            fill
-            sizes="100vw"
-            className="
-              object-cover
-              object-center
-              opacity-40
-              sm:opacity-50
-              md:opacity-100
-              md:object-bottom
-              lg:hidden
-            "
-            priority={false}
-          />
-
-          {/* Gradient overlay — strong at top for text legibility, fades out toward bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/20 to-transparent" />
 
           {/* Text content — top-center, sits above gradient */}
           <motion.div

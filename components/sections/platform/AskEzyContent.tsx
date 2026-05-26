@@ -219,8 +219,7 @@ function CtaSection() {
             sizes="100vw"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/70 to-white/40" />
-          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-16 text-center md:py-10">
+          <div className="relative z-10 flex flex-col items-center gap-6 px-6 py-1 text-center">
             <h2 className="max-w-[800px] font-sora text-[32px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[48px] lg:text-[56px]">
               Turn Data Into <G>Instant Decisions</G>
             </h2>
