@@ -24,7 +24,7 @@ export const howItWorksPageImages = {
   defineDeep: hiw("define_workflows.webp"),
   logicLarge: hiw("Build with Logic Builder.webp"),
   automateWide: hiw("automate_processes.webp"),
-  cta: hiw("BuildYourERP.webp"),
+  cta: hiw("build_workflows.webp"),
 } as const;
 
 /** `/platform/capabilities` — WebP under `public/images/Capabilities/Webp/`. */

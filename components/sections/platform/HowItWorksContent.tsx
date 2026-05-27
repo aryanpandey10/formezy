@@ -592,11 +592,7 @@ function CtaSection() {
           viewport={viewportOnce}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="relative min-h-[520px] overflow-hidden rounded-[30px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:min-h-[600px] lg:min-h-[680px]"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/90 via-white/50 to-transparent"
-          />
+        >          
           <Image
             src={howItWorksPageImages.cta}
             alt="Build smarter workflows with Formezy"
@@ -610,7 +606,7 @@ function CtaSection() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="relative z-10 flex flex-col items-center gap-6 px-6 pb-12 pt-12 text-center md:px-16 md:pt-14 lg:pt-16"
+            className="relative z-10 flex flex-col items-center gap-6 px-1 pt-1 text-center md:px-16 md:pt-1 "
           >
             <motion.h2
               variants={fadeUp}
@@ -631,7 +627,7 @@ function CtaSection() {
 
             <motion.p
               variants={fadeUp}
-              className="max-w-[640px] font-sora text-[16px] leading-[26px] text-[#6366A8]"
+              className="max-w-[800px] font-sora text-[16px] leading-[26px] text-[#6366A8]"
             >
               Design ERP-grade systems tailored to your business workflows, approvals, and
               operational structure—without the limitations of traditional software. Start building

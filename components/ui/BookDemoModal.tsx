@@ -279,8 +279,7 @@ function ModalContent({ onClose }: { onClose: () => void }) {
                   htmlFor={`${fieldId}-message`}
                   className="font-sora text-[13px] font-semibold text-[#2C0E3A]"
                 >
-                  Message <span className="text-red-400" aria-hidden>*</span>
-                  <span className="sr-only"> (required)</span>
+                  Message
                 </label>
                 <textarea
                   id={`${fieldId}-message`}
@@ -288,14 +287,10 @@ function ModalContent({ onClose }: { onClose: () => void }) {
                   placeholder="Tell us about your use case or requirements..."
                   value={form.message}
                   onChange={set("message")}
-                  required
-                  aria-required="true"
                   aria-invalid={Boolean(errors.message)}
-                  className={`${inputBase} resize-none ${errors.message ? inputError : ""}`}
+                  className={`${inputBase} resize-none`}
                 />
-                {errors.message && (
-                  <span className="font-sora text-[12px] text-red-500">{errors.message}</span>
-                )}
+                {/* No message validation errors shown, message is optional */}
               </div>
 
               {serverError && (

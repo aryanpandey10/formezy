@@ -318,17 +318,12 @@ function ContactForm() {
         <textarea
           id={`${fieldId}-message`}
           rows={4}
-          placeholder="Write Message (at least 10 characters)"
+          placeholder="Write Message (optional)"
           value={form.message}
           onChange={set("message")}
-          required
-          aria-required="true"
           aria-invalid={Boolean(errors.message)}
           className={`${inputBase} resize-none ${errors.message ? inputError : ""}`}
         />
-        {errors.message && (
-          <span className="font-sora text-[12px] text-red-500">{errors.message}</span>
-        )}
       </div>
 
       <div className="flex items-center gap-4 rounded-[10px] border border-[#E5E4FF] bg-white px-4 py-3 shadow-sm">
@@ -423,11 +418,11 @@ function OfficeCard({
   office,
   active,
   onSelect,
-}: {
+}: Readonly<{
   office: ContactOffice;
   active: boolean;
   onSelect: () => void;
-}) {
+}>) {
   return (
     <button
       type="button"
