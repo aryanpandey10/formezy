@@ -185,12 +185,10 @@ export const footerColumns: FooterColumn[] = [
       { label: "Heavy Manufacturing", href: "/platform/use-cases/heavy-manufacturing" },
       { label: "Process Industries", href: "/platform/use-cases/process-industries" },
       { label: "Discrete Manufacturing", href: "/platform/use-cases/discrete-manufacturing" },
-      { label: "Retail & Wholesale", href: "/platform/use-cases/construction-epc-projects" },
-      { label: "Construction & EPC", href: "/platform/use-cases/service-based-businesses" },
-      { label: "Service based Industries", href: "/platform/use-cases/retail-industry" },
+      { label: "Construction & EPC", href: "/platform/use-cases/construction-epc-projects" },     
 
-      { label: "Service based Industries", href: "/platform/use-cases/wholesale-industry" },
-      { label: "Service based Industries", href: "/platform/use-cases/rental-industry" },
+      { label: "Wholesale Industries", href: "/platform/use-cases/wholesale-industry" },
+      { label: "Rental Industries", href: "/platform/use-cases/rental-industry" },
 
     ],
   },
