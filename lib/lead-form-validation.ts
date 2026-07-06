@@ -22,7 +22,6 @@ export function validateLeadForm(form: LeadFormShape): LeadFormErrors {
   const errs: LeadFormErrors = {};
   const name = form.name.trim();
   const company = form.company.trim();
-  const message = form.message.trim();
 
   if (!name) errs.name = "Full name is required.";
   else if (name.length < 2)
@@ -44,13 +43,9 @@ export function validateLeadForm(form: LeadFormShape): LeadFormErrors {
   else if (!PHONE_RE.test(phone))
     errs.phone = "Please enter a valid phone number.";
 
-  if (!form.size) errs.size = "Company size is required.";
 
-  if (!message) errs.message = "Message is required.";
-  else if (message.length < 10)
-    errs.message = "Message must be at least 10 characters.";
-  else if (message.length > MAX_MESSAGE)
-    errs.message = `Message must be at most ${MAX_MESSAGE} characters.`;
+  if (!form.size) errs.size = "Company size is required.";
+  // Message is now optional, no validation
 
   return errs;
 }

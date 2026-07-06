@@ -138,7 +138,7 @@ function NavLinkItem({
     return (
       <Link
         href={link.href}
-        className="relative rounded-full px-3 py-2 text-[14px] font-medium text-ink-secondary transition-colors hover:text-ink"
+        className="relative rounded-full px-3 py-2 text-[14px] lg:text-[16px] font-medium text-ink-secondary transition-colors hover:text-ink"
       >
         {link.label}
       </Link>

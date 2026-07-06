@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import cta from "../../../public/images/Safal_infosoft/webp/build_erp.webp";
 import { motion } from "framer-motion";
 import { ChevronRight, Check, ArrowRight } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
@@ -72,19 +73,21 @@ const verticalLogos = [
     alt: "intelliWorkz",
     width: 160,
     height: 48,
+    url: "https://intelliworkz.tech/",
   },
   {
     src: safalInfosoftImages.verticalLogos.webShop,
     alt: "WebShop",
     width: 140,
     height: 48,
+    url: "https://ideaz.ventures/",
   },
-  {
-    src: safalInfosoftImages.verticalLogos.intelliText,
-    alt: "IntelliText",
-    width: 140,
-    height: 48,
-  },
+  // {
+  //   src: safalInfosoftImages.verticalLogos.intelliText,
+  //   alt: "IntelliText",
+  //   width: 140,
+  //   height: 48,
+  // },
 ] as const;
 
 export default function SafalContent() {
@@ -305,14 +308,20 @@ export default function SafalContent() {
               className="mt-2 flex flex-wrap items-center justify-center gap-10 md:gap-16 lg:gap-20"
             >
               {verticalLogos.map((logo) => (
-                <Image
+                <a
                   key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  className="h-10 w-auto object-contain md:h-12"
-                />
+                  href={logo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    className="h-10 w-auto object-contain md:h-12"
+                  />
+                </a>
               ))}
             </motion.div>
           </motion.div>
@@ -393,42 +402,44 @@ export default function SafalContent() {
       </section>
 
       {/* ── 8. CTA — Legacy of Innovation ── */}
-      <section className={`${SAFAL_SECTION} pb-12 md:pb-16`}>
+    
+      < section className="section pt-0" >
         <div className="container-app">
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="relative min-h-[400px] overflow-hidden rounded-[24px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] sm:min-h-[520px] md:min-h-[620px] lg:min-h-[720px]"
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
           >
-            <Image
-              src={safalInfosoftImages.cta}
-              alt="A legacy of innovation — enterprise platform journey"
-              fill
-              sizes="(max-width: 1024px) 100vw, 1200px"
-              className="object-cover object-bottom opacity-90 md:opacity-100"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/40 to-transparent" />
-
-            <div className="relative z-10 flex flex-col items-center px-6 pt-10 text-center md:px-12 md:pt-14">
-              <h2 className="max-w-[900px] font-sora text-[28px] font-bold leading-[1.15] text-[#2C0E3A] sm:text-[36px] md:text-[48px] lg:text-[52px]">
-                A Legacy of Innovation.{" "}
+            <div className="relative z-10 px-6">
+              <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
+              A Legacy of Innovation.{" "}
                 <G>A Future of Possibilities.</G>
               </h2>
-              <p className="mt-5 max-w-[640px] font-sora text-[15px] leading-[28px] text-[#6366A8] md:text-[17px]">
-                Explore Safal Infosoft&apos;s evolution and our vision for the
+              <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
+               Explore Safal Infosoft&apos;s evolution and our vision for the
                 future. Discover our journey and capabilities.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex justify-center">
                 <Button href="/platform/use-cases" size="lg" className="rounded-[12px]">
                   Explore Solutions <ArrowRight size={16} />
                 </Button>
               </div>
             </div>
+
+            <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
+              <Image
+                src={cta}
+                alt="Build a CRM That Works Your Way Illustration"
+                width={1200}
+                height={600}
+                className="mx-auto h-auto w-full rounded-t-[20px]"
+              />
+            </div>
           </motion.div>
         </div>
-      </section>
+      </ section>
     </main>
   );
 }

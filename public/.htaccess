@@ -16,10 +16,10 @@
   RewriteRule ^ - [L]
 
   # /route → /route/ when that folder has index.html (Next trailingSlash export)
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} !/$
-  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
-  RewriteRule ^ %{REQUEST_URI}/ [L,R=301]
+  # RewriteCond %{REQUEST_FILENAME} !-d
+  # RewriteCond %{REQUEST_URI} !/$
+  # RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.html -f
+  # RewriteRule ^ %{REQUEST_URI}/ [L,R=301]
 
   # /route/ → serve /route/index.html
   RewriteCond %{REQUEST_FILENAME} !-f

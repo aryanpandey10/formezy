@@ -221,7 +221,6 @@ function HowItWorksStepsSection() {
         <div className="relative mt-8 md:mt-10" aria-label="Formezy journey steps">
           <motion.button
             type="button"
-            whileTap={{ scale: 0.88 }}
             onClick={() => emblaApi?.scrollPrev()}
             disabled={!canPrev}
             aria-label="Previous step"
@@ -235,7 +234,7 @@ function HowItWorksStepsSection() {
               {hiwJourneySteps.map((s, i) => (
                 <div
                   key={s.title}
-                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[34%]"
+                  className="min-w-0 shrink-0 grow-0 basis-[88%] pl-5 sm:basis-[60%] md:basis-[48%] lg:basis-[33%]"
                 >
                   <HiwJourneyCard
                     title={s.title}
@@ -251,7 +250,6 @@ function HowItWorksStepsSection() {
 
           <motion.button
             type="button"
-            whileTap={{ scale: 0.88 }}
             onClick={() => emblaApi?.scrollNext()}
             disabled={!canNext}
             aria-label="Next step"
@@ -495,7 +493,7 @@ function AutomateProcessesSection() {
               fill="currentColor"
             />
             <p
-              className="font-rancho text-[22px] leading-snug text-purple-primary sm:text-[24px] md:text-[26px]"
+              className="font-rancho text-[22px] leading-snug text-purple-primary sm:text-[24px] md:text-[26px] px-4"
               style={{
                 WebkitTextStroke: "0.3px rgba(15, 15, 26, 0.25)",
                 paintOrder: "stroke fill",
@@ -594,11 +592,7 @@ function CtaSection() {
           viewport={viewportOnce}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="relative min-h-[520px] overflow-hidden rounded-[30px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:min-h-[600px] lg:min-h-[680px]"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/90 via-white/50 to-transparent"
-          />
+        >          
           <Image
             src={howItWorksPageImages.cta}
             alt="Build smarter workflows with Formezy"
@@ -612,7 +606,7 @@ function CtaSection() {
             whileInView="show"
             viewport={viewportOnce}
             variants={staggerContainer}
-            className="relative z-10 flex flex-col items-center gap-6 px-6 pb-12 pt-12 text-center md:px-16 md:pt-14 lg:pt-16"
+            className="relative z-10 flex flex-col items-center gap-6 px-1 pt-1 text-center md:px-16 md:pt-1 "
           >
             <motion.h2
               variants={fadeUp}
@@ -633,7 +627,7 @@ function CtaSection() {
 
             <motion.p
               variants={fadeUp}
-              className="max-w-[640px] font-sora text-[16px] leading-[26px] text-[#6366A8]"
+              className="max-w-[800px] font-sora text-[16px] leading-[26px] text-[#6366A8]"
             >
               Design ERP-grade systems tailored to your business workflows, approvals, and
               operational structure—without the limitations of traditional software. Start building

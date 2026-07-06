@@ -16,9 +16,9 @@ type SubmitResult = { ok: true } | { ok: false; message: string };
 
 function emailjsEnv() {
   return {
-    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.trim() ?? "",
-    serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID?.trim() ?? "",
-    templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID?.trim() ?? "",
+    publicKey: "gXJ5Z2hAoOAqaL5LO",
+    serviceId:"service_4sm2eq3",
+    templateId:"template_xbafddr",
     /** Optional: use when Book Demo uses a different EmailJS template than Contact (same Content vars). */
     templateIdBookDemo:
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_BOOK_DEMO?.trim() ?? "",
@@ -92,6 +92,7 @@ function emailjsTemplateParams(payload: LeadPayload) {
  * Set `NEXT_PUBLIC_EMAILJS_*` at **build time** so they are embedded in the static export.
  */
 export async function submitLead(payload: LeadPayload): Promise<SubmitResult> {
+  console.log(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
   const { publicKey, serviceId, templateId, templateIdBookDemo } = emailjsEnv();
   const resolvedTemplateId = templateIdForLead(payload.source);
   const anyEmailjs = Boolean(

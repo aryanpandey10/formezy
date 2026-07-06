@@ -56,7 +56,7 @@ export default function RetailIndustryContent() {
               <b>Powered by Formezy EAP</b>
             </motion.p>
             <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
-              <Button size="lg" className="rounded-[10px]">
+               <Button   href="#demo"   size="lg" className="rounded-[10px]">
                 Book a Demo <ArrowRight size={16} />
               </Button>
             </motion.div>
@@ -393,12 +393,10 @@ export default function RetailIndustryContent() {
                 Simplify Retail Operations <G>with Formezy</G>
               </h2>
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Button size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide rounded-[10px]">
+                <Button href="#demo" size="lg" className="h-14 px-10 text-[16px] font-bold tracking-wide rounded-[10px]">
                   Book a Demo
                 </Button>
-                <Button size="lg" variant="secondary" className="h-14 px-10 text-[16px] font-bold tracking-wide rounded-[10px]">
-                  Talk to an Expert
-                </Button>
+                
               </div>
             </div>
 

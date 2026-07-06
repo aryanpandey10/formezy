@@ -8,6 +8,8 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import { companyPageImages } from "@/lib/page-section-images";
 import { cn } from "@/lib/cn";
+import cta from "../../../public/images/Company/Webp/Ready_to_Move_Beyond_Traditional_Systems.webp";
+
 
 /* ── helpers ── */
 const G = ({ children }: { children: React.ReactNode }) => (
@@ -90,7 +92,7 @@ export default function CompanyContent() {
 
             <motion.h1
               variants={fadeUp}
-              className="font-sora text-[44px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[54px] md:text-[64px] lg:text-[76px]"
+              className="font-sora text-[44px] font-bold leading-[1.1] text-[#2C0E3A] sm:text-[54px] md:text-[64px] lg:text-[60px] 2xl:text-[80px]"
             >
               Enterprise <G>Systems, Reimagined</G>
             </motion.h1>
@@ -109,7 +111,7 @@ export default function CompanyContent() {
                   alt="Enterprise systems reimagined with Formezy"
                   fill
                   priority
-                  className="object-contain object-bottom"
+                  className="object-contain "
                 />
               </div>
             </motion.div>
@@ -269,7 +271,7 @@ export default function CompanyContent() {
       </section>
 
       {/* ── 6. Beyond Traditional Software ── */}
-      <section className="section bg-white/95 py-24 md:py-32 backdrop-blur-sm">
+      <section className="section bg-white/95 pt-24 backdrop-blur-sm" style={{ paddingBottom: "0rem" }}>
         <div className="container-app">
           <motion.div
             initial="hidden"
@@ -297,7 +299,7 @@ export default function CompanyContent() {
                   src={companyPageImages.beyond}
                   alt="Beyond Traditional Software"
                   fill
-                  className="object-contain p-4 md:p-8"
+                  className="object-cover p-4 md:p-8"
                 />
               </div>
             </motion.div>
@@ -326,7 +328,7 @@ export default function CompanyContent() {
                 src={companyPageImages.scalable}
                 alt="Built for Scalable Operations"
                 fill
-                className="object-contain p-8 md:p-12"
+                className="object-contain"
               />
             </motion.div>
             <motion.div
@@ -350,56 +352,45 @@ export default function CompanyContent() {
         </div>
       </section>
 
-      {/* ── 8. CTA Section (Mirrored from Home page BuildErp style) ── */}
-      <section className="section bg-transparent py-24 md:py-32">
+  {/* ── Section 7: Footer CTA ── */}
+      < section className="section pt-0" >
         <div className="container-app">
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            className="relative min-h-[560px] overflow-hidden rounded-[48px] border border-purple-100 shadow-[0_8px_48px_rgba(108,96,232,0.12)] md:min-h-[660px] lg:min-h-[760px]"
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-[32px] border border-[#E8E4FF] bg-gradient-to-br from-[#F5F0FF] to-[#EEF4FF] pt-16 text-center shadow-lg"
           >
-            {/* Background image — fill & bottom anchored */}
-            <Image
-              src={companyPageImages.cta}
-              alt="Ready to move beyond traditional systems"
-              fill
-              className="object-cover object-bottom"
-            />
-
-            {/* Content area */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={viewportOnce}
-              variants={staggerContainer}
-              className="relative z-10 flex flex-col items-center gap-8 px-6 pt-16 text-center md:px-16 md:pt-20"
-            >
-              <motion.h2
-                variants={fadeUp}
-                className="font-sora text-[36px] font-bold leading-[1.12] text-[#2C0E3A] md:text-[52px] lg:text-[62px]"
-              >
+            <div className="relative z-10 px-6">
+              <h2 className="mx-auto max-w-[800px] font-sora text-[32px] font-bold leading-[1.2] text-[#2C0E3A] md:text-[44px]">
                 Ready to Move <br />
                 <G>Beyond Traditional Systems?</G>
-              </motion.h2>
-
-              <motion.p
-                variants={fadeUp}
-                className="max-w-[680px] font-sora text-[17px] leading-[28px] text-[#6366A8] md:text-[19px]"
-              >
-                An Enterprise Application Platform ensures your business runs on common rules and standards. Achieve more with Formezy.
-              </motion.p>
-
-              <motion.div variants={fadeUp} className="mt-4">
-                <Button href="#demo" size="lg" className="rounded-[12px] px-14 py-4 text-[18px]">
+              </h2>
+              <p className="mx-auto mt-4 max-w-[600px] font-sora text-[16px] text-[#6366A8]">
+                 An Enterprise Application Platform ensures your business runs on common rules and standards. Achieve more with Formezy.
+              </p>
+              <div className="mt-8 flex justify-center">
+                 <Button href="#demo" size="lg" className="rounded-[12px] px-14 py-4 text-[18px]">
                   Book a Demo <ArrowRight size={20} className="ml-2" />
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
+
+            <div className="mt-12 overflow-hidden px-4 md:px-12 lg:px-20">
+              <Image
+                src={cta}
+                alt="Build a CRM That Works Your Way Illustration"
+                width={1200}
+                height={600}
+                className="mx-auto h-auto w-full rounded-t-[20px]"
+              />
+            </div>
           </motion.div>
         </div>
-      </section>
+      </ section> 
+
+
     </main>
   );
 }

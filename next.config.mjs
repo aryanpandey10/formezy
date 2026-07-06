@@ -4,7 +4,7 @@ const nextConfig = {
   // scripts/build-out.mjs sets STATIC_EXPORT=true → `out/` for static hosts only (no API in bundle).
   ...(process.env.STATIC_EXPORT === "true" ? { output: "export" } : {}),
   // Folder + index.html per route — works with Apache refresh on /platform/use-cases/
-  trailingSlash: true,
+  trailingSlash: false,
   reactStrictMode: true,
   images: {
     // Reliable across hosts; set false if you use Vercel + default image optimization only.

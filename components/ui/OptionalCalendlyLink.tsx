@@ -25,7 +25,6 @@ export function OptionalCalendlyLink({ className = "", variant = "default" }: Pr
       >
         Schedule a 30-minute call
       </a>
-      <span className="text-[#6366A8]/70"> (optional)</span>
     </p>
   );
 }
