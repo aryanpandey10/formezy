@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CareersContent from "@/components/sections/about/CareersContent";
 
+
+// hello Aryan
 export const metadata: Metadata = {
   title: "Careers | Formezy",
   description:
